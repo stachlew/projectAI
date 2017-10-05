@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication(scanBasePackages = { "pl.wat" })
-public class PzApplication {
+public class AiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PzApplication.class, args);
+		SpringApplication.run(AiApplication.class, args);
 	}
 
 

@@ -1,5 +1,9 @@
+Przejsc konsoletą do folderu \projectAI\ng2\src  i tam uruchomić:
+npm install --no-bin-links
+
+potem dogrywać zależności po kolei:
 npm install ng2-page-transition
 npm install angular2-jwt
-npm install angular2-ui-switch
+//////npm install angular2-ui-switch
 npm i ng2-file-upload
 npm i ng2-cookies

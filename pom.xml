@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>pl.wat</groupId>
-	<artifactId>pz</artifactId>
+	<artifactId>project-ai</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>eventer</name>
-	<description>Eventer project. Spring boot, Angular2, Spring Security, JWT, Oracle DB</description>
+	<name>project-ai</name>
+	<description>Aplikacja internetowa</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
