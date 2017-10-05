@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default  navbar-fixed-top">
+<nav class="navbar navbar-default  navbar-fixed-top navbar-background">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button"  class="navbar-toggle collapsed" (click)="toggleState()">
@@ -8,8 +8,7 @@
         <span class="icon-bar"></span>
       </button>
       <a style="color: #f9f2f4; font-size: x-large" class="navbar-brand" [routerLink]="['/']">
-        <i class="fa fa-bullhorn" aria-hidden="true"></i>
-        EV<b>enter</b>
+        LOVE<i class="fa fa-heart font-accent" aria-hidden="true"></i>ME
       </a>
 
     </div>
@@ -18,36 +17,36 @@
       <ul class="nav navbar-nav">
         <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
           <a [routerLink]="['/home']">
-            <i class="fa fa-tachometer fa-icon-margin"></i> Strona główna
+            <i class="fa fa-tachometer fa-icon-margin font-accent"></i> Strona główna
           </a>
         </li>
         <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
           <a [routerLink]="['administration']">
-            <i class="fa fa-file-text fa-icon-margin"></i> Administracyja
+            <i class="fa fa-file-text fa-icon-margin font-accent"></i> Administracyja
           </a>
         </li>
         <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
           <a [routerLink]="['settings']">
-            <i class="fa fa-gears fa-icon-margin"></i> Opcje
+            <i class="fa fa-gears fa-icon-margin font-accent"></i> Opcje
           </a>
         </li>
         <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="isIn && auth.username != null">
           <a [routerLink]="['account']" >
-            <i class="fa fa-user-circle-o"></i> {{auth.username}}
+            <i class="fa fa-user-circle-o font-accent"></i> {{auth.username}}
           </a>
         </li>
         <!-- Opcje logowania/wylogowania dla widoku mobilnego -->
         <!-- USER -->
         <li *ngIf="isAuth() && isIn">
           <a href="#" (click)="logout()" >
-            <i class="fa fa-sign-out"  ></i>
+            <i class="fa fa-sign-out font-accent"  ></i>
             Logout
           </a>
         </li>
         <!-- GOSC -->
         <li *ngIf="!isAuth() && isIn">
           <a [routerLink]="['login']">
-            <i class="fa fa-sign-in"></i>
+            <i class="fa fa-sign-in font-accent"></i>
             Log in
           </a>
         </li>
@@ -60,19 +59,19 @@
       <ul class="nav navbar-nav pull-right" *ngIf="!isIn">
         <li *ngIf="auth.username != null">
           <a [routerLink]="['account']" >
-            <i class="fa fa-user-circle-o"></i> {{auth.username}}
+            <i class="fa fa-user-circle-o font-accent"></i> {{auth.username}}
           </a>
         </li>
         <li *ngIf="isAuth()">
           <a href="#" (click)="logout()" >
-            <i class="fa fa-sign-out"  ></i>
+            <i class="fa fa-sign-out font-accent"  ></i>
             Logout
           </a>
         </li>
         <!-- GOSC -->
         <li *ngIf="!isAuth()">
           <a [routerLink]="['login']">
-            <i class="fa fa-sign-in"></i>
+            <i class="fa fa-sign-in font-accent"></i>
             Log in
           </a>
         </li>

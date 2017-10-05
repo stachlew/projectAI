@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import pl.wat.config.Constants;
 import pl.wat.db.domain.Customer;
 import pl.wat.db.domain.DemoClass;
 import pl.wat.logic.CustomerService;
@@ -79,7 +80,7 @@ public class DemoRestController {
         if(!file.isEmpty()){
             try{
                 byte[] bytes = file.getBytes();
-                File serverFile = new File("D:\\Projekty\\PzPro\\uploadTest"    //ZMIENIC NA SWOJA SCIEZKE DLA ZAPISU UPLOADOWANYCH PLIKO!!!
+                File serverFile = new File(Constants.UPLOAD_TEST_DIRECTORY    //ZMIENIC NA SWOJA SCIEZKE DLA ZAPISU UPLOADOWANYCH PLIKO!!!
                         + File.separator  + nrPliku + ".jpg");
                 nrPliku++;
                 BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
