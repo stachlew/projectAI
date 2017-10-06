@@ -5,3 +5,8 @@ potem dogrywać zależności po kolei:
 npm install angular2-jwt
 npm i ng2-file-upload
 npm i ng2-cookies
+
+npm install --save @angular/material @angular/cdk
+npm install --save @angular/animations
+
+npm install -g typescript

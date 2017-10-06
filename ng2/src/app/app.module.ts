@@ -22,6 +22,8 @@ import { HttpSecService } from "./_service/util/http-sec.service";
 import { FooterComponent } from './footer/footer.component';
 import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 import { AccountComponent } from './account/account.component';
+import {CustomMaterialModule} from "./custom-material-module";
+import {MatInputModule, MatTabsModule} from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -41,12 +43,13 @@ import { AccountComponent } from './account/account.component';
   ],
   imports: [
     BrowserModule,
+    CustomMaterialModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
     AuthenticationModule,
     AppRoutingModule,
-    Ng2PageTransitionModule,
+    Ng2PageTransitionModule
   ],
   providers: [
     AuthenticationService,

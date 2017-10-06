@@ -11,5 +11,6 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  myInput:string;
+  myErrorStateMatcher:boolean;
 }
