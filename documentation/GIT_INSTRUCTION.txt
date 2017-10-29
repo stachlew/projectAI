@@ -1,0 +1,9 @@
+Po zakończeniu edytowania kodu:
+1. Zaznaczyć pliki które mają być zagitowane
+2. PPM na jeden z zaznaczonych -> COMMIT
+3. Opisać zmianę (można przejrzeć w drzewie czy wszystko jest dobrze zaznaczone)
+4. Commit-> Commit 
+5. Po zakomitowaniu: VCS->update project. 
+*W tym momencie może wystąpić konflikt, który zdarza się gdy edytowane były przez dwie osoby te same linie kodu. 
+Jeśli to wystąpi wybiera się merge i analizuje się własne zmiany, czyjeś zmiany będące już na serwie. Na środku jest wersja finalna.
+6. Po rozwiązaniu konfliktów: VCS->Git->PUSH (wypychanie lokalnych zaakceptowanych zmian na serwer)
