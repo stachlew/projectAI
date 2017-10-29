@@ -1,5 +1,5 @@
 Po zakończeniu edytowania kodu:
-1. Zaznaczyć pliki które mają być zagitowane
+1. Zaznaczyć pliki które mają być zagitowane (dolny panel GITa w IDEI, zakładka Local Changes)
 2. PPM na jeden z zaznaczonych -> COMMIT
 3. Opisać zmianę (można przejrzeć w drzewie czy wszystko jest dobrze zaznaczone)
 4. Commit-> Commit 
