@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { AdministrationComponent} from './administration/administration.component';
-import { SettingsComponent } from './settings/settings.component';
+import { LoginComponent } from './general/login/login.component';
+import { HomeComponent } from './general/home/home.component';
 import { UnauthorizedComponent } from './_component/unauthorized/unauthorized.component';
 import { AuthenticationGuard } from './_service/authentication/guard/authentication.guard';
 import { RoleGuard } from './_service/authentication/guard/role.guard';
-import { AccountComponent } from './account/account.component'
-import {PersonsListComponent} from "./persons-list/persons-list.component";
-import {SpeedDatesListComponent} from "./speed-dates-list/speed-dates-list.component";
-import {ChatComponent} from "./chat/chat.component";
-import {AccountWizardComponent} from "./account-wizard/account-wizard.component";
-import {SpeedDatesManagmentComponent} from "./speed-dates-managment/speed-dates-managment.component";
-import {SpeedDatesCreateComponent} from "./speed-dates-create/speed-dates-create.component";
+import { AccountComponent } from './general/account/account.component'
+import {PersonsListComponent} from "./main/persons-list/persons-list.component";
+import {SpeedDatesListComponent} from "./main/speed-dates-list/speed-dates-list.component";
+import {ChatComponent} from "./main/chat/chat.component";
+import {SpeedDateManagmentComponent} from "./managment/speed-date-managment/speed-date-managment.component";
+import {SpeedDateCreateComponent} from "./managment/speed-date-create/speed-date-create.component";
+import {RegisterComponent} from "./general/register/register.component";
+import {SpeedDateDetailsComponent} from "./main/speed-date-details/speed-date-details.component";
+import {PersonDetailsComponent} from "./main/person-details/person-details.component";
+import {SpeedDatesManagmentListComponent} from "./managment/speed-dates-managment-list/speed-dates-managment-list.component";
 
 const appRoutes: Routes = [
 
@@ -32,20 +33,18 @@ const appRoutes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
     path: 'unauthorized',
     component: UnauthorizedComponent
   },
 
   //USER
   {
-    path: 'personslist',
-    component: PersonsListComponent,
-    canActivate: [AuthenticationGuard, RoleGuard],
-    data: { roles : ['ROLE_USER'] }
-  },
-  {
-    path: 'speeddatesList',
-    component: SpeedDatesListComponent,
+    path: 'account',
+    component: AccountComponent,
     canActivate: [AuthenticationGuard, RoleGuard],
     data: { roles : ['ROLE_USER'] }
   },
@@ -56,54 +55,56 @@ const appRoutes: Routes = [
     data: { roles : ['ROLE_USER'] }
   },
   {
-    path: 'accountWizard',
-    component: AccountWizardComponent,
+    path: 'person-details/:personId',
+    component: PersonDetailsComponent,
     canActivate: [AuthenticationGuard, RoleGuard],
     data: { roles : ['ROLE_USER'] }
   },
+  {
+    path: 'persons-list',
+    component: PersonsListComponent,
+    canActivate: [AuthenticationGuard, RoleGuard],
+    data: { roles : ['ROLE_USER'] }
+  },
+  {
+    path: 'speed-date-details/:speeddateId',
+    component: SpeedDateDetailsComponent,
+    canActivate: [AuthenticationGuard, RoleGuard],
+    data: { roles : ['ROLE_USER'] }
+  },
+  {
+    path: 'speed-dates-list',
+    component: SpeedDatesListComponent,
+    canActivate: [AuthenticationGuard, RoleGuard],
+    data: { roles : ['ROLE_USER'] }
+  },
+
 
   //MANAGER
   {
-    path: 'speedDatesManagment',
-    component: SpeedDatesManagmentComponent,
+    path: 'speed-date-managment/:speeddateId',
+    component: SpeedDateManagmentComponent,
     canActivate: [AuthenticationGuard, RoleGuard],
     data: { roles : ['ROLE_MANAGER'] }
   },
   {
-    path: 'speedDatesCreate',
-    component: SpeedDatesCreateComponent,
+    path: 'speed-dates-managment-list',
+    component: SpeedDatesManagmentListComponent,
+    canActivate: [AuthenticationGuard, RoleGuard],
+    data: { roles : ['ROLE_MANAGER'] }
+  },
+  {
+    path: 'speed-date-create',
+    component: SpeedDateCreateComponent,
     canActivate: [AuthenticationGuard, RoleGuard],
     data: { roles : ['ROLE_MANAGER'] }
   },
 
-
-
-  //ADMIN
-  {
-    path: 'administration',
-    component: AdministrationComponent,
-    canActivate: [AuthenticationGuard, RoleGuard],
-    data: { roles : ['ROLE_ADMIN'] }
-  },
-  {
-    path: 'settings',
-    component: SettingsComponent,
-    canActivate: [AuthenticationGuard, RoleGuard],
-    data: { roles : ['ROLE_USER'] }
-  },
-  {
-    path: 'account',
-    component: AccountComponent,
-    canActivate: [AuthenticationGuard, RoleGuard],
-    data: { roles : ['ROLE_USER'] }
-  },
-
-  //Kazdy brakujacy powyzej
+  // Kazdy brakujacy powyzej
   {
     path: '**',
-    redirectTo: 'home'
-  },
-
+    redirectTo: ''
+  }
 ];
 
 @NgModule({
@@ -115,8 +116,6 @@ export class AppRoutingModule {}
 export const routingComponents = [
   LoginComponent,
   HomeComponent,
-  AdministrationComponent,
-  SettingsComponent,
   UnauthorizedComponent,
   AccountComponent
 ];
