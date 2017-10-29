@@ -30,6 +30,14 @@
             <i class="fa fa-gears fa-icon-margin font-accent"></i> Opcje
           </a>
         </li>
+
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a [routerLink]="['personslist']">
+            <i class="fa fa-gears fa-icon-margin font-accent"></i> Lista osób
+          </a>
+        </li>
+
+
         <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="isIn && auth.username != null">
           <a [routerLink]="['account']" >
             <i class="fa fa-user-circle-o font-accent"></i> {{auth.username}}

@@ -8,18 +8,77 @@ import { UnauthorizedComponent } from './_component/unauthorized/unauthorized.co
 import { AuthenticationGuard } from './_service/authentication/guard/authentication.guard';
 import { RoleGuard } from './_service/authentication/guard/role.guard';
 import { AccountComponent } from './account/account.component'
+import {PersonsListComponent} from "./persons-list/persons-list.component";
+import {SpeedDatesListComponent} from "./speed-dates-list/speed-dates-list.component";
+import {ChatComponent} from "./chat/chat.component";
+import {AccountWizardComponent} from "./account-wizard/account-wizard.component";
+import {SpeedDatesManagmentComponent} from "./speed-dates-managment/speed-dates-managment.component";
+import {SpeedDatesCreateComponent} from "./speed-dates-create/speed-dates-create.component";
 
 const appRoutes: Routes = [
 
+  //ANONYMOUS
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
   {
     path: 'login',
     component: LoginComponent
   },
   {
-    path: 'home',
-    component: HomeComponent,
-    //canActivate: [AuthenticationGuard] //Jakikolwiek zautoryzowany uzytkownik, brak rol
+    path: 'unauthorized',
+    component: UnauthorizedComponent
   },
+
+  //USER
+  {
+    path: 'personslist',
+    component: PersonsListComponent,
+    canActivate: [AuthenticationGuard, RoleGuard],
+    data: { roles : ['ROLE_USER'] }
+  },
+  {
+    path: 'speeddatesList',
+    component: SpeedDatesListComponent,
+    canActivate: [AuthenticationGuard, RoleGuard],
+    data: { roles : ['ROLE_USER'] }
+  },
+  {
+    path: 'chat',
+    component: ChatComponent,
+    canActivate: [AuthenticationGuard, RoleGuard],
+    data: { roles : ['ROLE_USER'] }
+  },
+  {
+    path: 'accountWizard',
+    component: AccountWizardComponent,
+    canActivate: [AuthenticationGuard, RoleGuard],
+    data: { roles : ['ROLE_USER'] }
+  },
+
+  //MANAGER
+  {
+    path: 'speedDatesManagment',
+    component: SpeedDatesManagmentComponent,
+    canActivate: [AuthenticationGuard, RoleGuard],
+    data: { roles : ['ROLE_MANAGER'] }
+  },
+  {
+    path: 'speedDatesCreate',
+    component: SpeedDatesCreateComponent,
+    canActivate: [AuthenticationGuard, RoleGuard],
+    data: { roles : ['ROLE_MANAGER'] }
+  },
+
+
+
+  //ADMIN
   {
     path: 'administration',
     component: AdministrationComponent,
@@ -38,19 +97,13 @@ const appRoutes: Routes = [
     canActivate: [AuthenticationGuard, RoleGuard],
     data: { roles : ['ROLE_USER'] }
   },
+
+  //Kazdy brakujacy powyzej
   {
-    path: 'unauthorized', //w przypadku wejscia na jakas strone przy braku uprawnien
-    component: UnauthorizedComponent
-  },
-  {
-    path: '', //strona glowna
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
-    path: '**', //kazdy brakujacy powyzej
+    path: '**',
     redirectTo: 'home'
-  }
+  },
+
 ];
 
 @NgModule({

@@ -20,10 +20,15 @@ import { AdministrationComponent } from './administration/administration.compone
 import { SettingsComponent } from './settings/settings.component';
 import { HttpSecService } from "./_service/util/http-sec.service";
 import { FooterComponent } from './footer/footer.component';
-import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
+import { FileSelectDirective } from 'ng2-file-upload';
 import { AccountComponent } from './account/account.component';
 import {CustomMaterialModule} from "./custom-material-module";
-import {MatInputModule, MatTabsModule} from "@angular/material";
+import { PersonsListComponent } from './persons-list/persons-list.component';
+import { SpeedDatesListComponent } from './speed-dates-list/speed-dates-list.component';
+import { ChatComponent } from './chat/chat.component';
+import { AccountWizardComponent } from './account-wizard/account-wizard.component';
+import { SpeedDatesManagmentComponent } from './speed-dates-managment/speed-dates-managment.component';
+import { SpeedDatesCreateComponent } from './speed-dates-create/speed-dates-create.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +44,13 @@ import {MatInputModule, MatTabsModule} from "@angular/material";
     SettingsComponent,
     FooterComponent,
     FileSelectDirective,
-    AccountComponent
+    AccountComponent,
+    PersonsListComponent,
+    SpeedDatesListComponent,
+    ChatComponent,
+    AccountWizardComponent,
+    SpeedDatesManagmentComponent,
+    SpeedDatesCreateComponent
   ],
   imports: [
     BrowserModule,
