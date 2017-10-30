@@ -33,7 +33,7 @@ export class AuthenticationService {
           this.userRole=null;
           if(!isNullOrUndefined(data.user.authorities) && data.user.authorities.length>0){
             this.userRole = data.user.authorities[0].authority;
-            localStorage.setItem('userRole', JSON.stringify(this.userRole));
+            localStorage.setItem('userRole', this.userRole);
           }
         }
       });
