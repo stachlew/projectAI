@@ -1,3 +1,22 @@
-<p>
-  chat-conversation works!
-</p>
+<div class="conversation-header">
+  Zbyszek, 45 lat <button (click)="test()">TEST</button> <button (click)="test2()">TEST2</button>
+</div>
+
+<div #chatContent class="conversation-table-wrapper">
+  <table class="table conversation-table">
+    <tbody>
+    <tr #messages *ngFor="let i of msgSource">
+    <!--<tr #messages *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19]">-->
+    <!--<tr #messages class="message-row" *ngFor="let i of [1,2,3]">-->
+      <td class="img-conversation-column">
+        <img src="assets/images/stock_face.jpg"  class="rounded-circle">
+      </td>
+      <td class="name-column">{{i.text}} </td>
+      <td class="date-column">{{i.date}}}</td>
+    </tr>
+    <tr>
+      <td #lastMessage></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

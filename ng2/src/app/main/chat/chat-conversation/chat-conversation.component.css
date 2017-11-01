@@ -1,0 +1,36 @@
+.conversation-header{
+  padding: 20px;
+  height: 8vh;
+}
+
+
+.conversation-table-wrapper{
+  height: 55vh;
+  overflow-y: auto;
+}
+
+.conversation-table td{
+  vertical-align:middle;
+}
+
+.message-row{
+  width: 100%;
+}
+
+.img-conversation-column{
+  width: 5%;
+}
+
+.img-conversation-column img{
+  width: 30px;
+}
+
+.name-column{
+  font-size: larger;
+  width: 83%;
+}
+
+.date-column{
+  font-size: smaller;
+  width: 12%;
+}

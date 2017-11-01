@@ -46,6 +46,7 @@ import { Constants } from './_service/util/constants';
 import { ChatContactsComponent } from './main/chat/chat-contacts/chat-contacts.component';
 import { ChatConversationComponent } from './main/chat/chat-conversation/chat-conversation.component';
 import { ChatMessageComponent } from './main/chat/chat-message/chat-message.component'
+import {ChatManagerService} from "./main/chat/chat-manager.service";
 
 
 @NgModule({
@@ -103,7 +104,8 @@ import { ChatMessageComponent } from './main/chat/chat-message/chat-message.comp
     AuthenticationService,
     HttpSecService,
     routingGuards,
-    UtilsService
+    UtilsService,
+    ChatManagerService
   ],
   bootstrap: [AppComponent]
 })
