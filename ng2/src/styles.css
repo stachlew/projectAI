@@ -3,7 +3,7 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 body {
-    margin-top: 62px;
+  font-family: 'Dosis', sans-serif !important;
 }
 
 .app-container{
@@ -32,42 +32,16 @@ body {
 
 
 /*KOLORY*/
-.font-main{
-  color: #2c3e50;
-}
-
-.navbar-background{
-  background-color: rgba(202, 42, 42, 1);
-}
-.footer-background{
-  background-color: rgba(202, 42, 42, 1);
-}
-
-/***Aktywna zakladka*/
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-  color: #ffffff;
-  background-color: #b40202;
-}
-
-/*Hover zakladki nieaktywnej*/
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-  color: #ffffff;
-  background-color: #a90202;
-}
-
 .font-accent{
   color: #ffb3b3
 }
 
 .font-red{
-  color: #ee0f0f;
+  background-color: rgba(202, 42, 42, 1);
 }
 
 .background-red{
-  color: #ee0f0f;
+  background-color: rgba(202, 42, 42, 1);
 }
 
 .font-white{
@@ -77,12 +51,3 @@ body {
 .background-white{
   color: #e6e4ee;
 }
-
-/*WIELKOSCI*/
-
-
-/*INNE WLASCIWOSCI*/
-
-
-/*STYLE STRONY*/
-

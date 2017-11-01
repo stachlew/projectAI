@@ -46,7 +46,7 @@ const appRoutes: Routes = [
     path: 'account',
     component: AccountComponent,
     canActivate: [AuthenticationGuard, RoleGuard],
-    data: { roles : ['ROLE_USER'] }
+    data: { roles : ['ROLE_USER','ROLE_MANAGER'] }
   },
   {
     path: 'chat',

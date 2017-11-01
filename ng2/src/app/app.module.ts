@@ -42,7 +42,10 @@ import { HttpSecService } from "./_service/util/http-sec.service";
 import {UtilsService} from "./_service/util/utils.service";
 
 //STALE
-import { Constants } from './_service/util/constants'
+import { Constants } from './_service/util/constants';
+import { ChatContactsComponent } from './main/chat/chat-contacts/chat-contacts.component';
+import { ChatConversationComponent } from './main/chat/chat-conversation/chat-conversation.component';
+import { ChatMessageComponent } from './main/chat/chat-message/chat-message.component'
 
 
 @NgModule({
@@ -81,7 +84,10 @@ import { Constants } from './_service/util/constants'
     //MANAGER
     SpeedDateCreateComponent,
     SpeedDateManagmentComponent,
-    SpeedDatesManagmentListComponent
+    SpeedDatesManagmentListComponent,
+    ChatContactsComponent,
+    ChatConversationComponent,
+    ChatMessageComponent
   ],
   imports: [
     BrowserModule,
