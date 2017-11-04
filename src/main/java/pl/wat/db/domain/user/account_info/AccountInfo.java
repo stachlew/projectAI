@@ -13,9 +13,33 @@ public class AccountInfo {
     @ColumnDefault(value = "sysdate")
     private Date accountCreateDate;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private boolean active;
 
     @Column(name = "last_Logout_Date")
     private Timestamp lastLogoutDate;
+
+    public Date getAccountCreateDate() {
+        return accountCreateDate;
+    }
+
+    public void setAccountCreateDate(Date accountCreateDate) {
+        this.accountCreateDate = accountCreateDate;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Timestamp getLastLogoutDate() {
+        return lastLogoutDate;
+    }
+
+    public void setLastLogoutDate(Timestamp lastLogoutDate) {
+        this.lastLogoutDate = lastLogoutDate;
+    }
 }

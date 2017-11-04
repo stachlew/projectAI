@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import {Http, RequestOptions, Headers} from "@angular/http";
-import { Cookie } from 'ng2-cookies/ng2-cookies';
+import {Constants} from "./constants";
 
 
 @Injectable()
 export class HttpSecService {
 
-  applicationUrl = "http://localhost:8080/";
+  applicationUrl = Constants.APP_HOST;
 
   private getSecurityToken(): string{
     return localStorage.getItem('token');
@@ -30,10 +30,6 @@ export class HttpSecService {
   public getToken(){
     let securityToken = this.getSecurityToken();
     return securityToken;
-  }
-
-  public getUrl(){
-    return this.applicationUrl;
   }
 
   constructor(private http: Http) { }

@@ -21,7 +21,7 @@ export class AuthenticationService {
   }
 
   doLogin(credentials) {
-    return this.http.post('http://localhost:8080/auth', credentials)
+    return this.http.post(Constants.APP_HOST+'/auth', credentials)
       .map(res => {
         const data = res.json();
         if (data) {
