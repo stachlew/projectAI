@@ -1,0 +1,29 @@
+*nie zmieniać 
+USER *
+-dane o użytkowniku w systemie
+AUTHORITY *
+-typy użytkowników w systemie
+USER_AUTHORITY *
+-mapowanie uzytkowników na ich prawa
+
+
+PROFILE
+-dane szczegółowe dla USER-a  (1-1)
+-encja wykorzystywana w procesie przeliczania dopasowania użytkowników
+
+PROFILE_PICTURE
+-ścieżki(tekst) do zdjęć profilowych znajduących się na serwerze
+
+CONVERSATION
+-'nagłówek' rozmowy. 
+-Powiązanie 2 osób uczesniczących w rozmowie
+-Informacja o wyświetlaniu rozmowy dla obu użytkownków 'displayUser1', 'displayUser2'
+
+MESSAGE
+-encja pojedynczej wiadomości w rozmowie. Autor, tekst, timestamp, flaga odczytania
+
+SPEEDDATE
+-dane pojedynczego speeddatingu. Autor, czas, miejsce, koorydnaty(tekst x2), ilość miejsc, enabled, ścieżka do obrazka na serwerze
+
+PARTICIPANT
+-uczestnictwo zrealizowane poprzez powiązanie USER-SPEEDDATE

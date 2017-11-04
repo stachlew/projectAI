@@ -1,0 +1,26 @@
+.contacts-table-wrapper{
+   height: 89vh;
+   overflow-y: auto;
+ }
+
+.contacts-table td{
+  vertical-align:middle;
+  text-align: center;
+}
+
+
+.img-column{
+
+}
+
+.img-column img{
+  width: 60px;
+}
+
+.name-column{
+  font-size: larger;
+}
+
+.date-column{
+  font-size: smaller;
+}

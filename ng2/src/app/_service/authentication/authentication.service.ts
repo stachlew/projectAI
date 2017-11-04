@@ -2,20 +2,24 @@ import { Injectable } from '@angular/core';
 import { tokenNotExpired, AuthHttp } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 import { User } from '../../_model/user.model';
-import { Cookie } from 'ng2-cookies/ng2-cookies';
+import { Constants } from "../util/constants";
+import {UtilsService} from "../util/utils.service";
+import {isNullOrUndefined} from "util";
 
 @Injectable()
 export class AuthenticationService {
   public token: string;
   public username: string;
+  public userRole: string;
 
-  constructor(public http: AuthHttp) {
-    if(this.isLoggedIn()){ //jesli odswiezana jest strona gdy uzytkownik jest zalogowany to pobierz nazwe usera z cookie
-      this.username=Cookie.get('usernameCookie');
+  constructor(public http: AuthHttp, public util: UtilsService) {
+    if(this.isLoggedIn()){
+      this.token=localStorage.getItem('token');
+      this.username=localStorage.getItem('username');
+      this.userRole=localStorage.getItem('userRole');
     }
   }
 
-  /*Token jest dodatkowo zapisywany w cookie bo przy odswiezaniu strony czysci sie local storage*/
   doLogin(credentials) {
     return this.http.post('http://localhost:8080/auth', credentials)
       .map(res => {
@@ -23,10 +27,14 @@ export class AuthenticationService {
         if (data) {
           localStorage.setItem('token', data.token);
           localStorage.setItem('user', JSON.stringify(data.user));
+          localStorage.setItem('username', data.user.username);
           this.token=data.token;
           this.username=data.user.username;
-          Cookie.set('securityToken', data.token);
-          Cookie.set('usernameCookie', data.user.username);
+          this.userRole=null;
+          if(!isNullOrUndefined(data.user.authorities) && data.user.authorities.length>0){
+            this.userRole = data.user.authorities[0].authority;
+            localStorage.setItem('userRole', this.userRole);
+          }
         }
       });
   }
@@ -34,9 +42,11 @@ export class AuthenticationService {
   doLogout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('username');
+    localStorage.removeItem('userRole');
     this.username=null;
-    Cookie.delete('securityToken');
-    Cookie.delete('usernameCookie');
+    this.userRole=null;
+    this.token=null;
   }
 
   isLoggedIn() {
@@ -46,6 +56,15 @@ export class AuthenticationService {
   getRoles() {
     const user: User = JSON.parse(localStorage.getItem('user'));
     return user.authorities;
+  }
+
+
+  isUser(): boolean{
+    return (this.userRole === Constants.ROLE_USER);
+  }
+
+  isManager(): boolean{
+      return (this.userRole === Constants.ROLE_MANAGER);
   }
 
 }

@@ -1,0 +1,10 @@
+<p>
+  persons-list works!
+</p>
+
+<mat-form-field>
+  <input matInput [(ngModel)]="myInput" required [errorStateMatcher]="myErrorStateMatcher">
+  <mat-error>This field is required</mat-error>
+</mat-form-field>
+Field error: {{myErrorStateMatcher}}
+

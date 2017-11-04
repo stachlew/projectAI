@@ -10,3 +10,6 @@ npm install --save @angular/material @angular/cdk
 npm install --save @angular/animations
 
 npm install -g typescript
+
+WSOWA:
+npm install -g @angular/cli

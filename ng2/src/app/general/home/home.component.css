@@ -1,0 +1,27 @@
+.main-image{
+  background-image: url('/assets/images/home.jpg');
+}
+
+.home-title-header{
+  background-color: rgba(17, 17, 17, 0.24);
+  color: #eee;
+  margin-bottom: 0;
+}
+
+.home-title-paragraph{
+  background-color: rgba(17, 17, 17, 0.24);
+  color: #eee;
+  padding-bottom: 15px;
+}
+
+.home-title-btn{
+  background-color: #ca2a2a;
+  border: 0px;
+  color:#eee;
+  border: #0e6f5c 1px;
+}
+
+.home-title-btn:hover{
+  background-color: #982727;
+}
+
