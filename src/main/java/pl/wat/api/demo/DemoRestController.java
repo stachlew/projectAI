@@ -70,28 +70,28 @@ public class DemoRestController {
 
 
     //UPLOAD PLIKOW Z AUTORYZACJA [USER]
-    private static int nrPliku = 0;
-    @PreAuthorize("hasRole('USER')")
-    @RequestMapping(value = "/postFile",method = RequestMethod.POST)
-    @ResponseStatus(value= HttpStatus.NO_CONTENT)
-    public void uploadImage(@RequestParam("file") MultipartFile file) {
-        System.out.println("Upload pliku");
-        System.out.println(file.getName());
-        if(!file.isEmpty()){
-            try{
-                byte[] bytes = file.getBytes();
-                File serverFile = new File(Constants.UPLOAD_TEST_DIRECTORY    //ZMIENIC NA SWOJA SCIEZKE DLA ZAPISU UPLOADOWANYCH PLIKO!!!
-                        + File.separator  + nrPliku + ".jpg");
-                nrPliku++;
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-                stream.write(bytes);
-                stream.close();
-
-            }catch (Exception e){
-                System.out.println("uploadImage() Exception ");
-            }
-        }
-    } //end uploadImage()
+//    private static int nrPliku = 0;
+//    @PreAuthorize("hasRole('USER')")
+//    @RequestMapping(value = "/postFile",method = RequestMethod.POST)
+//    @ResponseStatus(value= HttpStatus.NO_CONTENT)
+//    public void uploadImage(@RequestParam("file") MultipartFile file) {
+//        System.out.println("Upload pliku");
+//        System.out.println(file.getName());
+//        if(!file.isEmpty()){
+//            try{
+//                byte[] bytes = file.getBytes();
+//                File serverFile = new File(Constants.UPLOAD_TEST_DIRECTORY    //ZMIENIC NA SWOJA SCIEZKE DLA ZAPISU UPLOADOWANYCH PLIKO!!!
+//                        + File.separator  + nrPliku + ".jpg");
+//                nrPliku++;
+//                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+//                stream.write(bytes);
+//                stream.close();
+//
+//            }catch (Exception e){
+//                System.out.println("uploadImage() Exception ");
+//            }
+//        }
+//    } //end uploadImage()
 
 
 }

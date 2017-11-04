@@ -1,24 +1,13 @@
 package pl.wat.db.domain.user;
 
 import pl.wat.db.domain.user.Authority;
+import pl.wat.db.domain.user.account_info.AccountInfo;
+import pl.wat.db.domain.user.profile.Profile;
 
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -71,6 +60,13 @@ public class User {
             uniqueConstraints = {@UniqueConstraint(
                     columnNames = {"user_id", "authority_id"})})
     private List<Authority> authorities;
+
+    @Embedded
+    private Profile profile;
+
+    @Embedded
+    private AccountInfo accountInfo;
+
 
     public int getId() {
         return id;
@@ -143,4 +139,25 @@ public class User {
     public void setLastpassres(Date lastpassres) {
         this.lastpassres = lastpassres;
     }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    public AccountInfo getAccountInfo() {
+        return accountInfo;
+    }
+
+    public void setAccountInfo(AccountInfo accountInfo) {
+        this.accountInfo = accountInfo;
+    }
+
 }
