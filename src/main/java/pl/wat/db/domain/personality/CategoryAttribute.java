@@ -4,11 +4,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "pers_category_attr")
+@Table(name = "CATEGORY_ATTRIBUTE")
 public class CategoryAttribute {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pers_category_attr_seq")
-    @SequenceGenerator(sequenceName = "pers_category_attr_seq", initialValue = 1, allocationSize = 1, name = "pers_category_attr_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CATEGORY_ATTRIBUTE_PK")
+    @SequenceGenerator(sequenceName = "CATEGORY_ATTRIBUTE_PK", initialValue = 1, allocationSize = 1, name = "CATEGORY_ATTRIBUTE_PK")
     private int id;
 
     @Column(length = 500)
