@@ -25,6 +25,10 @@ public class Speeddate {
     private String description;
 
     @ManyToOne
+    @JoinColumn(name = "localozation_id")
+    private Localization localization;
+
+    @ManyToOne
     @JoinColumn(name = "organizer_id")
     private User organizer;
 
