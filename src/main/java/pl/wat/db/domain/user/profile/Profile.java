@@ -1,9 +1,9 @@
 package pl.wat.db.domain.user.profile;
 
 import org.hibernate.annotations.ColumnDefault;
+import pl.wat.db.domain.user.profile.attributes.*;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -13,39 +13,48 @@ public class Profile {
 
 
     @Column
-    private String sex;
+    @Enumerated(EnumType.STRING)
+    private Sex sex;
 
    @Column(name="birth_Date")
    private Date birthDate;
 
-   @Column(name="zodiac_Sign")
-   private String zodiacSign;
+   @ManyToOne
+   @JoinColumn(name="zodiac_Sign_id")
+   private ZodiacSign zodiacSign;
 
-    @Column(name="martialStatus")
-    private String martialStatus;
+    @ManyToOne
+    @JoinColumn(name = "martial_status_id")
+    private MartialStatus martialStatus;
 
     @Column
     private String profession;
-    @Column
-    private String education;
+
+    @ManyToOne
+    @JoinColumn(name = "education_id")
+    private Education education;
 
     @Column
     private String city;
 
-    @Column
-    private String region;
+    @ManyToOne
+    @JoinColumn(name = "region_id")
+    private Region region;
 
-    @Column
-    private String figure;
+    @ManyToOne
+    @JoinColumn(name = "figure_id")
+    private Figure figure;
 
     @Column
     private int growth;
 
-    @Column(name="hair_Color")
-    private String hairColor;
+    @ManyToOne
+    @JoinColumn(name = "hair_color_id")
+    private HairColor hairColor;
 
-    @Column(name="eye_Color")
-    private String eyeColor;
+    @ManyToOne
+    @JoinColumn(name="eye_color_id")
+    private EyeColor eyeColor;
 
     @Column
     private String smoking;
@@ -56,8 +65,9 @@ public class Profile {
     @Column
     private String kids;
 
-    @Column
-    private String religion;
+    @ManyToOne
+    @JoinColumn(name = "religion_id")
+    private Region religion;
 
     @Column(length = 4000)
     private String description;
@@ -65,13 +75,7 @@ public class Profile {
     public Profile() {
     }
 
-    public String getSex() {
-        return sex;
-    }
 
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
 
     public Date getBirthDate() {
         return birthDate;
@@ -81,21 +85,9 @@ public class Profile {
         this.birthDate = birthDate;
     }
 
-    public String getZodiacSign() {
-        return zodiacSign;
-    }
 
-    public void setZodiacSign(String zodiacSign) {
-        this.zodiacSign = zodiacSign;
-    }
 
-    public String getMartialStatus() {
-        return martialStatus;
-    }
 
-    public void setMartialStatus(String martialStatus) {
-        this.martialStatus = martialStatus;
-    }
 
     public String getProfession() {
         return profession;
@@ -105,13 +97,7 @@ public class Profile {
         this.profession = profession;
     }
 
-    public String getEducation() {
-        return education;
-    }
 
-    public void setEducation(String education) {
-        this.education = education;
-    }
 
     public String getCity() {
         return city;
@@ -121,21 +107,7 @@ public class Profile {
         this.city = city;
     }
 
-    public String getRegion() {
-        return region;
-    }
 
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public String getFigure() {
-        return figure;
-    }
-
-    public void setFigure(String figure) {
-        this.figure = figure;
-    }
 
     public int getGrowth() {
         return growth;
@@ -145,21 +117,7 @@ public class Profile {
         this.growth = growth;
     }
 
-    public String getHairColor() {
-        return hairColor;
-    }
 
-    public void setHairColor(String hairColor) {
-        this.hairColor = hairColor;
-    }
-
-    public String getEyeColor() {
-        return eyeColor;
-    }
-
-    public void setEyeColor(String eyeColor) {
-        this.eyeColor = eyeColor;
-    }
 
     public String getSmoking() {
         return smoking;
@@ -185,13 +143,7 @@ public class Profile {
         this.kids = kids;
     }
 
-    public String getReligion() {
-        return religion;
-    }
 
-    public void setReligion(String religion) {
-        this.religion = religion;
-    }
 
     public String getDescription() {
         return description;
@@ -200,4 +152,77 @@ public class Profile {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
+    }
+
+    public ZodiacSign getZodiacSign() {
+        return zodiacSign;
+    }
+
+    public void setZodiacSign(ZodiacSign zodiacSign) {
+        this.zodiacSign = zodiacSign;
+    }
+
+    public MartialStatus getMartialStatus() {
+        return martialStatus;
+    }
+
+    public void setMartialStatus(MartialStatus martialStatus) {
+        this.martialStatus = martialStatus;
+    }
+
+    public Education getEducation() {
+        return education;
+    }
+
+    public void setEducation(Education education) {
+        this.education = education;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
+    }
+
+    public Figure getFigure() {
+        return figure;
+    }
+
+    public void setFigure(Figure figure) {
+        this.figure = figure;
+    }
+
+    public HairColor getHairColor() {
+        return hairColor;
+    }
+
+    public void setHairColor(HairColor hairColor) {
+        this.hairColor = hairColor;
+    }
+
+    public EyeColor getEyeColor() {
+        return eyeColor;
+    }
+
+    public void setEyeColor(EyeColor eyeColor) {
+        this.eyeColor = eyeColor;
+    }
+
+    public Region getReligion() {
+        return religion;
+    }
+
+    public void setReligion(Region religion) {
+        this.religion = religion;
+    }
 }
+
