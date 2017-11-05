@@ -1,0 +1,67 @@
+.persons-list-container{
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+}
+
+.persons-header-container{
+  text-align: center;
+}
+
+.persons-search-container{
+  text-align: center;
+}
+
+.search-header{
+  font-size: 25px;
+  font-weight: bolder;
+  padding-right: 45px;
+}
+
+.persons-search-input{
+  padding-right: 15px;
+}
+
+.persons-table-container{
+  width: 100%;
+  padding: 20px;
+}
+
+/*tabela*/
+.profile-column{
+  width: 10%;
+  text-align: center;
+}
+
+.about-person-column{
+  width: 60%;
+}
+
+.peron-fit-column{
+  width: 30%;
+}
+
+.persons-img-column{
+}
+.persons-img-column img{
+  width: 60px;
+}
+
+.person-detail-description{
+  padding-left: 5px;
+}
+
+.person-detail-row{
+  width: 100%;
+  bottom: 0px;
+  position: absolute;
+}
+
+.about-person-content{
+  position: relative;
+}
+
+.person-detail-element{
+  padding-left: 5px;
+  padding-right: 60px;
+}

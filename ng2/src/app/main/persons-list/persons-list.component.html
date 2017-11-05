@@ -1,10 +1,145 @@
-<p>
-  persons-list works!
-</p>
+<div class="persons-list-container">
+  <!--naglowek-->
+  <div class="row">
+    <div class="col-md-12 persons-header-container">
+      <h3>Oto lista zawierająca profile osób dopasowanych do Ciebie.</h3>
+    </div>
+  </div>
 
-<mat-form-field>
-  <input matInput [(ngModel)]="myInput" required [errorStateMatcher]="myErrorStateMatcher">
-  <mat-error>This field is required</mat-error>
-</mat-form-field>
-Field error: {{myErrorStateMatcher}}
+  <!--szukajka-->
+  <div class="row">
+    <div class="col-md-12 persons-search-container">
+      <span class="search-header">Filtry:</span>
+      <mat-form-field class="persons-search-input">
+        <mat-select placeholder="Województwo">
+          <mat-option>Dowolne</mat-option>
+          <mat-option *ngFor="let region of regions" [value]="region.id">{{ region.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="persons-search-input">
+        <mat-select placeholder="Miasto">
+          <mat-option>Dowolne</mat-option>
+          <mat-option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="persons-search-input">
+        <input type="number" min="18" max="100" matInput placeholder="Wiek od">
+      </mat-form-field>
+      <mat-form-field class="persons-search-input">
+        <input type="number" min="18" max="100" matInput placeholder="Wiek do">
+      </mat-form-field >
+      <button class="btn btn-success" data-toggle="modal" data-target="#filter-details">Filtruj</button>
+      <button class="btn btn-success" data-toggle="modal" data-target="#filter-details">Filtry zaawansowane</button>
+      <button class="btn">Wyczyść filtry</button>
+
+
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="filter-details" tabindex="-1" role="dialog" >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Filtry zaawansowane</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <mat-slide-toggle>
+            Cecha
+          </mat-slide-toggle>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--lista-->
+  <div class="row">
+    <div class="col-md-12 persons-table-container">
+
+      <table class="table table-hover table-bordered">
+        <thead>
+          <th class="profile-column">Profil</th>
+          <th class="about-person-column">O osobie</th>
+          <th class="peron-fit-column">Dopasowanie</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="profile-column">
+              <div class="profile-container">
+                <div>
+                  Kateryna, 22
+                </div>
+                <div class="persons-img-column">
+                  <img src="assets/images/stock_face.jpg"  class="rounded-circle">
+                </div>
+                <div>
+                  Warszawa
+                </div>
+                <div>
+                  Mazowieckie
+                </div>
+              </div>
+            </td>
+            <td class="about-person-content">
+              <div class="person-detail-description">Phasellus venenatis cursus dignissim. Sed elementum mattis enim non posuere. Suspendisse mollis hendrerit massa a iaculis. Sed aliquet auctor feugiat. Nulla hendrerit eu orci sed condimentum. Curabitur at faucibus turpis. Vestibulum ac turpis nec urna venenatis accumsan.</div>
+              <div class="person-detail-row">
+                <span class="person-detail-element">Panna</span>
+                <span class="person-detail-element">Zawodowe</span>
+                <span class="person-detail-element">Kasjer w Biedronka</span>
+              </div>
+            </td>
+            <td>
+              Dopasowanie
+            </td>
+          </tr>
+          <tr>
+            <td>sd</td>
+            <td>asf</td>
+            <td>hffh</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+
+  <mat-form-field>
+    List length:
+    <input matInput [(ngModel)]="length">
+  </mat-form-field>
+
+  <mat-form-field>
+    Page size:
+    <input matInput [(ngModel)]="pageSize">
+  </mat-form-field>
+  <mat-form-field>
+    Page size options:
+    <input matInput
+           [ngModel]="pageSizeOptions"
+           (ngModelChange)="setPageSizeOptions($event)">
+  </mat-form-field>
+
+  <mat-paginator [length]="length"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="pageEvent = $event">
+  </mat-paginator>
+
+  <div *ngIf="pageEvent">
+    <h5>Page Change Event Properties</h5>
+    <div>List length: {{pageEvent.length}}</div>
+    <div>Page size: {{pageEvent.pageSize}}</div>
+    <div>Page index: {{pageEvent.pageIndex}}</div>
+  </div>
+</div>
+
 

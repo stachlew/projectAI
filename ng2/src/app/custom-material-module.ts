@@ -1,7 +1,11 @@
 
 
 import {NgModule} from "@angular/core";
-import {MatButtonModule, MatCheckboxModule, MatIconModule, MatInputModule, MatTabsModule} from "@angular/material";
+import {
+  MatButtonModule, MatCheckboxModule, MatIconModule, MatInputModule, MatPaginatorModule, MatSelectModule,
+  MatSlideToggleModule,
+  MatTabsModule
+} from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
@@ -12,7 +16,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MatTabsModule,
     MatInputModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatPaginatorModule
   ],
   exports: [
     MatButtonModule,
@@ -21,7 +28,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MatTabsModule,
     MatInputModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatPaginatorModule
   ],
 })
 export class CustomMaterialModule { }

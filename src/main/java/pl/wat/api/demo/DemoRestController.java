@@ -15,11 +15,44 @@ import pl.wat.logic.CustomerService;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.LinkedList;
+import java.util.List;
 
 //KONTROLER DEMO typu Ctrl+c, Ctrl+v dla dalszych metod kontrolerow w projekcie
 @RestController
 @RequestMapping("/api")
 public class DemoRestController {
+
+
+    @RequestMapping(value = "/action1",method = RequestMethod.GET)
+    @PreAuthorize("hasRole('USER')")
+    @ResponseBody
+    public Authentication getAction1(Authentication auth){
+        return auth;
+    }
+
+    @RequestMapping(value = "/action2",method = RequestMethod.GET)
+    @PreAuthorize("hasRole('USER')")
+    @ResponseBody
+    public List<String> getAction2(Authentication auth){
+        List<String> resp = new LinkedList<>();
+        resp.add("element1");
+        resp.add("element2");
+        resp.add("element3");
+        return resp;
+    }
+
+    @RequestMapping(value = "/action3",method = RequestMethod.GET)
+    @PreAuthorize("hasRole('USER')")
+    @ResponseBody
+    public String getAction3(Authentication auth){
+        return "action 3 response";
+    }
+
+
+
+
+    //----------------------------------------
 
     @Autowired
     CustomerService customerService;

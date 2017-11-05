@@ -46,10 +46,6 @@ public class User {
     @Size(min = 4, max = 50)
     private String email;
 
-//    @Column(nullable = false)
-//    @ColumnDefault("true")
-//    private boolean active;
-
     @NotNull
     private boolean enabled;
 
