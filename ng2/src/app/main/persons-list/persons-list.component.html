@@ -28,9 +28,18 @@
       <mat-form-field class="persons-search-input">
         <input type="number" min="18" max="100" matInput placeholder="Wiek do">
       </mat-form-field >
-      <button class="btn btn-success" data-toggle="modal" data-target="#filter-details">Filtruj</button>
-      <button class="btn btn-success" data-toggle="modal" data-target="#filter-details">Filtry zaawansowane</button>
-      <button class="btn">Wyczyść filtry</button>
+      <button class="btn btn-success">
+        <i class="fa fa-filter fa-fw"></i>
+        Filtruj
+      </button>
+      <button class="btn btn-warning" data-toggle="modal" data-target="#filter-details">
+        <i class="fa fa-sliders fa-fw"></i>
+        Filtry zaawansowane
+      </button>
+      <button class="btn">
+        <i class="fa fa-eraser fa-fw"></i>
+        Wyczyść filtry
+      </button>
 
 
     </div>
@@ -63,83 +72,67 @@
   <div class="row">
     <div class="col-md-12 persons-table-container">
 
-      <table class="table table-hover table-bordered">
-        <thead>
-          <th class="profile-column">Profil</th>
-          <th class="about-person-column">O osobie</th>
-          <th class="peron-fit-column">Dopasowanie</th>
-        </thead>
-        <tbody>
-          <tr>
+      <table class="table table-hover">
+        <tbody class="profile-header">
+          <tr *ngFor="let person of persons" class="profile-table-row" (click)="goToPersonDetails(person.id)">
             <td class="profile-column">
               <div class="profile-container">
                 <div>
-                  Kateryna, 22
+                  <b>{{person.name}}, {{person.age}}</b>
                 </div>
                 <div class="persons-img-column">
                   <img src="assets/images/stock_face.jpg"  class="rounded-circle">
                 </div>
                 <div>
-                  Warszawa
+                  <b>{{person.city}}</b>
                 </div>
                 <div>
-                  Mazowieckie
+                  {{person.region}}
                 </div>
               </div>
             </td>
             <td class="about-person-content">
-              <div class="person-detail-description">Phasellus venenatis cursus dignissim. Sed elementum mattis enim non posuere. Suspendisse mollis hendrerit massa a iaculis. Sed aliquet auctor feugiat. Nulla hendrerit eu orci sed condimentum. Curabitur at faucibus turpis. Vestibulum ac turpis nec urna venenatis accumsan.</div>
+              <div class="person-detail-description">{{person.id}} {{person.about}}</div>
               <div class="person-detail-row">
-                <span class="person-detail-element">Panna</span>
-                <span class="person-detail-element">Zawodowe</span>
-                <span class="person-detail-element">Kasjer w Biedronka</span>
+                <span class="person-detail-element">
+                  <i class="fa fa-heart fa-fw"></i>
+                  {{person.status}}
+                </span>
+                <span class="person-detail-element">
+                  <i class="fa fa-graduation-cap fa-fw"></i>
+                  {{person.education}}
+                </span>
+                <span class="person-detail-element">
+                  <i class="fa fa-briefcase fa-fw"></i>
+                  {{person.job}}
+                </span>
               </div>
             </td>
-            <td>
-              Dopasowanie
+            <td class="peron-fit-column">
+              <div>
+                <mat-slider min="0" max="100" step="1" disabled="true" [value]="person.fit1"></mat-slider> <b>Dopasowanie1 ({{person.fit1}}%) </b>
+              </div>
+
+              <div>
+                <mat-slider min="0" max="100" step="1" disabled="true" [value]="person.fit2"></mat-slider> <b>Dopasowanie2 ({{person.fit2}}%)</b>
+              </div>
+
+              <div>
+                <mat-slider min="0" max="100" step="1" disabled="true" [value]="person.fit3"></mat-slider> <b>Dopasowanie3 ({{person.fit3}}%) </b>
+              </div>
+
             </td>
-          </tr>
-          <tr>
-            <td>sd</td>
-            <td>asf</td>
-            <td>hffh</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-
-
-
-  <mat-form-field>
-    List length:
-    <input matInput [(ngModel)]="length">
-  </mat-form-field>
-
-  <mat-form-field>
-    Page size:
-    <input matInput [(ngModel)]="pageSize">
-  </mat-form-field>
-  <mat-form-field>
-    Page size options:
-    <input matInput
-           [ngModel]="pageSizeOptions"
-           (ngModelChange)="setPageSizeOptions($event)">
-  </mat-form-field>
-
-  <mat-paginator [length]="length"
-                 [pageSize]="pageSize"
-                 [pageSizeOptions]="pageSizeOptions"
-                 (page)="pageEvent = $event">
-  </mat-paginator>
-
-  <div *ngIf="pageEvent">
-    <h5>Page Change Event Properties</h5>
-    <div>List length: {{pageEvent.length}}</div>
-    <div>Page size: {{pageEvent.pageSize}}</div>
-    <div>Page index: {{pageEvent.pageIndex}}</div>
+  <div class="table-paginator-container">
+    <app-custom-paginator (pageChange)="changePage($event)" [currentPage]="currentPageNo" [allElements]="allElements" [pageSize]="pageSize"></app-custom-paginator>
   </div>
+
+
 </div>
 
 

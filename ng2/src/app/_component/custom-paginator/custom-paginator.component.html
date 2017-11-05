@@ -1,0 +1,11 @@
+<div class="paginator-container">
+  <span>
+    <i class="fa fa-chevron-left paginator-button" [ngClass]="{'paginator-button' : isPrevAvl}" (click)="prevPage()"></i>
+  </span>
+  <span class="paginator-page-numbers">
+    {{currentPage}}/{{allPages}}
+  </span>
+  <span>
+    <i class="fa fa-chevron-right paginator-button" [ngClass]="{'paginator-button' : isNextAvl}" (click)="nextPage()"></i>
+  </span>
+</div>

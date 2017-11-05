@@ -1,11 +1,18 @@
 .content-container{
-  padding: 0px 15px;
+  height: 90vh;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .nav-continer{
-  height: 10vh;
+  height: 6vh;
+  max-height: 6vh;
 }
 
 .footer-container{
-  height: 10vh;
+  height: 4vh;
+  max-height: 4vh;
 }

@@ -15,16 +15,16 @@
 .search-header{
   font-size: 25px;
   font-weight: bolder;
-  padding-right: 45px;
+  padding-right: 20px;
 }
 
 .persons-search-input{
-  padding-right: 15px;
+  padding-right: 17px;
+  width: 170px;
 }
 
 .persons-table-container{
   width: 100%;
-  padding: 20px;
 }
 
 /*tabela*/
@@ -33,12 +33,9 @@
   text-align: center;
 }
 
-.about-person-column{
-  width: 60%;
-}
-
 .peron-fit-column{
   width: 30%;
+  text-align: center;
 }
 
 .persons-img-column{
@@ -59,9 +56,19 @@
 
 .about-person-content{
   position: relative;
+  width: 60%;
 }
 
 .person-detail-element{
   padding-left: 5px;
   padding-right: 60px;
+}
+
+.profile-header{
+  border-bottom: 3px solid rgba(202, 42, 42, 1);
+  border-top: 3px solid rgba(202, 42, 42, 1);
+}
+
+.profile-table-row{
+  border-bottom: 2px solid rgba(202, 42, 42, 1);
 }

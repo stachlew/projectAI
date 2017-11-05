@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PageEvent} from "@angular/material";
+import {Router} from "@angular/router";
+import {PersonListService} from "./person-list.service";
 
 @Component({
   selector: 'app-persons-list',
@@ -7,6 +9,9 @@ import {PageEvent} from "@angular/material";
   styleUrls: ['./persons-list.component.css']
 })
 export class PersonsListComponent implements OnInit {
+
+
+
   public regions: any = [
     {id: 1, name: 'Mazowieckie'},
     {id: 2, name: 'Pomorskie'},
@@ -21,19 +26,25 @@ export class PersonsListComponent implements OnInit {
     {id: 4, name: 'Opole'}
   ];
 
-  constructor() { }
+
+  public persons: any = [];
+
+  constructor(public router: Router, public personsService: PersonListService) { }
 
   ngOnInit() {
+    this.persons = this.personsService.getPersons(1, 10);
   }
 
-  length = 100;
-  pageSize = 10;
-  pageSizeOptions = [5, 10, 25, 100];
+  goToPersonDetails(id: number){
+    this.router.navigate(['person-details/'+id]);
+  }
 
-  pageEvent: PageEvent;
+  private currentPageNo: number = 1;
+  private pageSize: number = 10;
+  private allElements: number = 25;
 
-  setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  changePage(pageNo: number){
+    this.persons = this.personsService.getPersons(pageNo, this.pageSize);
   }
 
 }

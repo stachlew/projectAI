@@ -1,25 +1,27 @@
-<div style="text-align: center" class="jumbotron main-image">
-  <h1 class="home-title-header">Poznaj swoją drugą połówkę już dziś.</h1>
-  <p class="home-title-paragraph">Podczas rejestracji możesz wypełnić quiz osobowości. Dzięki temu poznasz osoby, które są dopasowane do Ciebie.</p>
-  <br>
-  <p><a class="btn btn-primary btn-lg home-title-btn" (click)="goToRegister()">Chcę poznać nowe osoby</a></p>
-</div>
+<div class="home-container">
+  <div style="text-align: center" class="jumbotron main-image">
+    <h1 class="home-title-header">Poznaj swoją drugą połówkę już dziś.</h1>
+    <p class="home-title-paragraph">Podczas rejestracji możesz wypełnić quiz osobowości. Dzięki temu poznasz osoby, które są dopasowane do Ciebie.</p>
+    <br>
+    <p><a class="btn btn-primary btn-lg home-title-btn" (click)="goToRegister()">Chcę poznać nowe osoby</a></p>
+  </div>
 
-<mat-tab-group>
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <i class="fa fa-search fa-fw font-accent"></i>Szukam drugiej połówki
-    </ng-template>
-    <h1>W LoveMe znajduje się już 12534 aktywnych użytkowników</h1>
-    <p>Dzięki temu otrzymasz wiele okazji do spotkania nowych osób. Prócz testu dopasowania otrzymasz możliwość zapisu na wiele wyselekcjonowanych wydarzeń dla singli. </p>
-  </mat-tab>
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <i class="fa fa-calendar fa-fw font-accent"></i> Organizuję wydarzenia dla singli
-    </ng-template>
-    <h1>Udostępnij swoje wydarzenie wielu osobom</h1>
-    <p>W LoveMe prócz możliwości promocji wydarzenia, możliwe jest także prowadzenie zapisów na Twoje wydarzenie</p>
-  </mat-tab>
-</mat-tab-group>
+  <mat-tab-group class="home-description">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <i class="fa fa-search fa-fw font-accent"></i><span class="font-white">Szukam drugiej połówki</span>
+      </ng-template>
+      <h1>W LoveMe znajduje się już 12534 aktywnych użytkowników</h1>
+      <p>Dzięki temu otrzymasz wiele okazji do spotkania nowych osób. Prócz testu dopasowania otrzymasz możliwość zapisu na wiele wyselekcjonowanych wydarzeń dla singli. </p>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <i class="fa fa-calendar fa-fw font-accent"></i> <span class="font-white">Organizuję wydarzenia dla singli</span>
+      </ng-template>
+      <h1>Udostępnij swoje wydarzenie wielu osobom</h1>
+      <p>W LoveMe prócz możliwości promocji wydarzenia, możliwe jest także prowadzenie zapisów na Twoje wydarzenie</p>
+    </mat-tab>
+  </mat-tab-group>
+</div>
 
 

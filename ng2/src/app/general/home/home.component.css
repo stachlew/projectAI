@@ -1,15 +1,17 @@
 .main-image{
-  background-image: url('/assets/images/home.jpg');
+  background-color: rgba(0, 0, 0, 0);
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .home-title-header{
-  background-color: rgba(17, 17, 17, 0.24);
+  background-color: rgba(17, 17, 17, 0.42);
   color: #eee;
   margin-bottom: 0;
 }
 
 .home-title-paragraph{
-  background-color: rgba(17, 17, 17, 0.24);
+  background-color: rgba(17, 17, 17, 0.42);
   color: #eee;
   padding-bottom: 15px;
 }
@@ -22,6 +24,23 @@
 }
 
 .home-title-btn:hover{
+  cursor: pointer;
+}
+
+.home-title-btn:hover{
   background-color: #982727;
 }
 
+.home-container{
+  background-image: url(/assets/images/home2.jpg);
+  margin-left: -15px;
+  margin-right: -15px;
+  height: 100%;
+  background-position-y: center;
+}
+
+.home-description{
+  padding-left: 15px;
+  background-color: rgba(17, 17, 17, 0.42);
+  color: #eee;
+}

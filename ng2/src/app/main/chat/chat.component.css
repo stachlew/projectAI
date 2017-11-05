@@ -1,6 +1,6 @@
 .chat-contacts{
   background-color: rgba(255, 0, 0, 0.26);
-  min-height: 89vh;
+  min-height: 90vh;
 }
 
 .chat-conversation{
@@ -10,5 +10,5 @@
 
 .chat-message{
   background-color: rgba(0, 0, 255, 0.26);
-  min-height: 26vh;
+  min-height: 27vh;
 }

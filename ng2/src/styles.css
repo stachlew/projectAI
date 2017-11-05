@@ -45,9 +45,21 @@ body {
 }
 
 .font-white{
-  color: #e6e4ee;
+  color: #edebf5;
 }
 
 .background-white{
   color: #e6e4ee;
+}
+
+
+.mat-slider-disabled .mat-slider-thumb{
+  background: url("assets/images/mini_hearth.png")!important;
+  transform: scale(1) !important;
+  border: 0px;
+  border-radius: 0%;
+}
+
+.mat-slider-disabled .mat-slider-track-fill{
+  background-color: rgba(202, 42, 42, 1) !important;
 }

@@ -3,6 +3,7 @@
 import {NgModule} from "@angular/core";
 import {
   MatButtonModule, MatCheckboxModule, MatIconModule, MatInputModule, MatPaginatorModule, MatSelectModule,
+  MatSliderModule,
   MatSlideToggleModule,
   MatTabsModule
 } from "@angular/material";
@@ -19,7 +20,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MatIconModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSliderModule
   ],
   exports: [
     MatButtonModule,
@@ -31,7 +33,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MatIconModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSliderModule
   ],
 })
 export class CustomMaterialModule { }
