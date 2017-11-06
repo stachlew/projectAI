@@ -1,3 +1,40 @@
-<p>
-  register works!
-</p>
+<div class="register-container">
+  <h2>Rejestracja w serwisie LoveMe</h2>
+
+
+  <div  class="form-container">
+    <mat-form-field>
+      <input matInput placeholder="Input">
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Textarea"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Select">
+        <mat-option value="option">Option</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <label>Float placeholder: </label>
+    <mat-radio-group>
+      <mat-radio-button value="1">Option 1</mat-radio-button>
+      <mat-radio-button value="2">Option 2</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field>
+      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+      <mat-icon matSuffix >
+        <span (click)="hide = !hide">
+        <i *ngIf="hide" class="fa fa-eye" aria-hidden="true"></i>
+        <i *ngIf="!hide" class="fa fa-eye-slash" aria-hidden="true"></i>
+      </span>
+      </mat-icon>
+    </mat-form-field>
+
+    <button class="btn btn-primary btn-block">Rejestruj</button>
+
+  </div>
+</div>
+

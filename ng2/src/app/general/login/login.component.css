@@ -1,0 +1,47 @@
+.login-container{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  margin-top: 50px;
+}
+
+.upper-container{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.center-container{
+  width: 100%;
+}
+
+.lower-container{
+  width: 100%;
+}
+
+.register-link{
+  text-decoration: none;
+  color: black;
+}
+.register-link:hover{
+  color: rgba(202, 42, 42, 1);
+  cursor: pointer;
+}
+
+
+/*LOGO*/
+.logo-box{
+  font-size: 100px;
+  font-weight: 700;
+  width: 300px;
+  height: 300px;
+  background-color: rgba(202, 42, 42, 1);
+}
+.upper-logo{
+  width: 100%;
+}
+
+.lower-logo{
+  width: 100%;
+}
+
