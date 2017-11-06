@@ -4,6 +4,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+/**
+ * Klasa PersonalityCategory.
+ * Klasa opisująca kategorie osobowości.
+ * Każda z kategorii posiada swoją listę cech.
+ */
 @Entity
 @Table(name = "PERSONALITY_CATEGORY")
 public class PersonalityCategory {
@@ -19,6 +24,9 @@ public class PersonalityCategory {
     @OneToMany
     @JoinColumn(name = "category_id")
     private List<CategoryAttribute> attributes;
+
+    @Column
+    private int amount;
 
     public int getId() {
         return id;
@@ -42,5 +50,13 @@ public class PersonalityCategory {
 
     public void setAttributes(List<CategoryAttribute> attributes) {
         this.attributes = attributes;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }

@@ -3,6 +3,11 @@ package pl.wat.db.domain.personality;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Klasa CategoryAttribute
+ * Klasa odzwierciedlająca cechę osobowości,
+ * która należy do odpowiedniej kategorii (klasa PersonalityCategory).
+ */
 @Entity
 @Table(name = "CATEGORY_ATTRIBUTE")
 public class CategoryAttribute {
