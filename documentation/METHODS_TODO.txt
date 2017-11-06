@@ -14,6 +14,9 @@
 14. Wydarzenia - wylistowanie wszystkich wydarzeń (+filtry) IN[NR_STRONY,WIELKOSC_STRONY,FILTRY] OUT[LISTA_WYDARZEN]
 15. Wydarzenie - pobranie detali IN[WYDARZENIE] OUT[DETALE_WYDARZENIA]
 16. Wydarzenie - wylistowanie wszystkich wydarzen usera IN[USER] OUT[LISTA_WYDARZEN]
-17. Wydarzenie - wylistowanie detali wydarzenia usera IN[WYDARZENIE] OUT[WYDARZENIE]
+17. Wydarzenie - wylistowanie detali wydarzenia usera IN[WYDARZENIE] OUT[WYDARZENIE + INFO_CZY_JEST_NA_NIE_ZAPISANY]
 18. Wydarzenie - edycja detali wydarzenia usera IN[WYDARZENIENEW] OUT[-]
-
+19. Słowniki - listowanie wszystkich elementów dla każdego słownika (znaki zodiaku, zawody, .....)
+20. Wydarzenie - zapis gościa na wydarzenie IN[USER] OUT[boolean]
+21. Wydarzenie - wylistowanie gości wydarzenia IN[WYDARZENIE] OUT[LISTA_GOSCI]
+21. Wydarzenie - wylistowanie wydarzen na ktore jest sie zapisanym IN[USER] OUT[LISTA_WYDARZEN]

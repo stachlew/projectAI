@@ -49,6 +49,7 @@ import { ChatMessageComponent } from './main/chat/chat-message/chat-message.comp
 import {ChatManagerService} from "./main/chat/chat-manager.service";
 import {PersonListService} from "./main/persons-list/person-list.service";
 import { CustomPaginatorComponent } from './_component/custom-paginator/custom-paginator.component';
+import {AppUrls} from "./_service/util/app-urls";
 
 
 @NgModule({
@@ -109,7 +110,8 @@ import { CustomPaginatorComponent } from './_component/custom-paginator/custom-p
     routingGuards,
     UtilsService,
     ChatManagerService,
-    PersonListService
+    PersonListService,
+    AppUrls
   ],
   bootstrap: [AppComponent]
 })

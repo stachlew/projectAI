@@ -5,6 +5,7 @@ import { User } from '../../_model/user.model';
 import { Constants } from "../util/constants";
 import {UtilsService} from "../util/utils.service";
 import {isNullOrUndefined} from "util";
+import {AppUrls} from "../util/app-urls";
 
 @Injectable()
 export class AuthenticationService {
@@ -21,7 +22,7 @@ export class AuthenticationService {
   }
 
   doLogin(credentials) {
-    return this.http.post(Constants.APP_HOST+'/auth', credentials)
+    return this.http.post(AppUrls.APP_HOST+'/auth', credentials)
       .map(res => {
         const data = res.json();
         if (data) {
