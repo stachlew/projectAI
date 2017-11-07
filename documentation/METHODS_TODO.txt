@@ -1,7 +1,7 @@
 1. Ile aktywnych użytkowników IN[-]  OUT [liczba]  DONE /// UtilController.getCountActiveUsers() ///
 2. Rejestrowanie gościa (+pole typu) IN[USER] OUT [USER] // DONE // UserAccountController.createNewUser(UserRegistered)
 3. Listowanie osób dopasowanych (+ filtry <województwo, miasto, wiek od, wiek do, ...+(jeszcze zaawansowane typu palenie)... ) IN[NR_STRONY,WIELKOSC_STRONY,FILTRY] OUT[Lista USER->uzupełniony o poziom dopasowania]
-4. Lista województw IN[-] OUT[Lista województw]
+4. Lista województw IN[-] OUT[Lista województw] //// DONE /// DictionaryController.getRegions ////////
 5. Lista miast IN[WOJEWODZTWO] OUT[LISTA_MIAST]
 6. Lista rozmów IN[USER] OUT [LISTA ROZMOW]
 7. Rozmowa (ostatnie 10 wypowiedzi) IN[ID_ROZMOWY] OUT [LISTA_10_WYPOWIEDZI]
