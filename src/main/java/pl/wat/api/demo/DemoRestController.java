@@ -2,19 +2,16 @@ package pl.wat.api.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import pl.wat.config.Constants;
 import pl.wat.db.domain.Customer;
 import pl.wat.db.domain.DemoClass;
-import pl.wat.logic.CustomerService;
+import pl.wat.db.repository.conversation.PrivateMessageRepository;
+import pl.wat.logic.domainServices.CustomerService;
+import pl.wat.logic.domainServices.conversation.ConversationService;
+import pl.wat.logic.domainServices.user.UserServices;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,6 +19,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class DemoRestController {
+
+    @Autowired
+    ConversationService conversationService;
+    @Autowired
+    PrivateMessageRepository privateMessageRepository;
+    @Autowired
+    UserServices userServices;
 
 
     @RequestMapping(value = "/action1",method = RequestMethod.GET)
@@ -35,6 +39,16 @@ public class DemoRestController {
     @PreAuthorize("hasRole('USER')")
     @ResponseBody
     public List<String> getAction2(Authentication auth){
+      //  Conversation conversation = conversationService.createConversation(1, 2);
+    //    System.out.println(conversation.getId());
+     //   PrivateMessage privateMessage= conversationService.addPrivateMessagesToConversation(conversation, 1, "tata");
+     //   System.out.println(privateMessage.getId());
+//        for (PrivateMessage privateMessage : privateMessageRepository.findAll()) {
+//            System.out.println(privateMessage.getId()+" "+privateMessage.getTextMessage());
+//        }
+        System.out.println(userServices.countActiveUsers());
+
+
         List<String> resp = new LinkedList<>();
         resp.add("element1");
         resp.add("element2");

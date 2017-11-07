@@ -4,6 +4,7 @@ package pl.wat.db.domain.conversation;
 import pl.wat.db.domain.user.User;
 
 import javax.persistence.*;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -25,5 +26,44 @@ public class Conversation {
     @Basic(fetch = FetchType.LAZY)
     private List<PrivateMessage> privateMessageList;
 
+    public Conversation() {
+    }
 
+    public Conversation(User memberOne, User memberTwo) {
+        this.memberOne = memberOne;
+        this.memberTwo = memberTwo;
+        this.privateMessageList = new LinkedList<>();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public User getMemberOne() {
+        return memberOne;
+    }
+
+    public void setMemberOne(User memberOne) {
+        this.memberOne = memberOne;
+    }
+
+    public User getMemberTwo() {
+        return memberTwo;
+    }
+
+    public void setMemberTwo(User memberTwo) {
+        this.memberTwo = memberTwo;
+    }
+
+    public List<PrivateMessage> getPrivateMessageList() {
+        return privateMessageList;
+    }
+
+    public void setPrivateMessageList(List<PrivateMessage> privateMessageList) {
+        this.privateMessageList = privateMessageList;
+    }
 }

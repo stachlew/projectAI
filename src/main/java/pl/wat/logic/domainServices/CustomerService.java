@@ -1,4 +1,4 @@
-package pl.wat.logic;
+package pl.wat.logic.domainServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

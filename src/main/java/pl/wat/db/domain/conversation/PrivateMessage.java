@@ -1,5 +1,6 @@
 package pl.wat.db.domain.conversation;
 
+import org.hibernate.annotations.ColumnDefault;
 import pl.wat.db.domain.user.User;
 
 import javax.persistence.*;
@@ -16,7 +17,8 @@ public class PrivateMessage {
     @JoinColumn(name = "conversation_id")
     private Conversation conversation;
 
-    @Column
+    @Column()
+    @ColumnDefault(value = "sysdate")
     private Timestamp sendDate;
 
     @ManyToOne
@@ -26,4 +28,52 @@ public class PrivateMessage {
     @Column
     private String textMessage;
 
+    public PrivateMessage() {
+    }
+
+    public PrivateMessage(Conversation conversation, User sender, String textMessage) {
+        this.conversation = conversation;
+        this.sender = sender;
+        this.textMessage = textMessage;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Conversation getConversation() {
+        return conversation;
+    }
+
+    public void setConversation(Conversation conversation) {
+        this.conversation = conversation;
+    }
+
+    public Timestamp getSendDate() {
+        return sendDate;
+    }
+
+    public void setSendDate(Timestamp sendDate) {
+        this.sendDate = sendDate;
+    }
+
+    public User getSender() {
+        return sender;
+    }
+
+    public void setSender(User sender) {
+        this.sender = sender;
+    }
+
+    public String getTextMessage() {
+        return textMessage;
+    }
+
+    public void setTextMessage(String textMessage) {
+        this.textMessage = textMessage;
+    }
 }
