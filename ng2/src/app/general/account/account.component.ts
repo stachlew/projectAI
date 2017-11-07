@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Http} from "@angular/http";
 import {HttpSecService} from "../../_service/util/http-sec.service";
-import {Constants} from "../../_service/util/constants";
+import {AppUrls} from "../../_service/util/app-urls";
 
 @Component({
   selector: 'app-account',
@@ -16,7 +16,7 @@ export class AccountComponent implements OnInit {
   }
 
   action1(){
-    return this.http.get(Constants.APP_HOST+'/api/action1',this.httpService.getConfig()).subscribe(resp=>{
+    return this.http.get(AppUrls.APP_HOST+'/api/action1',this.httpService.getConfig()).subscribe(resp=>{
         let data = resp;
         console.log('ODPOWIEDZ ACTION 1: '+data);
       },
@@ -26,7 +26,7 @@ export class AccountComponent implements OnInit {
   }
 
   action2(){
-    return this.http.get(Constants.APP_HOST+'/api/action2',this.httpService.getConfig()).subscribe(resp=>{
+    return this.http.get(AppUrls.APP_HOST+'/api/action2',this.httpService.getConfig()).subscribe(resp=>{
         let data = resp;
         console.log('ODPOWIEDZ ACTION 2: '+data);
       },
@@ -36,7 +36,7 @@ export class AccountComponent implements OnInit {
   }
 
   action3(){
-    return this.http.get(Constants.APP_HOST+'/api/action3',this.httpService.getConfig()).subscribe(resp=>{
+    return this.http.get(AppUrls.APP_HOST+'/api/action3',this.httpService.getConfig()).subscribe(resp=>{
         let data = resp;
         console.log('ODPOWIEDZ ACTION 3: '+data);
       },
