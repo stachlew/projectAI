@@ -1,4 +1,4 @@
-package pl.wat.logic.domainServices.conversation;
+package pl.wat.logic.service.conversation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

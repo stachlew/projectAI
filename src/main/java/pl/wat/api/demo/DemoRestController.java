@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import pl.wat.db.domain.Customer;
 import pl.wat.db.domain.DemoClass;
 import pl.wat.db.repository.conversation.PrivateMessageRepository;
-import pl.wat.logic.domainServices.CustomerService;
-import pl.wat.logic.domainServices.conversation.ConversationService;
-import pl.wat.logic.domainServices.user.UserServices;
+import pl.wat.logic.demo.CustomerService;
+import pl.wat.logic.service.conversation.ConversationService;
+import pl.wat.logic.service.user.UserService;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class DemoRestController {
     @Autowired
     PrivateMessageRepository privateMessageRepository;
     @Autowired
-    UserServices userServices;
+    UserService userService;
 
 
     @RequestMapping(value = "/action1",method = RequestMethod.GET)
@@ -46,7 +46,7 @@ public class DemoRestController {
 //        for (PrivateMessage privateMessage : privateMessageRepository.findAll()) {
 //            System.out.println(privateMessage.getId()+" "+privateMessage.getTextMessage());
 //        }
-        System.out.println(userServices.countActiveUsers());
+        System.out.println(userService.countActiveUsers());
 
 
         List<String> resp = new LinkedList<>();

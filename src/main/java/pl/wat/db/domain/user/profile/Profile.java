@@ -13,8 +13,7 @@ public class Profile {
 
 
     @Column
-    @Enumerated(EnumType.STRING)
-    private Sex sex;
+    private boolean isMan;
 
    @Column(name="birth_Date")
    private Date birthDate;
@@ -153,12 +152,12 @@ public class Profile {
         this.description = description;
     }
 
-    public Sex getSex() {
-        return sex;
+    public boolean isMan() {
+        return isMan;
     }
 
-    public void setSex(Sex sex) {
-        this.sex = sex;
+    public void setMan(boolean man) {
+        isMan = man;
     }
 
     public ZodiacSign getZodiacSign() {

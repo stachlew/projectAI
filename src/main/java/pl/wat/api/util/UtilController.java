@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import pl.wat.logic.domainServices.user.UserServices;
+import pl.wat.logic.service.user.UserService;
 
 @RestController
 @RequestMapping("/api/util")
 public class UtilController {
     @Autowired
-    UserServices userServices;
+    UserService userServices;
 
     //Ilu użytkowników aktywnych
     @RequestMapping(value = "/countActiveUsers",method = RequestMethod.GET)
