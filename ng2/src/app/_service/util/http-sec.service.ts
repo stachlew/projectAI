@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import {Http, RequestOptions, Headers} from "@angular/http";
-import {Constants} from "./constants";
-
+import {AppUrls} from "./app-urls";
 
 @Injectable()
 export class HttpSecService {
 
-  applicationUrl = Constants.APP_HOST;
+  applicationUrl = AppUrls.APP_HOST;
 
   private getSecurityToken(): string{
     return localStorage.getItem('token');
