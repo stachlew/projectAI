@@ -1,3 +1,39 @@
-<p>
-  speed-dates-managment-list works!
-</p>
+<div class="managment-list-container">
+  <div class="managment-header">
+    <h3>Lista Twoich wydarzeń udostępnionych w serwisie LoveMe</h3>
+  </div>
+  <div class="managment-content">
+
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th style="width: 40%">Tytuł wydarzenia</th>
+        <th class="text-center" style="width: 20%">Termin wydarzenia</th>
+        <th class="text-center" style="width: 20%">Data utworzenia</th>
+        <th class="text-center" style="width: 10%">Widoczne w wyszukiwaniu</th>
+        <th class="text-center" style="width: 10%">Zajętość</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr class="hover-element" *ngFor="let event of events" (click)="goToEventDetails(event.id)">
+          <td>{{event.title}}</td>
+          <td class="text-center">{{event.eventDate | date:'dd-MM-yyyy HH:MM'}}</td>
+          <td class="text-center">{{event.createDate | date:'dd-MM-yyyy HH:MM'}}</td>
+          <td class="text-center">
+            <ng-container *ngIf="event.visible">
+              <i class="fa fa-check fa-fw"></i>
+            </ng-container>
+            <ng-container *ngIf="!event.visible">
+              <i class="fa fa-times fa-fw"></i>
+            </ng-container>
+
+          </td>
+          <td class="text-center">{{event.guests}}/{{event.capacity}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+  </div>
+</div>

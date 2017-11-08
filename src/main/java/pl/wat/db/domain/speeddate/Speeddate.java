@@ -21,6 +21,9 @@ public class Speeddate {
     @Column
     private int capacity;
 
+    @Column(length = 1000)
+    private String title;
+
     @Column(length = 4000)
     private String description;
 

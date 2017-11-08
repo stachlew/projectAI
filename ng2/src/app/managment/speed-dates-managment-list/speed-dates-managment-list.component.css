@@ -1,0 +1,22 @@
+.managment-list-container{
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+}
+
+.managment-header{
+  padding: 40px;
+}
+
+.managment-content{
+  text-align: left;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.text-left{
+  text-align: left;
+}

@@ -1,0 +1,17 @@
+<div class="container-box">
+  <mat-form-field class="date-box">
+    <input matInput [matDatepicker]="picker1" [(ngModel)]="mainDate" placeholder="Data" (dateInput)="handleInputHelpChanges()" (dateChange)="handleInputHelpChanges()">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="hour-box">
+    <input type="number" matInput placeholder="Godz." min="0" max="23" [(ngModel)]="hourHelp" (change)="handleInputHelpChanges()">
+  </mat-form-field>
+
+  <span class="dot-box">:</span>
+
+  <mat-form-field class="min-box">
+    <input type="number" matInput placeholder="Min." min="0" max="59" [(ngModel)]="minHelp" (change)="handleInputHelpChanges()">
+  </mat-form-field>
+</div>

@@ -63,3 +63,7 @@ body {
 .mat-slider-disabled .mat-slider-track-fill{
   background-color: rgba(202, 42, 42, 1) !important;
 }
+
+.hover-element:hover{
+  cursor: pointer;
+}

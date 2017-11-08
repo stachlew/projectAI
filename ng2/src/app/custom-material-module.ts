@@ -10,6 +10,7 @@ import {
   MatTabsModule
 } from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {FileUploadModule} from "ng2-file-upload";
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MatSliderModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    FileUploadModule
   ],
   exports: [
     MatButtonModule,
@@ -42,7 +44,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MatSliderModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    FileUploadModule
   ],
 })
 export class CustomMaterialModule { }

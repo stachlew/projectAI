@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 //DODATKI ANGULAR
-import { FileSelectDirective } from 'ng2-file-upload';
 import {CustomMaterialModule} from "./custom-material-module";
 
 //AUTENTYKCJA
@@ -50,6 +49,7 @@ import {ChatManagerService} from "./main/chat/chat-manager.service";
 import {PersonListService} from "./main/persons-list/person-list.service";
 import { CustomPaginatorComponent } from './_component/custom-paginator/custom-paginator.component';
 import {AppUrls} from "./_service/util/app-urls";
+import { CustomDateTimeComponent } from './_component/custom-date-time/custom-date-time.component';
 
 
 @NgModule({
@@ -57,7 +57,7 @@ import {AppUrls} from "./_service/util/app-urls";
     //ROUTING
     routingComponents,
     //DODATKI
-    FileSelectDirective,
+    // FileSelectDirective,
 
     //KOMPONENTY
     //Aplikacja
@@ -92,7 +92,8 @@ import {AppUrls} from "./_service/util/app-urls";
     ChatContactsComponent,
     ChatConversationComponent,
     ChatMessageComponent,
-    CustomPaginatorComponent
+    CustomPaginatorComponent,
+    CustomDateTimeComponent
   ],
   imports: [
     BrowserModule,

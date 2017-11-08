@@ -1,0 +1,35 @@
+.event-create-container{
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+}
+
+.description-input{
+  min-height: 135px;
+}
+
+.create-header{
+}
+
+.create-content{
+
+
+}
+.event-input{
+  display: block;
+  width: 500px;
+}
+
+.file-container{
+  height: 35vh;
+}
+
+.map-container{
+  margin-top: 20px;
+  background-color: red;
+  width: 100%;
+  height: 47vh;
+
+}
+
+

@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import pl.wat.config.Constants;
 import pl.wat.db.domain.Customer;
 import pl.wat.db.domain.DemoClass;
 import pl.wat.db.repository.conversation.PrivateMessageRepository;
@@ -12,6 +14,9 @@ import pl.wat.logic.demo.CustomerService;
 import pl.wat.logic.service.conversation.ConversationService;
 import pl.wat.logic.service.user.UserService;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -116,29 +121,29 @@ public class DemoRestController {
     }
 
 
-    //UPLOAD PLIKOW Z AUTORYZACJA [USER]
-//    private static int nrPliku = 0;
-//    @PreAuthorize("hasRole('USER')")
-//    @RequestMapping(value = "/postFile",method = RequestMethod.POST)
-//    @ResponseStatus(value= HttpStatus.NO_CONTENT)
-//    public void uploadImage(@RequestParam("file") MultipartFile file) {
-//        System.out.println("Upload pliku");
-//        System.out.println(file.getName());
-//        if(!file.isEmpty()){
-//            try{
-//                byte[] bytes = file.getBytes();
-//                File serverFile = new File(Constants.UPLOAD_TEST_DIRECTORY    //ZMIENIC NA SWOJA SCIEZKE DLA ZAPISU UPLOADOWANYCH PLIKO!!!
-//                        + File.separator  + nrPliku + ".jpg");
-//                nrPliku++;
-//                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-//                stream.write(bytes);
-//                stream.close();
-//
-//            }catch (Exception e){
-//                System.out.println("uploadImage() Exception ");
-//            }
-//        }
-//    } //end uploadImage()
+//    UPLOAD PLIKOW Z AUTORYZACJA [USER]
+    private static int nrPliku = 0;
+    @PreAuthorize("hasRole('USER') or hasRole('MANAGER')")
+    @RequestMapping(value = "/postFile",method = RequestMethod.POST)
+    @ResponseStatus(value= HttpStatus.NO_CONTENT)
+    public void uploadImage(@RequestParam("file") MultipartFile file) {
+        System.out.println("Upload pliku");
+        System.out.println(file.getName());
+        if(!file.isEmpty()){
+            try{
+                byte[] bytes = file.getBytes();
+                File serverFile = new File(Constants.UPLOAD_TEST_DIRECTORY    //ZMIENIC NA SWOJA SCIEZKE DLA ZAPISU UPLOADOWANYCH PLIKO!!!
+                        + File.separator  + nrPliku + ".jpg");
+                nrPliku++;
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+                stream.write(bytes);
+                stream.close();
+
+            }catch (Exception e){
+                System.out.println("uploadImage() Exception ");
+            }
+        }
+    } //end uploadImage()
 
 
 }

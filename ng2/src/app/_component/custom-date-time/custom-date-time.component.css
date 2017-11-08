@@ -1,0 +1,21 @@
+.container-box{
+  width: 100%;
+}
+
+.date-box{
+  width: 69%;
+}
+
+.hour-box{
+  width: 14%;
+  text-align: center;
+}
+
+.dot-box{
+  width: 2%;
+}
+
+.min-box{
+  width: 14%;
+  text-align: center;
+}
