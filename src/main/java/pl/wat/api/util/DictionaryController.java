@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.wat.db.domain.user.profile.attributes.Region;
-import pl.wat.logic.domainServices.user.profile.AttributesServices;
+import pl.wat.logic.service.dictionary.DictionaryService;
 
 import java.util.List;
 
@@ -17,13 +17,13 @@ import java.util.List;
 public class DictionaryController {
 
     @Autowired
-    AttributesServices attributesServices;
+    DictionaryService dictionaryService;
     //slownik wojewodztw
     @RequestMapping(value = "/getRegions",method = RequestMethod.GET)
     @PreAuthorize("hasRole('USER')")
     @ResponseBody
     public List<Region> getRegions(Authentication auth){
-        return attributesServices.getAllRegion();
+        return dictionaryService.getAllRegion();
     }
 
     //slownik miast

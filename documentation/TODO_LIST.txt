@@ -1,0 +1,2 @@
+1. Walidacje praw do rozmowy w kontrolerach/serwisach czatu
+2. Walidacja tworzenia rozmowy (jeśli istnieje już para XY lub YX)

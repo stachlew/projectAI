@@ -1,9 +1,11 @@
 package pl.wat.logic.dto.profile;
 import pl.wat.logic.dto.dictionary.SimpleDictionaryDTO;
+import pl.wat.logic.dto.user.UserDTO;
 
 import java.sql.Date;
 
 public class ProfileDTO {
+    private UserDTO user;
     private boolean isMan;
     private Date birthDate;
     private int growth;
@@ -21,6 +23,14 @@ public class ProfileDTO {
     private SimpleDictionaryDTO hairColor;
     private SimpleDictionaryDTO eyeColor;
     private SimpleDictionaryDTO religion;
+
+    public UserDTO getUser() {
+        return user;
+    }
+
+    public void setUser(UserDTO user) {
+        this.user = user;
+    }
 
     public boolean isMan() {
         return isMan;

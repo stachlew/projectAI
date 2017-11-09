@@ -22,17 +22,12 @@ public class Conversation {
     @JoinColumn(name = "memberTwo_id")
     private User memberTwo;
 
-    @OneToMany(mappedBy = "conversation")
-    @Basic(fetch = FetchType.LAZY)
-    private List<PrivateMessage> privateMessageList;
-
     public Conversation() {
     }
 
     public Conversation(User memberOne, User memberTwo) {
         this.memberOne = memberOne;
         this.memberTwo = memberTwo;
-        this.privateMessageList = new LinkedList<>();
     }
 
     public int getId() {
@@ -59,11 +54,4 @@ public class Conversation {
         this.memberTwo = memberTwo;
     }
 
-    public List<PrivateMessage> getPrivateMessageList() {
-        return privateMessageList;
-    }
-
-    public void setPrivateMessageList(List<PrivateMessage> privateMessageList) {
-        this.privateMessageList = privateMessageList;
-    }
 }

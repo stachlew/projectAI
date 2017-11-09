@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http, RequestOptions, Headers} from "@angular/http";
 import {AppUrls} from "./app-urls";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class HttpSecService {
@@ -29,6 +30,21 @@ export class HttpSecService {
   public getToken(){
     let securityToken = this.getSecurityToken();
     return securityToken;
+  }
+
+  public postAndFetchData(url: string, body: any) : Observable<any> {
+    return this.http.post(
+      url,
+      body,
+      this.getConfig()
+    ).map(resp => <any> resp.json());
+  }
+
+  public getAndFetchData(url:string): Observable<any> {
+    return this.http.get(
+      url,
+      this.getConfig()
+    ).map(resp => <any> resp.json());
   }
 
   constructor(private http: Http) { }

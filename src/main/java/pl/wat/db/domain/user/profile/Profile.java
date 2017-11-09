@@ -1,6 +1,7 @@
 package pl.wat.db.domain.user.profile;
 
 import org.hibernate.annotations.ColumnDefault;
+import pl.wat.db.domain.user.User;
 import pl.wat.db.domain.user.profile.attributes.*;
 
 import javax.persistence.*;
@@ -17,6 +18,10 @@ public class Profile {
 
    @Column(name="birth_Date")
    private Date birthDate;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
    @ManyToOne
    @JoinColumn(name="zodiac_Sign_id")

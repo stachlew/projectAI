@@ -15,4 +15,15 @@ export class AppUrls {
 
   public static PERSON_FIT_URL = AppUrls.APP_HOST + '/api/person-fit';
   public static PERSON_FIT_DICTIONARY_URL = AppUrls.APP_HOST + '/api/person-fit-dictionary';
+
+
+
+  //CHAT
+  public static GET_ALL_CONVERSATION_URL = AppUrls.CHAT_URL + '/getAllMessages';
+  public static GET_LAST_MESSAGES_URL = AppUrls.CHAT_URL + '/getLastMessages';
+  public static GET_MESSAGES_BEFORE_URL = AppUrls.CHAT_URL + '/getMessagesBefore';
+  public static GET_MESSAGES_AFTER_URL = AppUrls.CHAT_URL + '/getMessagesAfter';
+  public static SEND_MESSAGE_URL = AppUrls.CHAT_URL + '/sendNewMessage';
+  public static CREATE_CONVERSATION_URL = AppUrls.CHAT_URL + '/createNewConversation';
+
 }

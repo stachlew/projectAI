@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 public class UserDTO {
+    private int id;
     private String username;
     private String password;
     private String firstname;
@@ -18,8 +19,15 @@ public class UserDTO {
     private Date lastpassres;
     private boolean active;
     private boolean enabled;
-    private ProfileDTO profile;
     private List<Authority> authorities;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
@@ -30,6 +38,10 @@ public class UserDTO {
     }
 
     public String getPassword() {
+        return this.password;
+    }
+
+    public String getPlainPassword() {
         return password;
     }
 
@@ -99,14 +111,6 @@ public class UserDTO {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
-    }
-
-    public ProfileDTO getProfile() {
-        return profile;
-    }
-
-    public void setProfile(ProfileDTO profile) {
-        this.profile = profile;
     }
 
     public List<Authority> getAuthorities() {

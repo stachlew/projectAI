@@ -5,6 +5,7 @@ import pl.wat.db.domain.user.User;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 public class PrivateMessage {
@@ -19,7 +20,7 @@ public class PrivateMessage {
 
     @Column()
     @ColumnDefault(value = "sysdate")
-    private Timestamp sendDate;
+    private Date sendDate;
 
     @ManyToOne
     @JoinColumn(name = "sender_id")
@@ -53,11 +54,11 @@ public class PrivateMessage {
         this.conversation = conversation;
     }
 
-    public Timestamp getSendDate() {
+    public Date getSendDate() {
         return sendDate;
     }
 
-    public void setSendDate(Timestamp sendDate) {
+    public void setSendDate(Date sendDate) {
         this.sendDate = sendDate;
     }
 

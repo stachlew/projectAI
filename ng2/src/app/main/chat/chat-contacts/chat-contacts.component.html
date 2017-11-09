@@ -1,12 +1,13 @@
 <div class="contacts-table-wrapper">
   <table class="table table-hover contacts-table">
     <tbody>
-    <tr *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19]">
+    <tr *ngFor="let contact of contacts">
+    <!--<tr *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19]">-->
     <!--<tr *ngFor="let i of [1,2,3]">-->
       <td class="img-column">
         <img src="assets/images/stock_face.jpg"  class="rounded-circle">
       </td>
-      <td class="name-column ">Zbyszek</td>
+      <td class="name-column ">{{contact?.secondPerson?.firstname}}</td>
       <td class="date-column">25-10-2017  14:25</td>
     </tr>
     </tbody>

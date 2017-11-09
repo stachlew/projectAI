@@ -63,9 +63,6 @@ public class User {
     private List<Authority> authorities;
 
     @Embedded
-    private Profile profile;
-
-    @Embedded
     private AccountInfo accountInfo;
 
     public User() {
@@ -153,14 +150,6 @@ public class User {
 
     public boolean isEnabled() {
         return enabled;
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
     }
 
     public AccountInfo getAccountInfo() {
