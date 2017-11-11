@@ -6,5 +6,5 @@ export class Conversation{
   memberOne: User;
   memberTwo: User;
   secondPerson: User;
-  privateMessageList: PrivateMessage[];
+  lastMessage: PrivateMessage;
 }

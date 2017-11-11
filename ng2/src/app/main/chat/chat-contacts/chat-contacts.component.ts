@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Conversation} from "../../../_model/conversation";
 import {ChatManagerService} from "../chat-manager.service";
 
@@ -7,20 +7,19 @@ import {ChatManagerService} from "../chat-manager.service";
   templateUrl: './chat-contacts.component.html',
   styleUrls: ['./chat-contacts.component.css']
 })
-export class ChatContactsComponent implements OnInit {
+export class ChatContactsComponent implements OnInit{
 
-  constructor(private chatService: ChatManagerService) { }
+  @Input('conversationList') contacts: Conversation[] = [];
 
-  ngOnInit() {
-    this.getAllContacts();
+
+  constructor(private chatService: ChatManagerService) {
   }
 
-  private contacts: Conversation[] = [];
-
-  getAllContacts(){
-    this.chatService.getAllConversations().subscribe(resp=>{
-      this.contacts = resp;
-    });
+  ngOnInit(){
+    this.chatService.updateData();
   }
 
+  changeConversation(conversation: Conversation){
+    this.chatService.changeConversation(conversation);
+  }
 }

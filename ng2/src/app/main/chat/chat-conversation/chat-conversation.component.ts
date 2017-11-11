@@ -1,4 +1,10 @@
-import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {
+  AfterViewInit, Component, ElementRef, HostListener, Inject, Input, OnInit, QueryList, ViewChild,
+  ViewChildren
+} from '@angular/core';
+import {PrivateMessage} from "../../../_model/private-message";
+import {DOCUMENT} from "@angular/common";
+import {ChatManagerService} from "../chat-manager.service";
 
 @Component({
   selector: 'app-chat-conversation',
@@ -7,9 +13,9 @@ import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, View
 })
 export class ChatConversationComponent implements OnInit, AfterViewInit {
 
-  public msgSource: any[] = [];
+  @Input('messagesList') msgList: PrivateMessage[] = [];
 
-  constructor() { }
+  constructor(private chatService: ChatManagerService) { }
 
   ngOnInit() {
   }
@@ -21,6 +27,22 @@ export class ChatConversationComponent implements OnInit, AfterViewInit {
   @ViewChildren('messages') messages: QueryList<any>;
   @ViewChild('chatContent') content: ElementRef;
 
+
+  onScroll(event) {
+    if(event.target.scrollTop == 0){
+      console.log("TOP!");
+      setTimeout(()=>{
+        this.handleUpdateBefore(event);
+      },2000);
+    }
+  }
+
+  handleUpdateBefore(event){
+    if(event.target.scrollTop == 0){
+      this.chatService.updateMessagesBefore();
+    }
+  }
+
   scrollToBottom = () => {
     try {
       this.content.nativeElement.scrollTop = this.content.nativeElement.scrollHeight;
@@ -30,20 +52,6 @@ export class ChatConversationComponent implements OnInit, AfterViewInit {
   test(){
     console.log("TEST");
     this.scrollToBottom();
-  }
-
-
-  test2(){
-    console.log("TEST");
-    this.addMock();
-  }
-
-  addMock(){
-    let mockMsg = {
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam mauris risus, iaculis eget purus congue, fermentum tristique lacus. Praesent non sapien dapibus, posuere purus ut, elementum nibh.',
-      date: new Date(),
-    };
-    this.msgSource.push(mockMsg);
   }
 
 }

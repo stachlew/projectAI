@@ -7,6 +7,7 @@ public class ConversationDTO {
     private UserDTO memberOne;
     private UserDTO memberTwo;
     private UserDTO secondPerson;
+    private PrivateMessageDTO lastMessage;
 
     public ConversationDTO() {
     }
@@ -41,5 +42,13 @@ public class ConversationDTO {
 
     public void setSecondPerson(UserDTO secondPerson) {
         this.secondPerson = secondPerson;
+    }
+
+    public PrivateMessageDTO getLastMessage() {
+        return lastMessage;
+    }
+
+    public void setLastMessage(PrivateMessageDTO lastMessage) {
+        this.lastMessage = lastMessage;
     }
 }
