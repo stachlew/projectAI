@@ -7,6 +7,6 @@ import pl.wat.db.domain.user.User;
 import java.util.List;
 
 public interface EventRepository extends CrudRepository<Event, Integer> {
-    List<Event> findByOAndOrganizer(User organizer);
+    List<Event> findByAndOrganizer(User organizer);
 
 }

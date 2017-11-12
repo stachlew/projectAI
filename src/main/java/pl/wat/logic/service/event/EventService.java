@@ -85,7 +85,7 @@ public class EventService {
     public List<EventDTO> getUserEvent(int userId) {
         User user = userRepository.findOne(userId);
         LinkedList<EventDTO> eventDTOList = new LinkedList<>();
-        eventRepository.findByOAndOrganizer(user).forEach(event -> {
+        eventRepository.findByAndOrganizer(user).forEach(event -> {
             eventDTOList.add(transformService.toDTO(event));
         });
         return eventDTOList;
