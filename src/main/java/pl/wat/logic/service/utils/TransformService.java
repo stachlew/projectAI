@@ -178,6 +178,7 @@ public class TransformService {
     public Event toEntity(EventDTO eventDTO){
         if(eventDTO!=null){
             Event event = new Event();
+            if (eventDTO.getId()>0) event.setId(eventDTO.getId());
             event.setDescription(eventDTO.getDescription());
             event.setCapacity(eventDTO.getCapacity());
             event.setEventStart(eventDTO.getEventStart());
@@ -205,6 +206,7 @@ public class TransformService {
     public City toEntity(CityDTO cityDTO){
         if(cityDTO!=null){
             City city = new City();
+            if(cityDTO.getId()>0) city.setId(cityDTO.getId());
             city.setCityName(cityDTO.getCityName());
             city.setRegion(toEntity(cityDTO.getRegion()));
             return city;
@@ -228,6 +230,7 @@ public class TransformService {
     public Region toEntity(RegionDTO regionDTO){
         if(regionDTO!=null){
             Region entity = new Region();
+            if(regionDTO.getId()>0) entity.setId(regionDTO.getId());
             entity.setRegionName(regionDTO.getRegionName());
             return entity;
         }
@@ -252,6 +255,7 @@ public class TransformService {
     public Localization toEntity(LocalizationDTO dto){
         if(dto!=null){
             Localization entity = new Localization();
+            if(dto.getId()>0) entity.setId(dto.getId());
             entity.setCity(toEntity(dto.getCity()));
             entity.setAddress(dto.getAddress());
             entity.setGeoLength(dto.getGeoLength());
@@ -276,6 +280,7 @@ public class TransformService {
     public Participant toEntity(ParticipantDTO dto){
         if(dto!=null){
             Participant entity = new Participant();
+            if(dto.getId()>0) entity.setId(dto.getId());
             entity.setUser(toEntity(dto.getUser()));
             entity.setEvent(toEntity(dto.getEvent()));
             return entity;

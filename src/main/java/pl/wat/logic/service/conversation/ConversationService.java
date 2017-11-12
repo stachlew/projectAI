@@ -36,21 +36,24 @@ public class ConversationService {
     public ConversationDTO createConversation(int idUserOne, int idUserTwo){
         Conversation conversation = conversationRepository.findExistingConversation(userRepository.findOne(idUserOne), userRepository.findOne(idUserTwo));
 
-        if(conversation == null){
+        if(conversation == null && idUserOne!=idUserTwo){
             conversation = conversationRepository.save(
                     new Conversation(userRepository.findOne(idUserOne),userRepository.findOne(idUserTwo))
             );
         }
+        if(conversation !=null) {
+            ConversationDTO conversationDTO = tSrv.toDTO(conversation);
 
-        ConversationDTO conversationDTO = tSrv.toDTO(conversation);
+            if (conversationDTO.getMemberOne().getId() == idUserOne) {
+                conversationDTO.setSecondPerson(conversationDTO.getMemberTwo());
+            } else {
+                conversationDTO.setSecondPerson(conversationDTO.getMemberOne());
+            }
 
-        if(conversationDTO.getMemberOne().getId() == idUserOne){
-            conversationDTO.setSecondPerson(conversationDTO.getMemberTwo());
-        }else {
-            conversationDTO.setSecondPerson(conversationDTO.getMemberOne());
+            return conversationDTO;
         }
-
-        return conversationDTO;
+        else
+            return null;
     }
 
     public List<ConversationDTO> getAllConversationsByUser(int idUser){

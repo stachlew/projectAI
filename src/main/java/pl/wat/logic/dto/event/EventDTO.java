@@ -17,6 +17,7 @@ public class EventDTO {
     private String description;
     private LocalizationDTO localization;
     private UserDTO organizer;
+    private boolean isParticipant;
     private List<ParticipantDTO> participantList;
 
     public int getId() {
@@ -81,5 +82,13 @@ public class EventDTO {
 
     public void setParticipantList(List<ParticipantDTO> participantList) {
         this.participantList = participantList;
+    }
+
+    public boolean isParticipant() {
+        return isParticipant;
+    }
+
+    public void setParticipant(boolean participant) {
+        isParticipant = participant;
     }
 }

@@ -12,11 +12,11 @@
 12. Konto - pobranie podstawowych info  IN[USER] OUT[USER_DANE] //DONE// UserAccountController.getUserInfo
 13. Konto - zmiana hasła IN[USER,NEWPASS] OUT[-]  //DONE// UserAccountController.changePassword
 14. Wydarzenia - wylistowanie wszystkich wydarzeń (+filtry) IN[NR_STRONY,WIELKOSC_STRONY,FILTRY] OUT[LISTA_WYDARZEN]
-15. Wydarzenie - pobranie detali IN[WYDARZENIE] OUT[DETALE_WYDARZENIA]  //DONE /// EventsGuestController.getEventDetails(idEvent)
-16. Wydarzenie - wylistowanie wszystkich wydarzen usera IN[USER] OUT[LISTA_WYDARZEN]
+15. Wydarzenie - pobranie detali IN[WYDARZENIE] OUT[DETALE_WYDARZENIA]  //DONE /// EventsGuestController.getEventDetails(idEvent,idUser)
+16. Wydarzenie - wylistowanie wszystkich wydarzen usera IN[USER] OUT[LISTA_WYDARZEN] //DONE// EventsManagmentController.getUserEvent
 17. Wydarzenie - wylistowanie detali wydarzenia usera IN[WYDARZENIE] OUT[WYDARZENIE + INFO_CZY_JEST_NA_NIE_ZAPISANY]
-18. Wydarzenie - edycja detali wydarzenia usera IN[WYDARZENIENEW] OUT[-]
+18. Wydarzenie - edycja detali wydarzenia usera IN[WYDARZENIENEW] OUT[-] EventsGuestController.setEvent
 19. Słowniki - listowanie wszystkich elementów dla każdego słownika (znaki zodiaku, zawody, .....)
-20. Wydarzenie - zapis gościa na wydarzenie IN[USER] OUT[boolean]
+20. Wydarzenie - zapis gościa na wydarzenie IN[USER] OUT[boolean]   //DONE // EventsGuestController.saveParticipant
 21. Wydarzenie - wylistowanie gości wydarzenia IN[WYDARZENIE] OUT[LISTA_GOSCI]
-21. Wydarzenie - wylistowanie wydarzen na ktore jest sie zapisanym IN[USER] OUT[LISTA_WYDARZEN]
+21. Wydarzenie - wylistowanie wydarzen na ktore jest sie zapisanym IN[USER] OUT[LISTA_WYDARZEN] //DONE// EventsGuestController.getUserParticipantEvent

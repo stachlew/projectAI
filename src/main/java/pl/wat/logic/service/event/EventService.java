@@ -3,13 +3,17 @@ package pl.wat.logic.service.event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.wat.db.domain.event.Event;
+import pl.wat.db.domain.event.Participant;
+import pl.wat.db.domain.user.User;
 import pl.wat.db.repository.event.EventRepository;
 import pl.wat.db.repository.event.ParticipantRepository;
+import pl.wat.db.repository.user.UserRepository;
 import pl.wat.logic.dto.event.EventDTO;
 import pl.wat.logic.dto.event.ParticipantDTO;
 import pl.wat.logic.service.utils.TransformService;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.TransferQueue;
 
 @Service
@@ -18,6 +22,8 @@ public class EventService {
     EventRepository eventRepository;
     @Autowired
     ParticipantRepository participantRepository;
+    @Autowired
+    UserRepository userRepository;
     @Autowired
     TransformService transformService;
 
@@ -32,5 +38,62 @@ public class EventService {
         return eventDTO;
     }
 
+    public EventDTO getEventDetails(int idEvent, int idUser){
+        Event event = eventRepository.findOne(idEvent);
+        EventDTO eventDTO = transformService.toDTO(event);
+        LinkedList<ParticipantDTO> participantDTOList = new LinkedList<>();
+        participantRepository.findByEvent(event).forEach( participant -> {
+            participantDTOList.add(transformService.toDTO(participant));
+        });
+        eventDTO.setParticipantList(participantDTOList);
+        if(participantRepository.findFirstByEventAndUser(event,userRepository.findOne(idUser))!=null){
+            eventDTO.setParticipant(true);
+        }else {
+            eventDTO.setParticipant(false);
+        }
+        return eventDTO;
+    }
 
+
+    public boolean saveParticipant(int idEvent, int idUser) {
+        Event event = eventRepository.findOne(idEvent);
+        User user = userRepository.findOne(idUser);
+        if(event!=null && user!=null){
+            if(event.getCapacity()<participantRepository.countByEvent(event)){
+                Participant participant = new Participant();
+                participant.setUser(user);
+                participant.setEvent(event);
+                Participant save = participantRepository.save(participant);
+                if (save!=null){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public List<EventDTO> getUserParticipantEvents(int userId) {
+        User user = userRepository.getOne(userId);
+        List<Participant> participants = participantRepository.findByUser(user);
+        List<EventDTO> eventDTOList = new LinkedList<>();
+        participants.forEach(participant -> {
+            eventDTOList.add(transformService.toDTO(participant.getEvent()));
+        });
+        return eventDTOList;
+    }
+
+    public List<EventDTO> getUserEvent(int userId) {
+        User user = userRepository.findOne(userId);
+        LinkedList<EventDTO> eventDTOList = new LinkedList<>();
+        eventRepository.findByOAndOrganizer(user).forEach(event -> {
+            eventDTOList.add(transformService.toDTO(event));
+        });
+        return eventDTOList;
+    }
+
+    public EventDTO saveEvent(EventDTO eventDTO) {
+        Event event = transformService.toEntity(eventDTO);
+        event = eventRepository.save(event);
+        return transformService.toDTO(event);
+    }
 }
