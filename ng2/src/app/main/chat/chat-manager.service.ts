@@ -27,8 +27,18 @@ export class ChatManagerService implements OnInit{
   actualMessageList: PrivateMessage[] = [];
 
   newMessageFlag: boolean = false;
+  chatComponentInited: boolean = false;
+
   requestMessageLoop: boolean = true;
   requestConversationsLoop: boolean = true;
+
+  public setChatComponentInited(inited: boolean){
+    this.chatComponentInited = inited;
+  }
+
+  rememberOldMessagesState(){
+    this.conversationOldList = this.conversationListSorted;
+  }
 
   handleMessageRefreshLoop() {
     if(this.requestMessageLoop){
@@ -70,7 +80,6 @@ export class ChatManagerService implements OnInit{
   public stopMessagesRefreshing(){
     this.requestMessageLoop = false;
   }
-
 
   public changeConversation(conversation: Conversation){
     this.actualConversation = conversation;
@@ -140,7 +149,7 @@ export class ChatManagerService implements OnInit{
     this.conversationOldList = this.conversationListSorted;
     this.conversationListSorted = newList;
 
-    if(!this.newMessageFlag && this.conversationOldList != null && this.conversationListSorted != null){
+    if(!this.newMessageFlag && !this.chatComponentInited && this.conversationOldList != null && this.conversationListSorted != null){
       this.newMessageFlag = this.checkForDifferences(this.conversationOldList, this.conversationListSorted);
     }
   }
@@ -153,14 +162,31 @@ export class ChatManagerService implements OnInit{
     let hasDifference: boolean = false;
     newList.forEach(newElem => {
       oldList.forEach(oldElem =>{
-        if(newElem.id == oldElem.id){
-          if(newElem.lastMessage.id != oldElem.lastMessage.id){
+        if(newElem.id == oldElem.id ){
+          if(isNullOrUndefined(newElem.lastMessage) && isNullOrUndefined(oldElem.lastMessage)){
+            //nic
+          }
+          else if(!isNullOrUndefined(newElem.lastMessage) && isNullOrUndefined(oldElem.lastMessage)){
+            hasDifference = true;
+          }
+          else if(isNullOrUndefined(newElem.lastMessage) && !isNullOrUndefined(oldElem.lastMessage)){
+            hasDifference = true;
+          }
+          else if(newElem.lastMessage.id != oldElem.lastMessage.id) {
             hasDifference = true;
           }
         }
       });
     });
     return hasDifference;
+  }
+
+  private isEmpty(list: any[]) : boolean {
+    if(isNullOrUndefined(list) || list.length<=0){
+      return true;
+    }else {
+      return false;
+    }
   }
 
   private getAllConversations() : Observable<Conversation[]> {

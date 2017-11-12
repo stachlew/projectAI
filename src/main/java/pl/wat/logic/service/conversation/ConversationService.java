@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.wat.db.domain.conversation.Conversation;
 import pl.wat.db.domain.conversation.PrivateMessage;
+import pl.wat.db.domain.user.User;
 import pl.wat.db.repository.conversation.ConversationRepository;
 import pl.wat.db.repository.conversation.PrivateMessageRepository;
 import pl.wat.db.repository.user.UserRepository;
@@ -34,12 +35,17 @@ public class ConversationService {
     }
 
     public ConversationDTO createConversation(int idUserOne, int idUserTwo){
-        Conversation conversation = conversationRepository.findExistingConversation(userRepository.findOne(idUserOne), userRepository.findOne(idUserTwo));
+        User userOne = userRepository.findOne(idUserOne);
+        Conversation conversation = conversationRepository.findExistingConversation(userOne, userRepository.findOne(idUserTwo));
 
         if(conversation == null && idUserOne!=idUserTwo){
             conversation = conversationRepository.save(
                     new Conversation(userRepository.findOne(idUserOne),userRepository.findOne(idUserTwo))
             );
+
+            String welcomeMessage = userOne.getFirstname() + " rozpoczął rozmowę. ";
+            addPrivateMessagesToConversation(tSrv.toDTO(conversation), idUserOne, welcomeMessage);
+
         }
         if(conversation !=null) {
             ConversationDTO conversationDTO = tSrv.toDTO(conversation);

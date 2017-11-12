@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ChatManagerService} from "./chat-manager.service";
 import {Conversation} from "../../_model/conversation";
 
@@ -7,12 +7,20 @@ import {Conversation} from "../../_model/conversation";
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
 
   constructor(public chatService: ChatManagerService) { }
 
   ngOnInit() {
+    this.chatService.setChatComponentInited(true);
     this.chatService.unsetNewMessageFlag();
+    this.chatService.startMessagesRefreshing();
+  }
+
+  ngOnDestroy(){
+    this.chatService.setChatComponentInited(false);
+    this.chatService.stopMessagesRefreshing();
+    this.chatService.rememberOldMessagesState();
   }
 
 }

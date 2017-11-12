@@ -51,6 +51,7 @@ export class AuthenticationService {
     this.userRole=null;
     this.token=null;
     this.chatService.stopAndClearChatService();
+    this.chatService.unsetNewMessageFlag();
   }
 
   isLoggedIn() {
