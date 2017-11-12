@@ -90,4 +90,12 @@ public class ConversationService {
         }
         return dtos;
     }
+
+    public boolean isConversationOwner(int conversationId, int userId){
+        if(conversationRepository.findOneByIdAndMemberOneOrMemberTwo(conversationId,userRepository.findOne(userId)) != null){
+            return true;
+        }
+        else
+            return false;
+    };
 }
