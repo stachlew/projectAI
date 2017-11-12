@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.wat.config.PasswordGenerator;
 
+import pl.wat.db.domain.user.User;
 import pl.wat.db.repository.user.UserRepository;
 
 import pl.wat.logic.service.utils.TransformService;
@@ -35,4 +36,16 @@ public class UserService {
         return transfer.toSimpleDto(userRepository.save(transfer.toEntity(newUser)));
     }
 
+    public UserDTO getUserInfo(int idUser) {
+        User user = userRepository.getOne(idUser);
+        return transfer.toDto(user);
+
+    }
+
+    public UserDTO changePassword(User user, String newPass) {
+        String hashPassword = PasswordGenerator.hashPassword(newPass);
+        user.setPassword(hashPassword);
+        User returnUser = userRepository.save(user);
+        return transfer.toDto(returnUser);
+    }
 }

@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import pl.wat.db.domain.user.profile.attributes.Region;
+
+
+import pl.wat.logic.dto.localization.CityDTO;
+import pl.wat.logic.dto.localization.RegionDTO;
 import pl.wat.logic.service.dictionary.DictionaryService;
 
 import java.util.List;
@@ -22,10 +25,17 @@ public class DictionaryController {
     @RequestMapping(value = "/getRegions",method = RequestMethod.GET)
     @PreAuthorize("hasRole('USER')")
     @ResponseBody
-    public List<Region> getRegions(Authentication auth){
+    public List<RegionDTO> getRegions(Authentication auth){
         return dictionaryService.getAllRegion();
     }
 
     //slownik miast
+    @RequestMapping(value = "/getCity",method = RequestMethod.GET)
+    @PreAuthorize("hasRole('USER')")
+    @ResponseBody
+    public List<CityDTO> getCity(Authentication auth, RegionDTO region){
+        return dictionaryService.getCityByRegion(region);
+    }
+
 
 }

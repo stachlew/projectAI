@@ -40,8 +40,8 @@ public class ChatController {
     public @ResponseBody
     List<PrivateMessageDTO> getLastMessages(Authentication auth, @RequestBody int conversationId){
         int userId = this.utilService.getUserId(auth);
-        if(userId>0){
-            return this.conversationService.getLatestMessages(conversationId); //TODO: walidacja wlasciciela rozmowy
+        if(conversationService.isConversationOwner(conversationId,userId)){
+            return this.conversationService.getLatestMessages(conversationId);
         }else {
             return null;
         }
@@ -54,8 +54,8 @@ public class ChatController {
     public @ResponseBody
     List<PrivateMessageDTO> getMessagesBefore(Authentication auth, @RequestBody int conversationId, @RequestBody int messageId){
         int userId = this.utilService.getUserId(auth);
-        if(userId>0){
-            return this.conversationService.getMessagesBefore(conversationId, messageId); //TODO: walidacja wlasciciela rozmowy
+        if(conversationService.isConversationOwner(conversationId,userId)){
+            return this.conversationService.getMessagesBefore(conversationId, messageId);
         }else {
             return null;
         }
@@ -67,8 +67,8 @@ public class ChatController {
     public @ResponseBody
     List<PrivateMessageDTO> getMessagesAfter(Authentication auth, @RequestBody int conversationId, @RequestBody int messageId){
         int userId = this.utilService.getUserId(auth);
-        if(userId>0){
-            return this.conversationService.getMessagesAfter(conversationId, messageId); //TODO: walidacja wlasciciela rozmowy
+        if(conversationService.isConversationOwner(conversationId,userId)){
+            return this.conversationService.getMessagesAfter(conversationId, messageId);
         }else {
             return null;
         }
@@ -80,8 +80,8 @@ public class ChatController {
     public @ResponseBody
     PrivateMessageDTO sendNewMessage(Authentication auth, @RequestBody ConversationDTO conversation, @RequestBody String message){
         int userId = this.utilService.getUserId(auth);
-        if(userId>0){
-            return this.conversationService.addPrivateMessagesToConversation(conversation, userId, message); //TODO: walidacja wlasciciela rozmowy
+        if(conversationService.isConversationOwner(conversation.getId(),userId)){
+            return this.conversationService.addPrivateMessagesToConversation(conversation, userId, message);
         }else {
             return null;
         }

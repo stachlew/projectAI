@@ -9,10 +9,8 @@ import pl.wat.db.repository.conversation.PrivateMessageRepository;
 import pl.wat.db.repository.user.UserRepository;
 import pl.wat.logic.dto.conversation.ConversationDTO;
 import pl.wat.logic.dto.conversation.PrivateMessageDTO;
-import pl.wat.logic.service.user.UserService;
 import pl.wat.logic.service.utils.TransformService;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,9 +32,12 @@ public class ConversationService {
     }
 
     public ConversationDTO createConversation(int idUserOne, int idUserTwo){
-        Conversation conversation = conversationRepository.save(
-            new Conversation(userRepository.findOne(idUserOne),userRepository.findOne(idUserTwo))
-        );
+        Conversation conversation = conversationRepository.findExistxConversation(userRepository.findOne(idUserOne), userRepository.findOne(idUserTwo));
+        if (conversation == null) {
+            conversation = conversationRepository.save(
+                    new Conversation(userRepository.findOne(idUserOne), userRepository.findOne(idUserTwo))
+            );
+        }
         return tSrv.toDTO(conversation);
     }
 
@@ -78,4 +79,12 @@ public class ConversationService {
         }
         return dtos;
     }
+
+    public boolean isConversationOwner(int conversationId, int userId){
+        if(conversationRepository.findOneByIdAndMemberOneOrMemberTwo(conversationId,userRepository.findOne(userId)) != null){
+            return true;
+        }
+        else
+            return false;
+    };
 }
