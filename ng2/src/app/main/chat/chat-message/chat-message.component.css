@@ -5,9 +5,20 @@
   padding-right: 1.5vh;
 }
 
+.message-box{
+  width: 78%;
+  display: inline-block;
+}
+
+.button-box{
+  width: 20%;
+  display: inline-block;
+}
+
+
 .message-input{
   width: 100%;
-  height: 16vh;
+  height: 9vh;
   resize: none;
 }
 

@@ -6,14 +6,17 @@
   <table class="table conversation-table">
     <tbody>
     <tr #messages *ngFor="let msg of msgList">
-      <td class="img-conversation-column">
-        <img src="assets/images/stock_face.jpg"  class="rounded-circle">
+      <td class="name-conversation-column">
+        <div>
+          <span *ngIf="msg.sender.id != secondPerson.id">Ty:</span>
+          <span *ngIf="msg.sender.id == secondPerson.id">{{msg.sender.firstname}}:  </span>
+        </div>
+
       </td>
-      <td class="name-column" style="width: 10%">{{msg.sender.firstname}} </td>
       <td class="name-column"  style="width: 70%">{{msg.textMessage}} </td>
       <td class="date-column"  style="width: 20%">{{msg.sendDate |date:'HH:mm:ss dd-MM-yyyy'}}</td>
     </tr>
-    <tr>
+    <tr class="last-message">
       <td #lastMessage></td>
     </tr>
     </tbody>

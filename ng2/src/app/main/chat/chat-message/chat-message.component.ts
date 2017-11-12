@@ -10,7 +10,7 @@ import {Conversation} from "../../../_model/conversation";
 export class ChatMessageComponent implements OnInit {
 
   private textMessage: string;
-  private isEnterSending: boolean = false;
+  private isEnterSending: boolean = true;
 
   constructor(private chatService: ChatManagerService) { }
 

@@ -6,7 +6,7 @@
         <img src="assets/images/stock_face.jpg"  class="rounded-circle">
       </td>
       <td class="name-column ">{{contact?.secondPerson?.firstname}}</td>
-      <td class="date-column">{{contact.lastMessage?.textMessage}}</td>
+      <td class="date-column">{{contact.lastMessage?.textMessage | truncate:[20, '...']}}</td>
       <td class="date-column">{{contact.lastMessage?.sendDate |date:'HH:mm:ss dd-MM-yyyy'}}</td>
     </tr>
     </tbody>

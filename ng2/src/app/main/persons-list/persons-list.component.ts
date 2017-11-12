@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PageEvent} from "@angular/material";
 import {Router} from "@angular/router";
 import {PersonListService} from "./person-list.service";
+import {AppUrls} from "../../_service/util/app-urls";
 
 @Component({
   selector: 'app-persons-list',
@@ -10,7 +11,7 @@ import {PersonListService} from "./person-list.service";
 })
 export class PersonsListComponent implements OnInit {
 
-
+  userPhotoUrl: string = AppUrls.USER_IMAGE_URL;
 
   public regions: any = [
     {id: 1, name: 'Mazowieckie'},

@@ -18,6 +18,11 @@ export class AppUrls {
 
 
 
+  public static USER_IMAGE_URL = AppUrls.APP_HOST + '/api/images/users/';
+  public static EVENT_IMAGE_URL = AppUrls.APP_HOST + '/api/images/events/';
+
+
+
   //CHAT
   public static GET_ALL_CONVERSATION_URL = AppUrls.CHAT_URL + '/getAllConversations';
   public static GET_LAST_MESSAGES_URL = AppUrls.CHAT_URL + '/getLastMessages';

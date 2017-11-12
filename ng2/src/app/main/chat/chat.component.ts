@@ -21,6 +21,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.chatService.setChatComponentInited(false);
     this.chatService.stopMessagesRefreshing();
     this.chatService.rememberOldMessagesState();
+    this.chatService.unsetMessages();
   }
 
 }

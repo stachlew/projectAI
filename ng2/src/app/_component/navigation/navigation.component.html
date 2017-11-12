@@ -15,7 +15,13 @@
 
       <li class="nav-item" *ngIf="auth.isUser()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
         <a class="nav-link" [routerLink]="['chat']">
-          <i class="fa fa-weixin fa-fw font-accent"></i> Rozmowy FLAG: {{chatService.newMessageFlag}}
+          <span *ngIf="chatService.newMessageFlag">
+            <i class="fa fa-envelope-o fa-fw font-accent fa-spin"></i>
+          </span>
+          <span *ngIf="!chatService.newMessageFlag">
+            <i class="fa fa-weixin fa-fw font-accent"></i>
+          </span>
+          Rozmowy
         </a>
       </li>
 

@@ -81,7 +81,7 @@
                   <b>{{person.name}}, {{person.age}}</b>
                 </div>
                 <div class="persons-img-column">
-                  <img src="assets/images/stock_face.jpg"  class="rounded-circle">
+                  <img [src]="userPhotoUrl+'/'+person.id"  class="rounded-circle">
                 </div>
                 <div>
                   <b>{{person.city}}</b>

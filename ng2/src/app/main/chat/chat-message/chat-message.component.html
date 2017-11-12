@@ -1,9 +1,15 @@
-<div class="row">
-  <div class="col-md-12 ">
-    <div class="form-group chat-message-padding">
+<div>
+  <div class="message-box">
+    <div class="chat-message-padding">
       <textarea class="message-input" [(ngModel)]="textMessage" (keyup.enter)="checkEnter()"></textarea>
-      <button class="btn btn-primary message-send-button" (click)="sendNewMessage()">Wyślij</button>
-      Wysyłanie ENTER: <input type="checkbox" [(ngModel)]="isEnterSending">
     </div>
   </div>
+
+  <div class="button-box">
+    <div class="chat-message-padding">
+      <button class="btn btn-primary message-send-button" (click)="sendNewMessage()">Wyślij</button>
+      Wysyłanie klawiszem ENTER: <input type="checkbox" [(ngModel)]="isEnterSending">
+    </div>
+  </div>
+
 </div>

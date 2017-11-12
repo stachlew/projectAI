@@ -1,14 +1,16 @@
 .chat-contacts{
-  background-color: rgba(255, 0, 0, 0.26);
+  /*background-color: rgba(255, 0, 0, 0.26);*/
   min-height: 90vh;
+  border-right: 1px solid rgba(202, 42, 42, 1);
 }
 
 .chat-conversation{
-  background-color: rgba(0, 128, 0, 0.25);
-  min-height: 63vh;
+  /*background-color: rgba(0, 128, 0, 0.25);*/
+  min-height: 76vh;
 }
 
 .chat-message{
-  background-color: rgba(0, 0, 255, 0.26);
-  min-height: 27vh;
+  /*background-color: rgba(0, 0, 255, 0.26);*/
+  min-height: 14vh;
+  border-top: 1px solid rgba(202, 42, 42, 1);
 }

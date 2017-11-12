@@ -26,7 +26,7 @@ public class PrivateMessage {
     @JoinColumn(name = "sender_id")
     private User sender;
 
-    @Column
+    @Column(length = 10000)
     private String textMessage;
 
     public PrivateMessage() {

@@ -17,8 +17,17 @@ export class ChatManagerService implements OnInit{
   }
 
   ngOnInit(){
-
   }
+
+  public playNotifyAudio(){
+    console.log("playNotifyAudio");
+    let audio = new Audio();
+    audio.src = "/assets/sounds/notify.wav";
+    audio.load();
+    audio.play();
+  }
+
+
 
   conversationListSorted: Conversation[] = [];
   conversationOldList: Conversation[] = [];
@@ -31,6 +40,13 @@ export class ChatManagerService implements OnInit{
 
   requestMessageLoop: boolean = true;
   requestConversationsLoop: boolean = true;
+
+  public unsetMessages(){
+    this.actualConversation = null;
+    this.actualMessageList = null;
+  }
+
+
 
   public setChatComponentInited(inited: boolean){
     this.chatComponentInited = inited;
@@ -147,10 +163,14 @@ export class ChatManagerService implements OnInit{
 
   private handleConversationUpdate(newList: Conversation[]){
     this.conversationOldList = this.conversationListSorted;
-    this.conversationListSorted = newList;
+    this.conversationListSorted = this.sortArray(newList);
 
     if(!this.newMessageFlag && !this.chatComponentInited && this.conversationOldList != null && this.conversationListSorted != null){
       this.newMessageFlag = this.checkForDifferences(this.conversationOldList, this.conversationListSorted);
+
+      if(this.newMessageFlag){
+        this.playNotifyAudio();
+      }
     }
   }
 
@@ -241,4 +261,20 @@ export class ChatManagerService implements OnInit{
       return <any> resp;
     });
   }
+
+  public sortArray(array: Conversation[]): Conversation[]{
+    let sorted: Conversation[] = array.sort((n1,n2) => {
+      if(n1.lastMessage.id > n2.lastMessage.id){
+        return -1;
+      }
+      else if(n1.lastMessage.id < n2.lastMessage.id){
+        return 1;
+      }
+      else {
+        return 0;
+      }
+    });
+    return sorted;
+  }
 }
+

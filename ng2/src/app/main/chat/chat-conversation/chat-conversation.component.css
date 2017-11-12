@@ -1,33 +1,33 @@
 .conversation-header{
-  padding: 20px;
+  padding: 12px;
   height: 8vh;
+  border-bottom: 1px solid rgba(202, 42, 42, 1);
 }
 
 
 .conversation-table-wrapper{
-  height: 55vh;
+  height: 68vh;
   overflow-y: auto;
 }
 
-.conversation-table td{
-  vertical-align:middle;
+.conversation-table{
+  padding: 0px;
+  margin: 0px;
 }
+
+.last-message{
+  display: none;
+}
+
 
 .message-row{
   width: 100%;
 }
 
-.img-conversation-column{
+.name-conversation-column{
   width: 5%;
-}
-
-.img-conversation-column img{
-  width: 30px;
-}
-
-.name-column{
   font-size: larger;
-  width: 83%;
+  font-weight: bold;
 }
 
 .date-column{

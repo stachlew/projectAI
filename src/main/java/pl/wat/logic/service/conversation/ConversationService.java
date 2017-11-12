@@ -43,7 +43,7 @@ public class ConversationService {
                     new Conversation(userRepository.findOne(idUserOne),userRepository.findOne(idUserTwo))
             );
 
-            String welcomeMessage = userOne.getFirstname() + " rozpoczął rozmowę. ";
+            String welcomeMessage = userOne.getFirstname() + " rozpoczyna rozmowę. ";
             addPrivateMessagesToConversation(tSrv.toDTO(conversation), idUserOne, welcomeMessage);
 
         }

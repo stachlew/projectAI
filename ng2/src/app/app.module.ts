@@ -50,6 +50,7 @@ import {PersonListService} from "./main/persons-list/person-list.service";
 import { CustomPaginatorComponent } from './_component/custom-paginator/custom-paginator.component';
 import {AppUrls} from "./_service/util/app-urls";
 import { CustomDateTimeComponent } from './_component/custom-date-time/custom-date-time.component';
+import {TruncatePipe} from "./pipes/truncate";
 
 
 @NgModule({
@@ -93,7 +94,10 @@ import { CustomDateTimeComponent } from './_component/custom-date-time/custom-da
     ChatConversationComponent,
     ChatMessageComponent,
     CustomPaginatorComponent,
-    CustomDateTimeComponent
+    CustomDateTimeComponent,
+
+    //PIPE
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
