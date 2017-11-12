@@ -10,16 +10,24 @@ import {Conversation} from "../../../_model/conversation";
 export class ChatMessageComponent implements OnInit {
 
   private textMessage: string;
+  private isEnterSending: boolean = false;
 
   constructor(private chatService: ChatManagerService) { }
 
   ngOnInit() {
   }
 
-  private testMsg: number = 0;
-
   sendNewMessage(){
-    this.chatService.sendMessage('TEST: '+this.testMsg++ +' '+ this.textMessage);
+    if(this.textMessage!=null && this.textMessage.trim().length>0){
+      this.chatService.sendMessage(this.textMessage);
+      this.textMessage = null;
+    }
+  }
+
+  checkEnter(){
+    if(this.isEnterSending){
+      this.sendNewMessage();
+    }
   }
 
 }

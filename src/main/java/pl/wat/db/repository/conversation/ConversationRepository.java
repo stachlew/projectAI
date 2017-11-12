@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface ConversationRepository  extends JpaRepository<Conversation, Integer> {
     List<Conversation> getAllByMemberOneIdOrMemberTwoId(int idUser, int idUser2);
+
+    List<Conversation> getAllByMemberOneIdAndMemberTwoId(int oneId, int twoId);
 }

@@ -6,6 +6,7 @@ import { Constants } from "../util/constants";
 import {UtilsService} from "../util/utils.service";
 import {isNullOrUndefined} from "util";
 import {AppUrls} from "../util/app-urls";
+import {ChatManagerService} from "../../main/chat/chat-manager.service";
 
 @Injectable()
 export class AuthenticationService {
@@ -13,7 +14,7 @@ export class AuthenticationService {
   public username: string;
   public userRole: string;
 
-  constructor(public http: AuthHttp, public util: UtilsService) {
+  constructor(public http: AuthHttp, public util: UtilsService, public chatService: ChatManagerService) {
     if(this.isLoggedIn()){
       this.token=localStorage.getItem('token');
       this.username=localStorage.getItem('username');
@@ -36,6 +37,7 @@ export class AuthenticationService {
             this.userRole = data.user.authorities[0].authority;
             localStorage.setItem('userRole', this.userRole);
           }
+          this.chatService.startChatService();
         }
       });
   }
@@ -48,6 +50,7 @@ export class AuthenticationService {
     this.username=null;
     this.userRole=null;
     this.token=null;
+    this.chatService.stopAndClearChatService();
   }
 
   isLoggedIn() {

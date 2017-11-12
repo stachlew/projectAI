@@ -23,14 +23,30 @@ export class ChatManagerService implements OnInit{
   actualConversation: Conversation;
   actualMessageList: PrivateMessage[];
 
+  requestLoop: boolean = true;
+
   handleLoop(){
-    console.log("TEST handleLoop");
-    this.updateMessagesAfter();
-    setTimeout(test=>{
-      this.handleLoop();
-    },5000);
+    if(this.requestLoop){
+      this.updateMessagesAfter();
+      setTimeout(test=>{
+        this.handleLoop();
+      },5000);
+    }
   }
 
+  public startChatService(){
+    console.log("startChatService");
+    this.updateData();
+    this.requestLoop = true;
+    this.handleLoop();
+  }
+
+  public stopAndClearChatService(){
+    this.requestLoop = false;
+    this.conversationList = null;
+    this.actualConversation = null;
+    this.actualMessageList = null;
+  }
 
 
   public changeConversation(conversation: Conversation){
@@ -140,8 +156,11 @@ export class ChatManagerService implements OnInit{
     return this.httpSrv.postAndFetchData(AppUrls.SEND_MESSAGE_URL,body).map(resp => <any> resp);
   }
 
-  private createNewConversation(receiverId: number) : Observable<PrivateMessage>{
+  public createNewConversation(receiverId: number) : Observable<Conversation>{
     let body = receiverId;
-    return this.httpSrv.postAndFetchData(AppUrls.CREATE_CONVERSATION_URL,body).map(resp => <any> resp);
+    return this.httpSrv.postAndFetchData(AppUrls.CREATE_CONVERSATION_URL,body).map(resp => {
+      this.changeConversation(resp);
+      return <any> resp;
+    });
   }
 }

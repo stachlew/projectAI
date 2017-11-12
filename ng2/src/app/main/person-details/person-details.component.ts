@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ChatManagerService} from "../chat/chat-manager.service";
 
 @Component({
   selector: 'app-person-details',
@@ -8,7 +9,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class PersonDetailsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,private router: Router, private chatService: ChatManagerService) { }
 
   personId: number;
   ngOnInit() {
@@ -17,8 +18,14 @@ export class PersonDetailsComponent implements OnInit {
     });
   }
 
-  initPersonDetails(personId: number){
+  private initPersonDetails(personId: number){
     this.personId = personId;
+  }
+
+  private startConversation(){
+    this.chatService.createNewConversation(this.personId).subscribe(resp=>{
+      this.router.navigate(['chat']);
+    });
   }
 
 

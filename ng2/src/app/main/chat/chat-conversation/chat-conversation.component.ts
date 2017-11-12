@@ -57,10 +57,4 @@ export class ChatConversationComponent implements OnInit, AfterViewInit {
       setTimeout(x=>{this.content.nativeElement.scrollTop = 0;});
     } catch (err) {}
   };
-
-  test(){
-    console.log("TEST");
-    this.scrollToBottom();
-  }
-
 }
