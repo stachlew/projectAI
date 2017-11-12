@@ -165,7 +165,7 @@ INSERT INTO CITY ( id,city_name,id_region ) VALUES (  CITY_PK.nextval,  'Świnou
 insert into personality_category (id, amount, description) values(PERSONALITY_CATEGORY_PK.nextval,15,'Charakter');
 insert into personality_category (id, amount, description) values(PERSONALITY_CATEGORY_PK.nextval,15,'Osobowość');
 insert into personality_category (id, amount, description) values(PERSONALITY_CATEGORY_PK.nextval,30,'Czas wolny');
-/
+
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Otwarta',1);
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Spontaniczna',1);
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Introwertyczna',1);
@@ -181,7 +181,7 @@ insert into category_attribute (id, description, category_id) values (CATEGORY_A
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Ma dużo znajomych',1);
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Umie rozmawiać na każdy temat ',1);
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Perfekcjonista',1);
-/
+
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Szara myszka',2);
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Wieczny wojownik',2);
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Przywódca grupy',2);
@@ -197,7 +197,7 @@ insert into category_attribute (id, description, category_id) values (CATEGORY_A
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Nierozwikłana zagadka',2);
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Dusza towarzystwa',2);
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Domator',2);
-/
+
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Kino przy okazji każdej premiery',3);
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Spacer po niedzielnym obiedzie',3);
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Wieczory przed telewizorem',3);
