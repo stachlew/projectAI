@@ -18,6 +18,6 @@ public interface ConversationRepository  extends JpaRepository<Conversation, Int
     Conversation findOneByIdAndMemberOneOrMemberTwo(int id, User user1);
 
     @Query("select c from Conversation c where (c.memberOne = ?1 and c.memberTwo =?2) or (c.memberOne = ?2 and c.memberTwo =?1)")
-    Conversation findExistxConversation(User user1, User user2);
+    Conversation findExistingConversation(User user1, User user2);
     // boolean findConversationByIdAndAndMemberOneOrMemberTwo(int id,User user);
 }
