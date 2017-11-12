@@ -10,8 +10,10 @@ import pl.wat.config.Constants;
 import pl.wat.db.domain.Customer;
 import pl.wat.db.domain.DemoClass;
 import pl.wat.db.repository.conversation.PrivateMessageRepository;
+import pl.wat.db.repository.localization.RegionRepository;
 import pl.wat.logic.demo.CustomerService;
 import pl.wat.logic.service.conversation.ConversationService;
+import pl.wat.logic.service.dictionary.DictionaryService;
 import pl.wat.logic.service.user.UserService;
 
 import java.io.BufferedOutputStream;
@@ -32,6 +34,12 @@ public class DemoRestController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    DictionaryService dictionaryService;
+
+    @Autowired
+    RegionRepository regionRepository;
+
 
     @RequestMapping(value = "/action1",method = RequestMethod.GET)
     @PreAuthorize("hasRole('USER')")
@@ -51,7 +59,12 @@ public class DemoRestController {
 //        for (PrivateMessage privateMessage : privateMessageRepository.findAll()) {
 //            System.out.println(privateMessage.getId()+" "+privateMessage.getTextMessage());
 //        }
-        System.out.println(userService.countActiveUsers());
+       // System.out.println(userService.countActiveUsers());
+       // System.out.println(dictionaryService.getAllRegion());
+       // dictionaryService.getAllRegion().forEach(region -> {
+       //     System.out.println(region.getRegionName());
+      //  });
+       // dictionaryService.getCityByRegion(regionRepository.findOne(1)).forEach(city -> System.out.println(city.getCityName()));
 
 
         List<String> resp = new LinkedList<>();

@@ -1,10 +1,10 @@
-package pl.wat.db.domain.speeddate;
+package pl.wat.db.domain.event;
 
 import javax.persistence.*;
 import java.sql.Blob;
 
 @Entity
-public class SpeeddatePicture {
+public class EventPicture {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Speeddate_Picture_PK")
     @SequenceGenerator(sequenceName = "Speeddate_Picture_PK", initialValue = 1, allocationSize = 1, name = "Speeddate_Picture_PK")
@@ -12,7 +12,7 @@ public class SpeeddatePicture {
 
     @ManyToOne
     @JoinColumn(name = "speeddate_id")
-    private Speeddate speeddate;
+    private Event event;
 
     @Lob
     @Column()

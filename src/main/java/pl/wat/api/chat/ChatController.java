@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.wat.logic.dto.conversation.ConversationDTO;
 import pl.wat.logic.dto.conversation.PrivateMessageDTO;
 import pl.wat.logic.service.conversation.ConversationService;
-import pl.wat.logic.service.utils.ChatRequest;
 import pl.wat.logic.service.utils.UtilService;
 
 import java.util.List;
@@ -39,10 +38,10 @@ public class ChatController {
     @PreAuthorize("hasRole('USER')")
     @RequestMapping(value = "/getLastMessages",method = RequestMethod.POST)
     public @ResponseBody
-    List<PrivateMessageDTO> getLastMessages(Authentication auth, @RequestBody ChatRequest chatRequest){
+    List<PrivateMessageDTO> getLastMessages(Authentication auth, @RequestBody int conversationId){
         int userId = this.utilService.getUserId(auth);
-        if(userId>0){
-            return this.conversationService.getLatestMessages(chatRequest.conversationId); //TODO: walidacja wlasciciela rozmowy
+        if(conversationService.isConversationOwner(conversationId,userId)){
+            return this.conversationService.getLatestMessages(conversationId);
         }else {
             return null;
         }
@@ -53,10 +52,10 @@ public class ChatController {
     @PreAuthorize("hasRole('USER')")
     @RequestMapping(value = "/getMessagesBefore",method = RequestMethod.POST)
     public @ResponseBody
-    List<PrivateMessageDTO> getMessagesBefore(Authentication auth, @RequestBody ChatRequest chatRequest){
+    List<PrivateMessageDTO> getMessagesBefore(Authentication auth, @RequestBody int conversationId, @RequestBody int messageId){
         int userId = this.utilService.getUserId(auth);
-        if(userId>0){
-            return this.conversationService.getMessagesBefore(chatRequest.conversationId, chatRequest.messageId); //TODO: walidacja wlasciciela rozmowy
+        if(conversationService.isConversationOwner(conversationId,userId)){
+            return this.conversationService.getMessagesBefore(conversationId, messageId);
         }else {
             return null;
         }
@@ -66,10 +65,10 @@ public class ChatController {
     @PreAuthorize("hasRole('USER')")
     @RequestMapping(value = "/getMessagesAfter",method = RequestMethod.POST)
     public @ResponseBody
-    List<PrivateMessageDTO> getMessagesAfter(Authentication auth, @RequestBody ChatRequest chatRequest){
+    List<PrivateMessageDTO> getMessagesAfter(Authentication auth, @RequestBody int conversationId, @RequestBody int messageId){
         int userId = this.utilService.getUserId(auth);
-        if(userId>0){
-            return this.conversationService.getMessagesAfter(chatRequest.conversationId, chatRequest.messageId); //TODO: walidacja wlasciciela rozmowy
+        if(conversationService.isConversationOwner(conversationId,userId)){
+            return this.conversationService.getMessagesAfter(conversationId, messageId);
         }else {
             return null;
         }
@@ -79,10 +78,10 @@ public class ChatController {
     @PreAuthorize("hasRole('USER')")
     @RequestMapping(value = "/sendNewMessage",method = RequestMethod.POST)
     public @ResponseBody
-    PrivateMessageDTO sendNewMessage(Authentication auth, @RequestBody ChatRequest chatRequest){
+    PrivateMessageDTO sendNewMessage(Authentication auth, @RequestBody ConversationDTO conversation, @RequestBody String message){
         int userId = this.utilService.getUserId(auth);
-        if(userId>0){
-            return this.conversationService.addPrivateMessagesToConversation(chatRequest.conversation, userId, chatRequest.messageText); //TODO: walidacja wlasciciela rozmowy
+        if(conversationService.isConversationOwner(conversation.getId(),userId)){
+            return this.conversationService.addPrivateMessagesToConversation(conversation, userId, message);
         }else {
             return null;
         }

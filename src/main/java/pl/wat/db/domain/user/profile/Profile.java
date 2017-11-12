@@ -1,8 +1,11 @@
 package pl.wat.db.domain.user.profile;
 
 import org.hibernate.annotations.ColumnDefault;
+import pl.wat.db.domain.localization.City;
+import pl.wat.db.domain.localization.Region;
 import pl.wat.db.domain.user.User;
 import pl.wat.db.domain.user.profile.attributes.*;
+
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -35,12 +38,10 @@ public class Profile {
     @JoinColumn(name = "education_id")
     private Education education;
 
-    @Column
-    private String city;
-
     @ManyToOne
-    @JoinColumn(name = "region_id")
-    private Region region;
+    @JoinColumn(name = "city_id")
+    private City city;
+
 
     @ManyToOne
     @JoinColumn(name = "figure_id")
@@ -85,16 +86,21 @@ public class Profile {
     }
 
 
+    public User getUser() {
+        return user;
+    }
 
-    public String getCity() {
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public City getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(City city) {
         this.city = city;
     }
-
-
 
     public int getGrowth() {
         return growth;
@@ -172,13 +178,7 @@ public class Profile {
         this.education = education;
     }
 
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        this.region = region;
-    }
+ 
 
     public Figure getFigure() {
         return figure;
