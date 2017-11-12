@@ -3,13 +3,10 @@ package pl.wat.api.events;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import pl.wat.db.repository.event.EventRepository;
+import org.springframework.web.bind.annotation.*;
 import pl.wat.logic.dto.event.EventDTO;
 import pl.wat.logic.service.event.EventService;
+import pl.wat.logic.service.utils.UtilService;
 
 import java.util.List;
 
@@ -18,15 +15,34 @@ import java.util.List;
 public class EventsGuestController {
 
     @Autowired
+    UtilService utilService;
+    @Autowired
     EventService eventService;
-    //lista wydarzen
+    //lista wydarzeń na które jesteśmy zapisanii
+    @RequestMapping(value = "/getUserParticipantEvent",method = RequestMethod.GET)
+    @PreAuthorize("hasRole('USER')")
+    @ResponseBody
+    public List<EventDTO> getUserParticipantEvent(Authentication auth){
+        int userId = this.utilService.getUserId(auth);
+        return eventService.getUserParticipantEvents(userId);
+    }
 
     //zapis na wydarzenie
+    @RequestMapping(value = "/saveParticipant",method = RequestMethod.POST)
+    @PreAuthorize("hasRole('USER')")
+    @ResponseBody
+    public boolean saveParticipant(Authentication auth , @RequestBody int idEvent){
+        int userId = this.utilService.getUserId(auth);
+        return eventService.saveParticipant(idEvent, userId);
+    }
 
     //detale wydarzenia
     @RequestMapping(value = "/getDetails",method = RequestMethod.GET)
     @ResponseBody
-    public EventDTO getRegions(Authentication auth,int idEvent){
-        return eventService.getEventDetails(idEvent);
+    public EventDTO getEventDetails(Authentication auth,int idEvent){
+        int userId = this.utilService.getUserId(auth);
+        return eventService.getEventDetails(idEvent,userId);
     }
+
+
 }
