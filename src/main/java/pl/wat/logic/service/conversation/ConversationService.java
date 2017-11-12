@@ -13,6 +13,7 @@ import pl.wat.logic.service.utils.TransformService;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.*;
 
 @Service
 public class ConversationService {
@@ -28,6 +29,7 @@ public class ConversationService {
 
     public PrivateMessageDTO addPrivateMessagesToConversation(ConversationDTO conversation, int idUser, String textMessage){
         PrivateMessage privateMessage = new PrivateMessage(tSrv.toEntity(conversation),userRepository.findOne(idUser),textMessage);
+        privateMessage.setSendDate(new Date());
         return tSrv.toDTO(privateMessageRepository.save(privateMessage));
     }
 
@@ -53,13 +55,22 @@ public class ConversationService {
             }else {
                 conv.setSecondPerson(conv.getMemberOne());
             }
+
+            List<PrivateMessage> fetchedMsgs = privateMessageRepository.getFirst1ByConversationIdOrderBySendDateDesc(conv.getId());
+            fetchedMsgs.forEach(fet-> {
+                conv.setLastMessage(tSrv.toDTO(fet));
+            });
+
         });
         return dtos;
     }
 
     public List<PrivateMessageDTO> getLatestMessages(int idConversation){
-        List<PrivateMessage> fetched = privateMessageRepository.findLast10ByConversationIdOrderBySendDateAsc(idConversation);
-        return transformMessageData(fetched);
+        List<PrivateMessage> fetched = privateMessageRepository.findFirst10ByConversationIdOrderBySendDateDesc(idConversation);
+        LinkedList<PrivateMessage> fetchedDirection = new LinkedList<>();
+        fetched.forEach(msg-> fetchedDirection.addFirst(msg));
+
+        return transformMessageData(fetchedDirection);
     }
 
     public List<PrivateMessageDTO> getMessagesAfter(int idConversation, int idMessage){
@@ -68,7 +79,7 @@ public class ConversationService {
     }
 
     public List<PrivateMessageDTO> getMessagesBefore(int idConversation, int idMessages){
-        List<PrivateMessage> fetched = privateMessageRepository.findLast10ByConversationIdAndIdLessThanOrderBySendDateAsc(idConversation,idMessages);
+        List<PrivateMessage> fetched = privateMessageRepository.findFirst10ByConversationIdAndIdLessThanOrderBySendDateDesc(idConversation,idMessages);
         return transformMessageData(fetched);
     }
 
@@ -79,12 +90,4 @@ public class ConversationService {
         }
         return dtos;
     }
-
-    public boolean isConversationOwner(int conversationId, int userId){
-        if(conversationRepository.findOneByIdAndMemberOneOrMemberTwo(conversationId,userRepository.findOne(userId)) != null){
-            return true;
-        }
-        else
-            return false;
-    };
 }

@@ -36,7 +36,7 @@ export class HttpSecService {
     return this.http.post(
       url,
       body,
-      this.getConfig()
+      this.postConfig()
     ).map(resp => <any> resp.json());
   }
 

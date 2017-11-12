@@ -14,5 +14,10 @@ public interface PrivateMessageRepository extends CrudRepository<PrivateMessage,
 
     List<PrivateMessage> findLast10ByConversationIdAndIdLessThanOrderBySendDateAsc(int conversationId,int id);
     List<PrivateMessage> findAllByConversationIdAndIdGreaterThanOrderBySendDateAsc(int conversationId,int id);
-    List<PrivateMessage> findLast10ByConversationIdOrderBySendDateAsc(int conversationId);
+
+
+    List<PrivateMessage> findFirst10ByConversationIdAndIdLessThanOrderBySendDateDesc(int conversationId,int id);
+    List<PrivateMessage> findFirst10ByConversationIdOrderBySendDateDesc(int conversationId);
+
+    List<PrivateMessage> getFirst1ByConversationIdOrderBySendDateDesc(int conversationId);
 }

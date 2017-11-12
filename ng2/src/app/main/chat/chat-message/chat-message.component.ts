@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ChatManagerService} from "../chat-manager.service";
+import {Conversation} from "../../../_model/conversation";
 
 @Component({
   selector: 'app-chat-message',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatMessageComponent implements OnInit {
 
-  constructor() { }
+  private textMessage: string;
+
+  constructor(private chatService: ChatManagerService) { }
 
   ngOnInit() {
+  }
+
+  private testMsg: number = 0;
+
+  sendNewMessage(){
+    this.chatService.sendMessage('TEST: '+this.testMsg++ +' '+ this.textMessage);
   }
 
 }

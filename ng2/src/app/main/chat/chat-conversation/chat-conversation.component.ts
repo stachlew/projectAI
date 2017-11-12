@@ -1,4 +1,10 @@
-import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {
+  AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChild,
+  ViewChildren
+} from '@angular/core';
+import {PrivateMessage} from "../../../_model/private-message";
+import {ChatManagerService} from "../chat-manager.service";
+import {User} from "../../../_model/user.model";
 
 @Component({
   selector: 'app-chat-conversation',
@@ -7,9 +13,9 @@ import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, View
 })
 export class ChatConversationComponent implements OnInit, AfterViewInit {
 
-  public msgSource: any[] = [];
-
-  constructor() { }
+  @Input('messagesList') msgList: PrivateMessage[] = [];
+  @Input('secondPerson') secondPerson: User;
+  constructor(private chatService: ChatManagerService) { }
 
   ngOnInit() {
   }
@@ -21,29 +27,40 @@ export class ChatConversationComponent implements OnInit, AfterViewInit {
   @ViewChildren('messages') messages: QueryList<any>;
   @ViewChild('chatContent') content: ElementRef;
 
+
+
+  onScroll(event) {
+    if(event.target.scrollTop == 0){
+      console.log("TOP!");
+      setTimeout(()=>{
+        this.handleUpdateBefore(event);
+      },2000);
+    }
+  }
+
+  handleUpdateBefore(event){
+    if(event.target.scrollTop == 0){
+      this.chatService.updateMessagesBefore().subscribe(resp=>{
+        this.scrollToTop();
+      });
+    }
+  }
+
   scrollToBottom = () => {
     try {
       this.content.nativeElement.scrollTop = this.content.nativeElement.scrollHeight;
     } catch (err) {}
   };
 
+  scrollToTop = () => {
+    try {
+      setTimeout(x=>{this.content.nativeElement.scrollTop = 0;});
+    } catch (err) {}
+  };
+
   test(){
     console.log("TEST");
     this.scrollToBottom();
-  }
-
-
-  test2(){
-    console.log("TEST");
-    this.addMock();
-  }
-
-  addMock(){
-    let mockMsg = {
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam mauris risus, iaculis eget purus congue, fermentum tristique lacus. Praesent non sapien dapibus, posuere purus ut, elementum nibh.',
-      date: new Date(),
-    };
-    this.msgSource.push(mockMsg);
   }
 
 }
