@@ -11,8 +11,10 @@ import pl.wat.logic.dto.conversation.PrivateMessageDTO;
 import pl.wat.logic.dto.profile.ProfileDTO;
 import pl.wat.logic.dto.user.UserDTO;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.*;
 
 @Service
 public class TransformService {
@@ -32,6 +34,7 @@ public class TransformService {
             dto.setActive(entity.getAccountInfo().isActive());
             dto.setEnabled(entity.getEnabled());
             dto.setAuthorities(toDTO(entity.getAuthorities()));
+            dto.setAge(this.countAge(entity));
             return dto;
         }else {
             return null;
@@ -53,6 +56,7 @@ public class TransformService {
             dto.setActive(false);
             dto.setEnabled(false);
             dto.setAuthorities(null);
+            dto.setAge(this.countAge(entity));
             return dto;
         }else {
             return null;
@@ -144,7 +148,15 @@ public class TransformService {
         }
     }
 
-
+    private int countAge(User entity){
+        if(entity!=null && entity.getBirthDate()!=null){
+            LocalDate now = LocalDate.now();
+            LocalDate birthday = entity.getBirthDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            return Period.between(birthday,now).getYears();
+        }else {
+            return 0;
+        }
+    }
 
 
 

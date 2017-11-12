@@ -46,6 +46,9 @@ public class User {
     @Size(min = 4, max = 50)
     private String email;
 
+    @Column(name="birth_Date")
+    private Date birthDate;
+
     @NotNull
     private boolean enabled;
 
@@ -160,4 +163,12 @@ public class User {
         this.accountInfo = accountInfo;
     }
 
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
 }

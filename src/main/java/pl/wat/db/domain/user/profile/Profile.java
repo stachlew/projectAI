@@ -16,9 +16,6 @@ public class Profile {
     @Column
     private boolean isMan;
 
-   @Column(name="birth_Date")
-   private Date birthDate;
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -78,20 +75,6 @@ public class Profile {
 
     public Profile() {
     }
-
-
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-
-
-
 
     public String getProfession() {
         return profession;

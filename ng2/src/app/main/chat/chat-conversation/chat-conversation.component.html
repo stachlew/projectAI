@@ -1,5 +1,5 @@
 <div class="conversation-header">
-  Zbyszek, 45 lat <button (click)="test()">TEST</button> <button (click)="test2()">TEST2</button>
+  <h3>{{secondPerson?.firstname}},&nbsp;{{secondPerson?.age}} </h3>
 </div>
 
 <div #chatContent class="conversation-table-wrapper" (scroll)="onScroll($event)">

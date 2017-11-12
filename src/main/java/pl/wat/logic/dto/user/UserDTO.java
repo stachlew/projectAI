@@ -20,6 +20,7 @@ public class UserDTO {
     private boolean active;
     private boolean enabled;
     private List<Authority> authorities;
+    private int age;
 
     public int getId() {
         return id;
@@ -119,5 +120,13 @@ public class UserDTO {
 
     public void setAuthorities(List<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

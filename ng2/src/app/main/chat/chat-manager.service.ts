@@ -6,7 +6,7 @@ import {PrivateMessage} from "../../_model/private-message";
 import {HttpSecService} from "../../_service/util/http-sec.service";
 import {Http} from "@angular/http";
 import {isNullOrUndefined} from "util";
-import {ChatRequest} from "../../_model/ChatRequest";
+import {ChatRequest} from "../../_model/chat-request";
 
 @Injectable()
 export class ChatManagerService implements OnInit{
@@ -67,10 +67,10 @@ export class ChatManagerService implements OnInit{
     }
   }
 
-  public updateMessagesBefore(){
+  public updateMessagesBefore() : Observable<any>{
     let lastId = this.getFirstMessageId();
     if(!isNullOrUndefined(lastId)){
-      this.getMessagesBefore(this.actualConversation.id,lastId).subscribe(resp=>{
+      return this.getMessagesBefore(this.actualConversation.id,lastId).map(resp=>{
         resp.forEach(msg=>{
           this.actualMessageList.unshift(msg);
         });
@@ -119,7 +119,7 @@ export class ChatManagerService implements OnInit{
     return this.httpSrv.postAndFetchData(AppUrls.GET_LAST_MESSAGES_URL,body).map(resp => <any> resp);
   }
 
-  private getMessagesBefore(conversationId: number, messageId: number) : Observable<PrivateMessage[]> {
+  private getMessagesBefore(conversationId: number, messageId: number) : Observable<any> {
     let body = new ChatRequest();
     body.conversationId = conversationId;
     body.messageId = messageId;
