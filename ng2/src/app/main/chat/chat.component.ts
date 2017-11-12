@@ -12,6 +12,7 @@ export class ChatComponent implements OnInit {
   constructor(public chatService: ChatManagerService) { }
 
   ngOnInit() {
+    this.chatService.unsetNewMessageFlag();
   }
 
 }

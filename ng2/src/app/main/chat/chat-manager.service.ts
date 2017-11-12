@@ -7,29 +7,43 @@ import {HttpSecService} from "../../_service/util/http-sec.service";
 import {Http} from "@angular/http";
 import {isNullOrUndefined} from "util";
 import {ChatRequest} from "../../_model/chat-request";
+import has = Reflect.has;
 
 @Injectable()
 export class ChatManagerService implements OnInit{
 
   constructor(private http: Http, private httpSrv: HttpSecService) {
-    this.handleLoop();
+    this.handleConversationsRefreshLoop();
   }
 
   ngOnInit(){
 
   }
 
-  conversationList: Conversation[];
+  conversationListSorted: Conversation[] = [];
+  conversationOldList: Conversation[] = [];
+
   actualConversation: Conversation;
-  actualMessageList: PrivateMessage[];
+  actualMessageList: PrivateMessage[] = [];
 
-  requestLoop: boolean = true;
+  newMessageFlag: boolean = false;
+  requestMessageLoop: boolean = true;
+  requestConversationsLoop: boolean = true;
 
-  handleLoop(){
-    if(this.requestLoop){
+  handleMessageRefreshLoop() {
+    if(this.requestMessageLoop){
       this.updateMessagesAfter();
-      setTimeout(test=>{
-        this.handleLoop();
+      setTimeout(msg=>{
+        this.handleMessageRefreshLoop();
+      },5000);
+    }
+  }
+
+  handleConversationsRefreshLoop() {
+    if(this.requestConversationsLoop){
+      this.updateAllConversations();
+      setTimeout(conv=>{
+        this.handleConversationsRefreshLoop();
       },5000);
     }
   }
@@ -37,15 +51,24 @@ export class ChatManagerService implements OnInit{
   public startChatService(){
     console.log("startChatService");
     this.updateData();
-    this.requestLoop = true;
-    this.handleLoop();
+    this.requestConversationsLoop = true;
+    this.handleConversationsRefreshLoop();
   }
 
   public stopAndClearChatService(){
-    this.requestLoop = false;
-    this.conversationList = null;
+    this.requestConversationsLoop = false;
+    this.conversationListSorted = null;
     this.actualConversation = null;
     this.actualMessageList = null;
+  }
+
+  public startMessagesRefreshing(){
+    this.requestMessageLoop = true;
+    this.handleMessageRefreshLoop();
+  }
+
+  public stopMessagesRefreshing(){
+    this.requestMessageLoop = false;
   }
 
 
@@ -57,9 +80,7 @@ export class ChatManagerService implements OnInit{
   }
 
   public updateData(){
-    this.getAllConversations().subscribe(resp=>{
-      this.conversationList = resp;
-    });
+    this.updateAllConversations();
 
     if(!isNullOrUndefined(this.actualConversation) && !isNullOrUndefined(this.actualMessageList) && this.actualMessageList.length>0){
       let lastMessageId = this.actualMessageList[this.actualMessageList.length-1].id;
@@ -107,8 +128,39 @@ export class ChatManagerService implements OnInit{
 
   public updateAllConversations() {
     this.getAllConversations().subscribe(resp=>{
-      this.conversationList = resp;
+      this.handleConversationUpdate(resp);
     });
+  }
+
+  public unsetNewMessageFlag(){
+    this.newMessageFlag = false;
+  }
+
+  private handleConversationUpdate(newList: Conversation[]){
+    this.conversationOldList = this.conversationListSorted;
+    this.conversationListSorted = newList;
+
+    if(!this.newMessageFlag && this.conversationOldList != null && this.conversationListSorted != null){
+      this.newMessageFlag = this.checkForDifferences(this.conversationOldList, this.conversationListSorted);
+    }
+  }
+
+  checkForDifferences(oldList: Conversation[], newList: Conversation[]) : boolean{
+    if(oldList.length != newList.length){
+      return true;
+    }
+
+    let hasDifference: boolean = false;
+    newList.forEach(newElem => {
+      oldList.forEach(oldElem =>{
+        if(newElem.id == oldElem.id){
+          if(newElem.lastMessage.id != oldElem.lastMessage.id){
+            hasDifference = true;
+          }
+        }
+      });
+    });
+    return hasDifference;
   }
 
   private getAllConversations() : Observable<Conversation[]> {

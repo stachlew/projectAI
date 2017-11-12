@@ -24,7 +24,7 @@ public class ChatController {
 
     //lista rozmow
     @PreAuthorize("hasRole('USER')")
-    @RequestMapping(value = "/getAllMessages",method = RequestMethod.GET)
+    @RequestMapping(value = "/getAllConversations",method = RequestMethod.GET)
     public @ResponseBody
     List<ConversationDTO> getAllConversations(Authentication auth){
         int userId = this.utilService.getUserId(auth);

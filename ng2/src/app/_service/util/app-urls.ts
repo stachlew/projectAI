@@ -19,7 +19,7 @@ export class AppUrls {
 
 
   //CHAT
-  public static GET_ALL_CONVERSATION_URL = AppUrls.CHAT_URL + '/getAllMessages';
+  public static GET_ALL_CONVERSATION_URL = AppUrls.CHAT_URL + '/getAllConversations';
   public static GET_LAST_MESSAGES_URL = AppUrls.CHAT_URL + '/getLastMessages';
   public static GET_MESSAGES_BEFORE_URL = AppUrls.CHAT_URL + '/getMessagesBefore';
   public static GET_MESSAGES_AFTER_URL = AppUrls.CHAT_URL + '/getMessagesAfter';

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../../_service/authentication/authentication.service';
 import { Router } from '@angular/router';
+import {ChatManagerService} from "../../main/chat/chat-manager.service";
 
 @Component({
   selector: 'navigation-bar',
@@ -12,7 +13,7 @@ export class NavigationComponent {
   ngOnInit() {
   }
 
-  constructor( public auth: AuthenticationService, public router: Router) {
+  constructor( public auth: AuthenticationService, public router: Router, public chatService: ChatManagerService) {
   }
 
   logout() {
