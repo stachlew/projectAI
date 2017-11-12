@@ -6,13 +6,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
- * Klasa UserPersonalityAttributes
+ * Klasa UserPersonalityAttributeRepository
  * Klasa intersekcja pomiędzy User a CategoryAttribute
  *
  */
 @Entity
 @Table(name = "USER_PERSONALITY_ATTR")
-public class UserPersonalityAttributes {
+public class UserPersonalityAttribute {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_PERSONALITY_ATTR_PK")
     @SequenceGenerator(sequenceName = "USER_PERSONALITY_ATTR_PK", initialValue = 1, allocationSize = 1, name = "USER_PERSONALITY_ATTR_PK")

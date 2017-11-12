@@ -160,3 +160,72 @@ INSERT INTO CITY ( id,city_name,id_region ) VALUES (  CITY_PK.nextval,  'Koszali
 INSERT INTO CITY ( id,city_name,id_region ) VALUES (  CITY_PK.nextval,  'Stargard',  16);
 INSERT INTO CITY ( id,city_name,id_region ) VALUES (  CITY_PK.nextval,  'Kołobrzeg',  16);
 INSERT INTO CITY ( id,city_name,id_region ) VALUES (  CITY_PK.nextval,  'Świnoujście',  16);
+
+--- PAROWANIE UŻYTKOWNIKÓW ---
+insert into personality_category (id, amount, description) values(PERSONALITY_CATEGORY_PK.nextval,15,'Charakter');
+insert into personality_category (id, amount, description) values(PERSONALITY_CATEGORY_PK.nextval,15,'Osobowość');
+insert into personality_category (id, amount, description) values(PERSONALITY_CATEGORY_PK.nextval,30,'Czas wolny');
+
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Otwarta',1);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Spontaniczna',1);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Introwertyczna',1);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Rozmowna',1);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Z poczuciem humoru',1);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Pomocna',1);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Samodzielna',1);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Energiczna',1);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Osoba oczytana',1);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Odpowiedzialna',1);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Opiekuńcza',1);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Dbająca o porządek',1);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Ma dużo znajomych',1);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Umie rozmawiać na każdy temat ',1);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Perfekcjonista',1);
+
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Szara myszka',2);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Wieczny wojownik',2);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Przywódca grupy',2);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Posłuszny wyrobnik',2);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Samotny strzelec',2);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Najlepszy kochanek',2);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Złota rączka',2);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Wierny przyjaciel',2);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Towarzysz życia',2);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Wierny przyjaciel',2);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Wieczny pracuś',2);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Osoba potrafiąca zaskoczyć',2);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Nierozwikłana zagadka',2);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Dusza towarzystwa',2);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Domator',2);
+
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Kino przy okazji każdej premiery',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Spacer po niedzielnym obiedzie',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Wieczory przed telewizorem',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Gra w gry wideo',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Wakacje w europejskiej stolicy',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Wakacje egzotyczne',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Weekend w Bieszczadach',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Weekend nad morzem',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Sylwester w Zakopanem',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Sylwester w Paryżu',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Święta w rodzinnym gronie',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Podziwianie przyrody',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Lampka wina przy letnim zachodzie słońca',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Ognisko i pieczone ziemniaki',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Domówka ze znajomymi',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Wyjście do klubu',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Horror przy zgaszonym świetle',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Komedia romantyczna i czekoladki',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Kawa, koc, kot i książka',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Realizowanie swoich pasji',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Czas wyłącznie dla siebie',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Skok na bungge',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Zjazd na nartach z lodowca',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Windsurfing',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Szachy przy herbacie',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Teleturniej w kapciach',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Wspólne gotowanie',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Gry planszowe',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Wspólne leniuchowanie',3);
+insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Śniadanie do łóżka',3);
+
