@@ -11,6 +11,7 @@ import pl.wat.db.domain.localization.Region;
 import pl.wat.db.domain.user.Authority;
 import pl.wat.db.domain.user.User;
 import pl.wat.db.domain.user.profile.Profile;
+import pl.wat.db.domain.user.profile.ProfilePicture;
 import pl.wat.logic.dto.conversation.ConversationDTO;
 import pl.wat.logic.dto.conversation.PrivateMessageDTO;
 import pl.wat.logic.dto.event.EventDTO;
@@ -19,6 +20,7 @@ import pl.wat.logic.dto.event.ParticipantDTO;
 import pl.wat.logic.dto.localization.CityDTO;
 import pl.wat.logic.dto.localization.RegionDTO;
 import pl.wat.logic.dto.profile.ProfileDTO;
+import pl.wat.logic.dto.profile.ProfilePictureDTO;
 import pl.wat.logic.dto.user.UserDTO;
 
 import java.time.LocalDate;
@@ -45,6 +47,7 @@ public class TransformService {
             dto.setEnabled(entity.getEnabled());
             dto.setAuthorities(toDTO(entity.getAuthorities()));
             dto.setAge(this.countAge(entity));
+            dto.setProfilePhotoId(entity.getProfilePhotoId());
             return dto;
         }else {
             return null;
@@ -67,6 +70,7 @@ public class TransformService {
             dto.setEnabled(false);
             dto.setAuthorities(null);
             dto.setAge(this.countAge(entity));
+            dto.setProfilePhotoId(entity.getProfilePhotoId());
             return dto;
         }else {
             return null;
@@ -152,6 +156,30 @@ public class TransformService {
             entity.setMan(dto.isMan());
             entity.setDescription(dto.getDescription());
             //... itd
+            return entity;
+        }else {
+            return null;
+        }
+    }
+
+    public ProfilePictureDTO toDTO(ProfilePicture entity){
+        if(entity!=null){
+            ProfilePictureDTO dto = new ProfilePictureDTO();
+            dto.setId(entity.getId());
+            dto.setAddDate(entity.getAddDate());
+            dto.setUser(toSimpleDto(entity.getUser()));
+            return dto;
+        }else {
+            return null;
+        }
+    }
+
+    public ProfilePicture toEntity(ProfilePictureDTO dto){
+        if(dto!=null){
+            ProfilePicture entity = new ProfilePicture();
+            entity.setId(dto.getId());
+            entity.setAddDate(dto.getAddDate());
+            entity.setUser(toEntity(dto.getUser()));
             return entity;
         }else {
             return null;

@@ -71,7 +71,6 @@
   <!--lista-->
   <div class="row">
     <div class="col-md-12 persons-table-container">
-
       <table class="table table-hover">
         <tbody class="profile-header">
           <tr *ngFor="let person of persons" class="profile-table-row" (click)="goToPersonDetails(person.id)">
@@ -81,7 +80,7 @@
                   <b>{{person.name}}, {{person.age}}</b>
                 </div>
                 <div class="persons-img-column">
-                  <img [src]="userPhotoUrl+'/'+person.id"  class="rounded-circle">
+                  <img [src]="userPhotoUrl+person.profilePhotoId"  class="rounded-circle">
                 </div>
                 <div>
                   <b>{{person.city}}</b>

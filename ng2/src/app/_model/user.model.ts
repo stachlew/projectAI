@@ -8,4 +8,5 @@ export interface User {
   authorities: string[];
   enabled: boolean;
   age: number;
+  profilePhotoId: number;
 }

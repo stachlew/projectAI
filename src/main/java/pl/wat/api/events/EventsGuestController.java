@@ -5,7 +5,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import pl.wat.logic.dto.event.EventDTO;
+import pl.wat.logic.dto.event.EventSearchDTO;
 import pl.wat.logic.service.event.EventService;
+import pl.wat.logic.service.utils.PageResponse;
 import pl.wat.logic.service.utils.UtilService;
 
 import java.util.List;
@@ -18,6 +20,15 @@ public class EventsGuestController {
     UtilService utilService;
     @Autowired
     EventService eventService;
+
+    //lista wydarzeń
+    @RequestMapping(value = "/getEvents",method = RequestMethod.POST)
+    @PreAuthorize("hasRole('USER')")
+    @ResponseBody
+    public PageResponse getEvent(Authentication auth, @RequestBody EventSearchDTO filter){
+        return eventService.getEvents(filter);
+    }
+
     //lista wydarzeń na które jesteśmy zapisanii
     @RequestMapping(value = "/getUserParticipantEvent",method = RequestMethod.GET)
     @PreAuthorize("hasRole('USER')")

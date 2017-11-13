@@ -7,5 +7,6 @@ import pl.wat.db.domain.localization.Region;
 import java.util.List;
 
 public interface CityRepository extends JpaRepository<City, Integer> {
-    List<City> findAllByRegion(Region region);
+    List<City> findAllByRegionId(int regionId);
+    List<City> findAll();
 }

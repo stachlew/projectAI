@@ -42,10 +42,9 @@ public class DictionaryService {
     }
 
     public List<CityDTO> getCityByRegion(RegionDTO region){
-        LinkedList<CityDTO> dtoList = new LinkedList<>();
-        cityRepository.findAllByRegion(transformService.toEntity(region)).forEach(city -> {
-            dtoList.add(transformService.toDTO(city));
-        });
+        List<City> fetched = cityRepository.findAllByRegionId(region.getId());
+        List<CityDTO> dtoList = new LinkedList<>();
+        fetched.forEach(city->dtoList.add(transformService.toDTO(city)));
         return dtoList;
     }
 }

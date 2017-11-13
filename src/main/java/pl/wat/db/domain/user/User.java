@@ -49,6 +49,9 @@ public class User {
     @Column(name="birth_Date")
     private Date birthDate;
 
+    @Column(name="profile_photo_id", nullable = true)
+    private Integer profilePhotoId;
+
     @NotNull
     private boolean enabled;
 
@@ -170,5 +173,13 @@ public class User {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public Integer getProfilePhotoId() {
+        return profilePhotoId;
+    }
+
+    public void setProfilePhotoId(Integer profilePhotoId) {
+        this.profilePhotoId = profilePhotoId;
     }
 }

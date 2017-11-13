@@ -8,18 +8,18 @@
     <div class="events-filters-container">
       <span class="search-header">Filtry:</span>
       <mat-form-field class="filter-event-input">
-        <mat-select placeholder="Województwo">
+        <mat-select [(value)]="filter.region" (change)="updateCities($event)" placeholder="Województwo">
           <mat-option>Dowolne</mat-option>
-          <mat-option *ngFor="let region of regions" [value]="region.id">{{ region.name }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="filter-event-input">
-        <mat-select placeholder="Miasto">
-          <mat-option>Dowolne</mat-option>
-          <mat-option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</mat-option>
+          <mat-option *ngFor="let region of regions" [value]="region"  >{{ region.regionName }}</mat-option>
         </mat-select>
       </mat-form-field>
 
+      <mat-form-field class="filter-event-input">
+        <mat-select [(value)]="filter.city" placeholder="Miasto">
+          <mat-option>Dowolne</mat-option>
+          <mat-option *ngFor="let city of cities" [value]="city" >{{ city.cityName }}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
       <mat-form-field class="filter-event-input">
         <input matInput [matDatepicker]="picker1" placeholder="Data od">
@@ -76,95 +76,20 @@
   <div class="tile-container">
     <div class="card-columns">
 
-      <div class="card border-primary">
-        <img class="card-img-top card-img-cust" src="/assets/images/stock_date.jpg">
-        <div class="card-bod card-body-cust">
-          <h4 class="card-title">Card title</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a data-toggle="modal" data-target="#event-map" class="card-link">Zobacz na mapie</a>
+      <ng-container *ngFor="">
+        <div class="card border-primary">
+          <img class="card-img-top card-img-cust" [src]="userPhotoUrl+person.profilePhotoId">
+          <div class="card-bod card-body-cust">
+            <h4 class="card-title">Card title</h4>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a data-toggle="modal" data-target="#event-map" class="card-link">Zobacz na mapie</a>
+          </div>
         </div>
-      </div>
+      </ng-container>
 
-      <div class="card border-primary">
-        <img class="card-img-top card-img-cust" src="/assets/images/stock_date.jpg">
-        <div class="card-bod card-body-cust">
-          <h4 class="card-title">Card title</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a data-toggle="modal" data-target="#event-map" class="card-link">Zobacz na mapie</a>
-        </div>
-      </div>
 
-      <div class="card border-primary">
-        <img class="card-img-top card-img-cust" src="/assets/images/stock_date.jpg">
-        <div class="card-bod card-body-cust">
-          <h4 class="card-title">Card title</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a data-toggle="modal" data-target="#event-map" class="card-link">Zobacz na mapie</a>
-        </div>
-      </div>
 
-      <div class="card border-primary">
-        <img class="card-img-top card-img-cust" src="/assets/images/stock_date.jpg">
-        <div class="card-bod card-body-cust">
-          <h4 class="card-title">Card title</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a data-toggle="modal" data-target="#event-map" class="card-link">Zobacz na mapie</a>
-        </div>
-      </div>
-
-      <div class="card border-primary">
-        <img class="card-img-top card-img-cust" src="/assets/images/stock_date.jpg">
-        <div class="card-bod card-body-cust">
-          <h4 class="card-title">Card title</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a data-toggle="modal" data-target="#event-map" class="card-link">Zobacz na mapie</a>
-        </div>
-      </div>
-
-      <div class="card border-primary">
-        <img class="card-img-top card-img-cust" src="/assets/images/stock_date.jpg">
-        <div class="card-bod card-body-cust">
-          <h4 class="card-title">Card title</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a data-toggle="modal" data-target="#event-map" class="card-link">Zobacz na mapie</a>
-        </div>
-      </div>
-
-      <div class="card border-primary">
-        <img class="card-img-top card-img-cust" src="/assets/images/stock_date.jpg">
-        <div class="card-bod card-body-cust">
-          <h4 class="card-title">Card title</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a data-toggle="modal" data-target="#event-map" class="card-link">Zobacz na mapie</a>
-        </div>
-      </div>
-
-      <div class="card border-primary">
-        <img class="card-img-top card-img-cust" src="/assets/images/stock_date.jpg">
-        <div class="card-bod card-body-cust">
-          <h4 class="card-title">Card title</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a data-toggle="modal" data-target="#event-map" class="card-link">Zobacz na mapie</a>
-        </div>
-      </div>
-
-      <div class="card border-primary">
-        <img class="card-img-top card-img-cust" src="/assets/images/stock_date.jpg">
-        <div class="card-bod card-body-cust">
-          <h4 class="card-title">Card title</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a data-toggle="modal" data-target="#event-map" class="card-link">Zobacz na mapie</a>
-        </div>
-      </div>
 
     </div>
   </div>

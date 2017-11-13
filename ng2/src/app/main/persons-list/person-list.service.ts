@@ -20,7 +20,8 @@ export class PersonListService {
         job: 'Kasjer w biedronka',
         fit1: 57,
         fit2: 89,
-        fit3: 76
+        fit3: 76,
+        profilePhotoId: -1
       },
       {
         id:2,
@@ -34,7 +35,8 @@ export class PersonListService {
         job: 'Sprzątaczka na Okęciu',
         fit1: 87,
         fit2: 69,
-        fit3: 56
+        fit3: 56,
+        profilePhotoId: -1
       },
       {
         id:3,
@@ -48,7 +50,8 @@ export class PersonListService {
         job: 'Szlachta nie pracuje',
         fit1: 52,
         fit2: 79,
-        fit3: 65
+        fit3: 65,
+        profilePhotoId: 3
       },
       {
         id:4,
@@ -62,7 +65,8 @@ export class PersonListService {
         job: 'Szlachta baluje',
         fit1: 72,
         fit2: 69,
-        fit3: 75
+        fit3: 75,
+        profilePhotoId: -1
       },
       {
         id:5,
@@ -76,7 +80,8 @@ export class PersonListService {
         job: 'Żabka',
         fit1: 62,
         fit2: 81,
-        fit3: 77
+        fit3: 77,
+        profilePhotoId: -1
       }
     ];
 
@@ -96,7 +101,8 @@ export class PersonListService {
         job: 'Szlachta nie pracuje',
         fit1: 62,
         fit2: 81,
-        fit3: 77
+        fit3: 77,
+        profilePhotoId: _i
       }
       resp.push(per);
     }

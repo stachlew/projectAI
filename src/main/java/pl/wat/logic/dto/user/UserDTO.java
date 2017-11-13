@@ -14,6 +14,7 @@ public class UserDTO {
     private String firstname;
     private String lastname;
     private String email;
+    private Integer profilePhotoId;
     private Date accountCreateDate;
     private Timestamp lastLogoutDate;
     private Date lastpassres;
@@ -128,5 +129,13 @@ public class UserDTO {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public Integer getProfilePhotoId() {
+        return profilePhotoId;
+    }
+
+    public void setProfilePhotoId(Integer profilePhotoId) {
+        this.profilePhotoId = profilePhotoId;
     }
 }

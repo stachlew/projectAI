@@ -9,7 +9,9 @@ import pl.wat.db.repository.event.EventRepository;
 import pl.wat.db.repository.event.ParticipantRepository;
 import pl.wat.db.repository.user.UserRepository;
 import pl.wat.logic.dto.event.EventDTO;
+import pl.wat.logic.dto.event.EventSearchDTO;
 import pl.wat.logic.dto.event.ParticipantDTO;
+import pl.wat.logic.service.utils.PageResponse;
 import pl.wat.logic.service.utils.TransformService;
 
 import java.util.LinkedList;
@@ -80,6 +82,19 @@ public class EventService {
             eventDTOList.add(transformService.toDTO(participant.getEvent()));
         });
         return eventDTOList;
+    }
+
+    public PageResponse getEvents(EventSearchDTO filter) { //TODO WYSZUKIWANIE WG FILTRA
+        List<Event> fethed = eventRepository.findAll();
+        List<EventDTO> dtos = new LinkedList<>();
+        fethed.forEach(event -> dtos.add(transformService.toDTO(event)));
+
+        PageResponse pageResponse = new PageResponse<EventDTO>();
+        pageResponse.value = dtos;
+//        pageResponse.pageNo = filter.getPageNo(); //TODO
+//        pageResponse.elementsCount = 0;
+//        pageResponse.elementsCount = 100;
+        return pageResponse;
     }
 
     public List<EventDTO> getUserEvent(int userId) {

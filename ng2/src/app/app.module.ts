@@ -51,6 +51,7 @@ import { CustomPaginatorComponent } from './_component/custom-paginator/custom-p
 import {AppUrls} from "./_service/util/app-urls";
 import { CustomDateTimeComponent } from './_component/custom-date-time/custom-date-time.component';
 import {TruncatePipe} from "./pipes/truncate";
+import {DictionaryService} from "./_service/util/dictionary.service";
 
 
 @NgModule({
@@ -116,6 +117,7 @@ import {TruncatePipe} from "./pipes/truncate";
     UtilsService,
     ChatManagerService,
     PersonListService,
+    DictionaryService,
     AppUrls
   ],
   bootstrap: [AppComponent]
