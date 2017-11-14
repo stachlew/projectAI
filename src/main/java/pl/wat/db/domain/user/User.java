@@ -68,9 +68,6 @@ public class User {
                     columnNames = {"user_id", "authority_id"})})
     private List<Authority> authorities;
 
-    @Embedded
-    private AccountInfo accountInfo;
-
     public User() {
     }
 
@@ -156,14 +153,6 @@ public class User {
 
     public boolean isEnabled() {
         return enabled;
-    }
-
-    public AccountInfo getAccountInfo() {
-        return accountInfo;
-    }
-
-    public void setAccountInfo(AccountInfo accountInfo) {
-        this.accountInfo = accountInfo;
     }
 
 

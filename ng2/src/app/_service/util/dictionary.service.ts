@@ -16,7 +16,7 @@ export class DictionaryService implements OnInit {
   }
 
   getRegions(): Observable<Region[]> {
-    return this.httpServ.getAndFetchData(AppUrls.GET_REGIONS).map(resp=>
+    return this.httpServ.getAndFetchData(AppUrls.GET_REGIONS_URL).map(resp=>
       {
         return <Region[]> resp;
       }
@@ -24,7 +24,7 @@ export class DictionaryService implements OnInit {
   }
 
   getCities(region: Region): Observable<City[]> {
-    return this.httpServ.postAndFetchData(AppUrls.GET_CITIES,region).map(resp=>
+    return this.httpServ.postAndFetchData(AppUrls.GET_CITIES_URL,region).map(resp=>
       {
         return <City[]> resp;
       }

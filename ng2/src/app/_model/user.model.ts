@@ -1,5 +1,7 @@
-export interface User {
-  id: number
+import {Localization} from "./localization";
+
+export class User {
+  id: number;
   username: string;
   firstname: string;
   lastname: string;
@@ -9,4 +11,8 @@ export interface User {
   enabled: boolean;
   age: number;
   profilePhotoId: number;
+  birthDay: Date;
+  userType: string;
+  sex: string;
+  localization: Localization;
 }

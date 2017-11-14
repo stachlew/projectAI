@@ -8,12 +8,12 @@ import {Http} from "@angular/http";
 import {isNullOrUndefined} from "util";
 import {ChatRequest} from "../../_model/chat-request";
 import has = Reflect.has;
+import {AuthenticationService} from "../../_service/authentication/authentication.service";
 
 @Injectable()
 export class ChatManagerService implements OnInit{
 
   constructor(private http: Http, private httpSrv: HttpSecService) {
-    this.handleConversationsRefreshLoop();
   }
 
   ngOnInit(){
@@ -39,7 +39,7 @@ export class ChatManagerService implements OnInit{
   chatComponentInited: boolean = false;
 
   requestMessageLoop: boolean = true;
-  requestConversationsLoop: boolean = true;
+  requestConversationsLoop: boolean = false;
 
   public unsetMessages(){
     this.actualConversation = null;
@@ -75,10 +75,11 @@ export class ChatManagerService implements OnInit{
   }
 
   public startChatService(){
-    console.log("startChatService");
-    this.updateData();
-    this.requestConversationsLoop = true;
-    this.handleConversationsRefreshLoop();
+    if(!this.requestConversationsLoop){
+      this.updateData();
+      this.requestConversationsLoop = true;
+      this.handleConversationsRefreshLoop();
+    }
   }
 
   public stopAndClearChatService(){

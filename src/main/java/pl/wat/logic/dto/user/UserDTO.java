@@ -1,6 +1,7 @@
 package pl.wat.logic.dto.user;
 
 import pl.wat.db.domain.user.Authority;
+import pl.wat.logic.dto.event.LocalizationDTO;
 import pl.wat.logic.dto.profile.ProfileDTO;
 
 import java.sql.Timestamp;
@@ -22,6 +23,10 @@ public class UserDTO {
     private boolean enabled;
     private List<Authority> authorities;
     private int age;
+    private String userType;
+    private Date birthDay;
+    private String sex;
+    private LocalizationDTO localizationDTO;
 
     public int getId() {
         return id;
@@ -40,10 +45,6 @@ public class UserDTO {
     }
 
     public String getPassword() {
-        return this.password;
-    }
-
-    public String getPlainPassword() {
         return password;
     }
 
@@ -73,6 +74,14 @@ public class UserDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getProfilePhotoId() {
+        return profilePhotoId;
+    }
+
+    public void setProfilePhotoId(Integer profilePhotoId) {
+        this.profilePhotoId = profilePhotoId;
     }
 
     public Date getAccountCreateDate() {
@@ -131,11 +140,35 @@ public class UserDTO {
         this.age = age;
     }
 
-    public Integer getProfilePhotoId() {
-        return profilePhotoId;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setProfilePhotoId(Integer profilePhotoId) {
-        this.profilePhotoId = profilePhotoId;
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    public Date getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(Date birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public LocalizationDTO getLocalizationDTO() {
+        return localizationDTO;
+    }
+
+    public void setLocalizationDTO(LocalizationDTO localizationDTO) {
+        this.localizationDTO = localizationDTO;
     }
 }

@@ -40,10 +40,7 @@ public class TransformService {
             dto.setFirstname(entity.getFirstname());
             dto.setLastname(entity.getLastname());
             dto.setEmail(entity.getEmail());
-            dto.setAccountCreateDate(entity.getAccountInfo().getAccountCreateDate()); //WINA Embedded
-            dto.setLastLogoutDate(entity.getAccountInfo().getLastLogoutDate());
             dto.setLastpassres(entity.getLastpassres());
-            dto.setActive(entity.getAccountInfo().isActive());
             dto.setEnabled(entity.getEnabled());
             dto.setAuthorities(toDTO(entity.getAuthorities()));
             dto.setAge(this.countAge(entity));
@@ -89,9 +86,12 @@ public class TransformService {
             entity.setId(dto.getId());
             entity.setUsername(dto.getUsername());
             entity.setPassword(dto.getPassword());
+            entity.setEmail(dto.getEmail());
             entity.setFirstname(dto.getFirstname());
             entity.setLastname(dto.getLastname());
-            // ... itd
+            entity.setBirthDate(dto.getBirthDay());
+            //TODO LOCALIZATION
+            entity.setEnabled(dto.isEnabled());
             return entity;
         }else {
             return null;

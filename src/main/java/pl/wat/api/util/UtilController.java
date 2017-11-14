@@ -17,7 +17,6 @@ public class UtilController {
 
     //Ilu użytkowników aktywnych
     @RequestMapping(value = "/countActiveUsers",method = RequestMethod.GET)
-    @PreAuthorize("hasRole('USER')")
     @ResponseBody
     public int getCountActiveUsers(Authentication auth){
         return userServices.countActiveUsers();

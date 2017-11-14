@@ -1,20 +1,26 @@
 .register-container{
-  text-align: center;
+  /*text-align: center;*/
+
   margin-top: 40px;
 }
 
-.form-container{
-  margin-left: auto;
-  margin-right: auto;
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-container > * {
-  width: 100%;
+.register-input{
+  display: block;
+  width: 90%;
 }
 
 .mat-radio-button ~ .mat-radio-button {
   padding-right: 16px;
+}
+
+.error-msg{
+  color: red;
+  font-size: smaller;
+}
+
+.success-container{
+  margin-top: 30vh;
+  font-size: larger;
+  width: 800px;
+  text-align: center;
 }

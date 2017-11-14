@@ -6,4 +6,13 @@ export class Constants {
   public static PERSONS_ELEMENTS = 10;
   public static SPEED_DATES_ELEMENTS = 10;
 
+
+  public static USER_TYPE = 'ROLE_USER';
+  public static MANAGER_TYPE = 'ROLE_MANAGER';
+
+  public static SEX_MAN = 'MAN';
+  public static SEX_WOMAN = 'WOMAN';
+
+
+
 }

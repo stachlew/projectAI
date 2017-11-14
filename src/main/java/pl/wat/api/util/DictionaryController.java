@@ -20,7 +20,6 @@ public class DictionaryController {
     DictionaryService dictionaryService;
     //slownik wojewodztw
     @RequestMapping(value = "/getRegions",method = RequestMethod.GET)
-    @PreAuthorize("hasRole('USER')")
     @ResponseBody
     public List<RegionDTO> getRegions(Authentication auth){
         return dictionaryService.getAllRegion();
@@ -28,7 +27,6 @@ public class DictionaryController {
 
     //slownik miast
     @RequestMapping(value = "/getCities",method = RequestMethod.POST)
-    @PreAuthorize("hasRole('USER')")
     @ResponseBody
     public List<CityDTO> getCity(Authentication auth, @RequestBody  RegionDTO region){
         return dictionaryService.getCityByRegion(region);

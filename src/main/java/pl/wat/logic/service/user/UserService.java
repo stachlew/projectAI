@@ -2,14 +2,23 @@ package pl.wat.logic.service.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.wat.config.Constants;
 import pl.wat.config.PasswordGenerator;
 
+import pl.wat.db.domain.user.Authority;
+import pl.wat.db.domain.user.AuthorityName;
 import pl.wat.db.domain.user.User;
+import pl.wat.db.repository.user.AuthorityRepository;
 import pl.wat.db.repository.user.UserRepository;
 
+import pl.wat.logic.service.utils.RestResponse;
 import pl.wat.logic.service.utils.TransformService;
 import pl.wat.logic.dto.user.UserDTO;
 import pl.wat.logic.service.profile.ProfileService;
+
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -23,17 +32,47 @@ public class UserService {
     @Autowired
     private TransformService transfer;
 
+    @Autowired
+    private AuthorityRepository authorityRepository;
+
 
 
     public int countActiveUsers (){
-        return userRepository.countUserByAccountInfo_Active(true);
+        return userRepository.countUserByEnabledTrue();
     }
 
 
     //TO DO hash password
-    public UserDTO createNewUser(UserDTO newUser){
-        newUser.setPassword(PasswordGenerator.hashPassword(newUser.getPassword()));
-        return transfer.toSimpleDto(userRepository.save(transfer.toEntity(newUser)));
+    public RestResponse<UserDTO> createNewUser(UserDTO newUser){
+        RestResponse<UserDTO> response = new RestResponse<>();
+        if(true){
+            newUser.setPassword(PasswordGenerator.hashPassword(newUser.getPassword()));
+            User entity = transfer.toEntity(newUser);
+            entity.setLastpassres(new Date());
+            entity.setEnabled(true);
+            List<Authority> authorities = new LinkedList<>();
+            if(Constants.USER_TYPE.equals(newUser.getUserType())){
+                authorities.add(authorityRepository.findFirstByName(AuthorityName.ROLE_USER));
+                entity.setAuthorities(authorities);
+                response.status = 200;
+                response.value = transfer.toSimpleDto(userRepository.save(entity));
+            }
+            else if (Constants.MANAGER_TYPE.equals(newUser.getUserType())){
+                authorities.add(authorityRepository.findFirstByName(AuthorityName.ROLE_MANAGER));
+                entity.setAuthorities(authorities);
+                response.status = 200;
+                response.value = transfer.toSimpleDto(userRepository.save(entity));
+            }
+            else {
+                response.status = 400;
+                response.error = "Błędny typ użytkownika!";
+            }
+
+        }else {
+            response.status = 400;
+            response.error = "Wystąpił jakiś błąd na jakimś polu!";
+        }
+        return response;
     }
 
     public UserDTO getUserInfo(int idUser) {

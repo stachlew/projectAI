@@ -58,7 +58,7 @@ export class SpeedDatesListComponent implements OnInit {
   }
 
   getData() : Observable<any> {
-    return this.httpSrv.postAndFetchData(AppUrls.GUEST_GET_ALL_EVENTS,this.filter).map(resp=>{
+    return this.httpSrv.postAndFetchData(AppUrls.GUEST_GET_ALL_EVENTS_URL,this.filter).map(resp=>{
       return <SpeedDate> resp;
     });
   }

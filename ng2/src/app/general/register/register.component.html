@@ -1,40 +1,126 @@
-<div class="register-container">
+<div class="register-container" style="text-align: center" *ngIf="!registrationComplete">
   <h2>Rejestracja w serwisie LoveMe</h2>
+  <h4>Rejestracja jest szybka i łatwa. Już dziś zrób pierwszy krok.</h4>
+
+  <div  class="form-container row" style="text-align: left; margin-top: 50px; margin-left: auto; margin-right: auto">
 
 
-  <div  class="form-container">
-    <mat-form-field>
-      <input matInput placeholder="Input">
-    </mat-form-field>
+    <div class="col-md-4">
+      <h3>Dane Twojego nowego konta</h3>
 
-    <mat-form-field>
-      <textarea matInput placeholder="Textarea"></textarea>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-select placeholder="Select">
-        <mat-option value="option">Option</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <label>Float placeholder: </label>
-    <mat-radio-group>
-      <mat-radio-button value="1">Option 1</mat-radio-button>
-      <mat-radio-button value="2">Option 2</mat-radio-button>
-    </mat-radio-group>
-
-    <mat-form-field>
-      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
-      <mat-icon matSuffix >
-        <span (click)="hide = !hide">
-        <i *ngIf="hide" class="fa fa-eye" aria-hidden="true"></i>
-        <i *ngIf="!hide" class="fa fa-eye-slash" aria-hidden="true"></i>
+      <mat-form-field class="register-input">
+        <input [(ngModel)]="userForm.username" matInput placeholder="Login">
+      </mat-form-field>
+      <span *ngIf="errorFields[0].error" class="error-msg">
+        {{errorFields[0].errorText}}
       </span>
-      </mat-icon>
-    </mat-form-field>
 
-    <button class="btn btn-primary btn-block">Rejestruj</button>
+      <mat-form-field class="register-input">
+        <input matInput [(ngModel)]="userForm.password" placeholder="Hasło" [type]="hide ? 'password' : 'text'">
+        <mat-icon matSuffix >
+          <span (click)="hide = !hide">
+          <i *ngIf="hide" class="fa fa-eye" aria-hidden="true"></i>
+          <i *ngIf="!hide" class="fa fa-eye-slash" aria-hidden="true"></i>
+        </span>
+        </mat-icon>
+      </mat-form-field>
+      <span *ngIf="errorFields[1].error" class="error-msg">
+        {{errorFields[1].errorText}}
+      </span>
 
+      <mat-form-field class="register-input">
+        <input matInput [(ngModel)]="userForm.email" placeholder="E-mail">
+      </mat-form-field>
+      <span *ngIf="errorFields[2].error" class="error-msg">
+        {{errorFields[2].errorText}}
+      </span>
+
+      <div>Typ konta: </div>
+      <mat-radio-group class="register-input" [(ngModel)]="userForm.userType">
+        <mat-radio-button [value]="userSlug" style="margin-right: 25px">Poszukujący drugiej połowy</mat-radio-button>
+        <mat-radio-button [value]="managerSlug" >Manager wydarzeń</mat-radio-button>
+      </mat-radio-group>
+      <span *ngIf="errorFields[3].error" class="error-msg">
+        {{errorFields[3].errorText}}
+      </span>
+
+    </div>
+
+    <div class="col-md-4">
+
+      <h3>Twoje dane osobowe</h3>
+
+      <mat-form-field class="register-input">
+        <input matInput [(ngModel)]="userForm.firstname" placeholder="Imię">
+      </mat-form-field>
+      <span *ngIf="errorFields[4].error" class="error-msg">
+        {{errorFields[4].errorText}}
+      </span>
+
+
+      <mat-form-field class="register-input">
+        <input matInput [(ngModel)]="userForm.lastname" placeholder="Nazwisko">
+      </mat-form-field>
+      <span *ngIf="errorFields[5].error" class="error-msg">
+        {{errorFields[5].errorText}}
+      </span>
+
+      <mat-form-field class="register-input">
+        <input matInput [matDatepicker]="picker1" [(ngModel)]="userForm.birthDay" (keydown)="userForm.birthDay = null" placeholder="Data urodzenia">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <span *ngIf="errorFields[6].error" class="error-msg">
+        {{errorFields[6].errorText}}
+      </span>
+
+      <div>Płeć: </div>
+      <mat-radio-group class="register-input" [(ngModel)]="userForm.sex">
+        <mat-radio-button [value]="womanSlug" style="margin-right: 25px">Kobieta</mat-radio-button>
+        <mat-radio-button [value]="manSlug" >Mężczyzna</mat-radio-button>
+      </mat-radio-group>
+      <span *ngIf="errorFields[7].error" class="error-msg">
+        {{errorFields[7].errorText}}
+      </span>
+
+    </div>
+
+    <div class="col-md-4">
+
+      <h3>Twoja lokalizacja</h3>
+
+      <mat-form-field class="register-input">
+        <mat-select [(value)]="regionActive" (change)="updateCities($event)" placeholder="Województwo">
+          <mat-option *ngFor="let region of regions" [value]="region"  >{{ region.regionName }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span *ngIf="errorFields[8].error" class="error-msg">
+        {{errorFields[8].errorText}}
+      </span>
+
+      <mat-form-field class="register-input">
+        <mat-select [(value)]="cityActive" placeholder="Miasto">
+          <mat-option *ngFor="let city of cities" [value]="city" >{{ city.cityName }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span *ngIf="errorFields[9].error" class="error-msg">
+        {{errorFields[9].errorText}}
+      </span>
+
+    </div>
   </div>
-</div>
 
+
+  <div class="error-msg">{{errorResponse}}</div>
+  <button (click)="validateAndSaveForm()" class="btn btn-primary btn-block  background-red" style="width: 50%;margin-top: 50px;  margin-right: auto; margin-left: auto">Rejestruj</button>
+
+</div>
+<div *ngIf="registrationComplete" style="margin-left: auto;margin-right: auto; width: 800px;">
+  <div class="success-container">
+    <h1>Rejestracja pomyślna. Możesz się teraz zalogować!</h1>
+    <br>
+    <br>
+    <button class="btn btn-primary btn-block background-red" (click)="goToLogin()">ZALOGUJ SIĘ</button>
+  </div>
+
+</div>
