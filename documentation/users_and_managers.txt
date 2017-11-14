@@ -1,14 +1,14 @@
 Użytkownicy w aplikacji
 
 Dotychczasowi:
-1. user     password
-2. one      password
-3. two      password
+1. user     password    event: Wieczorne udawanie małp
+2. one      password    event: Nocne odloty ku gwiazdom
+3. two      password    event: Ubieranie choinki domu handlowego Oszust
 4. manager  password
 
 Nowi:
-5. user_zs      password // Zbyszek Stonoga
-6. user_an      password // Arnold Boczek
+5. user_zs      password // Zbyszek Stonoga     event: Sylwestrowa biba na ostatnim piętrze
+6. user_an      password // Arnold Boczek       event: Trzeźwa pasterka i kolędy
 7. user_mk      password // Maja Kwiatuszek
 8. manager_gl   password // Grzegorz Lato
 9. manager_zb   password // Zbyszek Boniek
