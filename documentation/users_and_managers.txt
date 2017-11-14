@@ -1,0 +1,15 @@
+Użytkownicy w aplikacji
+
+Dotychczasowi:
+1. user     password
+2. one      password
+3. two      password
+4. manager  password
+
+Nowi:
+5. user_zs      password // Zbyszek Stonoga
+6. user_an      password // Arnold Boczek
+7. user_mk      password // Maja Kwiatuszek
+8. manager_gl   password // Grzegorz Lato
+9. manager_zb   password // Zbyszek Boniek
+10. manager_wp  password // Wiesław Paleta
