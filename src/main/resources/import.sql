@@ -3,10 +3,16 @@ INSERT INTO "CUSTOMER" (ID, NAME, EMAIL, CREATED_DATE) VALUES(customer_seq.NEXTV
 INSERT INTO "CUSTOMER" (ID, NAME, EMAIL, CREATED_DATE) VALUES(customer_seq.NEXTVAL, 'babacki','pustostan@wp.pl', TO_DATE('2017-02-13', 'yyyy-mm-dd'));
 
 
-INSERT INTO USERS (ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ENABLED, lastpassres, BIRTH_DATE) VALUES (USER_SEQ.nextval, 'user', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'Adam', 'Nowak', 'AdamNowak@user.com', 1, '2017-01-01', '1970-01-05');
-INSERT INTO USERS (ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ENABLED, lastpassres, BIRTH_DATE) VALUES (USER_SEQ.nextval, 'one', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'Kazimierz', 'Rubaszka', 'hehe@admin.com', 1, '2017-01-01', '1980-02-06');
 INSERT INTO USERS (ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ENABLED, lastpassres, BIRTH_DATE) VALUES (USER_SEQ.nextval, 'two', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'Ludmiła', 'Krzak', 'lol@admin.com', 1, '2017-01-01', '1990-03-07');
 INSERT INTO USERS (ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ENABLED, lastpassres, BIRTH_DATE) VALUES (USER_SEQ.nextval, 'manager', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'Andrzej', 'Randka', 'andrzej@randka.com', 1, '2017-01-01', '2000-04-08');
+INSERT INTO USERS (ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ENABLED, lastpassres, BIRTH_DATE) VALUES (USER_SEQ.nextval, 'user', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'Adam', 'Nowak', 'AdamNowak@user.com', 1, '2017-01-01', '1970-01-05');
+INSERT INTO USERS (ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ENABLED, lastpassres, BIRTH_DATE) VALUES (USER_SEQ.nextval, 'one', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'Kazimierz', 'Rubaszka', 'hehe@admin.com', 1, '2017-01-01', '1980-02-06');
+INSERT INTO USERS (ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ENABLED, lastpassres, BIRTH_DATE) VALUES (USER_SEQ.nextval, 'user_zs', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'Zbyszek', 'Stonoga', 'zstonoga@user.com', 1, '2017-01-01', '1975-01-05');
+INSERT INTO USERS (ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ENABLED, lastpassres, BIRTH_DATE) VALUES (USER_SEQ.nextval, 'user_an', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'Arnold', 'Boczek', 'boczek@admin.com', 1, '2017-01-01', '1999-04-15');
+INSERT INTO USERS (ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ENABLED, lastpassres, BIRTH_DATE) VALUES (USER_SEQ.nextval, 'user_mk', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'Maja', 'Kwiatuszek', 'zielsko@admin.com', 1, '2017-01-01', '1987-03-07');
+INSERT INTO USERS (ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ENABLED, lastpassres, BIRTH_DATE) VALUES (USER_SEQ.nextval, 'manager_gl', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'Grzegorz', 'Lato', '3sekundyna100@randka.com', 1, '2017-01-01', '1950-04-08');
+INSERT INTO USERS (ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ENABLED, lastpassres, BIRTH_DATE) VALUES (USER_SEQ.nextval, 'manager_zb', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'Zbyszek', 'Boniek', 'forzajuve0@randka.com', 1, '2017-01-01', '1958-04-08');
+INSERT INTO USERS (ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ENABLED, lastpassres, BIRTH_DATE) VALUES (USER_SEQ.nextval, 'manager_wp', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'Wiesław', 'Paleta', 'mielonecodziennie@randka.com', 1, '2017-01-01', '1992-04-08');
 
 INSERT INTO AUTHORITY (ID, NAME) VALUES (AUTH_SEQ.nextval, 'ROLE_USER');
 INSERT INTO AUTHORITY (ID, NAME) VALUES (AUTH_SEQ.nextval, 'ROLE_MANAGER');
@@ -17,6 +23,12 @@ INSERT INTO USER_AUTHORITY (USER_ID, AUTHORITY_ID) VALUES (1, 1);
 INSERT INTO USER_AUTHORITY (USER_ID, AUTHORITY_ID) VALUES (2, 1);
 INSERT INTO USER_AUTHORITY (USER_ID, AUTHORITY_ID) VALUES (3, 1);
 INSERT INTO USER_AUTHORITY (USER_ID, AUTHORITY_ID) VALUES (4, 2);
+INSERT INTO USER_AUTHORITY (USER_ID, AUTHORITY_ID) VALUES (5, 1);
+INSERT INTO USER_AUTHORITY (USER_ID, AUTHORITY_ID) VALUES (6, 1);
+INSERT INTO USER_AUTHORITY (USER_ID, AUTHORITY_ID) VALUES (7, 1);
+INSERT INTO USER_AUTHORITY (USER_ID, AUTHORITY_ID) VALUES (8, 2);
+INSERT INTO USER_AUTHORITY (USER_ID, AUTHORITY_ID) VALUES (9, 2);
+INSERT INTO USER_AUTHORITY (USER_ID, AUTHORITY_ID) VALUES (10, 2);
 
 
 --przykladowa rozmowa
@@ -158,6 +170,18 @@ INSERT INTO CITY ( id,city_name,id_region ) VALUES (  CITY_PK.nextval,  'Koszali
 INSERT INTO CITY ( id,city_name,id_region ) VALUES (  CITY_PK.nextval,  'Stargard',  16);
 INSERT INTO CITY ( id,city_name,id_region ) VALUES (  CITY_PK.nextval,  'Kołobrzeg',  16);
 INSERT INTO CITY ( id,city_name,id_region ) VALUES (  CITY_PK.nextval,  'Świnoujście',  16);
+
+Insert into LOCALIZATION (ID,ADDRESS,GEO_LENGTH,GEO_WIDTH,CITY_ID) values (LOCALIZATION_PK.nextval,'Plac Defilad 1, 00-901 Warszawa',null,null,'1');  -- PKiN
+Insert into LOCALIZATION (ID,ADDRESS,GEO_LENGTH,GEO_WIDTH,CITY_ID) values (LOCALIZATION_PK.nextval,'Lubelska 158, 26-600 Radom',null,null,'33');      -- Lotnisko Radom
+Insert into LOCALIZATION (ID,ADDRESS,GEO_LENGTH,GEO_WIDTH,CITY_ID) values (LOCALIZATION_PK.nextval,'Drewnowska 58, 91-002 Łódź',null,null,'24');      -- Manufaktura Lodź
+Insert into LOCALIZATION (ID,ADDRESS,GEO_LENGTH,GEO_WIDTH,CITY_ID) values (LOCALIZATION_PK.nextval,'Sulechowska, 66-200 Świebodzin',null,null,'22');  -- Posąg Jezusa Swiebodzin
+Insert into LOCALIZATION (ID,ADDRESS,GEO_LENGTH,GEO_WIDTH,CITY_ID) values (LOCALIZATION_PK.nextval,'Norbertańska 2, 09-400 Płock',null,null,'34');    -- Zoo w Płocku
+
+Insert into EVENT (ID,CAPACITY,DESCRIPTION,EVENT_START,TITLE,LOCALOZATION_ID,ORGANIZER_ID) values (EVENT_PK.nextval,'50','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur erat justo, in ultrices magna aliquet at. Donec ornare, orci sit amet ullamcorper molestie, nunc massa fringilla nulla, nec egestas.',to_timestamp('2017-11-14 20:00:00','rrrr-mm-dd hh24:mi:ss'),'Wieczorne udawanie małp','5','1');
+Insert into EVENT (ID,CAPACITY,DESCRIPTION,EVENT_START,TITLE,LOCALOZATION_ID,ORGANIZER_ID) values (EVENT_PK.nextval,'20','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur erat justo, in ultrices magna aliquet at. Donec ornare, orci sit amet ullamcorper molestie, nunc massa fringilla nulla, nec egestas.',to_timestamp('2017-12-14 20:00:00','rrrr-mm-dd hh24:mi:ss'),'Nocne odloty ku gwiazdom','2','2');
+Insert into EVENT (ID,CAPACITY,DESCRIPTION,EVENT_START,TITLE,LOCALOZATION_ID,ORGANIZER_ID) values (EVENT_PK.nextval,'75','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur erat justo, in ultrices magna aliquet at. Donec ornare, orci sit amet ullamcorper molestie, nunc massa fringilla nulla, nec egestas.',to_timestamp('2017-12-20 20:00:00','rrrr-mm-dd hh24:mi:ss'),'Ubieranie choinki domu handlowego Oszust','3','3');
+Insert into EVENT (ID,CAPACITY,DESCRIPTION,EVENT_START,TITLE,LOCALOZATION_ID,ORGANIZER_ID) values (EVENT_PK.nextval,'100','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur erat justo, in ultrices magna aliquet at. Donec ornare, orci sit amet ullamcorper molestie, nunc massa fringilla nulla, nec egestas.',to_timestamp('2017-12-24 20:00:00','rrrr-mm-dd hh24:mi:ss'),'Trzeźwa pasterka i kolędy','4','6');
+Insert into EVENT (ID,CAPACITY,DESCRIPTION,EVENT_START,TITLE,LOCALOZATION_ID,ORGANIZER_ID) values (EVENT_PK.nextval,'200','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur erat justo, in ultrices magna aliquet at. Donec ornare, orci sit amet ullamcorper molestie, nunc massa fringilla nulla, nec egestas.',to_timestamp('2017-12-31 20:00:00','rrrr-mm-dd hh24:mi:ss'),'Sylwestrowa biba na ostatnim piętrze','1','5');
 
 --- PAROWANIE UŻYTKOWNIKÓW ---
 insert into personality_category (id, amount, description) values(PERSONALITY_CATEGORY_PK.nextval,15,'Charakter');
