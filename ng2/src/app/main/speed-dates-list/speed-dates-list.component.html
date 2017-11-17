@@ -22,27 +22,23 @@
       </mat-form-field>
 
       <mat-form-field class="filter-event-input">
-        <input matInput [matDatepicker]="picker1" placeholder="Data od">
+        <input matInput [matDatepicker]="picker1" [(ngModel)]="filter.dateFrom" placeholder="Data od">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
 
 
       <mat-form-field class="filter-event-input">
-        <input matInput [matDatepicker]="picker2" placeholder="Data do">
+        <input matInput [matDatepicker]="picker2" [(ngModel)]="filter.dateTo" placeholder="Data do">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
 
-      <button class="btn btn-success">
+      <button class="btn btn-success" (click)="resetToFirstPage()">
         <i class="fa fa-filter fa-fw"></i>
         Filtruj
       </button>
-      <button class="btn btn-warning" data-toggle="modal" data-target="#filter-details">
-        <i class="fa fa-sliders fa-fw"></i>
-        Filtry zaawansowane
-      </button>
-      <button class="btn">
+      <button class="btn" (click)="clearFilters()">
         <i class="fa fa-eraser fa-fw"></i>
         Wyczyść filtry
       </button>
@@ -50,52 +46,27 @@
 
   </div>
 
-  <!-- Modal filtracji -->
-  <div class="modal fade" id="filter-details" tabindex="-1" role="dialog" >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Filtry zaawansowane</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span>&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <mat-slide-toggle>
-            Cecha
-          </mat-slide-toggle>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
   <div class="tile-container">
     <div class="card-columns">
 
-      <ng-container *ngFor="">
-        <div class="card border-primary">
-          <img class="card-img-top card-img-cust" [src]="userPhotoUrl+person.profilePhotoId">
-          <div class="card-bod card-body-cust">
-            <h4 class="card-title">Card title</h4>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a data-toggle="modal" data-target="#event-map" class="card-link">Zobacz na mapie</a>
+      <ng-container *ngFor="let sd of speedDates">
+        <div class="card border-primary one-card" >
+          <img class="card-img-top card-img-cust" [src]="eventPhotoUrl+sd.id" (click)="goToEventDetails($event, sd.id)">
+          <div class="card-bod card-body-cust" (click)="goToEventDetails($event, sd.id)">
+            <h4 class="card-title">{{sd.title}}</h4>
+            <h6 class="card-subtitle mb-2 text-muted">{{sd.eventStart | date:'dd-MM-yyyy HH:mm'}}</h6>
+            <p class="card-text">{{sd.description}}</p>
           </div>
+          <a data-toggle="modal" data-target="#event-map" class="card-link">Zobacz na mapie</a>
+          <span style="position: absolute; right: 20px">{{sd.localization?.city?.region?.regionName}}, {{sd.localization?.city?.cityName}}</span>
         </div>
       </ng-container>
-
-
-
 
     </div>
   </div>
 
   <div class="paginator-container">
-    <app-custom-paginator (pageChange)="changePage($event)" [currentPage]="currentPageNo" [allElements]="allElements" [pageSize]="pageSize"></app-custom-paginator>
+    <app-custom-paginator (pageChange)="changePage($event)" [currentPage]="response.pageNo" [elementsCount]="response.elementsCount" [pageSize]="filter.pageSize"></app-custom-paginator>
   </div>
 </div>
 

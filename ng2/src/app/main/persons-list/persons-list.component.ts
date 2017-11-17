@@ -42,7 +42,7 @@ export class PersonsListComponent implements OnInit {
 
   private currentPageNo: number = 1;
   private pageSize: number = 10;
-  private allElements: number = 25;
+  private elementsCount: number = 25;
 
   changePage(pageNo: number){
     this.persons = this.personsService.getPersons(pageNo, this.pageSize);

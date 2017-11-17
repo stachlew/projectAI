@@ -91,9 +91,9 @@ public class EventService {
 
         PageResponse pageResponse = new PageResponse<EventDTO>();
         pageResponse.value = dtos;
-//        pageResponse.pageNo = filter.getPageNo(); //TODO
-//        pageResponse.elementsCount = 0;
-//        pageResponse.elementsCount = 100;
+        pageResponse.pageNo = filter.getPageNo(); //TODO
+        pageResponse.elementsCount = 0;
+        pageResponse.elementsCount = 100;
         return pageResponse;
     }
 

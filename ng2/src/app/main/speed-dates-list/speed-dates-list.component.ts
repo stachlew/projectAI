@@ -8,6 +8,8 @@ import {Constants} from "../../_service/util/constants";
 import {City} from "../../_model/city";
 import {Region} from "../../_model/region";
 import {DictionaryService} from "../../_service/util/dictionary.service";
+import {Router} from "@angular/router";
+import {PageResponse} from "../../_model/page-response";
 
 @Component({
   selector: 'app-speed-dates-list',
@@ -17,16 +19,20 @@ import {DictionaryService} from "../../_service/util/dictionary.service";
 export class SpeedDatesListComponent implements OnInit {
 
   private filter: SpeedDateSearch = new SpeedDateSearch;
+  private response: PageResponse = new PageResponse();
   private speedDates: SpeedDate[] = [];
 
   private regions: Region[] = [];
   private cities: City[] = [];
 
-  constructor(private httpSrv: HttpSecService, private dictionary: DictionaryService) { }
+  eventPhotoUrl: string = AppUrls.EVENT_IMAGE_URL;
+
+  constructor(private httpSrv: HttpSecService, private dictionary: DictionaryService, private router: Router) { }
 
   ngOnInit() {
     this.getRegions();
     this.initData();
+    this.response = new PageResponse();
   }
 
   getRegions(){
@@ -50,9 +56,19 @@ export class SpeedDatesListComponent implements OnInit {
     this.updateDates();
   }
 
+  resetToFirstPage(){
+    this.filter.pageNo = 1;
+    this.updateDates();
+  }
+
+  clearFilters(){
+    this.filter = new SpeedDateSearch;
+    this.resetToFirstPage();
+  }
 
   updateDates(){
     this.getData().subscribe(resp=>{
+      this.response = resp;
       this.speedDates = resp.value;
     });
   }
@@ -66,6 +82,10 @@ export class SpeedDatesListComponent implements OnInit {
   changePage(pageNo: number){
     this.filter.pageNo = pageNo;
     this.updateDates();
+  }
+
+  goToEventDetails(event: any, id: number){
+    this.router.navigate(['speed-date-details/'+id]);
   }
 
 }

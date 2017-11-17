@@ -8,4 +8,9 @@ export class SpeedDateSearch{
   dateTo: Date;
   pageNo: number;
   pageSize: number;
+
+  constructor (){
+    this.pageNo = 0;
+    this.pageSize = 0;
+  }
 }

@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Constants} from "../../_service/util/constants";
 
 @Component({
   selector: 'app-custom-paginator',
@@ -20,17 +21,17 @@ export class CustomPaginatorComponent implements OnInit {
 
   @Output() pageChange = new EventEmitter();
 
-  @Input('pageSize') pageSize: number = 10;
+  @Input('pageSize') pageSize: number = Constants.PAGINATOR_ELEMENTS;
   @Input('currentPage') currentPage: number = 1;
-  @Input('allElements') allElements: number = 0;
+  @Input('elementsCount') elementsCount: number = 0;
 
   private isPrevAvl: boolean = false;
   private isNextAvl: boolean = false;
   private allPages: number = 1;
 
   countAllPages(){
-    this.allPages = Math.floor(this.allElements / this.pageSize);
-    if(this.allElements % this.pageSize > 0){
+    this.allPages = Math.floor(this.elementsCount / this.pageSize);
+    if(this.elementsCount % this.pageSize > 0){
       this.allPages++;
     }
 
@@ -62,7 +63,7 @@ export class CustomPaginatorComponent implements OnInit {
       this.isPrevAvl = false;
     }
 
-    if(this.currentPage<this.allPages){
+    if(this.currentPage<this.allPages && this.elementsCount > 0 ){
       this.isNextAvl = true;
     }else {
       this.isNextAvl = false;

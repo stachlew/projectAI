@@ -5,6 +5,7 @@ export class Constants {
 
   public static PERSONS_ELEMENTS = 10;
   public static SPEED_DATES_ELEMENTS = 10;
+  public static PAGINATOR_ELEMENTS = 10;
 
 
   public static USER_TYPE = 'ROLE_USER';

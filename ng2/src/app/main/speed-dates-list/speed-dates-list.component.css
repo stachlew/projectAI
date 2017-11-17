@@ -47,6 +47,16 @@
   padding: 5px;
 }
 
+.one-card{
+  border-radius: 5px;
+}
+
+.one-card:hover{
+  border: 2px solid;
+  background-color: rgba(214, 0, 10, 0.67);
+  cursor: pointer;
+}
+
 
 
 

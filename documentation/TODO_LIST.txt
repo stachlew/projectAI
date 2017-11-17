@@ -1,2 +1,5 @@
 1. Walidacje praw do rozmowy w kontrolerach/serwisach czatu  --DONE --
 2. Walidacja tworzenia rozmowy (jeśli istnieje już para XY lub YX)  --DONE --
+
+3. Uwzględnianie filtracji z zapytania restowego o event/ludzi
+4. Walidatory
