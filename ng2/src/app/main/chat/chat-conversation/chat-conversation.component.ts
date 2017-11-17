@@ -5,6 +5,7 @@ import {
 import {PrivateMessage} from "../../../_model/private-message";
 import {ChatManagerService} from "../chat-manager.service";
 import {User} from "../../../_model/user.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-chat-conversation',
@@ -15,7 +16,7 @@ export class ChatConversationComponent implements OnInit, AfterViewInit {
 
   @Input('messagesList') msgList: PrivateMessage[] = [];
   @Input('secondPerson') secondPerson: User;
-  constructor(private chatService: ChatManagerService) { }
+  constructor(private chatService: ChatManagerService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -57,4 +58,9 @@ export class ChatConversationComponent implements OnInit, AfterViewInit {
       setTimeout(x=>{this.content.nativeElement.scrollTop = 0;});
     } catch (err) {}
   };
+
+  goToPersonDetails(personId: number){
+    this.router.navigate(['person-details/'+personId]);
+  }
+
 }

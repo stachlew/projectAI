@@ -66,9 +66,9 @@
       </span>
 
       <mat-form-field class="register-input">
-        <input matInput [matDatepicker]="picker1" [(ngModel)]="userForm.birthDay" (keydown)="userForm.birthDay = null" placeholder="Data urodzenia">
+        <input matInput [matDatepicker]="picker1" [max]="minBirthDate"  [(ngModel)]="userForm.birthDay" (keydown)="userForm.birthDay = null" placeholder="Data urodzenia">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
+        <mat-datepicker #picker1 startView="year" [startAt]="defaultDate"></mat-datepicker>
       </mat-form-field>
       <span *ngIf="errorFields[6].error" class="error-msg">
         {{errorFields[6].errorText}}

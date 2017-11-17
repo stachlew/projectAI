@@ -22,12 +22,18 @@ export class RegisterComponent implements OnInit {
   userSlug: string = Constants.USER_TYPE;
   managerSlug: string = Constants.MANAGER_TYPE;
 
+  minBirthDate: Date;
+  defaultDate: Date;
+
   registerButtonBlock: boolean = false;
   registrationComplete: boolean = false;
   errorResponse: string = '';
 
   errorFields: any[] = [];
   constructor(private dictionary: DictionaryService, private router: Router, private httpSrv: HttpSecService) {
+  }
+
+  ngOnInit() {
     this.errorFields = [
       {      error: false,      errorText: ''    }, //login
       {      error: false,      errorText: ''    }, //haslo
@@ -40,10 +46,8 @@ export class RegisterComponent implements OnInit {
       {      error: false,      errorText: ''    }, //wojewodztwo
       {      error: false,      errorText: ''    } //miasto
     ];
-  }
-
-  ngOnInit() {
     this.getRegions();
+    this.getMinBirthDate();
   }
 
   hide = true;
@@ -143,6 +147,20 @@ export class RegisterComponent implements OnInit {
 
   goToLogin(){
     this.router.navigate(['login']);
+  }
+
+  getMinBirthDate(){
+    let border18 : Date = new Date();
+    border18.setFullYear(border18.getFullYear() - 18);
+
+    let default25: Date = new Date();
+    default25.setFullYear(default25.getFullYear() - 25);
+    default25.setMonth(0);
+    default25.setDate(0);
+
+    this.userForm.birthDay = null;
+    this.defaultDate = default25;
+    this.minBirthDate = border18;
   }
 
 }
