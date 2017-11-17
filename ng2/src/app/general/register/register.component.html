@@ -114,6 +114,12 @@
   <div class="error-msg">{{errorResponse}}</div>
   <button (click)="validateAndSaveForm()" class="btn btn-primary btn-block  background-red" style="width: 50%;margin-top: 50px;  margin-right: auto; margin-left: auto">Rejestruj</button>
 
+  <div class="center-info-box" *ngIf="userForm.userType === userSlug">
+    Po rejestracji będzie dostępna ankieta, w której opiszesz siebie a także wymarzoną drugą połowę.
+    Na podstawie tej ankiety osoby w Twojej okolicy zostaną opisane 3 rodzajami dopasowania.
+  </div>
+
+
 </div>
 <div *ngIf="registrationComplete" style="margin-left: auto;margin-right: auto; width: 800px;">
   <div class="success-container">

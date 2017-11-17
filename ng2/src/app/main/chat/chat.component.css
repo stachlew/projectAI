@@ -14,3 +14,11 @@
   min-height: 14vh;
   border-top: 1px solid rgba(202, 42, 42, 1);
 }
+
+.no-conversation-box{
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40vh;
+  font-size: x-large;
+}

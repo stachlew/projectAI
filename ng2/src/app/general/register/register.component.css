@@ -24,3 +24,10 @@
   width: 800px;
   text-align: center;
 }
+
+.center-info-box{
+  margin-left: auto;
+  margin-right: auto;
+  font-size: larger;
+  margin-top: 10vh;
+}
