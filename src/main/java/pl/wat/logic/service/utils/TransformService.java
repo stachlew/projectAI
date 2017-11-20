@@ -195,7 +195,7 @@ public class TransformService {
             dto.setDescription(event.getDescription());
             dto.setCapacity(event.getCapacity());
             dto.setLocalization(toDTO(event.getLocalization()));
-            dto.setOrganizer(toDto(event.getOrganizer()));
+            dto.setOrganizer(toSimpleDto(event.getOrganizer()));
 
             return dto;
         }

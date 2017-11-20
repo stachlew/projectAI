@@ -3,7 +3,7 @@
     <tbody>
     <tr *ngFor="let contact of contacts" (click)="changeConversation(contact)">
       <td class="img-column">
-        <img src="assets/images/stock_face.jpg"  class="rounded-circle">
+        <img [src]="userPhotoUrl +contact.secondPerson?.profilePhotoId"  class="rounded-circle">
       </td>
       <td class="name-column ">{{contact?.secondPerson?.firstname}}</td>
       <td class="date-column">{{contact.lastMessage?.textMessage | truncate:[20, '...']}}</td>

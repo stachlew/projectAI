@@ -1,0 +1,14 @@
+<button (click)="addTest()">add</button>
+<div class="participant-container">
+  <div class="small-box" *ngFor="let p of participants" (click)="goToPersonDetails(p.user?.id)">
+
+    <div>
+      <img [src]="userPhotoUrl + p.user?.profilePhotoId"  class="rounded-circle">
+    </div>
+    <div>
+      {{p.user?.firstname}},{{p.user?.age}}
+    </div>
+
+  </div>
+</div>
+

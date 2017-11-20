@@ -13,12 +13,16 @@
         <app-chat-message style="width: 100%; height: 100%;"></app-chat-message>
       </div>
     </div>
-    <div *ngIf="chatService.actualConversation == null">
+    <div *ngIf="chatService.conversationListSorted.length>0 && chatService.actualConversation == null">
       <div class="no-conversation-box">
         Wybierz rozmowę
       </div>
-
-
+    </div>
+    <div *ngIf="chatService.conversationListSorted.length == 0">
+      <div class="no-conversation-box">
+        <span>Aktualnie nie posiadasz rozmów.</span><br>
+        <span>Przejdź do listy osób i wybierz osobę z którą chcesz porozmiawiać.</span>
+      </div>
     </div>
 
   </div>

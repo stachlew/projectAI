@@ -16,9 +16,10 @@
 }
 
 .no-conversation-box{
-  width: 300px;
+  width: 800px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 40vh;
   font-size: x-large;
+  text-align: center;
 }

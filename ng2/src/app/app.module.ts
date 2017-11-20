@@ -52,6 +52,7 @@ import {AppUrls} from "./_service/util/app-urls";
 import { CustomDateTimeComponent } from './_component/custom-date-time/custom-date-time.component';
 import {TruncatePipe} from "./pipes/truncate";
 import {DictionaryService} from "./_service/util/dictionary.service";
+import { ParticipantSliderComponent } from './main/speed-date-details/participant-slider/participant-slider.component';
 
 
 @NgModule({
@@ -98,7 +99,9 @@ import {DictionaryService} from "./_service/util/dictionary.service";
     CustomDateTimeComponent,
 
     //PIPE
-    TruncatePipe
+    TruncatePipe,
+
+    ParticipantSliderComponent
   ],
   imports: [
     BrowserModule,

@@ -48,9 +48,9 @@ public class EventsGuestController {
     }
 
     //detale wydarzenia
-    @RequestMapping(value = "/getDetails",method = RequestMethod.GET)
+    @RequestMapping(value = "/getDetails/{idEvent}",method = RequestMethod.GET)
     @ResponseBody
-    public EventDTO getEventDetails(Authentication auth,int idEvent){
+    public EventDTO getEventDetails(Authentication auth, @PathVariable int idEvent){
         int userId = this.utilService.getUserId(auth);
         return eventService.getEventDetails(idEvent,userId);
     }

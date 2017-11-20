@@ -1,0 +1,56 @@
+.details-container{
+  width: 100%;
+  height: 100%;
+}
+
+.details-container{
+  padding-top: 15px;
+}
+
+.img-box{
+
+}
+
+.img-box img{
+  width: 100%;
+}
+
+.title-box{
+  text-align: center;
+}
+
+.left-box{
+  text-align: center;
+  margin-top: 40px;
+}
+
+.right-box{
+  text-align: center;
+  margin-top: 40px;
+}
+
+.when-box{
+
+}
+
+.where-box{
+
+}
+
+.map-btn-box{
+  margin-top: 40px;
+}
+
+.save-me-box{
+  position: absolute;
+  bottom: 0px;
+  left: 15%;
+}
+
+.participants-list{
+  margin-top: 40px;
+}
+
+.description-box{
+  text-align: justify;
+}

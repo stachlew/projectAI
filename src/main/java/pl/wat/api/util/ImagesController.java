@@ -29,10 +29,15 @@ public class ImagesController {
     @RequestMapping(value = "/users/{id}",method = RequestMethod.GET)
     public void getUserImage(HttpServletResponse resp, @PathVariable String id){
         try{
-            int userPhotoId = Integer.parseInt(id);
-            byte [] image = StreamUtils.copyToByteArray(new ClassPathResource("images/users/"+ userPhotoId+".jpg").getInputStream());
-            resp.setContentType("image/jpeg");
-            resp.getOutputStream().write(image);
+            if(id != null && !"null".equals(id)){
+                int userPhotoId = Integer.parseInt(id);
+                byte [] image = StreamUtils.copyToByteArray(new ClassPathResource("images/users/"+ userPhotoId+".jpg").getInputStream());
+                resp.setContentType("image/jpeg");
+                resp.getOutputStream().write(image);
+            }
+            else {
+                throw new FileNotFoundException();
+            }
         }
         catch (FileNotFoundException fnfe){
             try {

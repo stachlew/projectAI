@@ -1,3 +1,96 @@
-<p>
-  speed-date-details works! xx {{speedDateId}} xx
-</p>
+<div class="details-container">
+  <!--GORA-->
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="img-box">
+        <img [src]="eventPhotoUrl+speedDateId"  class="rounded">
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="row">
+        <div class="title-box">
+          <h2>{{details.title}}</h2>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-6 left-box">
+
+          <div class="when-box">
+            <h4><i class="fa fa-calendar fa-fw"></i>Kiedy: </h4>
+            <h4>{{details.eventStart | date:'dd-MM-yyyy HH:mm'}}</h4>
+          </div>
+
+          <div class="save-me-box">
+            <button class="btn btn-primary btn-block"><h4>
+              <i class="fa fa-fw fa-user-plus"></i>
+              Zarejestruj mnie
+            </h4></button>
+          </div>
+
+        </div>
+        <div class="col-md-6 right-box">
+
+          <div class="where-box">
+            <h4><i class="fa fa-map-marker fa-fw"></i>Gdzie: </h4>
+            <h4>{{details?.localization?.city?.region?.regionName}}, {{details?.localization?.city?.cityName}}</h4>
+            <h5>{{details?.localization?.address}}</h5>
+          </div>
+
+          <div class="map-btn-box">
+            <button class="btn btn-block btn-secondary" data-toggle="modal" data-target="#map-details">
+              <h4><i class="fa fa-map fa-fw"></i>Zobacz na mapie </h4>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-3">
+      <div class="description-box">
+        <h4>{{details.description}}</h4>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!--Uczestnicy-->
+  <div class="row">
+    <div class="col-md-12 participants-list" >
+      <h2>Uczestnicy: </h2>
+      <h4>Miejsca: {{details.participantList?.length}}/{{details.capacity}}</h4>
+      <app-participant-slider [participants]="details?.participantList"></app-participant-slider>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="map-details" tabindex="-1" role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">MAPA</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <mat-slide-toggle>
+          Cecha
+        </mat-slide-toggle>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
