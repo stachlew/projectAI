@@ -1,9 +1,41 @@
 <div class="home-container">
   <div style="text-align: center" class="jumbotron main-image">
+
+
+  <ng-container *ngIf="!isAuth()">
     <h1 class="home-title-header">Poznaj swoją drugą połówkę już dziś.</h1>
-    <p class="home-title-paragraph">Podczas rejestracji możesz wypełnić quiz osobowości. Dzięki temu poznasz osoby, które są dopasowane do Ciebie.</p>
+    <p class="home-title-paragraph">
+      Po rejestracji możesz wypełnić quiz osobowości. Dzięki temu rozpoznasz które osoby, są do Ciebie dopasowane.
+    </p>
     <br>
-    <p><a class="btn btn-primary btn-lg home-title-btn" (click)="goToRegister()">Chcę poznać nowe osoby</a></p>
+    <p>
+      <a class="btn btn-primary btn-lg home-title-btn" (click)="goToRegister()">Chcę się zarejestrować i poznać nowe osoby</a>
+    </p>
+  </ng-container>
+
+  <ng-container *ngIf="isUser()">
+    <h1 class="home-title-header">Poznaj swoją drugą połówkę już dziś.</h1>
+    <p class="home-title-paragraph">
+      Przejdź do listy profili by poznać nowe osoby. Znajdziesz tam poziom dopasowania, który podpowie Ci w jakim stopniu osoba jest dopasowana do Ciebie.
+    </p>
+    <br>
+    <p>
+      <a class="btn btn-primary btn-lg home-title-btn" (click)="goPersonsList()">Przejdź do listy profili</a>
+    </p>
+  </ng-container>
+
+  <ng-container *ngIf="isManager()" >
+    <h1 class="home-title-header">Utwórz nowe wydarzenie dla singli w minutę!</h1>
+    <p class="home-title-paragraph">
+      Szybki i wygodny moduł tworzenia wydarzenia pozwoli Ci na błyskawiczną promocję Twojego wydarzenia.
+    </p>
+    <br>
+    <p>
+      <a class="btn btn-primary btn-lg home-title-btn" (click)="goEventCreate()">Chcę założyć nowe wydarzenie</a>
+    </p>
+  </ng-container>
+
+
   </div>
 
   <mat-tab-group class="home-description">
@@ -11,7 +43,7 @@
       <ng-template mat-tab-label>
         <i class="fa fa-search fa-fw font-accent"></i><span class="font-white">Szukam drugiej połówki</span>
       </ng-template>
-      <h1>W LoveMe znajduje się już 12534 aktywnych użytkowników</h1>
+      <h1>W LoveMe znajduje się już {{usersCount}} aktywnych użytkowników</h1>
       <p>Dzięki temu otrzymasz wiele okazji do spotkania nowych osób. Prócz testu dopasowania otrzymasz możliwość zapisu na wiele wyselekcjonowanych wydarzeń dla singli. </p>
     </mat-tab>
     <mat-tab>
@@ -19,7 +51,7 @@
         <i class="fa fa-calendar fa-fw font-accent"></i> <span class="font-white">Organizuję wydarzenia dla singli</span>
       </ng-template>
       <h1>Udostępnij swoje wydarzenie wielu osobom</h1>
-      <p>W LoveMe prócz możliwości promocji wydarzenia, możliwe jest także prowadzenie zapisów na Twoje wydarzenie</p>
+      <p>W LoveMe prócz możliwości promocji wydarzenia, możliwa jest rejestracja w roli organizatora wydarzenia. Otrzymasz w ten sposób możliwość promowania swoich wydarzeń i prowadzenia na nie zapisów.</p>
     </mat-tab>
   </mat-tab-group>
 </div>

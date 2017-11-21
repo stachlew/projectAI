@@ -8,7 +8,8 @@ export class AppUrls {
   public static PERSON_FIT_URL = AppUrls.APP_HOST + '/api/person-fit';
   public static PERSON_FIT_DICTIONARY_URL = AppUrls.APP_HOST + '/api/person-fit-dictionary';
 
-
+  //UTILS
+  public static UTILS_USER_COUNT_URL = AppUrls.UTILS_URL + '/countActiveUsers';
   //FOTO
   public static USER_IMAGE_URL = AppUrls.APP_HOST + '/api/images/users/';
   public static EVENT_IMAGE_URL = AppUrls.APP_HOST + '/api/images/events/';
