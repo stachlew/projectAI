@@ -20,3 +20,10 @@
 20. Wydarzenie - zapis gościa na wydarzenie IN[USER] OUT[boolean]   //DONE // EventsGuestController.saveParticipant
 21. Wydarzenie - wylistowanie gości wydarzenia IN[WYDARZENIE] OUT[LISTA_GOSCI]
 21. Wydarzenie - wylistowanie wydarzen na ktore jest sie zapisanym IN[USER] OUT[LISTA_WYDARZEN] //DONE// EventsGuestController.getUserParticipantEvent
+
+
+22. Stworzenie wydarzenia(id == null) + edycja (id != null)
+23. Skonkretyzowanie dto dla użytkownika/jego profilu - nie wiem jak to ma być
+24. Listowanie użytkowników/profili na podstawie pkt 23 (PersonController)
+25. Rozbudowanie ProfileSearchDTO o kolejne pola wyszukiwania wg pkt 23. (do uzupełnienia będą filtry zaawansowane ze strony z profilami)
+26. Rozszerzyć DTO użytkownika dla m.in dla celów rejestracji jeśli się coś zmieni

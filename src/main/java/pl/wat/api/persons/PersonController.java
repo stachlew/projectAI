@@ -12,7 +12,7 @@ public class PersonController {
 
     @RequestMapping(value = "/getProfilesList",method = RequestMethod.POST)
     @ResponseBody
-    public PageResponse<UserDTO> getEventDetails(Authentication auth, @RequestBody ProfileSearchDTO filter){
+    public PageResponse<UserDTO> getProfilesList(Authentication auth, @RequestBody ProfileSearchDTO filter){
 
         PageResponse<UserDTO> response = new PageResponse<>();
         response.value = null;
