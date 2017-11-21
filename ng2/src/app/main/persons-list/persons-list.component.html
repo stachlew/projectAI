@@ -10,25 +10,28 @@
   <div class="row">
     <div class="col-md-12 persons-search-container">
       <span class="search-header">Filtry:</span>
-      <mat-form-field class="persons-search-input">
-        <mat-select placeholder="Województwo">
+
+      <mat-form-field class="filter-event-input">
+        <mat-select [(value)]="filter.region" (change)="updateCities($event)" placeholder="Województwo">
           <mat-option>Dowolne</mat-option>
-          <mat-option *ngFor="let region of regions" [value]="region.id">{{ region.name }}</mat-option>
+          <mat-option *ngFor="let region of regions" [value]="region"  >{{ region.regionName }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="persons-search-input">
-        <mat-select placeholder="Miasto">
+
+      <mat-form-field class="filter-event-input">
+        <mat-select [(value)]="filter.city" placeholder="Miasto">
           <mat-option>Dowolne</mat-option>
-          <mat-option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</mat-option>
+          <mat-option *ngFor="let city of cities" [value]="city" >{{ city.cityName }}</mat-option>
         </mat-select>
       </mat-form-field>
+
       <mat-form-field class="persons-search-input">
-        <input type="number" min="18" max="100" matInput placeholder="Wiek od">
+        <input type="number" min="18" max="100" [(ngModel)]="filter.ageFrom" matInput placeholder="Wiek od">
       </mat-form-field>
       <mat-form-field class="persons-search-input">
-        <input type="number" min="18" max="100" matInput placeholder="Wiek do">
+        <input type="number" min="18" max="100" [(ngModel)]="filter.ageTo" matInput placeholder="Wiek do">
       </mat-form-field >
-      <button class="btn btn-success">
+      <button class="btn btn-success" (click)="getProfilesData()">
         <i class="fa fa-filter fa-fw"></i>
         Filtruj
       </button>
@@ -36,7 +39,7 @@
         <i class="fa fa-sliders fa-fw"></i>
         Filtry zaawansowane
       </button>
-      <button class="btn">
+      <button class="btn" (click)="clearSearch()">
         <i class="fa fa-eraser fa-fw"></i>
         Wyczyść filtry
       </button>
@@ -128,7 +131,7 @@
   </div>
 
   <div class="table-paginator-container">
-    <app-custom-paginator (pageChange)="changePage($event)" [currentPage]="currentPageNo" [elementsCount]="allElements" [pageSize]="pageSize"></app-custom-paginator>
+    <app-custom-paginator (pageChange)="changePage($event)" [currentPage]="response.pageNo" [elementsCount]="response.elementsCount" [pageSize]="filter.pageSize"></app-custom-paginator>
   </div>
 
 

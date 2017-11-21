@@ -5,8 +5,6 @@ export class AppUrls {
   public static AUTHENTICATION_URL = AppUrls.APP_HOST + '/auth';
 
   public static UTILS_URL = AppUrls.APP_HOST + '/api/util';
-  public static PERSON_FIT_URL = AppUrls.APP_HOST + '/api/person-fit';
-  public static PERSON_FIT_DICTIONARY_URL = AppUrls.APP_HOST + '/api/person-fit-dictionary';
 
   //UTILS
   public static UTILS_USER_COUNT_URL = AppUrls.UTILS_URL + '/countActiveUsers';
@@ -44,4 +42,10 @@ export class AppUrls {
   public static GET_ACCOUNT_INFO_URL = AppUrls.ACCOUNT_URL + '/getAccountInfo';
   public static CHANGE_PASSWORD_URL = AppUrls.ACCOUNT_URL + '/changePassword';
 
+
+  //PROFILE
+  public static PERSON_FIT_URL = AppUrls.APP_HOST + '/api/person-fit';
+  public static PERSON_FIT_DICTIONARY_URL = AppUrls.APP_HOST + '/api/person-fit-dictionary';
+  public static PERSONS_URL = AppUrls.APP_HOST + '/api/person';
+  public static PERSONS_GET_PROFILES_LIST = AppUrls.PERSONS_URL + '/getProfilesList';
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {HttpSecService} from "../../_service/util/http-sec.service";
 import {AppUrls} from "../../_service/util/app-urls";
@@ -10,6 +10,7 @@ import {Region} from "../../_model/region";
 import {DictionaryService} from "../../_service/util/dictionary.service";
 import {Router} from "@angular/router";
 import {PageResponse} from "../../_model/page-response";
+import {CustomPaginatorComponent} from "../../_component/custom-paginator/custom-paginator.component";
 
 @Component({
   selector: 'app-speed-dates-list',
@@ -27,12 +28,15 @@ export class SpeedDatesListComponent implements OnInit {
 
   eventPhotoUrl: string = AppUrls.EVENT_IMAGE_URL;
 
+  @ViewChild(CustomPaginatorComponent)
+  private paginator: CustomPaginatorComponent;
+
   constructor(private httpSrv: HttpSecService, private dictionary: DictionaryService, private router: Router) { }
 
   ngOnInit() {
     this.getRegions();
-    this.initData();
     this.response = new PageResponse();
+    this.initData();
   }
 
   getRegions(){
@@ -61,7 +65,7 @@ export class SpeedDatesListComponent implements OnInit {
     this.updateDates();
   }
 
-  clearFilters(){
+  public clearFilters(){
     this.filter = new SpeedDateSearch;
     this.resetToFirstPage();
   }
@@ -70,6 +74,7 @@ export class SpeedDatesListComponent implements OnInit {
     this.getData().subscribe(resp=>{
       this.response = resp;
       this.speedDates = resp.value;
+      setTimeout(fun=>{this.paginator.updatePaginator();});
     });
   }
 
