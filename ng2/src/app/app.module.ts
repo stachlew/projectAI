@@ -53,6 +53,8 @@ import { CustomDateTimeComponent } from './_component/custom-date-time/custom-da
 import {TruncatePipe} from "./pipes/truncate";
 import {DictionaryService} from "./_service/util/dictionary.service";
 import { ParticipantSliderComponent } from './main/speed-date-details/participant-slider/participant-slider.component';
+import { CustomMapComponent } from './_component/custom-map/custom-map.component';
+import {AgmCoreModule} from "@agm/core";
 
 
 @NgModule({
@@ -101,7 +103,9 @@ import { ParticipantSliderComponent } from './main/speed-date-details/participan
     //PIPE
     TruncatePipe,
 
-    ParticipantSliderComponent
+    ParticipantSliderComponent,
+
+    CustomMapComponent
   ],
   imports: [
     BrowserModule,
@@ -111,6 +115,9 @@ import { ParticipantSliderComponent } from './main/speed-date-details/participan
     HttpModule,
     AuthenticationModule,
     AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDzRwU70aqc9Fsin5RDv0MGpP12b-nnBGA'
+    })
   ],
   providers: [
     Constants,

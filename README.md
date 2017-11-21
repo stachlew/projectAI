@@ -7,3 +7,8 @@ Credentials:
 admin admin
 user password
 disabled password
+
+Nowe biblioteki:
+MAPY GOOGLE:
+@agm/core
+
