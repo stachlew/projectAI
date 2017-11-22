@@ -30,7 +30,7 @@ public class UserDTO {
 
     private boolean isMan;
     private Date birthDate;
-    private int hight;
+    private Integer height;
     private String smoking;
     private String drinking;
     private String kids;
@@ -179,12 +179,12 @@ public class UserDTO {
         this.birthDate = birthDate;
     }
 
-    public int getHight() {
-        return hight;
+    public Integer getHeight() {
+        return height;
     }
 
-    public void setHight(int hight) {
-        this.hight = hight;
+    public void setHeight(Integer height) {
+        this.height = height;
     }
 
     public String getSmoking() {

@@ -56,7 +56,7 @@ public class TransformService {
             dto.setEyeColor(toDTO(entity.getEyeColor()));
             dto.setFigure(toDTO(entity.getFigure()));
             dto.setHairColor(toDTO(entity.getHairColor()));
-            dto.setHight(dto.getHight());
+            dto.setHeight(dto.getHeight());
             dto.setKids(dto.getKids());
             dto.setMan(dto.isMan());
             dto.setMartialStatus(toDTO(entity.getMartialStatus()));
@@ -121,7 +121,7 @@ public class TransformService {
             entity.setMartialStatus((MartialStatus)toEntity(dto.getMartialStatus()));
             entity.setReligion((Religion)toEntity(dto.getReligion()));
             entity.setZodiacSign((ZodiacSign)toEntity(dto.getZodiacSign()));
-            entity.setHight(dto.getHight());
+            entity.setHeight(dto.getHeight());
             entity.setKids(dto.getKids());
             entity.setMan(dto.isMan());
             entity.setProfession(dto.getProfession());

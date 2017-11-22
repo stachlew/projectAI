@@ -101,7 +101,7 @@ public class User {
     private Figure figure;
 
     @Column
-    private int hight;
+    private Integer height;
 
     @ManyToOne
     @JoinColumn(name = "hair_color_id")
@@ -297,12 +297,12 @@ public class User {
         this.figure = figure;
     }
 
-    public int getHight() {
-        return hight;
+    public int getHeight() {
+        return height;
     }
 
-    public void setHight(int hight) {
-        this.hight = hight;
+    public void setHeight(Integer height) {
+        this.height = height;
     }
 
     public HairColor getHairColor() {
