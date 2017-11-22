@@ -2,8 +2,6 @@ package pl.wat.db.domain.user;
 
 import org.hibernate.annotations.ColumnDefault;
 import pl.wat.db.domain.localization.City;
-import pl.wat.db.domain.localization.Region;
-import pl.wat.db.domain.user.Authority;
 
 import pl.wat.db.domain.user.profile.attributes.*;
 

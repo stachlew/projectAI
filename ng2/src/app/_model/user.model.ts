@@ -1,4 +1,4 @@
-import {Localization} from "./localization";
+import {City} from "./city";
 
 export class User {
   id: number;
@@ -11,8 +11,10 @@ export class User {
   enabled: boolean;
   age: number;
   profilePhotoId: number;
-  birthDay: Date;
+  birthDate: Date;
   userType: string;
+  isMan: boolean;
   sex: string;
-  localization: Localization;
+  city: City;
+
 }

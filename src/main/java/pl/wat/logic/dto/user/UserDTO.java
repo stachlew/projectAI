@@ -29,6 +29,7 @@ public class UserDTO {
     private String userType;
 
     private boolean isMan;
+    private String sex;
     private Date birthDate;
     private Integer height;
     private String smoking;
@@ -57,6 +58,14 @@ public class UserDTO {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public void setUsername(String username) {

@@ -62,10 +62,11 @@ export class RegisterComponent implements OnInit {
 
 
 
-  setLocalization(){
-    this.cityActive.region = this.regionActive;
-    this.localization.city = this.cityActive;
-    this.userForm.localization = this.localization;
+  modifyFormFieldsBeforePost(){
+    this.userForm.city = this.cityActive;
+    this.userForm.isMan = ( this.userForm.sex === Constants.SEX_MAN ? true : false);
+
+
   }
 
   getRegions(){
@@ -90,14 +91,14 @@ export class RegisterComponent implements OnInit {
     this.checkNull(this.userForm.userType, this.errorFields[3]);
     this.checkBadLenght(4,50,this.userForm.firstname, this.errorFields[4]);
     this.checkBadLenght(4,50,this.userForm.lastname, this.errorFields[5]);
-    this.checkNull(this.userForm.birthDay, this.errorFields[6]);
+    this.checkNull(this.userForm.birthDate, this.errorFields[6]);
     this.checkNull(this.userForm.sex, this.errorFields[7]);
     this.checkNull(this.regionActive, this.errorFields[8]);
     this.checkNull(this.cityActive, this.errorFields[9]);
 
     //valid tablicy
     if(!this.checkErrors()){
-      this.setLocalization();
+      this.modifyFormFieldsBeforePost();
       this.saveUser();
     }
   }
@@ -158,7 +159,7 @@ export class RegisterComponent implements OnInit {
     default25.setMonth(0);
     default25.setDate(0);
 
-    this.userForm.birthDay = null;
+    this.userForm.birthDate = null;
     this.defaultDate = default25;
     this.minBirthDate = border18;
   }

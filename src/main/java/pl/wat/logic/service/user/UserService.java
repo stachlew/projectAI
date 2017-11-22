@@ -48,6 +48,7 @@ public class UserService {
         RestResponse<UserDTO> response = new RestResponse<>();
         if(true){
             newUser.setPassword(PasswordGenerator.hashPassword(newUser.getPassword()));
+            newUser.setMan(Constants.SEX_MAN.equals(newUser.getSex()));
             User entity = transfer.toEntity(newUser);
             entity.setLastpassres(new Date());
             entity.setAccountCreateDate(new Date());
