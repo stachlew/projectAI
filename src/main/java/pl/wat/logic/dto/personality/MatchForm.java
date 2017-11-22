@@ -1,15 +1,14 @@
 package pl.wat.logic.dto.personality;
 
-import pl.wat.db.domain.personality.CategoryAttribute;
 import pl.wat.logic.dto.user.UserDTO;
 
 import java.util.List;
 
 public class MatchForm {
     UserDTO userDTO;
-    List<CategoryAttributeDTO> characterList;
-    List<CategoryAttributeDTO> personalityList;
-    List<CategoryAttributeDTO> freeTimeList;
+    List<UserPersonalityAttributeDTO> characterList;
+    List<UserPersonalityAttributeDTO> personalityList;
+    List<UserPersonalityAttributeDTO> freeTimeList;
 
     public UserDTO getUserDTO() {
         return userDTO;
@@ -19,27 +18,27 @@ public class MatchForm {
         this.userDTO = userDTO;
     }
 
-    public List<CategoryAttributeDTO> getCharacterList() {
+    public List<UserPersonalityAttributeDTO> getCharacterList() {
         return characterList;
     }
 
-    public void setCharacterList(List<CategoryAttributeDTO> characterList) {
+    public void setCharacterList(List<UserPersonalityAttributeDTO> characterList) {
         this.characterList = characterList;
     }
 
-    public List<CategoryAttributeDTO> getPersonalityList() {
+    public List<UserPersonalityAttributeDTO> getPersonalityList() {
         return personalityList;
     }
 
-    public void setPersonalityList(List<CategoryAttributeDTO> personalityList) {
+    public void setPersonalityList(List<UserPersonalityAttributeDTO> personalityList) {
         this.personalityList = personalityList;
     }
 
-    public List<CategoryAttributeDTO> getFreeTimeList() {
+    public List<UserPersonalityAttributeDTO> getFreeTimeList() {
         return freeTimeList;
     }
 
-    public void setFreeTimeList(List<CategoryAttributeDTO> freeTimeList) {
+    public void setFreeTimeList(List<UserPersonalityAttributeDTO> freeTimeList) {
         this.freeTimeList = freeTimeList;
     }
 }
