@@ -7,7 +7,7 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CITY_PK")
     @SequenceGenerator(sequenceName = "CITY_PK", initialValue = 1, allocationSize = 1, name = "CITY_PK")
-    private int id;
+    private Long id;
 
     @Column(name = "city_name")
     private String cityName;
@@ -16,11 +16,11 @@ public class City {
     @JoinColumn(name ="id_region")
     private Region region;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

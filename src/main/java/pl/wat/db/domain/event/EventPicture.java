@@ -8,7 +8,7 @@ public class EventPicture {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Speeddate_Picture_PK")
     @SequenceGenerator(sequenceName = "Speeddate_Picture_PK", initialValue = 1, allocationSize = 1, name = "Speeddate_Picture_PK")
-    private int id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "speeddate_id")

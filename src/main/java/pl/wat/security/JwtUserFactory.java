@@ -15,7 +15,7 @@ public final class JwtUserFactory {
 
     public static JwtUser create(User user) {
         return new JwtUser(
-                user.getId(),
+                 user.getId().intValue(),
                 user.getUsername(),
                 user.getFirstname(),
                 user.getLastname(),

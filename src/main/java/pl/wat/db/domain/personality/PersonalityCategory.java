@@ -15,7 +15,7 @@ public class PersonalityCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PERSONALITY_CATEGORY_PK")
     @SequenceGenerator(sequenceName = "PERSONALITY_CATEGORY_PK", initialValue = 1, allocationSize = 1, name = "PERSONALITY_CATEGORY_PK")
-    private int id;
+    private Long id;
 
     @Column(length = 500)
     @NotNull
@@ -28,11 +28,11 @@ public class PersonalityCategory {
     @Column
     private int amount;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -3,6 +3,7 @@ package pl.wat.logic.service.utils;
 import org.springframework.stereotype.Service;
 import pl.wat.db.domain.conversation.Conversation;
 import pl.wat.db.domain.conversation.PrivateMessage;
+import pl.wat.db.domain.dictionary.SimpleDictionary;
 import pl.wat.db.domain.event.Event;
 import pl.wat.db.domain.event.Localization;
 import pl.wat.db.domain.event.Participant;
@@ -10,16 +11,16 @@ import pl.wat.db.domain.localization.City;
 import pl.wat.db.domain.localization.Region;
 import pl.wat.db.domain.user.Authority;
 import pl.wat.db.domain.user.User;
-import pl.wat.db.domain.user.profile.Profile;
-import pl.wat.db.domain.user.profile.ProfilePicture;
+import pl.wat.db.domain.user.profile.attributes.*;
+import pl.wat.db.domain.user.profile.attributes.Dictionary;
 import pl.wat.logic.dto.conversation.ConversationDTO;
 import pl.wat.logic.dto.conversation.PrivateMessageDTO;
+import pl.wat.logic.dto.dictionary.SimpleDictionaryDTO;
 import pl.wat.logic.dto.event.EventDTO;
 import pl.wat.logic.dto.event.LocalizationDTO;
 import pl.wat.logic.dto.event.ParticipantDTO;
 import pl.wat.logic.dto.localization.CityDTO;
 import pl.wat.logic.dto.localization.RegionDTO;
-import pl.wat.logic.dto.profile.ProfileDTO;
 import pl.wat.logic.dto.profile.ProfilePictureDTO;
 import pl.wat.logic.dto.user.UserDTO;
 
@@ -45,6 +46,26 @@ public class TransformService {
             dto.setAuthorities(toDTO(entity.getAuthorities()));
             dto.setAge(this.countAge(entity));
             dto.setProfilePhotoId(entity.getProfilePhotoId());
+            dto.setAccountCreateDate(entity.getAccountCreateDate());
+            dto.setLastLogoutDate(entity.getLastLogoutDate());
+            dto.setBirthDate(entity.getBirthDate());
+            dto.setCity(toDTO(entity.getCity()));
+            dto.setDescription(entity.getDescription());
+            dto.setDrinking(entity.getDrinking());
+            dto.setEducation(toDTO(entity.getEducation()));
+            dto.setEyeColor(toDTO(entity.getEyeColor()));
+            dto.setFigure(toDTO(entity.getFigure()));
+            dto.setHairColor(toDTO(entity.getHairColor()));
+            dto.setHight(dto.getHight());
+            dto.setKids(dto.getKids());
+            dto.setMan(dto.isMan());
+            dto.setMartialStatus(toDTO(entity.getMartialStatus()));
+            dto.setProfession(entity.getProfession());
+            dto.setReligion(toDTO(entity.getReligion()));
+            dto.setSmoking(entity.getSmoking());
+            dto.setZodiacSign(toDTO(entity.getZodiacSign()));
+
+
             return dto;
         }else {
             return null;
@@ -63,7 +84,6 @@ public class TransformService {
             dto.setAccountCreateDate(null);
             dto.setLastLogoutDate(null);
             dto.setLastpassres(null);
-            dto.setActive(false);
             dto.setEnabled(false);
             dto.setAuthorities(null);
             dto.setAge(this.countAge(entity));
@@ -89,8 +109,28 @@ public class TransformService {
             entity.setEmail(dto.getEmail());
             entity.setFirstname(dto.getFirstname());
             entity.setLastname(dto.getLastname());
-            entity.setBirthDate(dto.getBirthDay());
-            //TODO LOCALIZATION
+            entity.setBirthDate(dto.getBirthDate());
+
+            entity.setCity(toEntity(dto.getCity()));
+            entity.setDescription(dto.getDescription());
+            entity.setDrinking(dto.getDrinking());
+            entity.setEducation((Education)toEntity(dto.getEducation()));
+            entity.setEyeColor((EyeColor)toEntity(dto.getEyeColor()));
+            entity.setFigure((Figure)toEntity(dto.getFigure()));
+            entity.setHairColor((HairColor)toEntity(dto.getHairColor()));
+            entity.setMartialStatus((MartialStatus)toEntity(dto.getMartialStatus()));
+            entity.setReligion((Religion)toEntity(dto.getReligion()));
+            entity.setZodiacSign((ZodiacSign)toEntity(dto.getZodiacSign()));
+            entity.setHight(dto.getHight());
+            entity.setKids(dto.getKids());
+            entity.setMan(dto.isMan());
+            entity.setProfession(dto.getProfession());
+            entity.setProfilePhotoId(dto.getProfilePhotoId());
+            entity.setSmoking(dto.getSmoking());
+
+
+
+
             entity.setEnabled(dto.isEnabled());
             return entity;
         }else {
@@ -138,53 +178,11 @@ public class TransformService {
         return dto;
     }
 
-    public ProfileDTO toDTO(Profile entity){
-        if(entity!=null){
-            ProfileDTO dto = new ProfileDTO();
-            dto.setMan(entity.isMan());
-            dto.setDescription(entity.getDescription());
-            //... itd
-            return dto;
-        }else {
-            return null;
-        }
-    }
 
-    public Profile toEntity(ProfileDTO dto){
-        if(dto!=null){
-            Profile entity = new Profile();
-            entity.setMan(dto.isMan());
-            entity.setDescription(dto.getDescription());
-            //... itd
-            return entity;
-        }else {
-            return null;
-        }
-    }
 
-    public ProfilePictureDTO toDTO(ProfilePicture entity){
-        if(entity!=null){
-            ProfilePictureDTO dto = new ProfilePictureDTO();
-            dto.setId(entity.getId());
-            dto.setAddDate(entity.getAddDate());
-            dto.setUser(toSimpleDto(entity.getUser()));
-            return dto;
-        }else {
-            return null;
-        }
-    }
 
-    public ProfilePicture toEntity(ProfilePictureDTO dto){
-        if(dto!=null){
-            ProfilePicture entity = new ProfilePicture();
-            entity.setId(dto.getId());
-            entity.setAddDate(dto.getAddDate());
-            entity.setUser(toEntity(dto.getUser()));
-            return entity;
-        }else {
-            return null;
-        }
-    }
+
+
 
     public EventDTO toDTO(Event event){
         if(event!=null){
@@ -316,6 +314,31 @@ public class TransformService {
         else
             return null;
     }
+
+    public Dictionary toEntity(SimpleDictionaryDTO dto){
+        if(dto!=null){
+            Dictionary entity = new Dictionary();
+            if(dto.getId()!=null) entity.setId(dto.getId());
+            entity.setDescription(dto.getDescription());
+            return entity;
+        }
+        else
+            return null;
+    }
+
+    public SimpleDictionaryDTO toDTO(Dictionary entity){
+        if(entity!=null){
+            SimpleDictionaryDTO dto = new SimpleDictionaryDTO();
+            dto.setId(entity.getId());
+            dto.setDescription(entity.getDescription());
+            return dto;
+        }
+        else
+            return null;
+    }
+
+
+
 
     private int countAge(User entity){
         if(entity!=null && entity.getBirthDate()!=null){

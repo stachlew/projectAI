@@ -9,7 +9,7 @@ public class Participant {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Participant_PK")
     @SequenceGenerator(sequenceName = "Participant_PK", initialValue = 1, allocationSize = 1, name = "Participant_PK")
-    private int id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "event_id")
@@ -19,11 +19,11 @@ public class Participant {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

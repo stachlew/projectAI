@@ -7,7 +7,7 @@ public class Region {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "REGION_PK")
     @SequenceGenerator(sequenceName = "REGION_PK", initialValue = 1, allocationSize = 1, name = "REGION_PK")
-    private int id;
+    private Long id;
 
     @Column(name = "region_name")
     private String regionName;
@@ -19,11 +19,11 @@ public class Region {
         this.regionName = regionName;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

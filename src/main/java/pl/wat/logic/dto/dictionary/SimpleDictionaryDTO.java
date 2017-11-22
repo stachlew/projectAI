@@ -3,22 +3,22 @@ package pl.wat.logic.dto.dictionary;
 import pl.wat.db.domain.dictionary.SimpleDictionary;
 
 public class SimpleDictionaryDTO {
-    private int id;
+    private Long id;
     private String description;
 
     public SimpleDictionaryDTO() {
     }
 
-    public SimpleDictionaryDTO(int id, String description) {
+    public SimpleDictionaryDTO(Long id, String description) {
         this.id = id;
         this.description = description;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

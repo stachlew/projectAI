@@ -34,7 +34,7 @@ public class EventsGuestController {
     @PreAuthorize("hasRole('USER')")
     @ResponseBody
     public List<EventDTO> getUserParticipantEvent(Authentication auth){
-        int userId = this.utilService.getUserId(auth);
+        Long userId = this.utilService.getUserId(auth);
         return eventService.getUserParticipantEvents(userId);
     }
 
@@ -42,16 +42,16 @@ public class EventsGuestController {
     @RequestMapping(value = "/saveParticipant",method = RequestMethod.POST)
     @PreAuthorize("hasRole('USER')")
     @ResponseBody
-    public boolean saveParticipant(Authentication auth , @RequestBody int idEvent){
-        int userId = this.utilService.getUserId(auth);
+    public boolean saveParticipant(Authentication auth , @RequestBody Long idEvent){
+        Long userId = this.utilService.getUserId(auth);
         return eventService.saveParticipant(idEvent, userId);
     }
 
     //detale wydarzenia
     @RequestMapping(value = "/getDetails/{idEvent}",method = RequestMethod.GET)
     @ResponseBody
-    public EventDTO getEventDetails(Authentication auth, @PathVariable int idEvent){
-        int userId = this.utilService.getUserId(auth);
+    public EventDTO getEventDetails(Authentication auth, @PathVariable Long idEvent){
+        Long userId = this.utilService.getUserId(auth);
         return eventService.getEventDetails(idEvent,userId);
     }
 

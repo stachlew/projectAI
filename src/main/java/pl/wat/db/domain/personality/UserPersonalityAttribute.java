@@ -16,7 +16,7 @@ public class UserPersonalityAttribute {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_PERSONALITY_ATTR_PK")
     @SequenceGenerator(sequenceName = "USER_PERSONALITY_ATTR_PK", initialValue = 1, allocationSize = 1, name = "USER_PERSONALITY_ATTR_PK")
-    private int id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -34,11 +34,11 @@ public class UserPersonalityAttribute {
     @NotNull
     private String partnerAnswer;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

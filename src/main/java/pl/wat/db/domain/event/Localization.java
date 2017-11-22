@@ -11,7 +11,7 @@ public class Localization {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Localization_PK")
     @SequenceGenerator(sequenceName = "Localization_PK", initialValue = 1, allocationSize = 1, name = "Localization_PK")
-    private int id;
+    private Long id;
 
     @Column
     private String address;
@@ -31,11 +31,11 @@ public class Localization {
     @Size(max = 25)
     private String geoWidth;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

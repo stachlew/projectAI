@@ -3,7 +3,7 @@ package pl.wat.logic.dto.conversation;
 import pl.wat.logic.dto.user.UserDTO;
 
 public class ConversationDTO {
-    private int id;
+    private Long id;
     private UserDTO memberOne;
     private UserDTO memberTwo;
     private UserDTO secondPerson;
@@ -12,11 +12,11 @@ public class ConversationDTO {
     public ConversationDTO() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

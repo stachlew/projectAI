@@ -7,12 +7,12 @@ import pl.wat.security.JwtUser;
 @Service
 public class UtilService {
 
-    public int getUserId(Authentication auth){
+    public Long getUserId(Authentication auth){
         if(auth!= null && auth.getPrincipal()!= null){
             JwtUser user = (JwtUser) auth.getPrincipal();
-            return user.getId();
+            return Long.valueOf(user.getId());
         }else {
-            return -1;
+            return Long.valueOf(-1);
         }
     }
 }

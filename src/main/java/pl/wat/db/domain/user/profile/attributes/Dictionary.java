@@ -1,9 +1,8 @@
-package pl.wat.db.domain.dictionary;
+package pl.wat.db.domain.user.profile.attributes;
 
-public class SimpleDictionary {
-
-    private Long id;
-    private String description;
+public class Dictionary {
+    public Long id;
+    public String description;
 
     public Long getId() {
         return id;

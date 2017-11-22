@@ -29,7 +29,7 @@ public class EventService {
     @Autowired
     TransformService transformService;
 
-    public EventDTO getEventDetails(int idEvent){
+    public EventDTO getEventDetails(Long idEvent){
         Event event = eventRepository.findOne(idEvent);
         EventDTO eventDTO = transformService.toDTO(event);
         LinkedList<ParticipantDTO> participantDTOList = new LinkedList<>();
@@ -40,7 +40,7 @@ public class EventService {
         return eventDTO;
     }
 
-    public EventDTO getEventDetails(int idEvent, int idUser){
+    public EventDTO getEventDetails(Long idEvent, Long idUser){
         Event event = eventRepository.findOne(idEvent);
         EventDTO eventDTO = transformService.toDTO(event);
         LinkedList<ParticipantDTO> participantDTOList = new LinkedList<>();
@@ -57,7 +57,7 @@ public class EventService {
     }
 
 
-    public boolean saveParticipant(int idEvent, int idUser) {
+    public boolean saveParticipant(Long idEvent, Long idUser) {
         Event event = eventRepository.findOne(idEvent);
         User user = userRepository.findOne(idUser);
         if(event!=null && user!=null){
@@ -74,7 +74,7 @@ public class EventService {
         return false;
     }
 
-    public List<EventDTO> getUserParticipantEvents(int userId) {
+    public List<EventDTO> getUserParticipantEvents(Long userId) {
         User user = userRepository.getOne(userId);
         List<Participant> participants = participantRepository.findByUser(user);
         List<EventDTO> eventDTOList = new LinkedList<>();
@@ -97,7 +97,7 @@ public class EventService {
         return pageResponse;
     }
 
-    public List<EventDTO> getUserEvent(int userId) {
+    public List<EventDTO> getUserEvent(Long userId) {
         User user = userRepository.findOne(userId);
         LinkedList<EventDTO> eventDTOList = new LinkedList<>();
         eventRepository.findByAndOrganizer(user).forEach(event -> {

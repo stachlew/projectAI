@@ -9,15 +9,15 @@ import pl.wat.db.domain.conversation.PrivateMessage;
 
 import java.util.List;
 
-public interface PrivateMessageRepository extends CrudRepository<PrivateMessage, Integer> {
+public interface PrivateMessageRepository extends CrudRepository<PrivateMessage, Long> {
     //   Page<PrivateMessage> findByConversationOrderBySendDateAsc(Conversation conversation, Pageable page);
 
-    List<PrivateMessage> findLast10ByConversationIdAndIdLessThanOrderBySendDateAsc(int conversationId,int id);
-    List<PrivateMessage> findAllByConversationIdAndIdGreaterThanOrderBySendDateAsc(int conversationId,int id);
+    List<PrivateMessage> findLast10ByConversationIdAndIdLessThanOrderBySendDateAsc(Long conversationId,Long id);
+    List<PrivateMessage> findAllByConversationIdAndIdGreaterThanOrderBySendDateAsc(Long conversationId,Long id);
 
 
-    List<PrivateMessage> findFirst10ByConversationIdAndIdLessThanOrderBySendDateDesc(int conversationId,int id);
-    List<PrivateMessage> findFirst10ByConversationIdOrderBySendDateDesc(int conversationId);
+    List<PrivateMessage> findFirst10ByConversationIdAndIdLessThanOrderBySendDateDesc(Long conversationId,Long id);
+    List<PrivateMessage> findFirst10ByConversationIdOrderBySendDateDesc(Long conversationId);
 
-    List<PrivateMessage> getFirst1ByConversationIdOrderBySendDateDesc(int conversationId);
+    List<PrivateMessage> getFirst1ByConversationIdOrderBySendDateDesc(Long conversationId);
 }

@@ -24,7 +24,7 @@ public class UserAccountController {
     //Pobranie danych o koncie
     @PreAuthorize("hasRole('USER') or hasRole('MANAGER')")
     @RequestMapping(value = "/getAccountInfo",method = RequestMethod.GET)
-    @ResponseBody UserDTO getUserInfo(int idUser){
+    @ResponseBody UserDTO getUserInfo(Long idUser){
         return userService.getUserInfo(idUser);
     }
 

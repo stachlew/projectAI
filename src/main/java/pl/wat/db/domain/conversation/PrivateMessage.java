@@ -12,7 +12,7 @@ public class PrivateMessage {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PrivateMessage_PK")
     @SequenceGenerator(sequenceName = "PrivateMessage_PK", initialValue = 1, allocationSize = 1, name = "PrivateMessage_PK")
-    private int id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "conversation_id")
@@ -38,11 +38,11 @@ public class PrivateMessage {
         this.textMessage = textMessage;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -4,15 +4,15 @@ import pl.wat.logic.dto.user.UserDTO;
 
 public class ParticipantDTO {
 
-    private int id;
+    private Long id;
     private EventDTO event;
     private UserDTO user;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

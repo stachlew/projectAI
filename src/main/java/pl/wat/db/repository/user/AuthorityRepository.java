@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import pl.wat.db.domain.user.Authority;
 import pl.wat.db.domain.user.AuthorityName;
 
-public interface AuthorityRepository extends JpaRepository<Authority, Integer> {
+public interface AuthorityRepository extends JpaRepository<Authority, Long> {
     Authority findFirstByName(AuthorityName name);
 }

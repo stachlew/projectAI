@@ -12,7 +12,7 @@ public class Conversation {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Conversation_PK")
     @SequenceGenerator(sequenceName = "Conversation_PK", initialValue = 1, allocationSize = 1, name = "Conversation_PK")
-    private int id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "memberOne_id")
@@ -30,11 +30,11 @@ public class Conversation {
         this.memberTwo = memberTwo;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

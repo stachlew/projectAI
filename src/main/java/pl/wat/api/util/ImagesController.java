@@ -25,10 +25,10 @@ public class ImagesController {
     @Autowired
     private ImagesService imagesService;
 
-    @RequestMapping(value = "/picture-list/{userId}",method = RequestMethod.GET)
-    public List<ProfilePictureDTO> getUserPictures(@PathVariable int userId){
-        return imagesService.getUserPicturesList(userId);
-    }
+//    @RequestMapping(value = "/picture-list/{userId}",method = RequestMethod.GET)
+//    public List<ProfilePictureDTO> getUserPictures(@PathVariable int userId){
+//        return imagesService.getUserPicturesList(userId);
+//    }
 
     @RequestMapping(value = "/users/{id}",method = RequestMethod.GET)
     public void getUserImage(HttpServletResponse resp, @PathVariable String id){

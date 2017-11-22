@@ -12,7 +12,7 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EVENT_PK")
     @SequenceGenerator(sequenceName = "EVENT_PK", initialValue = 1, allocationSize = 1, name = "EVENT_PK")
-    private int id;
+    private Long id;
 
     @Column
     private Date eventStart;
@@ -36,11 +36,11 @@ public class Event {
     private User organizer;
 
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

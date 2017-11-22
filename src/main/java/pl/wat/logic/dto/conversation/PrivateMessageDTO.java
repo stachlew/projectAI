@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class PrivateMessageDTO {
 
-    private int id;
+    private Long id;
     private ConversationDTO conversation;
     private Date sendDate;
     private UserDTO sender;
@@ -15,11 +15,11 @@ public class PrivateMessageDTO {
     public PrivateMessageDTO() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

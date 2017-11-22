@@ -7,7 +7,7 @@ import pl.wat.db.domain.user.User;
 
 import java.util.List;
 
-public interface ParticipantRepository extends JpaRepository<Participant, Integer> {
+public interface ParticipantRepository extends JpaRepository<Participant, Long> {
      List<Participant> findByEvent(Event event);
      List<Participant> findByUser(User user);
      Participant findFirstByEventAndUser(Event event,User user);

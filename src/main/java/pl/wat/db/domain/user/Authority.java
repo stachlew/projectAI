@@ -11,7 +11,7 @@ public class Authority {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AUTH_SEQ")
     @SequenceGenerator(sequenceName = "AUTH_SEQ", initialValue = 1, allocationSize = 1, name = "AUTH_SEQ")
-    private int id;
+    private Long id;
 
     @Column(length = 50)
     @NotNull
@@ -21,11 +21,11 @@ public class Authority {
     @ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
     private List<User> users;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -26,7 +26,7 @@ public class EventsManagmentController {
     @PreAuthorize("hasRole('USER')")
     @ResponseBody
     public List<EventDTO> getUserEvent(Authentication auth){
-        int userId = this.utilService.getUserId(auth);
+        Long userId = this.utilService.getUserId(auth);
         return eventService.getUserEvent(userId);
     }
 
@@ -35,8 +35,8 @@ public class EventsManagmentController {
     @RequestMapping(value = "/getDetails",method = RequestMethod.GET)
     @PreAuthorize("hasRole('USER')")
     @ResponseBody
-    public EventDTO getEventDetails(Authentication auth,int idEvent){
-        int userId = this.utilService.getUserId(auth);
+    public EventDTO getEventDetails(Authentication auth,Long idEvent){
+        Long userId = this.utilService.getUserId(auth);
         return eventService.getEventDetails(idEvent);
     }
 

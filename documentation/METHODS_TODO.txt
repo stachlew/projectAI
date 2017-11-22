@@ -15,15 +15,15 @@
 15. Wydarzenie - pobranie detali IN[WYDARZENIE] OUT[DETALE_WYDARZENIA]  //DONE /// EventsGuestController.getEventDetails(idEvent,idUser)
 16. Wydarzenie - wylistowanie wszystkich wydarzen usera IN[USER] OUT[LISTA_WYDARZEN] //DONE// EventsManagmentController.getUserEvent
 17. Wydarzenie - wylistowanie detali wydarzenia usera IN[WYDARZENIE] OUT[WYDARZENIE + INFO_CZY_JEST_NA_NIE_ZAPISANY]
-18. Wydarzenie - edycja detali wydarzenia usera IN[WYDARZENIENEW] OUT[-] EventsGuestController.setEvent
+18. Wydarzenie - edycja detali wydarzenia usera IN[WYDARZENIENEW] OUT[-] EventsManagmentController.setEvent
 19. Słowniki - listowanie wszystkich elementów dla każdego słownika (znaki zodiaku, zawody, .....)
 20. Wydarzenie - zapis gościa na wydarzenie IN[USER] OUT[boolean]   //DONE // EventsGuestController.saveParticipant
 21. Wydarzenie - wylistowanie gości wydarzenia IN[WYDARZENIE] OUT[LISTA_GOSCI]
 21. Wydarzenie - wylistowanie wydarzen na ktore jest sie zapisanym IN[USER] OUT[LISTA_WYDARZEN] //DONE// EventsGuestController.getUserParticipantEvent
 
 
-22. Stworzenie wydarzenia(id == null) + edycja (id != null)
-23. Skonkretyzowanie dto dla użytkownika/jego profilu - nie wiem jak to ma być
+22. Stworzenie wydarzenia(id == null) + edycja (id != null) //DONE//  EventsManagmentController.setEvent
+23. Skonkretyzowanie dto dla użytkownika/jego profilu - nie wiem jak to ma być 
 24. Listowanie użytkowników/profili na podstawie pkt 23 (PersonController)
 25. Rozbudowanie ProfileSearchDTO o kolejne pola wyszukiwania wg pkt 23. (do uzupełnienia będą filtry zaawansowane ze strony z profilami)
 26. Rozszerzyć DTO użytkownika dla m.in dla celów rejestracji jeśli się coś zmieni

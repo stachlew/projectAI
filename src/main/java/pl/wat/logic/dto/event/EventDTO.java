@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public class EventDTO {
-    private int id;
+    private Long id;
     private Date eventStart;
     private int capacity;
     private String title;
@@ -20,11 +20,11 @@ public class EventDTO {
     private boolean isParticipant;
     private List<ParticipantDTO> participantList;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

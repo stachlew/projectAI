@@ -1,15 +1,19 @@
 package pl.wat.logic.dto.user;
 
+import pl.wat.db.domain.localization.City;
 import pl.wat.db.domain.user.Authority;
+import pl.wat.logic.dto.dictionary.SimpleDictionaryDTO;
 import pl.wat.logic.dto.event.LocalizationDTO;
-import pl.wat.logic.dto.profile.ProfileDTO;
+import pl.wat.logic.dto.localization.CityDTO;
+import pl.wat.logic.dto.personality.MatchDTO;
+import pl.wat.logic.dto.personality.UserPersonalityAttributeDTO;
 
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
 public class UserDTO {
-    private int id;
+    private Long id;
     private String username;
     private String password;
     private String firstname;
@@ -19,20 +23,35 @@ public class UserDTO {
     private Date accountCreateDate;
     private Timestamp lastLogoutDate;
     private Date lastpassres;
-    private boolean active;
     private boolean enabled;
     private List<Authority> authorities;
     private int age;
     private String userType;
-    private Date birthDay;
-    private String sex;
-    private LocalizationDTO localizationDTO;
 
-    public int getId() {
+    private boolean isMan;
+    private Date birthDate;
+    private int hight;
+    private String smoking;
+    private String drinking;
+    private String kids;
+    private String profession;
+    private String description;
+    private CityDTO city;
+    private SimpleDictionaryDTO zodiacSign;
+    private SimpleDictionaryDTO martialStatus;
+    private SimpleDictionaryDTO education;
+    private SimpleDictionaryDTO figure;
+    private SimpleDictionaryDTO hairColor;
+    private SimpleDictionaryDTO eyeColor;
+    private SimpleDictionaryDTO religion;
+    private List<MatchDTO> matchList;
+
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -108,13 +127,6 @@ public class UserDTO {
         this.lastpassres = lastpassres;
     }
 
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
 
     public boolean isEnabled() {
         return enabled;
@@ -148,27 +160,144 @@ public class UserDTO {
         this.userType = userType;
     }
 
-    public Date getBirthDay() {
-        return birthDay;
+
+
+
+    public boolean isMan() {
+        return isMan;
     }
 
-    public void setBirthDay(Date birthDay) {
-        this.birthDay = birthDay;
+    public void setMan(boolean man) {
+        isMan = man;
     }
 
-    public String getSex() {
-        return sex;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
-    public LocalizationDTO getLocalizationDTO() {
-        return localizationDTO;
+    public int getHight() {
+        return hight;
     }
 
-    public void setLocalizationDTO(LocalizationDTO localizationDTO) {
-        this.localizationDTO = localizationDTO;
+    public void setHight(int hight) {
+        this.hight = hight;
+    }
+
+    public String getSmoking() {
+        return smoking;
+    }
+
+    public void setSmoking(String smoking) {
+        this.smoking = smoking;
+    }
+
+    public String getDrinking() {
+        return drinking;
+    }
+
+    public void setDrinking(String drinking) {
+        this.drinking = drinking;
+    }
+
+    public String getKids() {
+        return kids;
+    }
+
+    public void setKids(String kids) {
+        this.kids = kids;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public CityDTO getCity() {
+        return city;
+    }
+
+    public void setCity(CityDTO city) {
+        this.city = city;
+    }
+
+    public SimpleDictionaryDTO getZodiacSign() {
+        return zodiacSign;
+    }
+
+    public void setZodiacSign(SimpleDictionaryDTO zodiacSign) {
+        this.zodiacSign = zodiacSign;
+    }
+
+    public SimpleDictionaryDTO getMartialStatus() {
+        return martialStatus;
+    }
+
+    public void setMartialStatus(SimpleDictionaryDTO martialStatus) {
+        this.martialStatus = martialStatus;
+    }
+
+    public SimpleDictionaryDTO getEducation() {
+        return education;
+    }
+
+    public void setEducation(SimpleDictionaryDTO education) {
+        this.education = education;
+    }
+
+
+
+    public SimpleDictionaryDTO getFigure() {
+        return figure;
+    }
+
+    public void setFigure(SimpleDictionaryDTO figure) {
+        this.figure = figure;
+    }
+
+    public SimpleDictionaryDTO getHairColor() {
+        return hairColor;
+    }
+
+    public void setHairColor(SimpleDictionaryDTO hairColor) {
+        this.hairColor = hairColor;
+    }
+
+    public SimpleDictionaryDTO getEyeColor() {
+        return eyeColor;
+    }
+
+    public void setEyeColor(SimpleDictionaryDTO eyeColor) {
+        this.eyeColor = eyeColor;
+    }
+
+    public SimpleDictionaryDTO getReligion() {
+        return religion;
+    }
+
+    public void setReligion(SimpleDictionaryDTO religion) {
+        this.religion = religion;
+    }
+
+    public List<MatchDTO> getMatchList() {
+        return matchList;
+    }
+
+    public void setMatchList(List<MatchDTO> matchList) {
+        this.matchList = matchList;
     }
 }

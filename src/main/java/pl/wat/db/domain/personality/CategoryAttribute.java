@@ -14,17 +14,17 @@ public class CategoryAttribute {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CATEGORY_ATTRIBUTE_PK")
     @SequenceGenerator(sequenceName = "CATEGORY_ATTRIBUTE_PK", initialValue = 1, allocationSize = 1, name = "CATEGORY_ATTRIBUTE_PK")
-    private int id;
+    private Long id;
 
     @Column(length = 500)
     @NotNull
     private String description;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -8,6 +8,7 @@ import pl.wat.config.PasswordGenerator;
 import pl.wat.db.domain.user.Authority;
 import pl.wat.db.domain.user.AuthorityName;
 import pl.wat.db.domain.user.User;
+import pl.wat.db.repository.personality.UserPersonalityAttributeRepository;
 import pl.wat.db.repository.user.AuthorityRepository;
 import pl.wat.db.repository.user.UserRepository;
 
@@ -27,7 +28,7 @@ public class UserService {
     private UserRepository userRepository;
 
     @Autowired
-    private ProfileService profileService;
+    private UserPersonalityAttributeRepository userPersonalityAttributeRepository;
 
     @Autowired
     private TransformService transfer;
@@ -49,6 +50,7 @@ public class UserService {
             newUser.setPassword(PasswordGenerator.hashPassword(newUser.getPassword()));
             User entity = transfer.toEntity(newUser);
             entity.setLastpassres(new Date());
+            entity.setAccountCreateDate(new Date());
             entity.setEnabled(true);
             List<Authority> authorities = new LinkedList<>();
             if(Constants.USER_TYPE.equals(newUser.getUserType())){
@@ -75,7 +77,7 @@ public class UserService {
         return response;
     }
 
-    public UserDTO getUserInfo(int idUser) {
+    public UserDTO getUserInfo(Long idUser) {
         User user = userRepository.getOne(idUser);
         return transfer.toDto(user);
 

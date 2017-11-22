@@ -27,7 +27,7 @@ public class ChatController {
     @RequestMapping(value = "/getAllConversations",method = RequestMethod.GET)
     public @ResponseBody
     List<ConversationDTO> getAllConversations(Authentication auth){
-        int userId = this.utilService.getUserId(auth);
+        Long userId = this.utilService.getUserId(auth);
         if(userId>0){
             return this.conversationService.getAllConversationsByUser(userId);
         }else {
@@ -40,7 +40,7 @@ public class ChatController {
     @RequestMapping(value = "/getLastMessages",method = RequestMethod.POST)
     public @ResponseBody
     List<PrivateMessageDTO> getLastMessages(Authentication auth, @RequestBody ChatRequest request){
-        int userId = this.utilService.getUserId(auth);
+        Long userId = this.utilService.getUserId(auth);
         if(conversationService.isConversationOwner(request.conversationId,userId)){
             return this.conversationService.getLatestMessages(request.conversationId);
         }else {
@@ -54,7 +54,7 @@ public class ChatController {
     @RequestMapping(value = "/getMessagesBefore",method = RequestMethod.POST)
     public @ResponseBody
     List<PrivateMessageDTO> getMessagesBefore(Authentication auth, @RequestBody ChatRequest request){
-        int userId = this.utilService.getUserId(auth);
+        Long userId = this.utilService.getUserId(auth);
         if(conversationService.isConversationOwner(request.conversationId,userId)){
             return this.conversationService.getMessagesBefore(request.conversationId, request.messageId);
         }else {
@@ -67,7 +67,7 @@ public class ChatController {
     @RequestMapping(value = "/getMessagesAfter",method = RequestMethod.POST)
     public @ResponseBody
     List<PrivateMessageDTO> getMessagesAfter(Authentication auth, @RequestBody ChatRequest request){
-        int userId = this.utilService.getUserId(auth);
+        Long userId = this.utilService.getUserId(auth);
         if(conversationService.isConversationOwner(request.conversationId,userId)){
             return this.conversationService.getMessagesAfter(request.conversationId, request.messageId);
         }else {
@@ -80,7 +80,7 @@ public class ChatController {
     @RequestMapping(value = "/sendNewMessage",method = RequestMethod.POST)
     public @ResponseBody
     PrivateMessageDTO sendNewMessage(Authentication auth, @RequestBody ChatRequest request){
-        int userId = this.utilService.getUserId(auth);
+        Long userId = this.utilService.getUserId(auth);
         if(conversationService.isConversationOwner(request.conversation.getId(),userId)){
             return this.conversationService.addPrivateMessagesToConversation(request.conversation, userId, request.messageText);
         }else {
@@ -92,8 +92,8 @@ public class ChatController {
     @PreAuthorize("hasRole('USER')")
     @RequestMapping(value = "/createNewConversation",method = RequestMethod.POST)
     public @ResponseBody
-    ConversationDTO createNewConversation(Authentication auth, @RequestBody int receiverId){
-        int userId = this.utilService.getUserId(auth);
+    ConversationDTO createNewConversation(Authentication auth, @RequestBody Long receiverId){
+        Long userId = this.utilService.getUserId(auth);
         if(userId>0){
             return this.conversationService.createConversation(userId, receiverId);
         }else {

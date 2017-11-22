@@ -9,13 +9,13 @@ import pl.wat.db.domain.user.User;
 import java.util.List;
 
 
-public interface ConversationRepository  extends JpaRepository<Conversation, Integer> {
-    List<Conversation> getAllByMemberOneIdOrMemberTwoId(int idUser, int idUser2);
+public interface ConversationRepository  extends JpaRepository<Conversation, Long> {
+    List<Conversation> getAllByMemberOneIdOrMemberTwoId(Long idUser, Long idUser2);
 
-    List<Conversation> getAllByMemberOneIdAndMemberTwoId(int oneId, int twoId);
+    List<Conversation> getAllByMemberOneIdAndMemberTwoId(Long oneId, Long twoId);
 
     @Query("select c from Conversation c where c.id =?1 and (c.memberOne = ?2 or c.memberTwo = ?2)")
-    Conversation findOneByIdAndMemberOneOrMemberTwo(int id, User user1);
+    Conversation findOneByIdAndMemberOneOrMemberTwo(Long id, User user1);
 
     @Query("select c from Conversation c where (c.memberOne = ?1 and c.memberTwo =?2) or (c.memberOne = ?2 and c.memberTwo =?1)")
     Conversation findExistingConversation(User user1, User user2);

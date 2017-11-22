@@ -28,13 +28,13 @@ public class ConversationService {
     @Autowired
     private TransformService tSrv;
 
-    public PrivateMessageDTO addPrivateMessagesToConversation(ConversationDTO conversation, int idUser, String textMessage){
+    public PrivateMessageDTO addPrivateMessagesToConversation(ConversationDTO conversation, Long idUser, String textMessage){
         PrivateMessage privateMessage = new PrivateMessage(tSrv.toEntity(conversation),userRepository.findOne(idUser),textMessage);
         privateMessage.setSendDate(new Date());
         return tSrv.toDTO(privateMessageRepository.save(privateMessage));
     }
 
-    public ConversationDTO createConversation(int idUserOne, int idUserTwo){
+    public ConversationDTO createConversation(Long idUserOne, Long idUserTwo){
         User userOne = userRepository.findOne(idUserOne);
         Conversation conversation = conversationRepository.findExistingConversation(userOne, userRepository.findOne(idUserTwo));
 
@@ -62,7 +62,7 @@ public class ConversationService {
             return null;
     }
 
-    public List<ConversationDTO> getAllConversationsByUser(int idUser){
+    public List<ConversationDTO> getAllConversationsByUser(Long idUser){
         List<Conversation> fetched = conversationRepository.getAllByMemberOneIdOrMemberTwoId(idUser, idUser);
         List<ConversationDTO> dtos = new LinkedList<>();
         if(fetched!=null){
@@ -84,7 +84,7 @@ public class ConversationService {
         return dtos;
     }
 
-    public List<PrivateMessageDTO> getLatestMessages(int idConversation){
+    public List<PrivateMessageDTO> getLatestMessages(Long idConversation){
         List<PrivateMessage> fetched = privateMessageRepository.findFirst10ByConversationIdOrderBySendDateDesc(idConversation);
         LinkedList<PrivateMessage> fetchedDirection = new LinkedList<>();
         fetched.forEach(msg-> fetchedDirection.addFirst(msg));
@@ -92,12 +92,12 @@ public class ConversationService {
         return transformMessageData(fetchedDirection);
     }
 
-    public List<PrivateMessageDTO> getMessagesAfter(int idConversation, int idMessage){
+    public List<PrivateMessageDTO> getMessagesAfter(Long idConversation, Long idMessage){
         List<PrivateMessage> fetched = privateMessageRepository.findAllByConversationIdAndIdGreaterThanOrderBySendDateAsc(idConversation, idMessage);
         return transformMessageData(fetched);
     }
 
-    public List<PrivateMessageDTO> getMessagesBefore(int idConversation, int idMessages){
+    public List<PrivateMessageDTO> getMessagesBefore(Long idConversation, Long idMessages){
         List<PrivateMessage> fetched = privateMessageRepository.findFirst10ByConversationIdAndIdLessThanOrderBySendDateDesc(idConversation,idMessages);
         return transformMessageData(fetched);
     }
@@ -110,7 +110,7 @@ public class ConversationService {
         return dtos;
     }
 
-    public boolean isConversationOwner(int conversationId, int userId){
+    public boolean isConversationOwner(Long conversationId, Long userId){
         if(conversationRepository.findOneByIdAndMemberOneOrMemberTwo(conversationId,userRepository.findOne(userId)) != null){
             return true;
         }
