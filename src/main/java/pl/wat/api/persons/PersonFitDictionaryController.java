@@ -1,14 +1,24 @@
 package pl.wat.api.persons;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import pl.wat.logic.dto.dictionary.SimpleDictionaryDTO;
+import pl.wat.logic.service.dictionary.DictionaryService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/person-fit-dictionary")
 public class PersonFitDictionaryController {
-    //slownik znakow zodiaku
-
-    //slownik zawodow
-
-    //slownik edukacji
+    @Autowired
+    DictionaryService dictionaryService;
+    //slowniki usera
+    @RequestMapping(value = "/getAllUserDictionary",method = RequestMethod.GET)
+    @ResponseBody
+    public List<List<SimpleDictionaryDTO>> getAllUserDictionary(){
+        return dictionaryService.getAllUserDictionary();
+    }
 }

@@ -1,5 +1,8 @@
 package pl.wat.db.domain.user.profile.attributes;
 
+import javax.persistence.Entity;
+
+
 public class Dictionary {
     public Long id;
     public String description;

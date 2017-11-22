@@ -6,6 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 
+import pl.wat.logic.dto.dictionary.SimpleDictionaryDTO;
 import pl.wat.logic.dto.localization.CityDTO;
 import pl.wat.logic.dto.localization.RegionDTO;
 import pl.wat.logic.service.dictionary.DictionaryService;
@@ -18,19 +19,22 @@ public class DictionaryController {
 
     @Autowired
     DictionaryService dictionaryService;
+
     //slownik wojewodztw
-    @RequestMapping(value = "/getRegions",method = RequestMethod.GET)
+    @RequestMapping(value = "/getRegions", method = RequestMethod.GET)
     @ResponseBody
-    public List<RegionDTO> getRegions(Authentication auth){
+    public List<RegionDTO> getRegions(Authentication auth) {
         return dictionaryService.getAllRegion();
     }
 
     //slownik miast
-    @RequestMapping(value = "/getCities",method = RequestMethod.POST)
+    @RequestMapping(value = "/getCities", method = RequestMethod.POST)
     @ResponseBody
-    public List<CityDTO> getCity(Authentication auth, @RequestBody  RegionDTO region){
+    public List<CityDTO> getCity(Authentication auth, @RequestBody RegionDTO region) {
         return dictionaryService.getCityByRegion(region);
     }
+
+
 
 
 }

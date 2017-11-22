@@ -1,3 +1,5 @@
+
+
 INSERT INTO "CUSTOMER" (ID, NAME, EMAIL, CREATED_DATE) VALUES(customer_seq.NEXTVAL, 'abacki','spamer@yahoo.com', TO_DATE('2017-02-11', 'yyyy-mm-dd'));
 INSERT INTO "CUSTOMER" (ID, NAME, EMAIL, CREATED_DATE) VALUES(customer_seq.NEXTVAL, 'cabacki','mejlik123@gmail.com', TO_DATE('2017-02-12', 'yyyy-mm-dd'));
 INSERT INTO "CUSTOMER" (ID, NAME, EMAIL, CREATED_DATE) VALUES(customer_seq.NEXTVAL, 'babacki','pustostan@wp.pl', TO_DATE('2017-02-13', 'yyyy-mm-dd'));
@@ -254,4 +256,33 @@ insert into category_attribute (id, description, category_id) values (CATEGORY_A
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Gry planszowe',3);
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Wspólne leniuchowanie',3);
 insert into category_attribute (id, description, category_id) values (CATEGORY_ATTRIBUTE_PK.nextval,'Śniadanie do łóżka',3);
+
+
+
+
+insert into EDUCATION(ID,DESCRIPTION) VALUES (EDUCATION_PK.nextval,'Podstawowe');
+INSERT INTO EDUCATION(ID,DESCRIPTION) VALUES (EDUCATION_PK.nextval,'Średnie');
+
+INSERT INTO EYE_COLOR (ID, DESCRIPTION) VALUES (EYE_COLOR_PK.nextval,'Niebieskie');
+INSERT INTO EYE_COLOR (ID, DESCRIPTION)  VALUES (EYE_COLOR_PK.nextval,'Brązowe');
+
+INSERT INTO FIGURE(ID, DESCRIPTION) VALUES (FIGURE_PK.nextval,'Szczupła');
+INSERT INTO FIGURE(ID, DESCRIPTION) VALUES (FIGURE_PK.nextval,'Puszysta');
+
+INSERT INTO HAIR_COLOR(ID, DESCRIPTION) VALUES (HAIR_COLOR_PK.nextval,'Blond');
+INSERT INTO HAIR_COLOR(ID, DESCRIPTION) VALUES (HAIR_COLOR_PK.nextval,'Rude');
+
+INSERT INTO MARTIAL_STATUS(ID, DESCRIPTION) VALUES (MARTIAL_STATUS_PK.nextval,'Wolny');
+INSERT INTO MARTIAL_STATUS(ID, DESCRIPTION) VALUES (MARTIAL_STATUS_PK.nextval,'Rozwiedziony');
+
+INSERT INTO RELIGION(ID, DESCRIPTION) VALUES (RELIGION_PK.nextval,'Katolicka');
+INSERT INTO RELIGION(ID, DESCRIPTION) VALUES (RELIGION_PK.nextval,'Ateizm');
+
+INSERT INTO ZODIAC_SIGN(ID, DESCRIPTION) VALUES (ZODIAC_SIGN_PK.nextval,'Skorpion');
+INSERT INTO ZODIAC_SIGN(ID, DESCRIPTION) VALUES (ZODIAC_SIGN_PK.nextval,'Waga');
+
+
+
+
+
 
