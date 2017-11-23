@@ -30,6 +30,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['persons-list']);
   }
 
+  goToTest(){
+    this.router.navigate(['match-form-page']);
+  }
+
   goEventCreate(){
     this.router.navigate(['speed-date-create']);
   }

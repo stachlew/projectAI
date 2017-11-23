@@ -55,6 +55,7 @@ import {DictionaryService} from "./_service/util/dictionary.service";
 import { ParticipantSliderComponent } from './main/speed-date-details/participant-slider/participant-slider.component';
 import { CustomMapComponent } from './_component/custom-map/custom-map.component';
 import {AgmCoreModule} from "@agm/core";
+import { MatchFormPageComponent } from './main/match-form-page/match-form-page.component';
 
 
 @NgModule({
@@ -105,7 +106,9 @@ import {AgmCoreModule} from "@agm/core";
 
     ParticipantSliderComponent,
 
-    CustomMapComponent
+    CustomMapComponent,
+
+    MatchFormPageComponent
   ],
   imports: [
     BrowserModule,

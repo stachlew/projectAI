@@ -1,0 +1,41 @@
+.full-container{
+  height: 100%;
+  width: 100%;
+}
+
+.header-part{
+  height: 10%;
+  width: 100%;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.main-part{
+  height: 90%;
+  width: 100%;
+}
+
+.part-left{
+  width: 50%;
+  float: left;
+  padding: 25px;
+}
+
+.part-right{
+  width: 50%;
+  display: inline-block;
+  float: right;
+  padding: 25px;
+}
+
+.part-one{
+
+}
+
+.part-two{
+
+}
+
+.part-three{
+
+}

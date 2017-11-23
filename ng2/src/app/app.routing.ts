@@ -15,6 +15,7 @@ import {RegisterComponent} from "./general/register/register.component";
 import {SpeedDateDetailsComponent} from "./main/speed-date-details/speed-date-details.component";
 import {PersonDetailsComponent} from "./main/person-details/person-details.component";
 import {SpeedDatesManagmentListComponent} from "./managment/speed-dates-managment-list/speed-dates-managment-list.component";
+import {MatchFormPageComponent} from "./main/match-form-page/match-form-page.component";
 
 const appRoutes: Routes = [
 
@@ -78,7 +79,12 @@ const appRoutes: Routes = [
     canActivate: [AuthenticationGuard, RoleGuard],
     data: { roles : ['ROLE_USER'] }
   },
-
+  {
+    path: 'match-form-page',
+    component: MatchFormPageComponent,
+    canActivate: [AuthenticationGuard, RoleGuard],
+    data: { roles : ['ROLE_USER'] }
+  },
 
   //MANAGER
   {

@@ -34,7 +34,14 @@ public class DictionaryController {
         return dictionaryService.getCityByRegion(region);
     }
 
+    //slowniki usera
+    @RequestMapping(value = "/getAllUserDictionary",method = RequestMethod.GET)
+    @ResponseBody
+    public List<List<SimpleDictionaryDTO>> getAllUserDictionary(){
+        return dictionaryService.getAllUserDictionary();
+    }
 
+    //http://localhost:8081/api/dictionary/getAllUserDictionary opakować w coś co to rozróżni
 
 
 }
