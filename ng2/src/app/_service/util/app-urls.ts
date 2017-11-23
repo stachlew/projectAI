@@ -29,6 +29,9 @@ export class AppUrls {
   public static GUEST_GET_EVENT_DETAILS_URL = AppUrls.EVENTS_GUEST_URL + '/getDetails';
 
   public static EVENTS_MANAGMENT_URL = AppUrls.APP_HOST + '/api/events-managment';
+  public static EVENTS_SAVE_URL = AppUrls.EVENTS_MANAGMENT_URL + '/save-event';
+  public static EVENTS_LIST_URL = AppUrls.EVENTS_MANAGMENT_URL + '/manager-events';
+  public static EVENTS_DETAIL_URL = AppUrls.EVENTS_MANAGMENT_URL + '/get-details/';
 
 
   //DICTIONARY

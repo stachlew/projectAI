@@ -12,4 +12,5 @@ export class SpeedDate{
   organizer: User;
   isParticipant: boolean;
   participantList: Participant[];
+  enabled: boolean;
 }

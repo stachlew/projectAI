@@ -11,6 +11,7 @@ import pl.wat.db.repository.user.UserRepository;
 import pl.wat.logic.dto.event.EventDTO;
 import pl.wat.logic.dto.event.EventSearchDTO;
 import pl.wat.logic.dto.event.ParticipantDTO;
+import pl.wat.logic.dto.user.UserDTO;
 import pl.wat.logic.service.utils.PageResponse;
 import pl.wat.logic.service.utils.TransformService;
 
@@ -31,7 +32,7 @@ public class EventService {
 
     public EventDTO getEventDetails(Long idEvent){
         Event event = eventRepository.findOne(idEvent);
-        EventDTO eventDTO = transformService.toDTO(event);
+        EventDTO eventDTO = transformService.toSimpleDTO(event);
         LinkedList<ParticipantDTO> participantDTOList = new LinkedList<>();
         participantRepository.findByEvent(event).forEach( participant -> {
             participantDTOList.add(transformService.toDTO(participant));
@@ -42,7 +43,7 @@ public class EventService {
 
     public EventDTO getEventDetails(Long idEvent, Long idUser){
         Event event = eventRepository.findOne(idEvent);
-        EventDTO eventDTO = transformService.toDTO(event);
+        EventDTO eventDTO = transformService.toSimpleDTO(event);
         LinkedList<ParticipantDTO> participantDTOList = new LinkedList<>();
         participantRepository.findByEvent(event).forEach( participant -> {
             participantDTOList.add(transformService.toDTO(participant));
@@ -79,7 +80,7 @@ public class EventService {
         List<Participant> participants = participantRepository.findByUser(user);
         List<EventDTO> eventDTOList = new LinkedList<>();
         participants.forEach(participant -> {
-            eventDTOList.add(transformService.toDTO(participant.getEvent()));
+            eventDTOList.add(transformService.toSimpleDTO(participant.getEvent()));
         });
         return eventDTOList;
     }
@@ -87,7 +88,7 @@ public class EventService {
     public PageResponse getEvents(EventSearchDTO filter) { //TODO WYSZUKIWANIE WG FILTRA
         List<Event> fethed = eventRepository.findAll();
         List<EventDTO> dtos = new LinkedList<>();
-        fethed.forEach(event -> dtos.add(transformService.toDTO(event)));
+        fethed.forEach(event -> dtos.add(transformService.toSimpleDTO(event)));
 
         PageResponse pageResponse = new PageResponse<EventDTO>();
         pageResponse.value = dtos;
@@ -97,16 +98,20 @@ public class EventService {
         return pageResponse;
     }
 
-    public List<EventDTO> getUserEvent(Long userId) {
+    public List<EventDTO> getManagerEvents(Long userId) {
         User user = userRepository.findOne(userId);
         LinkedList<EventDTO> eventDTOList = new LinkedList<>();
         eventRepository.findByAndOrganizer(user).forEach(event -> {
-            eventDTOList.add(transformService.toDTO(event));
+            EventDTO eventDTO = transformService.toSimpleDTO(event);
+            List<ParticipantDTO> participants = transformService.toSimpleDTOList(participantRepository.findByEvent(event));
+            eventDTO.setParticipantList(participants);
+            eventDTOList.add(eventDTO);
         });
         return eventDTOList;
     }
 
-    public EventDTO saveEvent(EventDTO eventDTO) {
+    public EventDTO saveEvent(EventDTO eventDTO, UserDTO user) {
+        eventDTO.setOrganizer(user);
         Event event = transformService.toEntity(eventDTO);
         event = eventRepository.save(event);
         return transformService.toDTO(event);

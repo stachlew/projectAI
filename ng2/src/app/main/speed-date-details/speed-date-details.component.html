@@ -41,7 +41,7 @@
           </div>
 
           <div class="map-btn-box">
-            <button class="btn btn-block btn-secondary" data-toggle="modal" data-target="#map-details">
+            <button class="btn btn-block btn-secondary" data-toggle="modal" data-target="#map-details" (click)="refreshModalMap()">
               <h4><i class="fa fa-map fa-fw"></i>Zobacz na mapie </h4>
             </button>
           </div>
@@ -83,7 +83,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <app-custom-map></app-custom-map>
+        <app-custom-map #customMap [detailView]="true" [speedDates]="[details]" ></app-custom-map>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>

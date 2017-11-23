@@ -18,6 +18,7 @@ public class EventDTO {
     private LocalizationDTO localization;
     private UserDTO organizer;
     private boolean isParticipant;
+    private boolean enabled;
     private List<ParticipantDTO> participantList;
 
     public Long getId() {
@@ -90,5 +91,13 @@ public class EventDTO {
 
     public void setParticipant(boolean participant) {
         isParticipant = participant;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

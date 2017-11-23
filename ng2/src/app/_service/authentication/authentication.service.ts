@@ -37,7 +37,9 @@ export class AuthenticationService {
             this.userRole = data.user.authorities[0].authority;
             localStorage.setItem('userRole', this.userRole);
           }
-          this.chatService.startChatService();
+          if(this.userRole === Constants.ROLE_USER){
+            this.chatService.startChatService();
+          }
         }
       });
   }
@@ -61,6 +63,11 @@ export class AuthenticationService {
   getRoles() {
     const user: User = JSON.parse(localStorage.getItem('user'));
     return user.authorities;
+  }
+
+  getMainRole() : any {
+    const user: User = JSON.parse(localStorage.getItem('user'));
+    return user.authorities[0];
   }
 
 

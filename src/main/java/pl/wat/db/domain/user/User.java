@@ -1,6 +1,7 @@
 package pl.wat.db.domain.user;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.context.annotation.Lazy;
 import pl.wat.db.domain.localization.City;
 
 import pl.wat.db.domain.user.profile.attributes.*;
@@ -67,6 +68,7 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "authority_id", referencedColumnName = "ID")},
             uniqueConstraints = {@UniqueConstraint(
                     columnNames = {"user_id", "authority_id"})})
+    @Lazy
     private List<Authority> authorities;
 
     @Column

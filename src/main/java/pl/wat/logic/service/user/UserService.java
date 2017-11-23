@@ -81,7 +81,11 @@ public class UserService {
     public UserDTO getUserInfo(Long idUser) {
         User user = userRepository.getOne(idUser);
         return transfer.toDto(user);
+    }
 
+    public UserDTO getUserByLogin(String login){
+        User fetched = userRepository.findByUsername(login);
+        return transfer.toSimpleDto(fetched);
     }
 
     public UserDTO changePassword(User user, String newPass) {

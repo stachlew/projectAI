@@ -1,4 +1,5 @@
 ALTER TABLE USERS MODIFY (IS_MAN NUMBER(1) DEFAULT 1);
+ALTER TABLE EVENT MODIFY (ENABLED NUMBER(1) DEFAULT 1);
 
 INSERT INTO "CUSTOMER" (ID, NAME, EMAIL, CREATED_DATE) VALUES(customer_seq.NEXTVAL, 'abacki','spamer@yahoo.com', TO_DATE('2017-02-11', 'yyyy-mm-dd'));
 INSERT INTO "CUSTOMER" (ID, NAME, EMAIL, CREATED_DATE) VALUES(customer_seq.NEXTVAL, 'cabacki','mejlik123@gmail.com', TO_DATE('2017-02-12', 'yyyy-mm-dd'));
@@ -173,15 +174,15 @@ INSERT INTO CITY ( id,city_name,id_region ) VALUES (  CITY_PK.nextval,  'Stargar
 INSERT INTO CITY ( id,city_name,id_region ) VALUES (  CITY_PK.nextval,  'Kołobrzeg',  16);
 INSERT INTO CITY ( id,city_name,id_region ) VALUES (  CITY_PK.nextval,  'Świnoujście',  16);
 
-Insert into LOCALIZATION (ID,ADDRESS,GEO_LENGTH,GEO_WIDTH,CITY_ID) values (LOCALIZATION_PK.nextval,'Plac Defilad 1, 00-901 Warszawa',null,null,'1');
-Insert into LOCALIZATION (ID,ADDRESS,GEO_LENGTH,GEO_WIDTH,CITY_ID) values (LOCALIZATION_PK.nextval,'Lubelska 158, 26-600 Radom',null,null,'33');
-Insert into LOCALIZATION (ID,ADDRESS,GEO_LENGTH,GEO_WIDTH,CITY_ID) values (LOCALIZATION_PK.nextval,'Drewnowska 58, 91-002 Łódź',null,null,'24');
-Insert into LOCALIZATION (ID,ADDRESS,GEO_LENGTH,GEO_WIDTH,CITY_ID) values (LOCALIZATION_PK.nextval,'Sulechowska, 66-200 Świebodzin',null,null,'22');
-Insert into LOCALIZATION (ID,ADDRESS,GEO_LENGTH,GEO_WIDTH,CITY_ID) values (LOCALIZATION_PK.nextval,'Norbertańska 2, 09-400 Płock',null,null,'34');
+Insert into LOCALIZATION (ID,ADDRESS,CITY_ID,GEO_LENGTH,GEO_WIDTH) values (LOCALIZATION_PK.nextval,'Plac Defilad 1, 00-901 Warszawa','1','21.00551','52.23147');
+Insert into LOCALIZATION (ID,ADDRESS,CITY_ID,GEO_LENGTH,GEO_WIDTH) values (LOCALIZATION_PK.nextval,'Lubelska 158, 26-600 Radom','33','21.15040','51.39641');
+Insert into LOCALIZATION (ID,ADDRESS,CITY_ID,GEO_LENGTH,GEO_WIDTH) values (LOCALIZATION_PK.nextval,'Drewnowska 58, 91-002 Łódź','24','20.90067','52.25353');
+Insert into LOCALIZATION (ID,ADDRESS,CITY_ID,GEO_LENGTH,GEO_WIDTH) values (LOCALIZATION_PK.nextval,'Sulechowska, 66-200 Świebodzin','22','21.90067','52.02253');
+Insert into LOCALIZATION (ID,ADDRESS,CITY_ID,GEO_LENGTH,GEO_WIDTH) values (LOCALIZATION_PK.nextval,'Norbertańska 2, 09-400 Płock','34','21.25067','51.11353');
 
 Insert into EVENT (ID,CAPACITY,DESCRIPTION,EVENT_START,TITLE,LOCALOZATION_ID,ORGANIZER_ID) values (EVENT_PK.nextval,'50','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur erat justo, in ultrices magna aliquet at. Donec ornare, orci sit amet ullamcorper molestie, nunc massa fringilla nulla, nec egestas.',to_timestamp('2017-11-14 20:00:00','rrrr-mm-dd hh24:mi:ss'),'Wieczorne udawanie małp','5','1');
 Insert into EVENT (ID,CAPACITY,DESCRIPTION,EVENT_START,TITLE,LOCALOZATION_ID,ORGANIZER_ID) values (EVENT_PK.nextval,'20','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur erat justo, in ultrices magna aliquet at. Donec ornare, orci sit amet ullamcorper molestie, nunc massa fringilla nulla, nec egestas.',to_timestamp('2017-12-14 20:00:00','rrrr-mm-dd hh24:mi:ss'),'Nocne odloty ku gwiazdom','2','2');
-Insert into EVENT (ID,CAPACITY,DESCRIPTION,EVENT_START,TITLE,LOCALOZATION_ID,ORGANIZER_ID) values (EVENT_PK.nextval,'75','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur erat justo, in ultrices magna aliquet at. Donec ornare, orci sit amet ullamcorper molestie, nunc massa fringilla nulla, nec egestas.',to_timestamp('2017-12-20 20:00:00','rrrr-mm-dd hh24:mi:ss'),'Ubieranie choinki domu handlowego Oszust','3','3');
+Insert into EVENT (ID,CAPACITY,DESCRIPTION,EVENT_START,TITLE,LOCALOZATION_ID,ORGANIZER_ID) values (EVENT_PK.nextval,'75','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur erat justo, in ultrices magna aliquet at. Donec ornare, orci sit amet ullamcorper molestie, nunc massa fringilla nulla, nec egestas.',to_timestamp('2017-12-20 20:00:00','rrrr-mm-dd hh24:mi:ss'),'Ubieranie choinki domu handlowego Oszust','3','2');
 Insert into EVENT (ID,CAPACITY,DESCRIPTION,EVENT_START,TITLE,LOCALOZATION_ID,ORGANIZER_ID) values (EVENT_PK.nextval,'100','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur erat justo, in ultrices magna aliquet at. Donec ornare, orci sit amet ullamcorper molestie, nunc massa fringilla nulla, nec egestas.',to_timestamp('2017-12-24 20:00:00','rrrr-mm-dd hh24:mi:ss'),'Trzeźwa pasterka i kolędy','4','6');
 Insert into EVENT (ID,CAPACITY,DESCRIPTION,EVENT_START,TITLE,LOCALOZATION_ID,ORGANIZER_ID) values (EVENT_PK.nextval,'200','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur erat justo, in ultrices magna aliquet at. Donec ornare, orci sit amet ullamcorper molestie, nunc massa fringilla nulla, nec egestas.',to_timestamp('2017-12-31 20:00:00','rrrr-mm-dd hh24:mi:ss'),'Sylwestrowa biba na ostatnim piętrze','1','5');
 

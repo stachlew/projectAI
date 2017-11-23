@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {AppUrls} from "../../_service/util/app-urls";
 import {SpeedDate} from "../../_model/speed-date";
 import {HttpSecService} from "../../_service/util/http-sec.service";
+import {CustomMapComponent} from "../../_component/custom-map/custom-map.component";
 
 @Component({
   selector: 'app-speed-date-details',
@@ -33,7 +34,14 @@ export class SpeedDateDetailsComponent implements OnInit {
   getDetails(){
     this.httpSrv.getAndFetchData(this.eventDetailUrl+'/'+this.speedDateId).subscribe(resp=>{
       this.details = resp;
+      setTimeout(x=>this.customMap.transformDatesIntoMarkers());
     });
+  }
+
+  @ViewChild('customMap') customMap : CustomMapComponent;
+  refreshModalMap(){
+    console.log("refreshModalMap");
+    setTimeout(x=>this.customMap.repaintMap(),700);
   }
 
 }

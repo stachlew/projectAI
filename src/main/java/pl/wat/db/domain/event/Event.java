@@ -1,6 +1,7 @@
 package pl.wat.db.domain.event;
 
 
+import org.springframework.context.annotation.Lazy;
 import pl.wat.db.domain.user.User;
 
 import javax.persistence.*;
@@ -17,6 +18,8 @@ public class Event {
     @Column
     private Date eventStart;
 
+    @Column
+    private boolean enabled;
 
     @Column
     private int capacity;
@@ -33,6 +36,7 @@ public class Event {
 
     @ManyToOne
     @JoinColumn(name = "organizer_id")
+    @Lazy
     private User organizer;
 
 
@@ -92,5 +96,11 @@ public class Event {
         this.organizer = organizer;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
 
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 }

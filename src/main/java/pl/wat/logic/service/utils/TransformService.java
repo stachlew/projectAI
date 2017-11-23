@@ -85,7 +85,7 @@ public class TransformService {
             dto.setLastLogoutDate(null);
             dto.setLastpassres(null);
             dto.setEnabled(false);
-            dto.setAuthorities(null);
+            dto.setAuthorities(toDTO(entity.getAuthorities()));
             dto.setAge(this.countAge(entity));
             dto.setProfilePhotoId(entity.getProfilePhotoId());
             return dto;
@@ -93,6 +93,8 @@ public class TransformService {
             return null;
         }
     }
+
+
 
     public List<Authority> toDTO(List<Authority> entity){
         List<Authority> dtos = new LinkedList<>();
@@ -179,7 +181,22 @@ public class TransformService {
     }
 
 
-
+    public EventDTO toSimpleDTO(Event event){
+        if(event!=null){
+            EventDTO dto = new EventDTO();
+            dto.setTitle(event.getTitle());
+            dto.setId(event.getId());
+            dto.setEventStart(event.getEventStart());
+            dto.setDescription(event.getDescription());
+            dto.setCapacity(event.getCapacity());
+            dto.setLocalization(toDTO(event.getLocalization()));
+            dto.setOrganizer(null);
+            dto.setEnabled(event.isEnabled());
+            return dto;
+        }
+        else
+            return null;
+    }
 
 
 
@@ -194,7 +211,7 @@ public class TransformService {
             dto.setCapacity(event.getCapacity());
             dto.setLocalization(toDTO(event.getLocalization()));
             dto.setOrganizer(toSimpleDto(event.getOrganizer()));
-
+            dto.setEnabled(event.isEnabled());
             return dto;
         }
         else
@@ -211,6 +228,7 @@ public class TransformService {
             event.setTitle(eventDTO.getTitle());
             event.setLocalization(toEntity(eventDTO.getLocalization()));
             event.setOrganizer(toEntity(eventDTO.getOrganizer()));
+            event.setEnabled(event.isEnabled());
             return event;
         }
         else
@@ -289,6 +307,17 @@ public class TransformService {
             return entity;
         }else
             return null;
+    }
+
+    public List<ParticipantDTO> toSimpleDTOList(List<Participant> entities){
+        List<ParticipantDTO> dtos = new LinkedList<>();
+        if(entities!= null && entities.size()>0){
+
+            entities.forEach(e->{
+                dtos.add(toDTO(e));
+            });
+        }
+        return dtos;
     }
 
     public ParticipantDTO toDTO(Participant participant){

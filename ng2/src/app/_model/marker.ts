@@ -1,12 +1,12 @@
+import {SpeedDate} from "./speed-date";
+
 export interface Marker{
-  lat: number;
-  lng: number;
-  geoWidth:string;
-  geoLength:string;
-  label?: string;
+  width: number;
+  length: number;
+  widthString:string;
+  lengthString:string;
+  label: string;
   draggable: boolean;
-  title: string;
-  description: string;
-  idEvent:number;
-  startTime:Date;
+
+  speedDate: SpeedDate;
 }

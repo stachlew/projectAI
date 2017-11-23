@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {HttpSecService} from "../../_service/util/http-sec.service";
+import {AppUrls} from "../../_service/util/app-urls";
+import {SpeedDate} from "../../_model/speed-date";
 
 @Component({
   selector: 'app-speed-dates-managment-list',
@@ -8,55 +11,25 @@ import {Router} from "@angular/router";
 })
 export class SpeedDatesManagmentListComponent implements OnInit {
 
-  events: any[] = [
-    {
-      id: 1,
-      title: 'Zakochajmy Polskie - wydarzenie dla singlów',
-      eventDate: new Date,
-      createDate: new Date,
-      visible: true,
-      guests: 12,
-      capacity: 36
-    },
-    {
-      id: 1,
-      title: 'Zakochajmy Niemców - wydarzenie dla singlów',
-      eventDate: new Date,
-      createDate: new Date,
-      visible: true,
-      guests: 33,
-      capacity: 52
-    },
-    {
-      id: 1,
-      title: 'Zakochajmy Turkmeńczyków - wydarzenie dla singlów',
-      eventDate: new Date,
-      createDate: new Date,
-      visible: true,
-      guests: 10,
-      capacity: 20
-    },
-    {
-      id: 1,
-      title: 'Zakochajmy zakochanych - wydarzenie dla zakochanych',
-      eventDate: new Date,
-      createDate: new Date,
-      visible: true,
-      guests: 22,
-      capacity: 34
-    }
-  ];
+  events: SpeedDate[] = [];
 
+  constructor(public router: Router, private httpSrv: HttpSecService) { }
 
-
-
-  constructor(public router: Router) { }
+  // public countParticipants(participants: )
 
   ngOnInit() {
+    this.getEventsData();
   }
 
   goToEventDetails(id: number){
     this.router.navigate(['speed-date-managment/'+id]);
+  }
+
+  private getEventsData(){
+    this.httpSrv.getAndFetchData(AppUrls.EVENTS_LIST_URL)
+      .subscribe(resp=>{
+        this.events = resp;
+      });
   }
 
 }
