@@ -186,9 +186,9 @@ Insert into EVENT (ID,CAPACITY,DESCRIPTION,EVENT_START,TITLE,LOCALOZATION_ID,ORG
 Insert into EVENT (ID,CAPACITY,DESCRIPTION,EVENT_START,TITLE,LOCALOZATION_ID,ORGANIZER_ID) values (EVENT_PK.nextval,'100','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur erat justo, in ultrices magna aliquet at. Donec ornare, orci sit amet ullamcorper molestie, nunc massa fringilla nulla, nec egestas.',to_timestamp('2017-12-24 20:00:00','rrrr-mm-dd hh24:mi:ss'),'Trzeźwa pasterka i kolędy','4','6');
 Insert into EVENT (ID,CAPACITY,DESCRIPTION,EVENT_START,TITLE,LOCALOZATION_ID,ORGANIZER_ID) values (EVENT_PK.nextval,'200','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur erat justo, in ultrices magna aliquet at. Donec ornare, orci sit amet ullamcorper molestie, nunc massa fringilla nulla, nec egestas.',to_timestamp('2017-12-31 20:00:00','rrrr-mm-dd hh24:mi:ss'),'Sylwestrowa biba na ostatnim piętrze','1','5');
 
-Insert into PARTICIPANT(ID,EVENT_ID,USER_ID) VALUES (1,3,5);
-Insert into PARTICIPANT(ID,EVENT_ID,USER_ID) VALUES (2,3,6);
-Insert into PARTICIPANT(ID,EVENT_ID,USER_ID) VALUES (3,3,7);
+-- Insert into PARTICIPANT(ID,EVENT_ID,USER_ID) VALUES (1,3,5);
+-- Insert into PARTICIPANT(ID,EVENT_ID,USER_ID) VALUES (2,3,6);
+-- Insert into PARTICIPANT(ID,EVENT_ID,USER_ID) VALUES (3,3,7);
 
 --- PAROWANIE UŻYTKOWNIKÓW ---
 insert into personality_category (id, amount, description) values(PERSONALITY_CATEGORY_PK.nextval,15,'Charakter');

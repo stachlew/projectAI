@@ -44,4 +44,27 @@ export class SpeedDateDetailsComponent implements OnInit {
     setTimeout(x=>this.customMap.repaintMap(),700);
   }
 
+
+  public registerMe(){
+    this.httpSrv.postAndFetchData(AppUrls.GUEST_SAVE_PARTICIPATION_URL,this.speedDateId).subscribe(resp=>{
+      if(resp){
+        alert('Pomyślnie zapisano na wydarzenie!');
+        this.getDetails();
+      }else {
+        alert('Nie udało zapisać się na wydarzenie!');
+      }
+    });
+  }
+
+  public unregisterMe(){
+    this.httpSrv.postAndFetchData(AppUrls.GUEST_DELETE_PARTICIPATION_URL,this.speedDateId).subscribe(resp=>{
+      if(resp){
+        alert('Pomyślnie wypisano z wydarzenia!');
+          this.getDetails();
+      }else {
+        alert('Nie udało wypisać z wydarzenia!');
+      }
+    });
+  }
+
 }

@@ -47,12 +47,22 @@ public class EventsGuestController {
         return eventService.saveParticipant(idEvent, userId);
     }
 
+    //wypisanie się z wydarzenia
+    @RequestMapping(value = "/deleteParticipant",method = RequestMethod.POST)
+    @PreAuthorize("hasRole('USER')")
+    @ResponseBody
+    public boolean deleteParticipant(Authentication auth , @RequestBody Long idEvent){
+        Long userId = this.utilService.getUserId(auth);
+        return eventService.deleteParticipant(idEvent, userId);
+    }
+
     //detale wydarzenia
     @RequestMapping(value = "/getDetails/{idEvent}",method = RequestMethod.GET)
     @ResponseBody
     public EventDTO getEventDetails(Authentication auth, @PathVariable Long idEvent){
         Long userId = this.utilService.getUserId(auth);
-        return eventService.getEventDetails(idEvent,userId);
+        EventDTO eventDTO = eventService.getEventDetails(idEvent,userId);
+        return eventDTO;
     }
 
 

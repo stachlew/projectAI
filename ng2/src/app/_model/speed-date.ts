@@ -10,7 +10,7 @@ export class SpeedDate{
   description: string;
   localization: Localization;
   organizer: User;
-  isParticipant: boolean;
-  participantList: Participant[];
+  participant: boolean;
+  participantList: User[];
   enabled: boolean;
 }

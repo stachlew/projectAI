@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Participant} from "../../../_model/participant";
 import {AppUrls} from "../../../_service/util/app-urls";
 import {Router} from "@angular/router";
+import {User} from "../../../_model/user.model";
 
 @Component({
   selector: 'app-participant-slider',
@@ -14,16 +14,10 @@ export class ParticipantSliderComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  @Input('participants') participants: Participant[];
+  @Input('participants') participants: User[];
 
 
   ngOnInit() {
-    console.log("ParticipantSliderComponent ngOnInit");
-  }
-
-  public addTest(){
-    console.log("ParticipantSliderComponent addTest");
-    this.participants.push(this.participants[0]);
   }
 
   goToPersonDetails(personId: number){

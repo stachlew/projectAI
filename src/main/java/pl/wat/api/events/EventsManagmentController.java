@@ -35,7 +35,7 @@ public class EventsManagmentController extends BaseController{
     @ResponseBody
     public EventDTO getEventDetails(Authentication auth, @PathVariable Long idEvent){
         Long userId = this.utilService.getUserId(auth);
-        return eventService.getEventDetails(idEvent);
+        return eventService.getEventManagmentDetails(idEvent);
     }
 
     //utworzenie/modyfikacja wydarzenia

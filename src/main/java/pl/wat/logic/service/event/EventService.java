@@ -30,25 +30,21 @@ public class EventService {
     @Autowired
     TransformService transformService;
 
-    public EventDTO getEventDetails(Long idEvent){
+    public EventDTO getEventManagmentDetails(Long idEvent){
         Event event = eventRepository.findOne(idEvent);
         EventDTO eventDTO = transformService.toSimpleDTO(event);
-        LinkedList<ParticipantDTO> participantDTOList = new LinkedList<>();
+        LinkedList<UserDTO> participants = new LinkedList<>();
         participantRepository.findByEvent(event).forEach( participant -> {
-            participantDTOList.add(transformService.toDTO(participant));
+            participants.add(transformService.toSimpleDto(participant.getUser()));
         });
-        eventDTO.setParticipantList(participantDTOList);
+        eventDTO.setParticipantList(participants);
         return eventDTO;
     }
 
     public EventDTO getEventDetails(Long idEvent, Long idUser){
         Event event = eventRepository.findOne(idEvent);
         EventDTO eventDTO = transformService.toSimpleDTO(event);
-        LinkedList<ParticipantDTO> participantDTOList = new LinkedList<>();
-        participantRepository.findByEvent(event).forEach( participant -> {
-            participantDTOList.add(transformService.toDTO(participant));
-        });
-        eventDTO.setParticipantList(participantDTOList);
+        eventDTO.setParticipantList(getEventParticipants(event));
         if(participantRepository.findFirstByEventAndUser(event,userRepository.findOne(idUser))!=null){
             eventDTO.setParticipant(true);
         }else {
@@ -57,12 +53,24 @@ public class EventService {
         return eventDTO;
     }
 
+    private List<UserDTO> getEventParticipants(Event event){
+        List<Participant> fetchedParticipants = participantRepository.findByEvent(event);
+        List<UserDTO> participants = new LinkedList<>();
+        fetchedParticipants.forEach(fetched->{
+            UserDTO dto = transformService.toSimpleParticipantDto(fetched.getUser());
+            participants.add(dto);
+        });
+        return participants;
+    }
 
     public boolean saveParticipant(Long idEvent, Long idUser) {
         Event event = eventRepository.findOne(idEvent);
         User user = userRepository.findOne(idUser);
-        if(event!=null && user!=null){
-            if(event.getCapacity()<participantRepository.countByEvent(event)){
+
+        Participant alreadySaved = participantRepository.findFirstByEventAndUser(event,user);
+
+        if(event!=null && user!=null && alreadySaved==null){
+            if(event.getCapacity()>participantRepository.countByEvent(event)){
                 Participant participant = new Participant();
                 participant.setUser(user);
                 participant.setEvent(event);
@@ -70,6 +78,19 @@ public class EventService {
                 if (save!=null){
                     return true;
                 }
+            }
+        }
+        return false;
+    }
+
+    public boolean deleteParticipant(Long idEvent, Long idUser) {
+        Event event = eventRepository.findOne(idEvent);
+        User user = userRepository.findOne(idUser);
+        if(event!=null && user!=null){
+            Participant saved = participantRepository.findFirstByEventAndUser(event,user);
+            if(saved!=null){
+                participantRepository.delete(saved.getId());
+                return true;
             }
         }
         return false;
@@ -103,7 +124,11 @@ public class EventService {
         LinkedList<EventDTO> eventDTOList = new LinkedList<>();
         eventRepository.findByAndOrganizer(user).forEach(event -> {
             EventDTO eventDTO = transformService.toSimpleDTO(event);
-            List<ParticipantDTO> participants = transformService.toSimpleDTOList(participantRepository.findByEvent(event));
+
+            LinkedList<UserDTO> participants = new LinkedList<>();
+            participantRepository.findByEvent(event).forEach( participant -> {
+                participants.add(transformService.toSimpleDto(participant.getUser()));
+            });
             eventDTO.setParticipantList(participants);
             eventDTOList.add(eventDTO);
         });

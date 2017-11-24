@@ -1,7 +1,7 @@
 .participant-container{
-  border: 1px solid red;
-  padding: 15px;
-  width: 95%;
+  border: 1px solid rgba(255, 0, 0, 0.22);
+  padding: 5px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }

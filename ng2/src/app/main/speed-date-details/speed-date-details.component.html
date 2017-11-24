@@ -24,11 +24,19 @@
             <h4>{{details.eventStart | date:'dd-MM-yyyy HH:mm'}}</h4>
           </div>
 
-          <div class="save-me-box">
-            <button class="btn btn-primary btn-block"><h4>
-              <i class="fa fa-fw fa-user-plus"></i>
-              Zarejestruj mnie
-            </h4></button>
+          <div class="save-me-box button-box">
+            <button *ngIf="!details.participant" class="btn btn-primary btn-block" (click)="registerMe()">
+              <h4>
+                <i class="fa fa-fw fa-user-plus"></i>
+                Zapisz mnie
+              </h4>
+            </button>
+            <button *ngIf="details.participant" class="btn btn-primary btn-block" (click)="unregisterMe()">
+              <h4>
+                <i class="fa fa-fw fa-user-plus"></i>
+                Wypisz mnie
+              </h4>
+            </button>
           </div>
 
         </div>
@@ -40,7 +48,7 @@
             <h5>{{details?.localization?.address}}</h5>
           </div>
 
-          <div class="map-btn-box">
+          <div class="map-btn-box button-box">
             <button class="btn btn-block btn-secondary" data-toggle="modal" data-target="#map-details" (click)="refreshModalMap()">
               <h4><i class="fa fa-map fa-fw"></i>Zobacz na mapie </h4>
             </button>

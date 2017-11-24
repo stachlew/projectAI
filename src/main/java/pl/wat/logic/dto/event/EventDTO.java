@@ -19,7 +19,7 @@ public class EventDTO {
     private UserDTO organizer;
     private boolean isParticipant;
     private boolean enabled;
-    private List<ParticipantDTO> participantList;
+    private List<UserDTO> participantList;
 
     public Long getId() {
         return id;
@@ -77,14 +77,6 @@ public class EventDTO {
         this.organizer = organizer;
     }
 
-    public List<ParticipantDTO> getParticipantList() {
-        return participantList;
-    }
-
-    public void setParticipantList(List<ParticipantDTO> participantList) {
-        this.participantList = participantList;
-    }
-
     public boolean isParticipant() {
         return isParticipant;
     }
@@ -99,5 +91,13 @@ public class EventDTO {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public List<UserDTO> getParticipantList() {
+        return participantList;
+    }
+
+    public void setParticipantList(List<UserDTO> participantList) {
+        this.participantList = participantList;
     }
 }

@@ -43,7 +43,7 @@ public class TransformService {
             dto.setEmail(entity.getEmail());
             dto.setLastpassres(entity.getLastpassres());
             dto.setEnabled(entity.getEnabled());
-            dto.setAuthorities(toDTO(entity.getAuthorities()));
+            dto.setAuthorities((entity.getAuthorities()));
             dto.setAge(this.countAge(entity));
             dto.setProfilePhotoId(entity.getProfilePhotoId());
             dto.setAccountCreateDate(entity.getAccountCreateDate());
@@ -94,12 +94,37 @@ public class TransformService {
         }
     }
 
-
+    public UserDTO toSimpleParticipantDto(User entity){
+        if(entity!=null){
+            UserDTO dto = new UserDTO();
+            dto.setId(entity.getId());
+            dto.setUsername(entity.getUsername());
+            dto.setPassword(null);
+            dto.setFirstname(entity.getFirstname());
+            dto.setLastname(null);
+            dto.setEmail(null);
+            dto.setAccountCreateDate(null);
+            dto.setLastLogoutDate(null);
+            dto.setLastpassres(null);
+            dto.setEnabled(false);
+            dto.setAuthorities(null);
+            dto.setAge(this.countAge(entity));
+            dto.setProfilePhotoId(entity.getProfilePhotoId());
+            return dto;
+        }else {
+            return null;
+        }
+    }
 
     public List<Authority> toDTO(List<Authority> entity){
-        List<Authority> dtos = new LinkedList<>();
-        entity.forEach( ent -> ent.setUsers(null));
-        return dtos;
+        if(entity!=null){
+            entity.forEach( ent -> {
+                if(ent.getUsers()!=null){
+                    ent.getUsers().forEach(u -> u.setAuthorities(null));
+                }
+            });
+        }
+        return entity;
     }
 
     public User toEntity(UserDTO dto){
@@ -112,7 +137,6 @@ public class TransformService {
             entity.setFirstname(dto.getFirstname());
             entity.setLastname(dto.getLastname());
             entity.setBirthDate(dto.getBirthDate());
-
             entity.setCity(toEntity(dto.getCity()));
             entity.setDescription(dto.getDescription());
             entity.setDrinking(dto.getDrinking());
@@ -129,10 +153,6 @@ public class TransformService {
             entity.setProfession(dto.getProfession());
             entity.setProfilePhotoId(dto.getProfilePhotoId());
             entity.setSmoking(dto.getSmoking());
-
-
-
-
             entity.setEnabled(dto.isEnabled());
             return entity;
         }else {

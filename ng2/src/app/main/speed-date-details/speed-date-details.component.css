@@ -17,6 +17,7 @@
 
 .title-box{
   text-align: center;
+  width: 100%;
 }
 
 .left-box{
@@ -53,4 +54,10 @@
 
 .description-box{
   text-align: justify;
+}
+
+.button-box{
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
 }
