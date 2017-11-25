@@ -2,10 +2,15 @@ package pl.wat.logic.service.event;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import pl.wat.db.domain.conversation.Conversation;
 import pl.wat.db.domain.event.Event;
+import pl.wat.db.domain.event.Localization;
 import pl.wat.db.domain.event.Participant;
 import pl.wat.db.domain.user.User;
+import pl.wat.db.repository.conversation.ConversationRepository;
 import pl.wat.db.repository.event.EventRepository;
+import pl.wat.db.repository.event.LocalizatonRepository;
 import pl.wat.db.repository.event.ParticipantRepository;
 import pl.wat.db.repository.user.UserRepository;
 import pl.wat.logic.dto.event.EventDTO;
@@ -29,6 +34,8 @@ public class EventService {
     UserRepository userRepository;
     @Autowired
     TransformService transformService;
+    @Autowired
+    LocalizatonRepository localizatonRepository;
 
     public EventDTO getEventManagmentDetails(Long idEvent){
         Event event = eventRepository.findOne(idEvent);
@@ -135,9 +142,14 @@ public class EventService {
         return eventDTOList;
     }
 
+    @Autowired
+    ConversationRepository conversationRepository;
+    @Transactional
     public EventDTO saveEvent(EventDTO eventDTO, UserDTO user) {
-        eventDTO.setOrganizer(user);
         Event event = transformService.toEntity(eventDTO);
+        User organizer = userRepository.findByUsername(user.getUsername());
+        event.setOrganizer(organizer);
+        localizatonRepository.save(event.getLocalization());
         event = eventRepository.save(event);
         return transformService.toDTO(event);
     }

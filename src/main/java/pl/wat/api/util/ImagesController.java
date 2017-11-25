@@ -12,6 +12,7 @@ import pl.wat.logic.service.utils.ImagesService;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.ParseException;
 import java.util.List;
 import org.apache.commons.io.FileUtils;
 
@@ -69,7 +70,7 @@ public class ImagesController {
             resp.setContentType("image/jpeg");
             resp.getOutputStream().write(image);
         }
-        catch (FileNotFoundException fnfe){
+        catch (FileNotFoundException | NumberFormatException pe){
             try {
                 File file = new File(sourceDirectory + "images/events/stock.jpg");
                 byte [] imageStock = FileUtils.readFileToByteArray(file);

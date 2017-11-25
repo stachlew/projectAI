@@ -43,7 +43,17 @@ export class CustomMapComponent implements OnInit {
 
     }
     else if(this.createView){
-
+      this.markers = [
+        {
+          width: Number(this.speedDates[0].localization.geoWidth),
+          length: Number(this.speedDates[0].localization.geoLength),
+          widthString:  Number(this.speedDates[0].localization.geoWidth).toFixed(10),
+          lengthString:  Number(this.speedDates[0].localization.geoLength).toFixed(10),
+          label: this.speedDates[0].title,
+          draggable: true,
+          speedDate: this.speedDates[0]
+        }
+      ]
     }
     else{
       alert("CustomMapComponent: wybrany przypadek trybu wyświetlania markerów mapy nie obsługiwany!");
@@ -67,7 +77,7 @@ export class CustomMapComponent implements OnInit {
   //!readOnly = dodawanie 1 markera
 
   @ViewChild('agmMap') agmMap : AgmMap;
-  zoom: number = 12;
+  @Input('zoom') zoom: number = 12;
 
   private kilometersRange:number = 126;
   private degreeRange:number = 0.0089827083*126;
@@ -144,6 +154,10 @@ export class CustomMapComponent implements OnInit {
   public repaintMap() {
     console.log("repaintMap");
     this.agmMap.triggerResize();
+  }
+
+  public getMarkerLocalization(){
+    return this.markers[0];
   }
 
 

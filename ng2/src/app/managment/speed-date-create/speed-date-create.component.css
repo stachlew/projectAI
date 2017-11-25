@@ -17,7 +17,20 @@
 }
 .event-input{
   display: block;
-  width: 500px;
+  width: 440px;
+}
+
+.save-button{
+  width:95%;
+}
+
+.enabled-slider{
+  display: inline-block;
+  margin-top: 5px
+}
+
+.photo-container img{
+  height: 44vh;
 }
 
 .file-container{
@@ -28,8 +41,11 @@
   margin-top: 20px;
   background-color: red;
   width: 100%;
-  height: 47vh;
+  height: 35vh;
+}
 
+.foto-big-box{
+  height: 41vh;
 }
 
 

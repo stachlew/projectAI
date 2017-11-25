@@ -25,27 +25,27 @@ public class User {
 
     @Column(length = 50, unique = true)
     @NotNull
-    @Size(min = 4, max = 50)
+    @Size(min = 2, max = 50)
     private String username;
 
     @Column(length = 100)
     @NotNull
-    @Size(min = 4, max = 100)
+    @Size(min = 2, max = 100)
     private String password;
 
     @Column(length = 50)
     @NotNull
-    @Size(min = 4, max = 50)
+    @Size(min = 2, max = 50)
     private String firstname;
 
     @Column(length = 50)
     @NotNull
-    @Size(min = 4, max = 50)
+    @Size(min = 2, max = 50)
     private String lastname;
 
     @Column(length = 50)
     @NotNull
-    @Size(min = 4, max = 50)
+    @Size(min = 2, max = 50)
     private String email;
 
     @Column(name="birth_Date")
@@ -68,7 +68,6 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "authority_id", referencedColumnName = "ID")},
             uniqueConstraints = {@UniqueConstraint(
                     columnNames = {"user_id", "authority_id"})})
-    @Lazy
     private List<Authority> authorities;
 
     @Column
