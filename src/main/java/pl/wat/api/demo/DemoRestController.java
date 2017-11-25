@@ -156,7 +156,7 @@ public class DemoRestController {
                 System.out.println("uploadImage() Exception ");
             }
         }
-    } //end uploadImage()
+    }
 
 
 }

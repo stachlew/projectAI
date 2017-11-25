@@ -42,6 +42,13 @@ export class SpeedDateCreateComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.speedDateId = params.speeddateId;
+
+      this.uploader = new FileUploader(
+        {
+          url: AppUrls.UPLOAD_EVENT_IMAGE_URL + this.speedDateId,
+          authToken: this.httpService.getToken(),
+          queueLimit: 1
+        });
     });
 
     if(this.speedDateId>0){
@@ -140,12 +147,7 @@ export class SpeedDateCreateComponent implements OnInit {
     });
   }
 
-  public uploader:FileUploader = new FileUploader(
-    {
-      url: this.httpService.applicationUrl + '/api/postFile',
-      authToken: this.httpService.getToken(),
-      queueLimit: 1
-    });
+  public uploader:FileUploader;
 
   //defaultSelectValue
   compareSelected: ((f1: any, f2: any) => boolean) | null = this.compareByValue;
@@ -155,6 +157,18 @@ export class SpeedDateCreateComponent implements OnInit {
 
   goToList(){
     this.router.navigate(['speed-dates-managment-list']);
+  }
+
+  deleteImage(){
+    this.httpService.getAndFetchData(AppUrls.DELETE_EVENT_IMAGE_URL + this.speedDateId).subscribe(resp=>{
+      if(resp){
+        alert("Pomyślnie usunięto zdjęcie.");
+      }else {
+        alert("Nie udało się usunąć zdjęcia");
+      }
+
+    });
+
   }
 
 

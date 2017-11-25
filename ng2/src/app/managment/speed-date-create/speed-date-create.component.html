@@ -58,6 +58,7 @@
             <div class="form-group">
               <label for="single">Fotografia promująca wydarzenie: </label>
               <button (click)="fileInput.click()" class="btn btn-default btn-secondary">Upload</button>
+              <button (click)="deleteImage()" class="btn btn-default btn-secondary">Wyczyść zdjęcie</button>
               <span style="visibility: hidden; position: absolute; overflow: hidden; width: 0px; height:0px;border:none;margin:0; padding:0">
                 <input #fileInput id="single" type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader"  />
               </span>

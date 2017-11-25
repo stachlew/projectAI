@@ -8,9 +8,13 @@ export class AppUrls {
 
   //UTILS
   public static UTILS_USER_COUNT_URL = AppUrls.UTILS_URL + '/countActiveUsers';
+
   //FOTO
   public static USER_IMAGE_URL = AppUrls.APP_HOST + '/api/images/users/';
   public static EVENT_IMAGE_URL = AppUrls.APP_HOST + '/api/images/events/';
+  public static UPLOAD_EVENT_IMAGE_URL = AppUrls.APP_HOST + '/api/images/upload-event-photo/';
+  public static DELETE_EVENT_IMAGE_URL = AppUrls.APP_HOST + '/api/images/delete-event-photo/';
+  public static UPLOAD_USER_IMAGE_URL = AppUrls.APP_HOST + '/api/images/upload-user-photo';
 
   //CHAT
   public static CHAT_URL = AppUrls.APP_HOST + '/api/chat';
