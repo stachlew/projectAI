@@ -13,44 +13,73 @@
       <mat-form-field class="event-input">
         <input matInput [(ngModel)]="eventForm.title" placeholder="Tytuł wydarzenia">
       </mat-form-field>
+      <span *ngIf="errorFields[0].error" class="error-msg">
+        {{errorFields[0].errorText}}
+      </span>
 
       <mat-form-field class="event-input">
         <textarea [(ngModel)]="eventForm.description" class="description-input" matInput placeholder="Opis wydarzenia"></textarea>
       </mat-form-field>
+      <span *ngIf="errorFields[1].error" class="error-msg">
+        {{errorFields[1].errorText}}
+      </span>
 
-      <mat-form-field class="event-input">
-        <input [(ngModel)]="eventForm.capacity" type="number" min="1" max="10000" matInput placeholder="Liczba miejsc">
-      </mat-form-field>
-
-      <div class="event-input">
+      <div class="event-input" >
         <custom-date-time [dateIn]="inputDate" (dateChange)="inputDate=$event"></custom-date-time>
       </div>
+      <div *ngIf="errorFields[2].error" class="error-msg">
+        {{errorFields[2].errorText}}
+      </div>
 
-      <div class="event-input">
-        <mat-form-field class="filter-event-input" style="width: 100%">
+      <div class="event-input" style="width: 45%;display: inline-block">
+        <mat-form-field class="filter-event-input" >
           <mat-select [(value)]="activeRegion" (change)="updateCities($event)" placeholder="Województwo" [compareWith]="compareSelected">
             <mat-option *ngFor="let region of regions" [value]="region"  >{{ region.regionName }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
 
-      <div class="event-input">
-        <mat-form-field class="filter-event-input" style="width: 100%">
+      <div class="event-input" style="width: 45%;display: inline-block;margin-left: 38px;">
+        <mat-form-field class="filter-event-input" >
           <mat-select [(value)]="activeCity"  placeholder="Miasto" [compareWith]="compareSelected">
             <mat-option *ngFor="let city of cities" [value]="city" >{{ city.cityName }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
+      <div *ngIf="errorFields[3].error" class="error-msg">
+        {{errorFields[3].errorText}}
+      </div>
+      <div *ngIf="errorFields[4].error" class="error-msg">
+        {{errorFields[4].errorText}}
+      </div>
 
-      <button class="btn btn-primary btn-block save-button" (click)="saveEvent()" >Zapisz</button>
-      <mat-slide-toggle class="enabled-slider" [(ngModel)]="eventForm.enabled">
-        Aktywność wydarzenia
-      </mat-slide-toggle>
+      <mat-form-field class="event-input">
+        <input matInput [(ngModel)]="eventForm.localization.address" placeholder="Adres">
+      </mat-form-field>
+      <span *ngIf="errorFields[5].error" class="error-msg">
+        {{errorFields[5].errorText}}
+      </span>
+
+
+      <div class="event-input">
+        <mat-form-field class="event-input" style="width: 40%; display: inline-block;">
+          <input [(ngModel)]="eventForm.capacity" type="number" min="1" max="10000" matInput placeholder="Liczba miejsc">
+        </mat-form-field>
+        <mat-slide-toggle class="enabled-slider" [(ngModel)]="eventForm.enabled" style="width: 42%; margin-left: 60px; display: inline-block;">
+          Aktywność wydarzenia
+        </mat-slide-toggle>
+      </div>
+      <span *ngIf="errorFields[6].error" class="error-msg">
+        {{errorFields[6].errorText}}
+      </span>
+
+      <button class="btn btn-primary btn-block save-button" (click)="validateAndSaveForm()" >Zapisz</button>
+
 
     </div>
 
     <!--PRAWA KOLUMNA-->
-    <div class="col-md-8">
+    <div class="col-md-7 offset-1">
       <!--FOTA-->
       <div class="row foto-big-box" *ngIf="eventForm.id!=null">
         <div class="col-md-6">

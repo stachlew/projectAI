@@ -1,11 +1,11 @@
 .event-create-container{
   height: 100%;
   width: 100%;
-  padding: 15px;
+  padding: 12px;
 }
 
 .description-input{
-  min-height: 135px;
+  min-height: 40px;
 }
 
 .create-header{
@@ -30,7 +30,7 @@
 }
 
 .photo-container img{
-  height: 44vh;
+  height: 35vh;
 }
 
 .file-container{
@@ -45,7 +45,7 @@
 }
 
 .foto-big-box{
-  height: 41vh;
+  height: 35vh;
 }
 
 .save-info{
@@ -54,5 +54,9 @@
   margin-right: auto;
 }
 
+.error-msg{
+  color: red;
+  font-size: smaller;
+}
 
 
