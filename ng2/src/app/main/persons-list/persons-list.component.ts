@@ -95,4 +95,39 @@ export class PersonsListComponent implements OnInit {
     this.getProfilesData();
   }
 
+
+
+
+  ///ACTIONY
+
+  action1(){
+    return this.httpSrv.getAndFetchData(AppUrls.APP_HOST+'/api/action1').subscribe(resp=>{
+        let data = resp;
+        console.log('ODPOWIEDZ ACTION 1: '+data);
+      },
+      err=>{
+        console.log('FAILED ACTION 1');
+      });
+  }
+
+  action2(){
+    return this.httpSrv.getAndFetchData(AppUrls.APP_HOST+'/api/action2').subscribe(resp=>{
+        let data = resp;
+        console.log('ODPOWIEDZ ACTION 2: '+data);
+      },
+      err=>{
+        console.log('FAILED ACTION 2');
+      });
+  }
+
+  action3(){
+    return this.httpSrv.getAndFetchData(AppUrls.APP_HOST+'/api/action3').subscribe(resp=>{
+        let data = resp;
+        console.log('ODPOWIEDZ ACTION 3: '+data);
+      },
+      err=>{
+        console.log('FAILED ACTION 3');
+      });
+  }
+
 }
