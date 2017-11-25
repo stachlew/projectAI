@@ -100,7 +100,7 @@ const appRoutes: Routes = [
     data: { roles : ['ROLE_MANAGER'] }
   },
   {
-    path: 'speed-date-create',
+    path: 'speed-date-create/:speeddateId',
     component: SpeedDateCreateComponent,
     canActivate: [AuthenticationGuard, RoleGuard],
     data: { roles : ['ROLE_MANAGER'] }

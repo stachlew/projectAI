@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {isNullOrUndefined} from "util";
 
 @Component({
   selector: 'custom-date-time',
@@ -30,16 +31,20 @@ export class CustomDateTimeComponent implements OnInit {
   }
 
   convertDateIn(){
-    this.mainDate = new Date(this.dateIn);
-    this.hourHelp = this.dateIn.getHours();
-    this.minHelp = this.dateIn.getMinutes();
+    if(!isNullOrUndefined(this.dateIn)){
+      this.mainDate = new Date(this.dateIn);
+      this.hourHelp = this.mainDate.getHours();
+      this.minHelp = this.mainDate.getMinutes();
+    }
   }
 
   handleInputHelpChanges(){
-    let newDate = new Date(this.mainDate);
-    newDate.setHours(this.hourHelp);
-    newDate.setMinutes(this.minHelp);
-    this.mainDate = newDate;
+    if(!isNullOrUndefined(this.mainDate)){
+      let newDate = new Date(this.mainDate);
+      newDate.setHours(this.hourHelp);
+      newDate.setMinutes(this.minHelp);
+      this.mainDate = newDate;
+    }
     this.sendNewDateTime();
   }
 

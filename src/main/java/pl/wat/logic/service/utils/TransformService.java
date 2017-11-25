@@ -245,7 +245,7 @@ public class TransformService {
             event.setTitle(eventDTO.getTitle());
             event.setLocalization(toEntity(eventDTO.getLocalization()));
             event.setOrganizer(toEntity(eventDTO.getOrganizer()));
-            event.setEnabled(event.isEnabled());
+            event.setEnabled(eventDTO.isEnabled());
             return event;
         }
         else

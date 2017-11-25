@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   }
 
   goEventCreate(){
-    this.router.navigate(['speed-date-create']);
+    this.router.navigate(['speed-date-create/0']);
   }
 
   getUserCount(){

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Http} from "@angular/http";
 import {HttpSecService} from "../../_service/util/http-sec.service";
 import {AppUrls} from "../../_service/util/app-urls";
+import {FileUploader} from "ng2-file-upload";
 
 @Component({
   selector: 'app-account',
@@ -9,6 +10,9 @@ import {AppUrls} from "../../_service/util/app-urls";
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
+
+  public uploader:FileUploader = new FileUploader({url:this.httpService.applicationUrl + '/api/postFile',authToken:this.httpService.getToken()});
+
 
   constructor(private http: Http, private httpService: HttpSecService) { }
 

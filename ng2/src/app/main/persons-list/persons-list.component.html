@@ -2,7 +2,7 @@
   <!--naglowek-->
   <div class="row">
     <div class="col-md-12 persons-header-container">
-      <h3>Oto lista zawierająca profile osób dopasowanych do Ciebie.</h3>
+      <h3>Lista osób wraz z wskaźnikiem dopasowania do Ciebie</h3>
     </div>
   </div>
 
@@ -31,7 +31,7 @@
       <mat-form-field class="persons-search-input">
         <input type="number" min="18" max="100" [(ngModel)]="filter.ageTo" matInput placeholder="Wiek do">
       </mat-form-field >
-      <button class="btn btn-success" (click)="getProfilesData()">
+      <button class="btn btn-success" (click)="resetToFirst()">
         <i class="fa fa-filter fa-fw"></i>
         Filtruj
       </button>

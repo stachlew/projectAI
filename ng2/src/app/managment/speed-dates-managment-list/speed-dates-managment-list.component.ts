@@ -22,7 +22,7 @@ export class SpeedDatesManagmentListComponent implements OnInit {
   }
 
   goToEventDetails(id: number){
-    this.router.navigate(['speed-date-managment/'+id]);
+    this.router.navigate(['speed-date-create/'+id]);
   }
 
   private getEventsData(){

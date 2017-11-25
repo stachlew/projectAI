@@ -64,13 +64,12 @@ export class PersonsListComponent implements OnInit {
   }
 
   resetToFirst(){
-    this.filter.pageNo = 1;
-    this.getProfilesData();
+    this.filter.pageNo=1;
+    this.changePage(this.filter.pageNo);
   }
 
   clearSearch(){
-    this.filter = new ProfileSearch;
-    this.resetToFirst();
+    this.initData();
   }
 
   getRegions(){

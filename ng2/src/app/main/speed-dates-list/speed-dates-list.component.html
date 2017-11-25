@@ -47,18 +47,17 @@
   </div>
 
   <div class="tile-container">
-    <div class="card-columns">
+    <div class="card-columns" style="column-count: 4;">
 
       <ng-container *ngFor="let sd of speedDates">
         <div class="card border-primary one-card" >
           <img class="card-img-top card-img-cust" [src]="eventPhotoUrl+sd.id" (click)="goToEventDetails($event, sd.id)">
-          <div class="card-bod card-body-cust" (click)="goToEventDetails($event, sd.id)">
+          <div class="card-bod card-body-cust" (click)="goToEventDetails($event, sd.id)" style="margin-left: 10px">
             <h4 class="card-title">{{sd.title}}</h4>
             <h6 class="card-subtitle mb-2 text-muted">{{sd.eventStart | date:'dd-MM-yyyy HH:mm'}}</h6>
             <p class="card-text">{{sd.description}}</p>
           </div>
-          <a data-toggle="modal" data-target="#event-map" class="card-link">Zobacz na mapie</a>
-          <span style="position: absolute; right: 20px">{{sd.localization?.city?.region?.regionName}}, {{sd.localization?.city?.cityName}}</span>
+          <span style="margin-left: 10px">{{sd.localization?.city?.cityName}}, {{sd.localization?.city?.region?.regionName}}</span>
         </div>
       </ng-container>
 
