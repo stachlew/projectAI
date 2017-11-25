@@ -11,7 +11,7 @@ import pl.wat.logic.service.user.UserService;
 
 @RestController
 @RequestMapping("/api/util")
-public class UtilController {
+public class UtilController extends BaseController {
     @Autowired
     UserService userServices;
 
@@ -20,6 +20,12 @@ public class UtilController {
     @ResponseBody
     public int getCountActiveUsers(Authentication auth){
         return userServices.countActiveUsers();
+    }
+
+    @RequestMapping(value = "/my-id",method = RequestMethod.GET)
+    @ResponseBody
+    public Long getMyId(Authentication auth){
+        return getLoggerUser(auth).getId();
     }
 
 }

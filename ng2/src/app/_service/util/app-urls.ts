@@ -8,6 +8,7 @@ export class AppUrls {
 
   //UTILS
   public static UTILS_USER_COUNT_URL = AppUrls.UTILS_URL + '/countActiveUsers';
+  public static UTILS_MY_ID_URL = AppUrls.UTILS_URL + '/my-id';
 
   //FOTO
   public static USER_IMAGE_URL = AppUrls.APP_HOST + '/api/images/users/';
@@ -15,6 +16,7 @@ export class AppUrls {
   public static UPLOAD_EVENT_IMAGE_URL = AppUrls.APP_HOST + '/api/images/upload-event-photo/';
   public static DELETE_EVENT_IMAGE_URL = AppUrls.APP_HOST + '/api/images/delete-event-photo/';
   public static UPLOAD_USER_IMAGE_URL = AppUrls.APP_HOST + '/api/images/upload-user-photo';
+  public static DELETE_USER_IMAGE_URL = AppUrls.APP_HOST + '/api/images/delete-user-photo';
 
   //CHAT
   public static CHAT_URL = AppUrls.APP_HOST + '/api/chat';

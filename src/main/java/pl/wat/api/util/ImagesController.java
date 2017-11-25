@@ -95,7 +95,7 @@ public class ImagesController extends BaseController {
     @PreAuthorize("hasRole('MANAGER')")
     @RequestMapping(value = "/upload-event-photo/{eventId}",method = RequestMethod.POST)
     @ResponseStatus(value= HttpStatus.NO_CONTENT)
-    public void uploadImage(@RequestParam("file") MultipartFile file, @PathVariable Long eventId) {
+    public void uploadEventImage(@RequestParam("file") MultipartFile file, @PathVariable Long eventId) {
 
         if(!file.isEmpty() && eventId!=null){
             try{
@@ -111,7 +111,7 @@ public class ImagesController extends BaseController {
     }
     @PreAuthorize("hasRole('MANAGER')")
     @RequestMapping(value = "/delete-event-photo/{eventId}",method = RequestMethod.GET)
-    public boolean uploadImage(@PathVariable Long eventId) {
+    public boolean deleteEventImage(@PathVariable Long eventId) {
 
         if(eventId!=null){
             try{
@@ -133,10 +133,9 @@ public class ImagesController extends BaseController {
     @PreAuthorize("hasRole('USER')")
     @RequestMapping(value = "/upload-user-photo",method = RequestMethod.POST)
     @ResponseStatus(value= HttpStatus.NO_CONTENT)
-    public void uploadImage(@RequestParam("file") MultipartFile file, Authentication auth) {
+    public void uploadUserImage(@RequestParam("file") MultipartFile file, Authentication auth) {
 
         UserDTO loggedUser = getLoggerUser(auth);
-        System.out.println(file.getName());
         if(!file.isEmpty() && loggedUser != null && loggedUser.getId() != null){
             try{
                 byte[] bytes = file.getBytes();
@@ -149,5 +148,26 @@ public class ImagesController extends BaseController {
             }
         }
     }
+
+    @PreAuthorize("hasRole('USER')")
+    @RequestMapping(value = "/delete-user-photo",method = RequestMethod.GET)
+    public boolean deleteUserImage(Authentication auth) {
+        UserDTO loggedUser = getLoggerUser(auth);
+        if(loggedUser!=null && loggedUser.getId() != null){
+            try{
+                File file = new File(sourceDirectory + "images/users/"+loggedUser.getId()+".jpg");
+                if(file.exists()){
+                    file.delete();
+                    return true;
+                }else {
+                    return false;
+                }
+            }catch (Exception e){
+                System.out.println("deleteImage() Exception ");
+            }
+        }
+        return false;
+    }
+
 
 }
