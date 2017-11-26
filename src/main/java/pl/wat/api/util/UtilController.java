@@ -11,7 +11,7 @@ import pl.wat.logic.service.user.UserService;
 
 @RestController
 @RequestMapping("/api/util")
-public class UtilController {
+public class UtilController extends BaseController {
     @Autowired
     UserService userServices;
 

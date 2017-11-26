@@ -1,7 +1,7 @@
 <div class="participant-container">
   <div class="small-box" *ngFor="let p of participants" (click)="goToPersonDetails(p.id)">
     <div>
-      <img [src]="userPhotoUrl + p.profilePhotoId"  class="rounded-circle">
+      <img [src]="userPhotoUrl + p.id"  class="rounded-circle">
     </div>
     <div>
       {{p.firstname}},{{p.age}}

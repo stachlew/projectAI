@@ -20,3 +20,8 @@
 .text-left{
   text-align: left;
 }
+
+.no-items{
+  text-align: center;
+  font-size: x-large;
+}

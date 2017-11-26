@@ -45,6 +45,9 @@
 
 .card-body-cust{
   padding: 5px;
+  max-height: 140px;
+  overflow: auto;
+  min-height: 140px;
 }
 
 .one-card{
@@ -52,7 +55,6 @@
 }
 
 .one-card:hover{
-  border: 2px solid;
   background-color: rgba(214, 0, 10, 0.67);
   cursor: pointer;
 }

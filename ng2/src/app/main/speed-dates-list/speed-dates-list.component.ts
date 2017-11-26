@@ -67,6 +67,8 @@ export class SpeedDatesListComponent implements OnInit {
 
   public clearFilters(){
     this.filter = new SpeedDateSearch;
+    this.filter.pageNo = 1;
+    this.filter.pageSize = Constants.SPEED_DATES_ELEMENTS;
     this.resetToFirstPage();
   }
 

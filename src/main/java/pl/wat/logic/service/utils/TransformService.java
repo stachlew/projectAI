@@ -69,8 +69,6 @@ public class TransformService {
             dto.setReligion(toDTO(entity.getReligion()));
             dto.setSmoking(entity.getSmoking());
             dto.setZodiacSign(toDTO(entity.getZodiacSign()));
-
-
             return dto;
         }else {
             return null;
@@ -249,7 +247,7 @@ public class TransformService {
             event.setTitle(eventDTO.getTitle());
             event.setLocalization(toEntity(eventDTO.getLocalization()));
             event.setOrganizer(toEntity(eventDTO.getOrganizer()));
-            event.setEnabled(event.isEnabled());
+            event.setEnabled(eventDTO.isEnabled());
             return event;
         }
         else

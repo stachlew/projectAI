@@ -4,6 +4,10 @@
   </div>
   <div class="managment-content">
 
+      <button class="btn btn-primary" (click)="goToEventDetails(0)" style="margin-bottom: 10px">
+        <i class="fa fa-plus fa-fw font-accent"></i> Stwórz wydarzenie
+      </button>
+
     <table class="table table-bordered table-hover">
       <thead>
       <tr>
@@ -18,7 +22,7 @@
         <tr class="hover-element" *ngFor="let event of events" (click)="goToEventDetails(event.id)">
           <td>{{event.title}}</td>
           <td class="text-center">{{event.localization.city.cityName}}, {{event.localization.city.region.regionName}}</td>
-          <td class="text-center">{{event.eventStart | date:'dd-MM-yyyy HH:MM'}}</td>
+          <td class="text-center">{{event.eventStart | date:'dd-MM-yyyy HH:mm'}}</td>
           <td class="text-center">
             <ng-container *ngIf="event.enabled">
               <i class="fa fa-check fa-fw"></i>
@@ -29,6 +33,11 @@
 
           </td>
           <td class="text-center">{{event.participantList?.length}}/{{event.capacity}}</td>
+        </tr>
+        <tr *ngIf="events == null || events.length==0">
+          <td colspan="5" class="no-items">
+            Brak wydarzeń. Kliknij przycisk kreatora by utworzyć nowe wydarzenie.
+          </td>
         </tr>
       </tbody>
     </table>

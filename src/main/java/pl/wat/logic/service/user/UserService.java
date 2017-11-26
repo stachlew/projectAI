@@ -1,5 +1,6 @@
 package pl.wat.logic.service.user;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.stereotype.Service;
@@ -88,13 +89,18 @@ public class UserService {
     @Transactional(readOnly = true)
     public UserDTO getUserByLogin(String login){
         User fetched = userRepository.findByUsername(login);
-        return transfer.toSimpleDto(fetched);
+        return transfer.toDto(fetched);
     }
 
-    public UserDTO changePassword(User user, String newPass) {
-        String hashPassword = PasswordGenerator.hashPassword(newPass);
-        user.setPassword(hashPassword);
-        User returnUser = userRepository.save(user);
-        return transfer.toDto(returnUser);
+    public boolean changePassword(UserDTO user, String oldPass, String newPass) {
+        if(user.getPassword()!= null && PasswordGenerator.comparePassword(user.getPassword(),oldPass)){
+            String newHash = PasswordGenerator.hashPassword(newPass);
+            User toUpdate = userRepository.findOne(user.getId());
+            toUpdate.setPassword(newHash);
+            if(userRepository.save(toUpdate)!=null){
+                return true;
+            }
+        }
+        return false;
     }
 }

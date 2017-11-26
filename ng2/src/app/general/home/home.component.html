@@ -1,9 +1,9 @@
 <div class="home-container">
-  <div style="text-align: center" class="jumbotron main-image">
+  <div style="text-align: center; padding-bottom: 0;" class="jumbotron main-image">
 
 
   <ng-container *ngIf="!isAuth()">
-    <h1 class="home-title-header">Poznaj swoją drugą połówkę już dziś.</h1>
+    <h2 class="home-title-header">Poznaj swoją drugą połówkę już dziś.</h2>
     <p class="home-title-paragraph">
       Po rejestracji możesz wypełnić quiz osobowości. Dzięki temu rozpoznasz które osoby, są do Ciebie dopasowane.
     </p>
@@ -14,7 +14,7 @@
   </ng-container>
 
   <ng-container *ngIf="isUser()">
-    <h1 class="home-title-header">Poznaj swoją drugą połówkę już dziś.</h1>
+    <h2 class="home-title-header">Poznaj swoją drugą połówkę już dziś.</h2>
     <p class="home-title-paragraph">
       Przejdź do listy profili by poznać nowe osoby. Znajdziesz tam poziom dopasowania, który podpowie Ci w jakim stopniu osoba jest dopasowana do Ciebie.
 
@@ -24,10 +24,8 @@
     </p>
   </ng-container>
 
-    <br>
-    <br>
   <ng-container *ngIf="isUser()">
-    <h1 class="home-title-header">Wypełnij lub zmodyfikuj swój test osobowości</h1>
+    <h2 class="home-title-header">Wypełnij lub zmodyfikuj swój test osobowości</h2>
     <p class="home-title-paragraph">
       Dzięki dobrze wypełnionemu testowi nie zawiedziesz się i odnajdziesz taką drugą połowę o której marzysz.
 
@@ -38,7 +36,7 @@
   </ng-container>
 
   <ng-container *ngIf="isManager()" >
-    <h1 class="home-title-header">Utwórz nowe wydarzenie dla singli w minutę!</h1>
+    <h2 class="home-title-header">Utwórz nowe wydarzenie dla singli w minutę!</h2>
     <p class="home-title-paragraph">
       Szybki i wygodny moduł tworzenia wydarzenia pozwoli Ci na błyskawiczną promocję Twojego wydarzenia.
     </p>

@@ -1,5 +1,9 @@
 <div class="event-create-container">
-  <div class="create-content row">
+
+  <!--BOX TWORZENIA-->
+  <div class="create-content row" *ngIf="!isSaved">
+
+    <!--LEWA KOLUMNA-->
     <div class="col-md-4">
 
       <div class="create-header">
@@ -9,96 +13,105 @@
       <mat-form-field class="event-input">
         <input matInput [(ngModel)]="eventForm.title" placeholder="Tytuł wydarzenia">
       </mat-form-field>
+      <span *ngIf="errorFields[0].error" class="error-msg">
+        {{errorFields[0].errorText}}
+      </span>
 
       <mat-form-field class="event-input">
         <textarea [(ngModel)]="eventForm.description" class="description-input" matInput placeholder="Opis wydarzenia"></textarea>
       </mat-form-field>
+      <span *ngIf="errorFields[1].error" class="error-msg">
+        {{errorFields[1].errorText}}
+      </span>
 
-      <mat-form-field class="event-input">
-        <input [(ngModel)]="eventForm.capacity" type="number" min="1" max="10000" matInput placeholder="Liczba miejsc">
-      </mat-form-field>
-
-      <div class="event-input">
+      <div class="event-input" >
         <custom-date-time [dateIn]="inputDate" (dateChange)="inputDate=$event"></custom-date-time>
       </div>
+      <div *ngIf="errorFields[2].error" class="error-msg">
+        {{errorFields[2].errorText}}
+      </div>
 
-      <div class="event-input">
-        <mat-form-field class="filter-event-input" style="width: 100%">
-          <mat-select [(value)]="activeRegion" (change)="updateCities($event)" placeholder="Województwo">
+      <div class="event-input" style="width: 45%;display: inline-block">
+        <mat-form-field class="filter-event-input" >
+          <mat-select [(value)]="activeRegion" (change)="updateCities($event)" placeholder="Województwo" [compareWith]="compareSelected">
             <mat-option *ngFor="let region of regions" [value]="region"  >{{ region.regionName }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
 
-      <div class="event-input">
-        <mat-form-field class="filter-event-input" style="width: 100%">
-          <mat-select [(value)]="activeCity" placeholder="Miasto">
+      <div class="event-input" style="width: 45%;display: inline-block;margin-left: 38px;">
+        <mat-form-field class="filter-event-input" >
+          <mat-select [(value)]="activeCity"  placeholder="Miasto" [compareWith]="compareSelected">
             <mat-option *ngFor="let city of cities" [value]="city" >{{ city.cityName }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
+      <div *ngIf="errorFields[3].error" class="error-msg">
+        {{errorFields[3].errorText}}
+      </div>
+      <div *ngIf="errorFields[4].error" class="error-msg">
+        {{errorFields[4].errorText}}
+      </div>
 
-      <button class="btn btn-primary btn-block save-button" (click)="saveEvent()" >Zapisz</button>
-      <mat-slide-toggle class="enabled-slider" [(ngModel)]="eventForm.enabled">
-        Aktywność wydarzenia
-      </mat-slide-toggle>
+      <mat-form-field class="event-input">
+        <input matInput [(ngModel)]="eventForm.localization.address" placeholder="Adres">
+      </mat-form-field>
+      <span *ngIf="errorFields[5].error" class="error-msg">
+        {{errorFields[5].errorText}}
+      </span>
+
+
+      <div class="event-input">
+        <mat-form-field class="event-input" style="width: 40%; display: inline-block;">
+          <input [(ngModel)]="eventForm.capacity" type="number" min="1" max="10000" matInput placeholder="Liczba miejsc">
+        </mat-form-field>
+        <mat-slide-toggle class="enabled-slider" [(ngModel)]="eventForm.enabled" style="width: 42%; margin-left: 60px; display: inline-block;">
+          Aktywność wydarzenia
+        </mat-slide-toggle>
+      </div>
+      <span *ngIf="errorFields[6].error" class="error-msg">
+        {{errorFields[6].errorText}}
+      </span>
+
+      <button class="btn btn-primary btn-block save-button" (click)="validateAndSaveForm()" >Zapisz</button>
+
 
     </div>
-    <div class="col-md-8">
 
+    <!--PRAWA KOLUMNA-->
+    <div class="col-md-7 offset-1">
+      <!--FOTA-->
       <div class="row foto-big-box" *ngIf="eventForm.id!=null">
         <div class="col-md-6">
           <div class="file-container">
             <div class="form-group">
-              <label for="single">Fotografia promująca wydarzenie</label>
-              <input id="single" type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" multiple/>
+              <label for="single">Fotografia promująca wydarzenie: </label>
+              <button (click)="fileInput.click()" class="btn btn-default btn-secondary">Upload</button>
+              <button (click)="deleteImage()" class="btn btn-default btn-secondary">Wyczyść zdjęcie</button>
+              <span style="visibility: hidden; position: absolute; overflow: hidden; width: 0px; height:0px;border:none;margin:0; padding:0">
+                <input #fileInput id="single" type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader"  />
+              </span>
             </div>
+            <div *ngFor="let item of uploader.queue">
+              Plik: {{ item.file.name | truncate:[50, '...'] }} <br>
+              Rozmiar: {{ item.file.size/1024/1024 | number:'.2' }} MB <br>
 
-            <table class="table">
-              <thead>
-              <tr>
-                <th width="50%">Plik</th>
-                <th>Rozmiar</th>
-                <th>Trwanie</th>
-                <th>Stan</th>
-                <th>Akcje</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let item of uploader.queue">
-                <td><strong>{{ item.file.name }}</strong></td>
-                <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>
-                <td>
-                  <div class="progress" style="margin-bottom: 0;">
-                    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
-                  </div>
-                </td>
-                <td class="text-center">
-                  <span *ngIf="item.isSuccess">OK</span>
-                  <span *ngIf="item.isCancel">---</span>
-                  <span *ngIf="item.isError"></span>
-                </td>
-                <td nowrap>
-                  <button type="button" class="btn btn-success btn-xs"
-                          (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
-                    Załaduj!
-                  </button>
-                  <button type="button" class="btn btn-warning btn-xs"
-                          (click)="item.cancel()" [disabled]="!item.isUploading">
-                    Anuluj
-                  </button>
-                  <button type="button" class="btn btn-danger btn-xs"
-                          (click)="item.remove()">
-                    Usuń
-                  </button>
-                </td>
-              </tr>
-              </tbody>
-            </table>
+              <button type="button" class="btn btn-success btn-xs"
+                      (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                Załaduj!
+              </button>
+              <button type="button" class="btn btn-danger btn-xs"
+                      (click)="item.remove()">
+                Usuń
+              </button>
 
-            Stan procesu:
-            <div class="progress" style="">
-              <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+              Stan procesu:
+              <span *ngIf="item.isSuccess">OK</span>
+              <span *ngIf="item.isCancel">---</span>
+              <span *ngIf="item.isError">ERROR</span> <br> <br>
+              <div class="progress" style="">
+                <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+              </div>
             </div>
 
           </div>
@@ -113,23 +126,31 @@
         Po zapisaniu wydarzenia dostępna będzie możliwość załadowania fotografii tytułowej dla wydarzenia.
       </div>
 
+      <!--MAPA-->
+      <span>Zaznacz lokalizację wydarzenia</span>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="map-container">
+            <app-custom-map [createView]="true" #customMap [speedDates]="[eventForm]"  [defaultLength]="defaultLength" [defaultWidth]="defaultWidth" [zoom]="mapZoom" ></app-custom-map>
 
-    <span>Zaznacz lokalizację wydarzenia</span>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="map-container">
-          <app-custom-map [createView]="true" #customMap [speedDates]="[eventForm]"  [defaultLength]="defaultLength" [defaultWidth]="defaultWidth" [zoom]="mapZoom" ></app-custom-map>
-
+          </div>
         </div>
       </div>
-    </div>
-
-
-
 
     </div>
-
   </div>
+  <!--KONIEC TWORZENIA-->
+
+  <div class="row" *ngIf="isSaved">
+    <div class="col-md-12">
+      <div class="save-info">
+        <h2>Wydarzenie zapisane! {{eventForm.title}}! </h2>
+        <button class="btn btn-primary" (click)="goToList()">Przejdź do listy wydarzeń</button>
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
 

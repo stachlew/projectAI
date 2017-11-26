@@ -150,9 +150,19 @@ public class EventService {
     @Transactional
     public EventDTO saveEvent(EventDTO eventDTO, UserDTO user) {
         Event event = transformService.toEntity(eventDTO);
+        Long oldLocalizationId = null;
+        if(eventDTO.getId()!=null){
+            Event oldEvent = eventRepository.findOne(eventDTO.getId());
+            oldLocalizationId = oldEvent.getLocalization().getId();
+        }
+
         User organizer = userRepository.findByUsername(user.getUsername());
         event.setOrganizer(organizer);
-        localizatonRepository.save(event.getLocalization());
+
+        event.getLocalization().setId(oldLocalizationId); //for updating existing localization
+        Localization savedLocalization = localizatonRepository.save(event.getLocalization());
+        event.setLocalization(savedLocalization);
+
         event = eventRepository.save(event);
         return transformService.toDTO(event);
     }
