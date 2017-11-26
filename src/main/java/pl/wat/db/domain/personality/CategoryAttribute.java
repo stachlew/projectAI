@@ -20,6 +20,10 @@ public class CategoryAttribute {
     @NotNull
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private PersonalityCategory personalityCategory;
+
     public Long getId() {
         return id;
     }

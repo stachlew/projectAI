@@ -1,6 +1,8 @@
 package pl.wat.api.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -9,16 +11,30 @@ import org.springframework.web.multipart.MultipartFile;
 import pl.wat.config.Constants;
 import pl.wat.db.domain.Customer;
 import pl.wat.db.domain.DemoClass;
+import pl.wat.db.domain.event.Event;
+import pl.wat.db.domain.personality.Match;
 import pl.wat.db.repository.conversation.PrivateMessageRepository;
+import pl.wat.db.repository.event.EventRepository;
 import pl.wat.db.repository.localization.RegionRepository;
+import pl.wat.db.repository.personality.UserPersonalityAttributeRepository;
 import pl.wat.logic.demo.CustomerService;
+import pl.wat.logic.dto.event.EventSearchDTO;
+import pl.wat.logic.dto.localization.CityDTO;
+import pl.wat.logic.dto.localization.RegionDTO;
+import pl.wat.logic.dto.personality.MatchForm;
+import pl.wat.logic.dto.profile.ProfileSearchDTO;
+import pl.wat.logic.dto.user.UserDTO;
 import pl.wat.logic.service.conversation.ConversationService;
 import pl.wat.logic.service.dictionary.DictionaryService;
+import pl.wat.logic.service.personality.PersonalityService;
 import pl.wat.logic.service.user.UserService;
+import sun.java2d.cmm.Profile;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -39,6 +55,14 @@ public class DemoRestController {
 
     @Autowired
     RegionRepository regionRepository;
+    @Autowired
+    UserPersonalityAttributeRepository userPersonalityAttributeRepository;
+
+    @Autowired
+    PersonalityService personalityService;
+
+    @Autowired
+    EventRepository eventRepository;
 
 
     @RequestMapping(value = "/action1",method = RequestMethod.GET)
@@ -65,7 +89,48 @@ public class DemoRestController {
        //     System.out.println(region.getRegionName());
       //  });
        // dictionaryService.getCityByRegion(regionRepository.findOne(1)).forEach(city -> System.out.println(city.getCityName()));
+       // List<March> marchUserOneToUserTwo = userPersonalityAttributeRepository.findMarchUserIdOneToUserIdTwo(Long.valueOf(1), Long.valueOf(2));
 
+     //  ProfileSearchDTO profileSearchDTO= new ProfileSearchDTO();
+      //  profileSearchDTO.setPageNo(0);
+      //  profileSearchDTO.setPageSize(2);
+
+        //profileSearchDTO.setCity(new CityDTO());
+       // profileSearchDTO.getCity().setId(Long.valueOf(1));
+
+       // List<UserDTO> profilesList = personalityService.getProfilesList(profileSearchDTO);
+      //  profilesList.forEach(userDTO -> System.out.println(userDTO.getUsername()));
+       // System.out.println(profileSearchDTO.getCountPage());
+
+        MatchForm matchForm = personalityService.getMatchForm(3L);
+        matchForm.getCharacterList().get(1).setAnswer("Y");
+        matchForm.getCharacterList().get(1).setPartnerAnswer("Y");
+        matchForm.getPersonalityList().get(1).setAnswer("Y");
+        matchForm.getPersonalityList().get(1).setPartnerAnswer("Y");
+        MatchForm matchForm1 = personalityService.saveMatchForm(matchForm);
+
+        MatchForm matchForm2 = personalityService.getMatchForm(2L);
+        matchForm2.getCharacterList().get(1).setAnswer("Y");
+        matchForm2.getCharacterList().get(1).setPartnerAnswer("Y");
+        matchForm2.getPersonalityList().get(1).setAnswer("Y");
+        matchForm2.getPersonalityList().get(1).setPartnerAnswer("Y");
+        personalityService.saveMatchForm(matchForm2);
+
+        List<Object[]> result = userPersonalityAttributeRepository.findMatchUserIdOneToUserIdTwo(1L,2L);
+        List<Match> matchList = new LinkedList<>();
+        result.forEach(objects -> matchList.add(new Match((String)objects[0],(BigDecimal)objects[1])));
+//
+        //CityDTO cityDTO = new CityDTO();
+        //cityDTO.setId(1L);
+       // RegionDTO regionDTO =new RegionDTO();
+      //  regionDTO.setId(7L);
+//        Date dateFrom = new Date(117,11,20);
+//        EventSearchDTO eventSearchDTO = new EventSearchDTO();
+//        eventSearchDTO.setDateFrom(dateFrom);
+//        eventSearchDTO.setPageNo(0);
+//        eventSearchDTO.setPageSize(5);
+//        Slice<Event> eventByFilter = eventRepository.findEventByFilter(eventSearchDTO, new PageRequest(eventSearchDTO.getPageNo(), eventSearchDTO.getPageSize()));
+//eventByFilter.getContent().forEach(event -> System.out.println(event.getTitle()));
 
         List<String> resp = new LinkedList<>();
         resp.add("element1");

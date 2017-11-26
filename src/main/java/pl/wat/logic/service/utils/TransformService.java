@@ -10,6 +10,8 @@ import pl.wat.db.domain.event.Localization;
 import pl.wat.db.domain.event.Participant;
 import pl.wat.db.domain.localization.City;
 import pl.wat.db.domain.localization.Region;
+import pl.wat.db.domain.personality.CategoryAttribute;
+import pl.wat.db.domain.personality.UserPersonalityAttribute;
 import pl.wat.db.domain.user.Authority;
 import pl.wat.db.domain.user.User;
 import pl.wat.db.domain.user.profile.attributes.*;
@@ -22,6 +24,8 @@ import pl.wat.logic.dto.event.LocalizationDTO;
 import pl.wat.logic.dto.event.ParticipantDTO;
 import pl.wat.logic.dto.localization.CityDTO;
 import pl.wat.logic.dto.localization.RegionDTO;
+import pl.wat.logic.dto.personality.CategoryAttributeDTO;
+import pl.wat.logic.dto.personality.UserPersonalityAttributeDTO;
 import pl.wat.logic.dto.profile.ProfilePictureDTO;
 import pl.wat.logic.dto.user.UserDTO;
 
@@ -87,7 +91,7 @@ public class TransformService {
             dto.setLastLogoutDate(null);
             dto.setLastpassres(null);
             dto.setEnabled(false);
-            dto.setAuthorities(toDTO(entity.getAuthorities()));
+            dto.setAuthorities((entity.getAuthorities()));
             dto.setAge(this.countAge(entity));
             dto.setProfilePhotoId(entity.getProfilePhotoId());
             return dto;
@@ -118,10 +122,10 @@ public class TransformService {
         }
     }
 
-    @Transactional(readOnly = true)
-    public List<Authority> toDTO(List<Authority> entity){
-        return entity;
-    }
+//    @Transactional(readOnly = true)
+//    public List<Authority> toDTO(List<Authority> entity){
+//        return entity;
+//    }
 
     public User toEntity(UserDTO dto){
         if(dto !=null){
@@ -397,7 +401,68 @@ public class TransformService {
     }
 
 
+    public List<UserPersonalityAttributeDTO> toDTO(List<UserPersonalityAttribute> byUserAndCategoryAttribute) {
+        if(byUserAndCategoryAttribute != null && !byUserAndCategoryAttribute.isEmpty()){
+            LinkedList<UserPersonalityAttributeDTO> userPersonalityAttributeDTOList = new LinkedList<>();
+            byUserAndCategoryAttribute.forEach(userPersonalityAttribute -> {
+                userPersonalityAttributeDTOList.add(toDTO(userPersonalityAttribute));
+            });
+            return userPersonalityAttributeDTOList;
+        }
+        else
+            return null;
+    }
 
+    private UserPersonalityAttributeDTO toDTO(UserPersonalityAttribute entity){
+        if (entity!=null){
+            UserPersonalityAttributeDTO dto = new UserPersonalityAttributeDTO();
+            dto.setId(entity.getId());
+            dto.setCategoryAttribute(toDTO(entity.getCategoryAttribute()));
+            dto.setAnswer(entity.getAnswer());
+            dto.setPartnerAnswer(entity.getPartnerAnswer());
+            dto.setUser(toDto(entity.getUser()));
+            return dto;
+        }
+        else
+            return null;
+    }
 
+    public CategoryAttributeDTO toDTO(CategoryAttribute categoryAttribute) {
+        if(categoryAttribute!=null){
+            CategoryAttributeDTO dto = new CategoryAttributeDTO();
+            dto.setId(categoryAttribute.getId());
+            dto.setDescription(categoryAttribute.getDescription());
+            return dto;
+        }
+        else
+            return null;
+    }
 
+    public UserPersonalityAttribute toEntity(UserPersonalityAttributeDTO dto) {
+        if(dto!=null){
+            UserPersonalityAttribute entity = new UserPersonalityAttribute();
+            if(dto.getId()!=null){
+                entity.setId(dto.getId());
+            }
+            entity.setCategoryAttribute(toEntity(dto.getCategoryAttribute()));
+            entity.setAnswer(dto.getAnswer());
+            entity.setPartnerAnswer(dto.getPartnerAnswer());
+            entity.setUser(toEntity(dto.getUser()));
+            return entity;
+
+        }
+        else
+            return null;
+    }
+
+    private CategoryAttribute toEntity(CategoryAttributeDTO dto) {
+        if(dto!=null){
+            CategoryAttribute entity = new CategoryAttribute();
+            entity.setId(dto.getId());
+            entity.setDescription(dto.getDescription());
+            return entity;
+        }
+        else
+            return null;
+    }
 }

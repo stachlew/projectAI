@@ -1,6 +1,7 @@
 package pl.wat.logic.service.event;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.wat.db.domain.conversation.Conversation;
@@ -114,15 +115,17 @@ public class EventService {
     }
 
     public PageResponse getEvents(EventSearchDTO filter) { //TODO WYSZUKIWANIE WG FILTRA
-        List<Event> fethed = eventRepository.findAll();
+      // List<Event> fethed = eventRepository.findAll();
         List<EventDTO> dtos = new LinkedList<>();
-        fethed.forEach(event -> dtos.add(transformService.toSimpleDTO(event)));
+      //  fethed.forEach(event -> dtos.add(transformService.toSimpleDTO(event)));
 
         PageResponse pageResponse = new PageResponse<EventDTO>();
+        List<Event> eventList = eventRepository.findEventByFilter(filter, new PageRequest(filter.getPageNo()-1, filter.getPageSize())).getContent();
+        eventList.forEach(event -> dtos.add(transformService.toDTO(event)));
         pageResponse.value = dtos;
         pageResponse.pageNo = filter.getPageNo(); //TODO
-        pageResponse.elementsCount = 0;
-        pageResponse.elementsCount = 100;
+        pageResponse.elementsCount = filter.getCountElements();
+        pageResponse.pageCount=filter.getCountPage();
         return pageResponse;
     }
 

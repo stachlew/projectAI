@@ -5,7 +5,7 @@ import pl.wat.db.domain.user.Authority;
 import pl.wat.logic.dto.dictionary.SimpleDictionaryDTO;
 import pl.wat.logic.dto.event.LocalizationDTO;
 import pl.wat.logic.dto.localization.CityDTO;
-import pl.wat.logic.dto.personality.MatchDTO;
+import pl.wat.db.domain.personality.Match;
 import pl.wat.logic.dto.personality.UserPersonalityAttributeDTO;
 
 import java.sql.Timestamp;
@@ -45,7 +45,9 @@ public class UserDTO {
     private SimpleDictionaryDTO hairColor;
     private SimpleDictionaryDTO eyeColor;
     private SimpleDictionaryDTO religion;
-    private List<MatchDTO> matchList;
+    private List<Match> matchList;
+
+
 
 
     public Long getId() {
@@ -302,11 +304,11 @@ public class UserDTO {
         this.religion = religion;
     }
 
-    public List<MatchDTO> getMatchList() {
+    public List<Match> getMatchList() {
         return matchList;
     }
 
-    public void setMatchList(List<MatchDTO> matchList) {
+    public void setMatchList(List<Match> matchList) {
         this.matchList = matchList;
     }
 }

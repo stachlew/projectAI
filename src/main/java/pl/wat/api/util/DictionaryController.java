@@ -6,6 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 
+import pl.wat.logic.dto.dictionary.DictionaryDTOLists;
 import pl.wat.logic.dto.dictionary.SimpleDictionaryDTO;
 import pl.wat.logic.dto.localization.CityDTO;
 import pl.wat.logic.dto.localization.RegionDTO;
@@ -37,11 +38,10 @@ public class DictionaryController {
     //slowniki usera
     @RequestMapping(value = "/getAllUserDictionary",method = RequestMethod.GET)
     @ResponseBody
-    public List<List<SimpleDictionaryDTO>> getAllUserDictionary(){
+    public DictionaryDTOLists getAllUserDictionary(){
         return dictionaryService.getAllUserDictionary();
     }
 
-    //http://localhost:8081/api/dictionary/getAllUserDictionary opakować w coś co to rozróżni
 
 
 }

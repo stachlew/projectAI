@@ -39,6 +39,18 @@ public class Event {
     @Lazy
     private User organizer;
 
+    public Event() {
+    }
+
+    public Event(Date eventStart, boolean enabled, int capacity, String title, String description, Localization localization, User organizer) {
+        this.eventStart = eventStart;
+        this.enabled = enabled;
+        this.capacity = capacity;
+        this.title = title;
+        this.description = description;
+        this.localization = localization;
+        this.organizer = organizer;
+    }
 
     public Long getId() {
         return id;

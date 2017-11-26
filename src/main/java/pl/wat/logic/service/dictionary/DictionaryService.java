@@ -10,6 +10,7 @@ import pl.wat.db.domain.user.profile.attributes.ZodiacSign;
 import pl.wat.db.repository.localization.CityRepository;
 import pl.wat.db.repository.localization.RegionRepository;
 import pl.wat.db.repository.user.profile.attributes.*;
+import pl.wat.logic.dto.dictionary.DictionaryDTOLists;
 import pl.wat.logic.dto.dictionary.SimpleDictionaryDTO;
 import pl.wat.logic.dto.localization.CityDTO;
 import pl.wat.logic.dto.localization.RegionDTO;
@@ -110,15 +111,15 @@ public class DictionaryService {
         return dtoList;
     }
 
-    public List<List<SimpleDictionaryDTO>> getAllUserDictionary(){
-        LinkedList<List<SimpleDictionaryDTO>> dictionaryList = new LinkedList<>();
-        dictionaryList.add(this.getAllEducation());
-        dictionaryList.add(this.getAllEyeColor());
-        dictionaryList.add(this.getAllFigure());
-        dictionaryList.add(this.getAllHairColor());
-        dictionaryList.add(this.getAllMartialStatus());
-        dictionaryList.add(this.getAllReligion());
-        dictionaryList.add(this.getAllZodiacSign());
-        return dictionaryList;
+    public DictionaryDTOLists getAllUserDictionary(){
+        DictionaryDTOLists dictionaryDTOLists = new DictionaryDTOLists();
+        dictionaryDTOLists.setEducationList((this.getAllEducation()));
+        dictionaryDTOLists.setEyeColorList(this.getAllEyeColor());
+        dictionaryDTOLists.setFigureList(this.getAllFigure());
+        dictionaryDTOLists.setHairColorList(this.getAllHairColor());
+        dictionaryDTOLists.setMartialStatusList(this.getAllMartialStatus());
+        dictionaryDTOLists.setReligionList(this.getAllReligion());
+        dictionaryDTOLists.setZodiacSignList(this.getAllZodiacSign());
+        return dictionaryDTOLists;
     }
 }

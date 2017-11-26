@@ -12,6 +12,8 @@ public class EventSearchDTO {
     private Date dateTo;
     private int pageNo;
     private int pageSize;
+    public int countElements;
+    public int countPage;
 
     public EventSearchDTO() {
     }
@@ -62,5 +64,21 @@ public class EventSearchDTO {
 
     public void setPageSize(int pageSize) {
         this.pageSize = pageSize;
+    }
+
+    public int getCountElements() {
+        return countElements;
+    }
+
+    public void setCountElements(int countElements) {
+        this.countElements = countElements;
+    }
+
+    public int getCountPage() {
+        return countPage;
+    }
+
+    public void setCountPage(int countPage) {
+        this.countPage = countPage;
     }
 }

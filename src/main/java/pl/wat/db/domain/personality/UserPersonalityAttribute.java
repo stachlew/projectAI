@@ -27,11 +27,9 @@ public class UserPersonalityAttribute {
     private CategoryAttribute categoryAttribute;
 
     @Column(length = 1)
-    @NotNull
     private String answer;
 
     @Column(length = 1, name = "partner_answer")
-    @NotNull
     private String partnerAnswer;
 
     public Long getId() {
@@ -64,5 +62,13 @@ public class UserPersonalityAttribute {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public String getPartnerAnswer() {
+        return partnerAnswer;
+    }
+
+    public void setPartnerAnswer(String partnerAnswer) {
+        this.partnerAnswer = partnerAnswer;
     }
 }
