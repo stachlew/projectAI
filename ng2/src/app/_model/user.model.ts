@@ -24,12 +24,14 @@ export class User {
   lastpassres: Date;
 
   height: number;
-  smoking: string;
-  drinking: string;
-  kids: string;
+
+
   profession: string;
   description: string;
 
+  smoking: SimpleDictionary;
+  drinking: SimpleDictionary;
+  kids: SimpleDictionary;
   zodiacSign: SimpleDictionary;
   martialStatus: SimpleDictionary;
   education: SimpleDictionary;

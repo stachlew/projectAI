@@ -12,10 +12,10 @@ public class ProfileSearchDTO {
     public int ageFrom;
     public int ageTo;
     public String sex;
-    public String kids;
-    public String drinking;
-    public String smoking;
     public SimpleDictionaryDTO education;
+    public SimpleDictionaryDTO smoking;
+    public SimpleDictionaryDTO drinking;
+    public SimpleDictionaryDTO kids;
 
     public int pageNo;
     public int pageSize;
@@ -79,30 +79,28 @@ public class ProfileSearchDTO {
         this.pageSize = pageSize;
     }
 
-
-
-    public String getKids() {
-        return kids;
-    }
-
-    public void setKids(String kids) {
-        this.kids = kids;
-    }
-
-    public String getDrinking() {
-        return drinking;
-    }
-
-    public void setDrinking(String drinking) {
-        this.drinking = drinking;
-    }
-
-    public String getSmoking() {
+    public SimpleDictionaryDTO getSmoking() {
         return smoking;
     }
 
-    public void setSmoking(String smoking) {
+    public void setSmoking(SimpleDictionaryDTO smoking) {
         this.smoking = smoking;
+    }
+
+    public SimpleDictionaryDTO getDrinking() {
+        return drinking;
+    }
+
+    public void setDrinking(SimpleDictionaryDTO drinking) {
+        this.drinking = drinking;
+    }
+
+    public SimpleDictionaryDTO getKids() {
+        return kids;
+    }
+
+    public void setKids(SimpleDictionaryDTO kids) {
+        this.kids = kids;
     }
 
     public SimpleDictionaryDTO getEducation() {

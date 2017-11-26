@@ -47,7 +47,7 @@ public class TransformService {
             dto.setLastname(entity.getLastname());
             dto.setEmail(entity.getEmail());
             dto.setLastpassres(entity.getLastpassres());
-            dto.setEnabled(entity.getEnabled());
+            dto.setEnabled(entity.isEnabled());
             dto.setAuthorities((entity.getAuthorities()));
             dto.setAge(this.countAge(entity));
             dto.setProfilePhotoId(entity.getProfilePhotoId());
@@ -56,17 +56,23 @@ public class TransformService {
             dto.setBirthDate(entity.getBirthDate());
             dto.setCity(toDTO(entity.getCity()));
             dto.setDescription(entity.getDescription());
-            dto.setDrinking(entity.getDrinking());
+
             dto.setEducation(toDTO(entity.getEducation()));
             dto.setEyeColor(toDTO(entity.getEyeColor()));
             dto.setFigure(toDTO(entity.getFigure()));
             dto.setHairColor(toDTO(entity.getHairColor()));
             dto.setHeight(dto.getHeight());
-            dto.setKids(dto.getKids());
+
             dto.setMartialStatus(toDTO(entity.getMartialStatus()));
             dto.setProfession(entity.getProfession());
             dto.setReligion(toDTO(entity.getReligion()));
-            dto.setSmoking(entity.getSmoking());
+
+
+            dto.setSmoking(toDTO(entity.getSmoking()));
+            dto.setDrinking(toDTO(entity.getDrinking()));
+            dto.setKids(toDTO(entity.getKids()));
+
+
             dto.setZodiacSign(toDTO(entity.getZodiacSign()));
             dto.setMan(entity.isMan());
             return dto;
@@ -139,7 +145,7 @@ public class TransformService {
             entity.setBirthDate(dto.getBirthDate());
             entity.setCity(toEntity(dto.getCity()));
             entity.setDescription(dto.getDescription());
-            entity.setDrinking(dto.getDrinking());
+
             entity.setEducation((Education)toEntity(dto.getEducation()));
             entity.setEyeColor((EyeColor)toEntity(dto.getEyeColor()));
             entity.setFigure((Figure)toEntity(dto.getFigure()));
@@ -148,12 +154,17 @@ public class TransformService {
             entity.setReligion((Religion)toEntity(dto.getReligion()));
             entity.setZodiacSign((ZodiacSign)toEntity(dto.getZodiacSign()));
             entity.setHeight(dto.getHeight());
-            entity.setKids(dto.getKids());
+
             entity.setMan(dto.isMan());
             entity.setProfession(dto.getProfession());
             entity.setProfilePhotoId(dto.getProfilePhotoId());
-            entity.setSmoking(dto.getSmoking());
+
             entity.setEnabled(dto.isEnabled());
+
+            entity.setSmoking((Smoking)toEntity(dto.getSmoking()));
+            entity.setKids((Kids)toEntity(dto.getKids()));
+            entity.setDrinking((Drinking)toEntity(dto.getDrinking()));
+
             entity.setAuthorities(dto.getAuthorities());
             return entity;
         }else {

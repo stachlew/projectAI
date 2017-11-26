@@ -74,6 +74,17 @@ public class User {
     private boolean isMan;
 
 
+    @ManyToOne
+    @JoinColumn(name="smoking_id")
+    private Smoking smoking;
+
+    @ManyToOne
+    @JoinColumn(name="drinking_id")
+    private Drinking drinking;
+
+    @ManyToOne
+    @JoinColumn(name="kids_id")
+    private Kids kids;
 
     @ManyToOne
     @JoinColumn(name="zodiac_Sign_id")
@@ -109,15 +120,6 @@ public class User {
     @ManyToOne
     @JoinColumn(name="eye_color_id")
     private EyeColor eyeColor;
-
-    @Column
-    private String smoking;
-
-    @Column
-    private String drinking;
-
-    @Column
-    private String kids;
 
     @ManyToOne
     @JoinColumn(name = "religion_id")
@@ -194,35 +196,6 @@ public class User {
         this.email = email;
     }
 
-    public boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public List<Authority> getAuthorities() {
-        return authorities;
-    }
-
-    public void setAuthorities(List<Authority> authorities) {
-        this.authorities = authorities;
-    }
-
-    public Date getLastpassres() {
-        return lastpassres;
-    }
-
-    public void setLastpassres(Date lastpassres) {
-        this.lastpassres = lastpassres;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-
     public Date getBirthDate() {
         return birthDate;
     }
@@ -239,6 +212,30 @@ public class User {
         this.profilePhotoId = profilePhotoId;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Date getLastpassres() {
+        return lastpassres;
+    }
+
+    public void setLastpassres(Date lastpassres) {
+        this.lastpassres = lastpassres;
+    }
+
+    public List<Authority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(List<Authority> authorities) {
+        this.authorities = authorities;
+    }
+
     public boolean isMan() {
         return isMan;
     }
@@ -247,6 +244,29 @@ public class User {
         isMan = man;
     }
 
+    public Smoking getSmoking() {
+        return smoking;
+    }
+
+    public void setSmoking(Smoking smoking) {
+        this.smoking = smoking;
+    }
+
+    public Drinking getDrinking() {
+        return drinking;
+    }
+
+    public void setDrinking(Drinking drinking) {
+        this.drinking = drinking;
+    }
+
+    public Kids getKids() {
+        return kids;
+    }
+
+    public void setKids(Kids kids) {
+        this.kids = kids;
+    }
 
     public ZodiacSign getZodiacSign() {
         return zodiacSign;
@@ -296,7 +316,7 @@ public class User {
         this.figure = figure;
     }
 
-    public int getHeight() {
+    public Integer getHeight() {
         return height;
     }
 
@@ -318,30 +338,6 @@ public class User {
 
     public void setEyeColor(EyeColor eyeColor) {
         this.eyeColor = eyeColor;
-    }
-
-    public String getSmoking() {
-        return smoking;
-    }
-
-    public void setSmoking(String smoking) {
-        this.smoking = smoking;
-    }
-
-    public String getDrinking() {
-        return drinking;
-    }
-
-    public void setDrinking(String drinking) {
-        this.drinking = drinking;
-    }
-
-    public String getKids() {
-        return kids;
-    }
-
-    public void setKids(String kids) {
-        this.kids = kids;
     }
 
     public Religion getReligion() {
@@ -367,7 +363,6 @@ public class User {
     public void setAccountCreateDate(Date accountCreateDate) {
         this.accountCreateDate = accountCreateDate;
     }
-
 
     public Timestamp getLastLogoutDate() {
         return lastLogoutDate;

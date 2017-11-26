@@ -19,13 +19,13 @@
     <div class="localization-box" *ngIf="authSrv.isUser()" style="margin-top: 10px;">
       <div><h4>Twoja lokalizacja</h4></div>
 
-      <mat-form-field style="width: 40%">
+      <mat-form-field style="width: 48%">
         <mat-select [(value)]="activeRegion" (change)="updateCities($event)" placeholder="Województwo" [compareWith]="compareSelected">
           <mat-option *ngFor="let region of regions" [value]="region"  >{{ region.regionName }}</mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field style="width: 40%">
+      <mat-form-field style="width: 50%">
         <mat-select [(value)]="activeCity"  placeholder="Miasto" [compareWith]="compareSelected">
           <mat-option *ngFor="let city of cities" [value]="city" >{{ city.cityName }}</mat-option>
         </mat-select>
@@ -69,13 +69,43 @@
 
 
 
-  <!--CENTRUM KOLUMNA-->
+
+
+
+
+  <!--CENTRUM KOLUMNA ------------------------------------------------------------->
   <div class="col-md-4">
     <div class="links-box">
-      <div></div>
+
+      <div class="central-section-box" style="margin-top: 3px">
+        <h4>Wydarzenia w których uczestniczę:</h4>
+        <button class="btn btn-block btn-success" data-toggle="modal" data-target="#events-list">Otwórz listę</button>
+      </div>
+
+
+      <div class="central-section-box">
+        <h4>Moje dane szczegółowe:</h4>
+        <button class="btn btn-block btn-warning" data-toggle="modal" data-target="#user-details">Otwórz ankietę z detalami</button>
+      </div>
+
+
+      <div class="central-section-box" style="min-height: 329px">
+        <h4>Ankieta dopasowania:</h4>
+        <span>Ankieta dopasowania składa się z 2 częśći. Pierwsza część określa Ciebie, w drugiej opisujesz swoje oczekiwania wobec drugiej połówki.</span>
+        <br>
+        <br>
+        <h5>O mnie:</h5>
+        <button class="btn btn-block btn-info">Otwórz część I</button>
+        <br>
+
+        <h5>O partnerze/partnerce:</h5>
+        <button class="btn btn-block btn-info">Otwórz część II</button>
+      </div>
+
     </div>
   </div>
-  <!--CENTRUM KOLUMNA END-->
+  <!--CENTRUM KOLUMNA END---------------------------------------------------------->
+
 
   <!--PRAWA KOLUMNA-->
   <div class="col-md-4">
@@ -130,4 +160,64 @@
 
 
 
+</div>
+
+
+<!-- Modal listy eventów -->
+<div #eventsListModal class="modal fade" id="events-list" tabindex="-1" role="dialog" >
+  <div class="modal-dialog events-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eventsListModal">Lista wydarzeń w których biorę udział</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tbody>
+            <tr *ngFor="let event of eventsList" style="text-align: center">
+              <td>{{event.title}}</td>
+              <td>{{event.eventStart | date:'dd-MM-yyyy HH:mm'}}</td>
+              <td>
+                <ng-container *ngIf="event.enabled">
+                  <button class="btn btn-secondary" (click)="goToEventDetails(event.id)">Przejdź do wydarzenia</button>
+                </ng-container>
+                <ng-container *ngIf="!event.enabled">
+                  Wydarzenie jest obecnie nieaktywne.
+                </ng-container>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal detali usera -->
+<div #userDetailsModal class="modal fade" id="user-details" tabindex="-1" role="dialog" >
+  <div class="modal-dialog events-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="userDetailsModal">Moje dane szczegółowe</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Zapisz</button>
+      </div>
+    </div>
+  </div>
 </div>

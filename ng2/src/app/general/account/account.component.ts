@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Http} from "@angular/http";
 import {HttpSecService} from "../../_service/util/http-sec.service";
 import {AppUrls} from "../../_service/util/app-urls";
@@ -10,6 +10,10 @@ import {AuthenticationService} from "../../_service/authentication/authenticatio
 import {Region} from "../../_model/region";
 import {City} from "../../_model/city";
 import {DictionaryService} from "../../_service/util/dictionary.service";
+import {SpeedDate} from "../../_model/speed-date";
+import {Router} from "@angular/router";
+
+declare var jQuery:any;
 
 @Component({
   selector: 'app-account',
@@ -22,7 +26,7 @@ export class AccountComponent implements OnInit {
   public uploader:FileUploader;
   public userPhotoUrl: string = AppUrls.USER_IMAGE_URL;
 
-  constructor(private httpService: HttpSecService, public authSrv: AuthenticationService, public dictionary: DictionaryService) { }
+  constructor(private httpService: HttpSecService, public authSrv: AuthenticationService, public dictionary: DictionaryService, public router: Router) { }
 
   ngOnInit() {
     this.getMyProfile();
@@ -40,6 +44,8 @@ export class AccountComponent implements OnInit {
         });
 
       this.getRegions();
+
+      this.getEventsList();
     });
   }
 
@@ -151,6 +157,21 @@ export class AccountComponent implements OnInit {
 
   //END LOKALIZACJA
 
+  //WYDARZENIA W KOTRYCH BIERZE SIE UDZIAL
+  @ViewChild('eventsListModal') eventsListModal;
+  public eventsList: SpeedDate[] = [];
+  public getEventsList(){
+    this.httpService.getAndFetchData(AppUrls.GUEST_GET_PARTICIPATION_EVENTS_URL).subscribe(resp=>{
+      this.eventsList = resp;
+    });
+  }
+  goToEventDetails(event: any){
+    this.closeEventModal();
+    this.router.navigate(['speed-date-details/'+event]);
+  }
 
+  closeEventModal(){
+    jQuery(this.eventsListModal.nativeElement).modal('hide');
+  }
 
 }

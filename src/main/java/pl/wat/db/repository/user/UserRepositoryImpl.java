@@ -82,19 +82,20 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
             }
         }
 
-        if(filter.kids !=null &&!filter.kids.isEmpty()){
-            queryBuilder.append(" and upper(kids) = upper(:kids)");
-            params.put("kids",filter.kids);
+
+        if(filter.smoking != null){
+            queryBuilder.append(" and smoking_id = :smoking_id");
+            params.put("smoking_id",filter.smoking.getId());
         }
 
-        if(filter.drinking !=null && !filter.drinking.isEmpty()){
-            queryBuilder.append(" and upper(drinking)=upper(:drinking)");
-            params.put("drinking",filter.drinking);
+        if(filter.drinking != null){
+            queryBuilder.append(" and drinking_id = :drinking_id");
+            params.put("drinking_id",filter.drinking.getId());
         }
 
-        if (filter.smoking !=null && !filter.smoking.isEmpty()){
-            queryBuilder.append(" and upper(smoking)=upper(:smoking)");
-            params.put("smoking",filter.smoking);
+        if(filter.kids != null){
+            queryBuilder.append(" and kids_id = :kids_id");
+            params.put("kids_id",filter.kids.getId());
         }
 
         if(filter.education != null){

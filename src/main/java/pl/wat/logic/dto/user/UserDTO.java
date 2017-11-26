@@ -32,12 +32,15 @@ public class UserDTO {
     private String sex;
     private Date birthDate;
     private Integer height;
-    private String smoking;
-    private String drinking;
-    private String kids;
+
     private String profession;
     private String description;
     private CityDTO city;
+
+    private SimpleDictionaryDTO smoking;
+    private SimpleDictionaryDTO drinking;
+    private SimpleDictionaryDTO kids;
+
     private SimpleDictionaryDTO zodiacSign;
     private SimpleDictionaryDTO martialStatus;
     private SimpleDictionaryDTO education;
@@ -46,8 +49,6 @@ public class UserDTO {
     private SimpleDictionaryDTO eyeColor;
     private SimpleDictionaryDTO religion;
     private List<Match> matchList;
-
-
 
 
     public Long getId() {
@@ -60,14 +61,6 @@ public class UserDTO {
 
     public String getUsername() {
         return username;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
     }
 
     public void setUsername(String username) {
@@ -138,7 +131,6 @@ public class UserDTO {
         this.lastpassres = lastpassres;
     }
 
-
     public boolean isEnabled() {
         return enabled;
     }
@@ -179,6 +171,14 @@ public class UserDTO {
         this.man = man;
     }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
     public Date getBirthDate() {
         return birthDate;
     }
@@ -193,30 +193,6 @@ public class UserDTO {
 
     public void setHeight(Integer height) {
         this.height = height;
-    }
-
-    public String getSmoking() {
-        return smoking;
-    }
-
-    public void setSmoking(String smoking) {
-        this.smoking = smoking;
-    }
-
-    public String getDrinking() {
-        return drinking;
-    }
-
-    public void setDrinking(String drinking) {
-        this.drinking = drinking;
-    }
-
-    public String getKids() {
-        return kids;
-    }
-
-    public void setKids(String kids) {
-        this.kids = kids;
     }
 
     public String getProfession() {
@@ -243,6 +219,30 @@ public class UserDTO {
         this.city = city;
     }
 
+    public SimpleDictionaryDTO getSmoking() {
+        return smoking;
+    }
+
+    public void setSmoking(SimpleDictionaryDTO smoking) {
+        this.smoking = smoking;
+    }
+
+    public SimpleDictionaryDTO getDrinking() {
+        return drinking;
+    }
+
+    public void setDrinking(SimpleDictionaryDTO drinking) {
+        this.drinking = drinking;
+    }
+
+    public SimpleDictionaryDTO getKids() {
+        return kids;
+    }
+
+    public void setKids(SimpleDictionaryDTO kids) {
+        this.kids = kids;
+    }
+
     public SimpleDictionaryDTO getZodiacSign() {
         return zodiacSign;
     }
@@ -266,8 +266,6 @@ public class UserDTO {
     public void setEducation(SimpleDictionaryDTO education) {
         this.education = education;
     }
-
-
 
     public SimpleDictionaryDTO getFigure() {
         return figure;
