@@ -10,6 +10,9 @@ public class DictionaryDTOLists {
     List<SimpleDictionaryDTO> martialStatusList;
     List<SimpleDictionaryDTO> religionList;
     List<SimpleDictionaryDTO> zodiacSignList;
+    List<SimpleDictionaryDTO> kidsList;
+    List<SimpleDictionaryDTO> drinkingList;
+    List<SimpleDictionaryDTO> smokingList;
 
     public List<SimpleDictionaryDTO> getEducationList() {
         return educationList;
@@ -65,5 +68,29 @@ public class DictionaryDTOLists {
 
     public void setZodiacSignList(List<SimpleDictionaryDTO> zodiacSignList) {
         this.zodiacSignList = zodiacSignList;
+    }
+
+    public List<SimpleDictionaryDTO> getKidsList() {
+        return kidsList;
+    }
+
+    public void setKidsList(List<SimpleDictionaryDTO> kidsList) {
+        this.kidsList = kidsList;
+    }
+
+    public List<SimpleDictionaryDTO> getDrinkingList() {
+        return drinkingList;
+    }
+
+    public void setDrinkingList(List<SimpleDictionaryDTO> drinkingList) {
+        this.drinkingList = drinkingList;
+    }
+
+    public List<SimpleDictionaryDTO> getSmokingList() {
+        return smokingList;
+    }
+
+    public void setSmokingList(List<SimpleDictionaryDTO> smokingList) {
+        this.smokingList = smokingList;
     }
 }

@@ -55,4 +55,16 @@ public class UserAccountController extends BaseController {
             return false;
         }
     }
+
+    //Zapis detali
+    @RequestMapping(value = "/saveUserDetails",method = RequestMethod.POST)
+    @PreAuthorize("hasRole('USER')")
+    @ResponseBody Boolean saveUserDetails(Authentication auth, @RequestBody UserDTO detailsUser){
+        UserDTO loggedUser = getLoggerUser(auth);
+        if(loggedUser!=null && detailsUser!=null){
+            return userService.saveUserDetailChanges(loggedUser,detailsUser);
+        }else {
+            return false;
+        }
+    }
 }

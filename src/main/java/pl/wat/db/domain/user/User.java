@@ -58,7 +58,6 @@ public class User {
     private boolean enabled;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @NotNull
     private Date lastpassres;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -94,7 +93,7 @@ public class User {
     @JoinColumn(name = "martial_status_id")
     private MartialStatus martialStatus;
 
-    @Column
+    @Column(length = 50)
     private String profession;
 
     @ManyToOne

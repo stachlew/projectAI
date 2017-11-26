@@ -50,6 +50,12 @@ public class DictionaryService {
     @Autowired
     ZodiacSignRepository zodiacSignRepository;
     @Autowired
+    DrinkingRepository drinkingRepository;
+    @Autowired
+    SmokingRepository smokingRepository;
+    @Autowired
+    KidsRepository kidsRepository;
+    @Autowired
     TransformService transformService;
 
     public List<RegionDTO> getAllRegion(){
@@ -111,6 +117,24 @@ public class DictionaryService {
         return dtoList;
     }
 
+    private List<SimpleDictionaryDTO> getAllKids(){
+        LinkedList<SimpleDictionaryDTO> dtoList = new LinkedList<>();
+        kidsRepository.findAll().forEach(kid -> dtoList.add(transformService.toDTO(kid)));
+        return dtoList;
+    }
+
+    private List<SimpleDictionaryDTO> getAllSmoking(){
+        LinkedList<SimpleDictionaryDTO> dtoList = new LinkedList<>();
+        smokingRepository.findAll().forEach(smoking -> dtoList.add(transformService.toDTO(smoking)));
+        return dtoList;
+    }
+
+    private List<SimpleDictionaryDTO> getAllDrinking(){
+        LinkedList<SimpleDictionaryDTO> dtoList = new LinkedList<>();
+        drinkingRepository.findAll().forEach(drinking -> dtoList.add(transformService.toDTO(drinking)));
+        return dtoList;
+    }
+
     public DictionaryDTOLists getAllUserDictionary(){
         DictionaryDTOLists dictionaryDTOLists = new DictionaryDTOLists();
         dictionaryDTOLists.setEducationList((this.getAllEducation()));
@@ -120,6 +144,9 @@ public class DictionaryService {
         dictionaryDTOLists.setMartialStatusList(this.getAllMartialStatus());
         dictionaryDTOLists.setReligionList(this.getAllReligion());
         dictionaryDTOLists.setZodiacSignList(this.getAllZodiacSign());
+        dictionaryDTOLists.setDrinkingList(this.getAllDrinking());
+        dictionaryDTOLists.setSmokingList(this.getAllSmoking());
+        dictionaryDTOLists.setKidsList(this.getAllKids());
         return dictionaryDTOLists;
     }
 }

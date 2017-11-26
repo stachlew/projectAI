@@ -8,4 +8,7 @@ export class DictionaryLists{
   martialStatusList: SimpleDictionary[];
   religionList: SimpleDictionary[];
   zodiacSignList: SimpleDictionary[];
+  kidsList: SimpleDictionary[];
+  smokingList: SimpleDictionary[];
+  drinkingList: SimpleDictionary[];
 }

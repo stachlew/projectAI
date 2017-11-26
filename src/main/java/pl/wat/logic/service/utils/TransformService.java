@@ -61,7 +61,7 @@ public class TransformService {
             dto.setEyeColor(toDTO(entity.getEyeColor()));
             dto.setFigure(toDTO(entity.getFigure()));
             dto.setHairColor(toDTO(entity.getHairColor()));
-            dto.setHeight(dto.getHeight());
+            dto.setHeight(entity.getHeight());
 
             dto.setMartialStatus(toDTO(entity.getMartialStatus()));
             dto.setProfession(entity.getProfession());
@@ -145,26 +145,25 @@ public class TransformService {
             entity.setBirthDate(dto.getBirthDate());
             entity.setCity(toEntity(dto.getCity()));
             entity.setDescription(dto.getDescription());
+            entity.setAccountCreateDate(dto.getAccountCreateDate());
+            entity.setLastpassres(dto.getLastpassres());
 
-            entity.setEducation((Education)toEntity(dto.getEducation()));
-            entity.setEyeColor((EyeColor)toEntity(dto.getEyeColor()));
-            entity.setFigure((Figure)toEntity(dto.getFigure()));
-            entity.setHairColor((HairColor)toEntity(dto.getHairColor()));
-            entity.setMartialStatus((MartialStatus)toEntity(dto.getMartialStatus()));
-            entity.setReligion((Religion)toEntity(dto.getReligion()));
-            entity.setZodiacSign((ZodiacSign)toEntity(dto.getZodiacSign()));
+            entity.setEducation(toEducationEntity(dto.getEducation()));
+            entity.setEyeColor(toEyeColorEntity(dto.getEyeColor()));
+            entity.setFigure(toFigureEntity(dto.getFigure()));
+            entity.setHairColor(toHairColorEntity(dto.getHairColor()));
+            entity.setMartialStatus(toMartialStatusEntity(dto.getMartialStatus()));
+            entity.setReligion(toReligionEntity(dto.getReligion()));
+            entity.setZodiacSign(toZodiacSignEntity(dto.getZodiacSign()));
+            entity.setSmoking(toSmokingEntity(dto.getSmoking()));
+            entity.setKids(toKidsEntity(dto.getKids()));
+            entity.setDrinking(toDrinkingEntity(dto.getDrinking()));
+
             entity.setHeight(dto.getHeight());
-
             entity.setMan(dto.isMan());
             entity.setProfession(dto.getProfession());
             entity.setProfilePhotoId(dto.getProfilePhotoId());
-
             entity.setEnabled(dto.isEnabled());
-
-            entity.setSmoking((Smoking)toEntity(dto.getSmoking()));
-            entity.setKids((Kids)toEntity(dto.getKids()));
-            entity.setDrinking((Drinking)toEntity(dto.getDrinking()));
-
             entity.setAuthorities(dto.getAuthorities());
             return entity;
         }else {
@@ -476,4 +475,105 @@ public class TransformService {
         else
             return null;
     }
+
+    public Education toEducationEntity(SimpleDictionaryDTO dto){
+        if(dto!=null){
+            Education entity = new Education();
+            entity.setId(dto.getId());
+            entity.setDescription(dto.getDescription());
+            return entity;
+        }
+        return null;
+    }
+
+    public MartialStatus toMartialStatusEntity(SimpleDictionaryDTO dto){
+        if(dto!=null){
+            MartialStatus entity = new MartialStatus();
+            entity.setId(dto.getId());
+            entity.setDescription(dto.getDescription());
+            return entity;
+        }
+        return null;
+    }
+
+    public Kids toKidsEntity(SimpleDictionaryDTO dto){
+        if(dto!=null){
+            Kids entity = new Kids();
+            entity.setId(dto.getId());
+            entity.setDescription(dto.getDescription());
+            return entity;
+        }
+        return null;
+    }
+
+    public Religion toReligionEntity(SimpleDictionaryDTO dto){
+        if(dto!=null){
+            Religion entity = new Religion();
+            entity.setId(dto.getId());
+            entity.setDescription(dto.getDescription());
+            return entity;
+        }
+        return null;
+    }
+
+    public Smoking toSmokingEntity(SimpleDictionaryDTO dto){
+        if(dto!=null){
+            Smoking entity = new Smoking();
+            entity.setId(dto.getId());
+            entity.setDescription(dto.getDescription());
+            return entity;
+        }
+        return null;
+    }
+
+    public Drinking toDrinkingEntity(SimpleDictionaryDTO dto){
+        if(dto!=null){
+            Drinking entity = new Drinking();
+            entity.setId(dto.getId());
+            entity.setDescription(dto.getDescription());
+            return entity;
+        }
+        return null;
+    }
+
+    public ZodiacSign toZodiacSignEntity(SimpleDictionaryDTO dto){
+        if(dto!=null){
+            ZodiacSign entity = new ZodiacSign();
+            entity.setId(dto.getId());
+            entity.setDescription(dto.getDescription());
+            return entity;
+        }
+        return null;
+    }
+
+    public Figure toFigureEntity(SimpleDictionaryDTO dto){
+        if(dto!=null){
+            Figure entity = new Figure();
+            entity.setId(dto.getId());
+            entity.setDescription(dto.getDescription());
+            return entity;
+        }
+        return null;
+    }
+
+    public HairColor toHairColorEntity(SimpleDictionaryDTO dto){
+        if(dto!=null){
+            HairColor entity = new HairColor();
+            entity.setId(dto.getId());
+            entity.setDescription(dto.getDescription());
+            return entity;
+        }
+        return null;
+    }
+
+    public EyeColor toEyeColorEntity(SimpleDictionaryDTO dto){
+        if(dto!=null){
+            EyeColor entity = new EyeColor();
+            entity.setId(dto.getId());
+            entity.setDescription(dto.getDescription());
+            return entity;
+        }
+        return null;
+    }
+
 }

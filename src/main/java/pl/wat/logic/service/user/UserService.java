@@ -112,4 +112,29 @@ public class UserService {
         }
         return false;
     }
+
+    public boolean saveUserDetailChanges(UserDTO loggedUser, UserDTO formUser) {
+        UserDTO toUpdate = transfer.toDto(userRepository.findOne(loggedUser.getId()));
+        if(toUpdate != null){
+            toUpdate.setHeight(formUser.getHeight());
+            toUpdate.setProfession(formUser.getProfession());
+            toUpdate.setDescription(formUser.getDescription());
+
+            toUpdate.setEducation(formUser.getEducation());
+            toUpdate.setMartialStatus(formUser.getMartialStatus());
+            toUpdate.setKids(formUser.getKids());
+            toUpdate.setReligion(formUser.getReligion());
+            toUpdate.setSmoking(formUser.getSmoking());
+            toUpdate.setDrinking(formUser.getDrinking());
+            toUpdate.setZodiacSign(formUser.getZodiacSign());
+            toUpdate.setFigure(formUser.getFigure());
+            toUpdate.setHairColor(formUser.getHairColor());
+            toUpdate.setEyeColor(formUser.getEyeColor());
+            User toSave = transfer.toEntity(toUpdate);
+            if(userRepository.save(toSave) != null){
+                return true;
+            }
+        }
+        return false;
+    }
 }

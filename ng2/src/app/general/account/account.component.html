@@ -213,10 +213,149 @@
       </div>
       <div class="modal-body">
 
+        <div class="row">
+
+          <!--1-->
+          <div class="col-md-3 detail-column">
+
+            <!--height number-->
+            <mat-form-field class="detail-input" >
+              <input [(ngModel)]="userDetails.height" type="number" min="1" max="250" matInput placeholder="Wzrost (cm)">
+            </mat-form-field>
+
+            <!--profession string-->
+            <mat-form-field class="event-input">
+              <input matInput [(ngModel)]="userDetails.profession" placeholder="Praca" maxlength="40">
+            </mat-form-field>
+
+            <!--education-->
+            <mat-form-field>
+              <mat-select [(value)]="educationActive" placeholder="Wykształcenie" [compareWith]="compareSelected">
+                <mat-option *ngFor="let education of dictionaryLists.educationList" [value]="education">{{ education.description }}</mat-option>
+                <mat-option [value]="null">---</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+          <!--2-->
+          <div class="col-md-3 detail-column">
+
+            <!--martialStatus-->
+            <mat-form-field>
+              <mat-select [(value)]="martialStatusActive" placeholder="Status związku" [compareWith]="compareSelected">
+                <mat-option *ngFor="let martialStatus of dictionaryLists.martialStatusList" [value]="martialStatus">{{ martialStatus.description }}</mat-option>
+                <mat-option [value]="null">---</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!--kids-->
+            <mat-form-field>
+              <mat-select [(value)]="kidsActive" placeholder="Dzieci" [compareWith]="compareSelected">
+                <mat-option *ngFor="let kids of dictionaryLists.kidsList" [value]="kids">{{ kids.description }}</mat-option>
+                <mat-option [value]="null">---</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!--religion-->
+            <mat-form-field>
+              <mat-select [(value)]="religionActive" placeholder="Religia" [compareWith]="compareSelected">
+                <mat-option *ngFor="let religion of dictionaryLists.religionList" [value]="religion">{{ religion.description }}</mat-option>
+                <mat-option [value]="null">---</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+          <!--3-->
+          <div class="col-md-3 detail-column">
+
+            <!--smoking-->
+            <mat-form-field>
+              <mat-select [(value)]="smokingActive" placeholder="Papierosy" [compareWith]="compareSelected">
+                <mat-option *ngFor="let smoking of dictionaryLists.smokingList" [value]="smoking">{{ smoking.description }}</mat-option>
+                <mat-option [value]="null">---</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!--drinking-->
+            <mat-form-field>
+              <mat-select [(value)]="drinkingActive" placeholder="Alkohol" [compareWith]="compareSelected">
+                <mat-option *ngFor="let drinking of dictionaryLists.drinkingList" [value]="drinking">{{ drinking.description }}</mat-option>
+                <mat-option [value]="null">---</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!--zodiacSign-->
+            <mat-form-field>
+              <mat-select [(value)]="zodiacSignActive" placeholder="Znak zodiaku" [compareWith]="compareSelected">
+                <mat-option *ngFor="let zodiacSign of dictionaryLists.zodiacSignList" [value]="zodiacSign">{{ zodiacSign.description }}</mat-option>
+                <mat-option [value]="null">---</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+          <!--4-->
+          <div class="col-md-3 detail-column">
+
+            <!--figure-->
+            <mat-form-field>
+              <mat-select [(value)]="figureActive" placeholder="Budowa ciała" [compareWith]="compareSelected">
+                <mat-option *ngFor="let figure of dictionaryLists.figureList" [value]="figure">{{ figure.description }}</mat-option>
+                <mat-option [value]="null">---</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+            <!--hairColor-->
+            <mat-form-field>
+              <mat-select [(value)]="hairColorActive" placeholder="Kolor włosów" [compareWith]="compareSelected">
+                <mat-option *ngFor="let hairColor of dictionaryLists.hairColorList" [value]="hairColor">{{ hairColor.description }}</mat-option>
+                <mat-option [value]="null">---</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!--eyeColor-->
+            <mat-form-field>
+              <mat-select [(value)]="eyeColorActive" placeholder="Kolor oczu" [compareWith]="compareSelected">
+                <mat-option *ngFor="let eyeColor of dictionaryLists.eyeColorList" [value]="eyeColor">{{ eyeColor.description }}</mat-option>
+                <mat-option [value]="null">---</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+          </div>
+
+          <div class="col-md-12">
+            <!--description string-->
+            <mat-form-field class="event-input" style="width: 100%;">
+              <textarea matInput [(ngModel)]="userDetails.description" placeholder="Kilka słów o sobie" maxlength="3500"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Zapisz</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="validateAndSaveUserDetails()">Zapisz</button>
       </div>
     </div>
   </div>
