@@ -2,16 +2,78 @@
 
   <!--LEWA KOLUMNA-->
   <div class="col-md-4">
-    <div class="info-box">
-      <div></div>
+    <div class="info-box" style="margin-top: 3px">
+      <div><h4>Twoje dane</h4></div>
+      <div>Login: {{myProfile?.username}}</div>
+      <div>Imię: {{myProfile?.firstname}}</div>
+      <div>Nazwisko: {{myProfile?.lastname}}</div>
+      <div>E-mail: {{myProfile?.email}}</div>
+      <div>Data urodzenia: {{myProfile?.birthDate | date:'dd-MM-yyyy'}}</div>
+      <div>Płeć:
+        <ng-container *ngIf="myProfile?.man == true">Mężczyzna</ng-container>
+        <ng-container *ngIf="myProfile?.man ==false">Kobieta</ng-container>
+      </div>
+      <div>Data utworzenia konta: {{myProfile?.accountCreateDate | date:'dd-MM-yyyy' }}</div>
     </div>
+
+    <div class="localization-box" *ngIf="authSrv.isUser()" style="margin-top: 10px;">
+      <div><h4>Twoja lokalizacja</h4></div>
+
+      <mat-form-field style="width: 40%">
+        <mat-select [(value)]="activeRegion" (change)="updateCities($event)" placeholder="Województwo" [compareWith]="compareSelected">
+          <mat-option *ngFor="let region of regions" [value]="region"  >{{ region.regionName }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="width: 40%">
+        <mat-select [(value)]="activeCity"  placeholder="Miasto" [compareWith]="compareSelected">
+          <mat-option *ngFor="let city of cities" [value]="city" >{{ city.cityName }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button class="btn btn-secondary btn-block" (click)="validateAncChangeLocalization()">Zmień lokalizację</button>
+    </div>
+
+
+    <!--HASLO-->
+    <div class="password-section" style="margin-top: 10px;">
+      <h4>Zmiana hasła</h4>
+      <mat-form-field class="password-input">
+        <input matInput [(ngModel)]="oldPass" placeholder="Stare hasło" [type]="hideOld ? 'password' : 'text'">
+        <mat-icon matSuffix >
+          <span (click)="hideOld = !hideOld">
+          <i *ngIf="hideOld" class="fa fa-eye" aria-hidden="true"></i>
+          <i *ngIf="!hideOld" class="fa fa-eye-slash" aria-hidden="true"></i>
+        </span>
+        </mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="password-input" style="margin-left: 15px">
+        <input matInput [(ngModel)]="newPass" placeholder="Nowe hasło" [type]="hideNew ? 'password' : 'text'">
+        <mat-icon matSuffix >
+          <span (click)="hideNew = !hideNew">
+          <i *ngIf="hideNew" class="fa fa-eye" aria-hidden="true"></i>
+          <i *ngIf="!hideNew" class="fa fa-eye-slash" aria-hidden="true"></i>
+        </span>
+        </mat-icon>
+      </mat-form-field>
+
+      <button class="btn btn-secondary btn-block" (click)="validateAndChangePassword()">Zmień hasło</button>
+
+    </div>
+    <!--END HASLO -->
+
+
   </div>
   <!--LEWA KOLUMNA END-->
 
 
+
   <!--CENTRUM KOLUMNA-->
   <div class="col-md-4">
-
+    <div class="links-box">
+      <div></div>
+    </div>
   </div>
   <!--CENTRUM KOLUMNA END-->
 
@@ -19,7 +81,7 @@
   <div class="col-md-4">
 
     <!--PHOTO SECTION-->
-    <div class="photo-section" *ngIf="authSrv.isUser()">
+    <div class="photo-section" *ngIf="authSrv.isUser()" style="margin-top: 3px">
       <h3>Twoje zdjęcie profilowe</h3>
       <div class="photo-container" *ngIf="myProfile!=null">
         <img [src]="userPhotoUrl + myProfile.id" >
@@ -59,31 +121,7 @@
     </div>
     <!--END PHOTO SECTION-->
 
-    <div class="password-section">
-      <h4>Zmiana hasła</h4>
-      <mat-form-field class="password-input">
-        <input matInput [(ngModel)]="oldPass" placeholder="Stare hasło" [type]="hideOld ? 'password' : 'text'">
-        <mat-icon matSuffix >
-          <span (click)="hideOld = !hideOld">
-          <i *ngIf="hideOld" class="fa fa-eye" aria-hidden="true"></i>
-          <i *ngIf="!hideOld" class="fa fa-eye-slash" aria-hidden="true"></i>
-        </span>
-        </mat-icon>
-      </mat-form-field>
 
-      <mat-form-field class="password-input" style="margin-left: 15px">
-        <input matInput [(ngModel)]="newPass" placeholder="Nowe hasło" [type]="hideNew ? 'password' : 'text'">
-        <mat-icon matSuffix >
-          <span (click)="hideNew = !hideNew">
-          <i *ngIf="hideNew" class="fa fa-eye" aria-hidden="true"></i>
-          <i *ngIf="!hideNew" class="fa fa-eye-slash" aria-hidden="true"></i>
-        </span>
-        </mat-icon>
-      </mat-form-field>
-
-      <button class="btn btn-secondary btn-block" (click)="validateAndChangePassword()">Zmień hasło</button>
-
-    </div>
 
 
 

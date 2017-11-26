@@ -11,7 +11,7 @@ public class ProfileSearchDTO {
     public CityDTO city;
     public int ageFrom;
     public int ageTo;
-    public String isMan;
+    public String sex;
     public String kids;
     public String drinking;
     public String smoking;
@@ -113,12 +113,12 @@ public class ProfileSearchDTO {
         this.education = education;
     }
 
-    public String getIsMan() {
-        return isMan;
+    public String getSex() {
+        return sex;
     }
 
-    public void setIsMan(String isMan) {
-        this.isMan = isMan;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public int getCountPage() {

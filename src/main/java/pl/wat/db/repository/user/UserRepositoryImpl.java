@@ -73,8 +73,8 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
             params.put("ageTo",filter.ageTo);
         }
 
-        if(filter.isMan != null && !filter.isMan.isEmpty()){
-            if (filter.isMan.equals('M')){
+        if(filter.sex != null && !filter.sex.isEmpty()){
+            if (filter.sex.equals('M')){
                 queryBuilder.append(" and is_man = 1");
             }
             else {

@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
 
   modifyFormFieldsBeforePost(){
     this.userForm.city = this.cityActive;
-    this.userForm.isMan = ( this.userForm.sex === Constants.SEX_MAN ? true : false);
+    this.userForm.man = ( this.userForm.sex === Constants.SEX_MAN ? true : false);
 
 
   }

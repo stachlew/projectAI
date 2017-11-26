@@ -50,6 +50,7 @@ export class AppUrls {
   public static REGISTER_ACCOUNT_URL = AppUrls.ACCOUNT_URL + '/createNewUser';
   public static GET_ACCOUNT_INFO_URL = AppUrls.ACCOUNT_URL + '/getAccountInfo';
   public static CHANGE_PASSWORD_URL = AppUrls.ACCOUNT_URL + '/changePassword';
+  public static CHANGE_LOCALIZATION_URL = AppUrls.ACCOUNT_URL + '/changeLocalization';
 
 
   //PROFILE

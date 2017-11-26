@@ -18,6 +18,17 @@
   padding: 10px;
 }
 
+.info-box{
+  border: 1px solid #d2d2c1;
+  padding: 10px;
+}
+
 .password-input{
   width: 47%;
 }
+
+.localization-box{
+  border: 1px solid #d2d2c1;
+  padding: 10px;
+}
+

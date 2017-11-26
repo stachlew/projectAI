@@ -15,7 +15,7 @@ export class User {
   profilePhotoId: number;
   birthDate: Date;
   userType: string;
-  isMan: boolean;
+  man: boolean;
   sex: string;
   city: City;
 

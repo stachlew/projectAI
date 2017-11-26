@@ -28,7 +28,7 @@ public class UserDTO {
     private int age;
     private String userType;
 
-    private boolean isMan;
+    private boolean man;
     private String sex;
     private Date birthDate;
     private Integer height;
@@ -171,15 +171,12 @@ public class UserDTO {
         this.userType = userType;
     }
 
-
-
-
     public boolean isMan() {
-        return isMan;
+        return man;
     }
 
     public void setMan(boolean man) {
-        isMan = man;
+        this.man = man;
     }
 
     public Date getBirthDate() {

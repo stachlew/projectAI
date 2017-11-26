@@ -42,6 +42,17 @@ public class UserAccountController extends BaseController {
         }else {
             return false;
         }
+    }
 
+    //Zmiana lokalizacji
+    @RequestMapping(value = "/changeLocalization",method = RequestMethod.POST)
+    @PreAuthorize("hasRole('USER')")
+    @ResponseBody Boolean changeLocalization(Authentication auth, @RequestBody UserDTO formUser){
+        UserDTO loggedUser = getLoggerUser(auth);
+        if(loggedUser!=null && formUser!=null){
+            return userService.changeLocalization(loggedUser,formUser);
+        }else {
+            return false;
+        }
     }
 }

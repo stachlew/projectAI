@@ -63,12 +63,12 @@ public class TransformService {
             dto.setHairColor(toDTO(entity.getHairColor()));
             dto.setHeight(dto.getHeight());
             dto.setKids(dto.getKids());
-            dto.setMan(dto.isMan());
             dto.setMartialStatus(toDTO(entity.getMartialStatus()));
             dto.setProfession(entity.getProfession());
             dto.setReligion(toDTO(entity.getReligion()));
             dto.setSmoking(entity.getSmoking());
             dto.setZodiacSign(toDTO(entity.getZodiacSign()));
+            dto.setMan(entity.isMan());
             return dto;
         }else {
             return null;
@@ -92,6 +92,7 @@ public class TransformService {
             dto.setAuthorities((entity.getAuthorities()));
             dto.setAge(this.countAge(entity));
             dto.setProfilePhotoId(entity.getProfilePhotoId());
+            dto.setMan(entity.isMan());
             return dto;
         }else {
             return null;
@@ -114,6 +115,7 @@ public class TransformService {
             dto.setAuthorities(null);
             dto.setAge(this.countAge(entity));
             dto.setProfilePhotoId(entity.getProfilePhotoId());
+            dto.setMan(entity.isMan());
             return dto;
         }else {
             return null;

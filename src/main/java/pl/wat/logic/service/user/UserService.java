@@ -103,4 +103,13 @@ public class UserService {
         }
         return false;
     }
+
+    public boolean changeLocalization(UserDTO loggedUser, UserDTO formUser) {
+        User toUpdate = userRepository.findOne(loggedUser.getId());
+        toUpdate.setCity(transfer.toEntity(formUser.getCity()));
+        if(userRepository.save(toUpdate)!=null){
+            return true;
+        }
+        return false;
+    }
 }
