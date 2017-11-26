@@ -8,7 +8,6 @@ export class AppUrls {
 
   //UTILS
   public static UTILS_USER_COUNT_URL = AppUrls.UTILS_URL + '/countActiveUsers';
-  public static UTILS_MY_ID_URL = AppUrls.UTILS_URL + '/my-id';
 
   //FOTO
   public static USER_IMAGE_URL = AppUrls.APP_HOST + '/api/images/users/';

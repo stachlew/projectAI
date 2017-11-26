@@ -1,39 +1,95 @@
-<div class="row foto-big-box">
-  <div class="col-md-6">
-    <div class="file-container">
-      <div class="form-group">
-        <label for="single">Fotografia promująca wydarzenie: </label>
-        <button (click)="fileInput.click()" class="btn btn-default btn-secondary">Upload</button>
-        <button (click)="deleteImage()" class="btn btn-default btn-secondary">Wyczyść zdjęcie</button>
-        <span style="visibility: hidden; position: absolute; overflow: hidden; width: 0px; height:0px;border:none;margin:0; padding:0">
-                <input #fileInput id="single" type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader"  />
-              </span>
+<div class="row">
+
+  <!--LEWA KOLUMNA-->
+  <div class="col-md-4">
+    <div class="info-box">
+      <div></div>
+    </div>
+  </div>
+  <!--LEWA KOLUMNA END-->
+
+
+  <!--CENTRUM KOLUMNA-->
+  <div class="col-md-4">
+
+  </div>
+  <!--CENTRUM KOLUMNA END-->
+
+  <!--PRAWA KOLUMNA-->
+  <div class="col-md-4">
+
+    <!--PHOTO SECTION-->
+    <div class="photo-section" *ngIf="authSrv.isUser()">
+      <h3>Twoje zdjęcie profilowe</h3>
+      <div class="photo-container" *ngIf="myProfile!=null">
+        <img [src]="userPhotoUrl + myProfile.id" >
       </div>
-      <div *ngFor="let item of uploader.queue">
-        Plik: {{ item.file.name | truncate:[50, '...'] }} <br>
-        Rozmiar: {{ item.file.size/1024/1024 | number:'.2' }} MB <br>
 
-        <button type="button" class="btn btn-success btn-xs"
-                (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
-          Załaduj!
-        </button>
-        <button type="button" class="btn btn-danger btn-xs"
-                (click)="item.remove()">
-          Usuń
-        </button>
+      <div class="file-container" *ngIf="myProfile!=null">
+        <div class="form-group">
+          <label for="single">Modyfikacja: </label>
+          <button (click)="fileInput.click()" class="btn btn-default btn-secondary">Upload</button>
+          <button (click)="deleteImage()" class="btn btn-default btn-secondary">Wyczyść zdjęcie</button>
+          <span style="visibility: hidden; position: absolute; overflow: hidden; width: 0px; height:0px;border:none;margin:0; padding:0">
+                  <input #fileInput id="single" type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader"  />
+                </span>
+        </div>
+        <div *ngFor="let item of uploader.queue">
+          Plik: {{ item.file.name | truncate:[50, '...'] }} <br>
+          Rozmiar: {{ item.file.size/1024/1024 | number:'.2' }} MB <br>
 
-        Stan procesu:
-        <span *ngIf="item.isSuccess">OK</span>
-        <span *ngIf="item.isCancel">---</span>
-        <span *ngIf="item.isError">ERROR</span> <br> <br>
-        <div class="progress" style="">
-          <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+          <button type="button" class="btn btn-success btn-xs"
+                  (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+            Załaduj!
+          </button>
+          <button type="button" class="btn btn-danger btn-xs"
+                  (click)="item.remove()">
+            Usuń
+          </button>
+
+          Stan procesu:
+          <span *ngIf="item.isSuccess">OK</span>
+          <span *ngIf="item.isCancel">---</span>
+          <span *ngIf="item.isError">ERROR</span> <br> <br>
+          <div class="progress" style="">
+            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <!--END PHOTO SECTION-->
 
-  <div class="col-md-6 photo-container" *ngIf="userId!=null">
-    <img [src]="userPhotoUrl + userId" >
+    <div class="password-section">
+      <h4>Zmiana hasła</h4>
+      <mat-form-field class="password-input">
+        <input matInput [(ngModel)]="oldPass" placeholder="Stare hasło" [type]="hideOld ? 'password' : 'text'">
+        <mat-icon matSuffix >
+          <span (click)="hideOld = !hideOld">
+          <i *ngIf="hideOld" class="fa fa-eye" aria-hidden="true"></i>
+          <i *ngIf="!hideOld" class="fa fa-eye-slash" aria-hidden="true"></i>
+        </span>
+        </mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="password-input" style="margin-left: 15px">
+        <input matInput [(ngModel)]="newPass" placeholder="Nowe hasło" [type]="hideNew ? 'password' : 'text'">
+        <mat-icon matSuffix >
+          <span (click)="hideNew = !hideNew">
+          <i *ngIf="hideNew" class="fa fa-eye" aria-hidden="true"></i>
+          <i *ngIf="!hideNew" class="fa fa-eye-slash" aria-hidden="true"></i>
+        </span>
+        </mat-icon>
+      </mat-form-field>
+
+      <button class="btn btn-secondary btn-block" (click)="validateAndChangePassword()">Zmień hasło</button>
+
+    </div>
+
+
+
   </div>
+  <!--END PRAWA KOLUMNA-->
+
+
+
 </div>

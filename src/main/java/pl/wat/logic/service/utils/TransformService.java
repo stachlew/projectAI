@@ -65,8 +65,6 @@ public class TransformService {
             dto.setReligion(toDTO(entity.getReligion()));
             dto.setSmoking(entity.getSmoking());
             dto.setZodiacSign(toDTO(entity.getZodiacSign()));
-
-
             return dto;
         }else {
             return null;

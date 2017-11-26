@@ -34,6 +34,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userForm.userType = Constants.ROLE_USER;
     this.errorFields = [
       {      error: false,      errorText: ''    }, //login
       {      error: false,      errorText: ''    }, //haslo
@@ -85,16 +86,23 @@ export class RegisterComponent implements OnInit {
 
   validateAndSaveForm(){
     //ustawianie pol
-    this.checkBadLenght(4,50,this.userForm.username, this.errorFields[0]);
-    this.checkBadLenght(4,50,this.userForm.password, this.errorFields[1]);
-    this.checkBadLenght(4,50,this.userForm.email, this.errorFields[2]);
+    this.checkBadLenght(2,50,this.userForm.username, this.errorFields[0]);
+    this.checkBadLenght(2,50,this.userForm.password, this.errorFields[1]);
+    this.checkBadLenght(2,50,this.userForm.email, this.errorFields[2]);
     this.checkNull(this.userForm.userType, this.errorFields[3]);
-    this.checkBadLenght(4,50,this.userForm.firstname, this.errorFields[4]);
-    this.checkBadLenght(4,50,this.userForm.lastname, this.errorFields[5]);
+    this.checkBadLenght(2,50,this.userForm.firstname, this.errorFields[4]);
+    this.checkBadLenght(2,50,this.userForm.lastname, this.errorFields[5]);
     this.checkNull(this.userForm.birthDate, this.errorFields[6]);
     this.checkNull(this.userForm.sex, this.errorFields[7]);
-    this.checkNull(this.regionActive, this.errorFields[8]);
-    this.checkNull(this.cityActive, this.errorFields[9]);
+    if(this.userForm.userType === this.userSlug){
+      this.checkNull(this.regionActive, this.errorFields[8]);
+      this.checkNull(this.cityActive, this.errorFields[9]);
+    }else {
+      this.errorFields[8].error=false;
+      this.errorFields[8].errorText = '';
+      this.errorFields[9].error=false;
+      this.errorFields[9].errorText = '';
+    }
 
     //valid tablicy
     if(!this.checkErrors()){

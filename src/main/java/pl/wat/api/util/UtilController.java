@@ -22,10 +22,4 @@ public class UtilController extends BaseController {
         return userServices.countActiveUsers();
     }
 
-    @RequestMapping(value = "/my-id",method = RequestMethod.GET)
-    @ResponseBody
-    public Long getMyId(Authentication auth){
-        return getLoggerUser(auth).getId();
-    }
-
 }

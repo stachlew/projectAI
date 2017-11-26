@@ -85,27 +85,29 @@
 
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4" *ngIf="userForm.userType === userSlug">
+      <ng-container>
+        <h3>Twoja lokalizacja</h3>
 
-      <h3>Twoja lokalizacja</h3>
+        <mat-form-field class="register-input">
+          <mat-select [(value)]="regionActive" (change)="updateCities($event)" placeholder="Województwo">
+            <mat-option *ngFor="let region of regions" [value]="region"  >{{ region.regionName }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <span *ngIf="errorFields[8].error" class="error-msg">
+          {{errorFields[8].errorText}}
+        </span>
 
-      <mat-form-field class="register-input">
-        <mat-select [(value)]="regionActive" (change)="updateCities($event)" placeholder="Województwo">
-          <mat-option *ngFor="let region of regions" [value]="region"  >{{ region.regionName }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <span *ngIf="errorFields[8].error" class="error-msg">
-        {{errorFields[8].errorText}}
-      </span>
+        <mat-form-field class="register-input">
+          <mat-select [(value)]="cityActive" placeholder="Miasto">
+            <mat-option *ngFor="let city of cities" [value]="city" >{{ city.cityName }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <span *ngIf="errorFields[9].error" class="error-msg">
+          {{errorFields[9].errorText}}
+        </span>
 
-      <mat-form-field class="register-input">
-        <mat-select [(value)]="cityActive" placeholder="Miasto">
-          <mat-option *ngFor="let city of cities" [value]="city" >{{ city.cityName }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <span *ngIf="errorFields[9].error" class="error-msg">
-        {{errorFields[9].errorText}}
-      </span>
+      </ng-container>
 
     </div>
   </div>
