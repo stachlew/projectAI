@@ -89,48 +89,37 @@
             <td class="profile-column">
               <div class="profile-container">
                 <div>
-                  <b>{{person.name}}, {{person.age}}</b>
+                  <b>{{person.firstname}}, {{person.age}}</b>
                 </div>
                 <div class="persons-img-column">
                   <img [src]="userPhotoUrl+person.profilePhotoId"  class="rounded-circle">
                 </div>
                 <div>
-                  <b>{{person.city}}</b>
+                  <b>{{person.city?.cityName}}</b>
                 </div>
                 <div>
-                  {{person.region}}
+                  {{person.city?.region?.regionName}}
                 </div>
               </div>
             </td>
             <td class="about-person-content">
-              <div class="person-detail-description">{{person.id}} {{person.about}}</div>
+              <div class="person-detail-description">{{person.description}}</div>
               <div class="person-detail-row">
                 <span class="person-detail-element">
                   <i class="fa fa-heart fa-fw"></i>
-                  {{person.status}}
+                  {{person.martialStatus?.description}}
                 </span>
                 <span class="person-detail-element">
                   <i class="fa fa-graduation-cap fa-fw"></i>
-                  {{person.education}}
-                </span>
-                <span class="person-detail-element">
-                  <i class="fa fa-briefcase fa-fw"></i>
-                  {{person.job}}
+                  {{person.education?.description}}
                 </span>
               </div>
             </td>
             <td class="peron-fit-column">
-              <div>
-                <mat-slider min="0" max="100" step="1" disabled="true" [value]="person.fit1"></mat-slider> <b>Dopasowanie1 ({{person.fit1}}%) </b>
+              <div *ngFor="let category of person.match">
+                <mat-slider min="0" max="100" step="1" disabled="true" [value]="category.percentage"></mat-slider> <b>{{category.description}} ({{category.percentage}}%) </b>
               </div>
-
-              <div>
-                <mat-slider min="0" max="100" step="1" disabled="true" [value]="person.fit2"></mat-slider> <b>Dopasowanie2 ({{person.fit2}}%)</b>
-              </div>
-
-              <div>
-                <mat-slider min="0" max="100" step="1" disabled="true" [value]="person.fit3"></mat-slider> <b>Dopasowanie3 ({{person.fit3}}%) </b>
-              </div>
+              <div *ngIf="person.match == null || person.match?.length == 0">Brak wskaźników dopasowania</div>
 
             </td>
           </tr>

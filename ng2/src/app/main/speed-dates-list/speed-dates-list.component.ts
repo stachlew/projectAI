@@ -61,6 +61,10 @@ export class SpeedDatesListComponent implements OnInit {
   }
 
   resetToFirstPage(){
+    if(this.filter.dateTo!=null){
+      this.filter.dateTo.setHours(23);
+      this.filter.dateTo.setMinutes(59);
+    }
     this.filter.pageNo = 1;
     this.updateDates();
   }

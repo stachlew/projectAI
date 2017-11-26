@@ -1,4 +1,6 @@
 import {City} from "./city";
+import {Match} from "./match";
+import {SimpleDictionary} from "./simple-dictionary";
 
 export class User {
   id: number;
@@ -16,5 +18,27 @@ export class User {
   isMan: boolean;
   sex: string;
   city: City;
+
+  accountCreateDate: Date;
+  lastLogoutDate: Date;
+  lastpassres: Date;
+
+  height: number;
+  smoking: string;
+  drinking: string;
+  kids: string;
+  profession: string;
+  description: string;
+
+  zodiacSign: SimpleDictionary;
+  martialStatus: SimpleDictionary;
+  education: SimpleDictionary;
+  figure: SimpleDictionary;
+  hairColor: SimpleDictionary;
+  eyeColor: SimpleDictionary;
+  religion: SimpleDictionary;
+  matchList: Match[];
+
+
 
 }
