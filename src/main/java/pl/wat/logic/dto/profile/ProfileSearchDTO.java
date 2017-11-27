@@ -12,10 +12,17 @@ public class ProfileSearchDTO {
     public int ageFrom;
     public int ageTo;
     public String sex;
+
     public SimpleDictionaryDTO education;
     public SimpleDictionaryDTO smoking;
     public SimpleDictionaryDTO drinking;
     public SimpleDictionaryDTO kids;
+    public SimpleDictionaryDTO zodiacSign;
+    public SimpleDictionaryDTO martialStatus;
+    public SimpleDictionaryDTO figure;
+    public SimpleDictionaryDTO hairColor;
+    public SimpleDictionaryDTO eyeColor;
+    public SimpleDictionaryDTO religion;
 
     public int pageNo;
     public int pageSize;
@@ -133,5 +140,53 @@ public class ProfileSearchDTO {
 
     public void setCountElements(int countElements) {
         this.countElements = countElements;
+    }
+
+    public SimpleDictionaryDTO getZodiacSign() {
+        return zodiacSign;
+    }
+
+    public void setZodiacSign(SimpleDictionaryDTO zodiacSign) {
+        this.zodiacSign = zodiacSign;
+    }
+
+    public SimpleDictionaryDTO getMartialStatus() {
+        return martialStatus;
+    }
+
+    public void setMartialStatus(SimpleDictionaryDTO martialStatus) {
+        this.martialStatus = martialStatus;
+    }
+
+    public SimpleDictionaryDTO getFigure() {
+        return figure;
+    }
+
+    public void setFigure(SimpleDictionaryDTO figure) {
+        this.figure = figure;
+    }
+
+    public SimpleDictionaryDTO getHairColor() {
+        return hairColor;
+    }
+
+    public void setHairColor(SimpleDictionaryDTO hairColor) {
+        this.hairColor = hairColor;
+    }
+
+    public SimpleDictionaryDTO getEyeColor() {
+        return eyeColor;
+    }
+
+    public void setEyeColor(SimpleDictionaryDTO eyeColor) {
+        this.eyeColor = eyeColor;
+    }
+
+    public SimpleDictionaryDTO getReligion() {
+        return religion;
+    }
+
+    public void setReligion(SimpleDictionaryDTO religion) {
+        this.religion = religion;
     }
 }

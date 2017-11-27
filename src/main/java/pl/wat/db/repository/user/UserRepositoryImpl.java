@@ -47,7 +47,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
     private Query makeQuery(ProfileSearchDTO filter){
 
         //prawdziwy sql
-        StringBuilder queryBuilder = new StringBuilder("SELECT u FROM User u JOIN u.authorities auth WHERE u.id!=:id and auth.name=:role ");
+        StringBuilder queryBuilder = new StringBuilder("SELECT u FROM User u JOIN u.authorities auth JOIN u.city c JOIN c.region r WHERE u.id!=:id and auth.name=:role ");
         Map<String, Object> params = new TreeMap<String, Object>();
 
         params.put("id",filter.id);
@@ -56,14 +56,18 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         //jesli filtr to obiekt i ma jakies parametry, sprawdza sie czy nie jest taki parametr pusty i dokleja do zapytania jak DymamSQL
 //        (isNotEmpty(filter.login) ? " and LOWER(u.login) like CONCAT('%', :login, '%') ":"")
         //powyzej widac tez przyklad parametru wypelnianego wartoscia nizej
-        if(filter.city != null){
-            queryBuilder.append(" and city_id = :city_id");
-            params.put("city_id",filter.city.getId());
-        }
 
-        if(filter.region !=null){
-            queryBuilder.append(" and city.region.id = :region_id");
-            params.put("region_id",filter.getRegion().getId());
+
+
+
+        if(filter.city != null){
+            queryBuilder.append(" and c.id = :city_id");
+            params.put("city_id",filter.city.getId());
+        }else {
+            if(filter.region !=null){
+                queryBuilder.append(" and r.id = :region_id");
+                params.put("region_id",filter.getRegion().getId());
+            }
         }
 
         if(filter.ageFrom > 0){
@@ -78,7 +82,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         }
 
         if(filter.sex != null && !filter.sex.isEmpty()){
-            if (filter.sex.equals('M')){
+            if (filter.sex.equals("M")){
                 queryBuilder.append(" and is_man = 1");
             }
             else {
@@ -105,6 +109,36 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         if(filter.education != null){
             queryBuilder.append(" and education_id = :education_id");
             params.put("education_id",filter.education.getId());
+        }
+
+        if(filter.zodiacSign != null){
+            queryBuilder.append(" and zodiac_Sign_id = :zodiacSign_id");
+            params.put("zodiacSign_id",filter.zodiacSign.getId());
+        }
+
+        if(filter.martialStatus != null){
+            queryBuilder.append(" and martial_Status_id = :martialStatus_id");
+            params.put("martialStatus_id",filter.martialStatus.getId());
+        }
+
+        if(filter.figure != null){
+            queryBuilder.append(" and figure_id = :figure_id");
+            params.put("figure_id",filter.figure.getId());
+        }
+
+        if(filter.hairColor != null){
+            queryBuilder.append(" and hair_Color_id = :hairColor_id");
+            params.put("hairColor_id",filter.hairColor.getId());
+        }
+
+        if(filter.eyeColor != null){
+            queryBuilder.append(" and eye_Color_id = :eyeColor_id");
+            params.put("eyeColor_id",filter.eyeColor.getId());
+        }
+
+        if(filter.religion != null){
+            queryBuilder.append(" and religion_id = :religion_id");
+            params.put("religion_id",filter.religion.getId());
         }
 
 

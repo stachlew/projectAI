@@ -14,6 +14,9 @@ import {SpeedDate} from "../../_model/speed-date";
 import {Observable} from "rxjs/Observable";
 import {HttpSecService} from "../../_service/util/http-sec.service";
 import {CustomPaginatorComponent} from "../../_component/custom-paginator/custom-paginator.component";
+import {DictionaryLists} from "../../_model/dictionary-lists";
+import {SimpleDictionary} from "../../_model/simple-dictionary";
+import {User} from "../../_model/user.model";
 
 @Component({
   selector: 'app-persons-list',
@@ -40,6 +43,7 @@ export class PersonsListComponent implements OnInit {
     this.getRegions();
     this.response = new PageResponse;
     this.initData();
+    this.getUserDictionaries();
   }
 
   initData(){
@@ -65,6 +69,7 @@ export class PersonsListComponent implements OnInit {
 
   resetToFirst(){
     this.filter.pageNo=1;
+    this.setDetailFilters();
     this.changePage(this.filter.pageNo);
   }
 
@@ -97,37 +102,43 @@ export class PersonsListComponent implements OnInit {
 
 
 
+  //FILTRY ZAAWANSOWANE KONTA
+  public dictionaryLists: DictionaryLists = new DictionaryLists;
+  public smokingActive: SimpleDictionary;
+  public drinkingActive: SimpleDictionary;
+  public kidsActive: SimpleDictionary;
+  public zodiacSignActive: SimpleDictionary;
+  public martialStatusActive: SimpleDictionary;
+  public educationActive: SimpleDictionary;
+  public figureActive: SimpleDictionary;
+  public hairColorActive: SimpleDictionary;
+  public eyeColorActive: SimpleDictionary;
+  public religionActive: SimpleDictionary;
 
-  ///ACTIONY
-
-  action1(){
-    return this.httpSrv.getAndFetchData(AppUrls.APP_HOST+'/api/action1').subscribe(resp=>{
-        let data = resp;
-        console.log('ODPOWIEDZ ACTION 1: '+data);
-      },
-      err=>{
-        console.log('FAILED ACTION 1');
-      });
+  getUserDictionaries(){
+    this.httpSrv.getAndFetchData(AppUrls.GET_USER_DICTIONARIES).subscribe(resp=>{
+      this.dictionaryLists = resp;
+    });
   }
 
-  action2(){
-    return this.httpSrv.getAndFetchData(AppUrls.APP_HOST+'/api/action2').subscribe(resp=>{
-        let data = resp;
-        console.log('ODPOWIEDZ ACTION 2: '+data);
-      },
-      err=>{
-        console.log('FAILED ACTION 2');
-      });
+  public setDetailFilters(){
+    this.filter.city = this.
+
+    this.filter.education = this.educationActive;
+    this.filter.smoking = this.smokingActive;
+    this.filter.drinking = this.drinkingActive;
+    this.filter.kids = this.kidsActive;
+    this.filter.zodiacSign = this.zodiacSignActive;
+    this.filter.martialStatus = this.martialStatusActive;
+    this.filter.figure = this.figureActive;
+    this.filter.hairColor = this.hairColorActive;
+    this.filter.eyeColor = this.eyeColorActive;
+    this.filter.religion = this.religionActive;
   }
 
-  action3(){
-    return this.httpSrv.getAndFetchData(AppUrls.APP_HOST+'/api/action3').subscribe(resp=>{
-        let data = resp;
-        console.log('ODPOWIEDZ ACTION 3: '+data);
-      },
-      err=>{
-        console.log('FAILED ACTION 3');
-      });
+  compareSelected: ((f1: any, f2: any) => boolean) | null = this.compareByValue;
+  compareByValue(f1: any, f2: any) {
+    return f1 && f2 && f1.id === f2.id;
   }
 
 }

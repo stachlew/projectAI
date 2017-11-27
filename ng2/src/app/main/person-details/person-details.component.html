@@ -20,11 +20,11 @@
       <div class="col-md-12 signature-box">
 
         <div class="name-box">
-          <h2>{{details.firstname}}, {{details.age}}</h2>
+          <h2>{{details.firstname}}, {{details.age}}l.</h2>
         </div>
 
         <div class="localizaton-box">
-          <h3>{{details.city?.cityName}}, {{details.city?.region?.regionName}}</h3>
+          <h3> <i class="fa fa-map-marker fa-fw"> </i> {{details.city?.cityName}}, {{details.city?.region?.regionName}}</h3>
         </div>
 
         <br>
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-md-12 description-box">
 
-        <div class="detail-info">O mnie: <br> {{details.description}} </div>
+        <div class="detail-info"> <i class="fa fa-user-circle fa-fw"> </i> O mnie: <br> {{details.description}} </div>
 
       </div>
     </div>
@@ -54,25 +54,25 @@
       <!--LEWY DETAL-->
       <div class="col-md-6 left-detail">
 
-        <div class="detail-info">Związek: {{details.martialStatus?.description}} </div>
-        <div class="detail-info">Praca: {{details.profession}} </div>
-        <div class="detail-info">Wykształcenie: {{details.education?.description}} </div>
+        <div class="detail-info"> <i class="fa fa-heart fa-fw"> </i> Związek: {{details.martialStatus?.description}} </div>
+        <div class="detail-info"> <i class="fa fa-briefcase fa-fw"> </i> Praca: {{details.profession}} </div>
+        <div class="detail-info"> <i class="fa fa-graduation-cap fa-fw"> </i> Wykształcenie: {{details.education?.description}} </div>
 
-        <div class="detail-info">Dzieci: {{details.kids?.description}} </div>
-        <div class="detail-info">Znak zodiaku: {{details.zodiacSign?.description}} </div>
+        <div class="detail-info"> <i class="fa fa-child fa-fw"> </i> Dzieci: {{details.kids?.description}} </div>
+        <div class="detail-info"> <i class="fa fa-star fa-fw"> </i> Znak zodiaku: {{details.zodiacSign?.description}} </div>
 
       </div>
 
       <!--PRAWY DETAL-->
       <div class="col-md-6 right-detail">
 
-        <div class="detail-info">Wzrost: {{details.height}} </div>
-        <div class="detail-info">Figura: {{details.figure?.description}} </div>
-        <div class="detail-info">Kolor włosów: {{details.hairColor?.description}} </div>
-        <div class="detail-info">Kolor oczu: {{details.eyeColor?.description}} </div>
+        <div class="detail-info"> <i class="fa fa-long-arrow-up fa-fw"> </i> Wzrost: {{details.height}} </div>
+        <div class="detail-info"> <i class="fa fa-universal-access fa-fw"> </i> Figura: {{details.figure?.description}} </div>
+        <div class="detail-info"> <i class="fa fa-adjust fa-fw"> </i> Kolor włosów: {{details.hairColor?.description}} </div>
+        <div class="detail-info"> <i class="fa fa-eye fa-fw"> </i> Kolor oczu: {{details.eyeColor?.description}} </div>
 
-        <div class="detail-info">Papierosy: {{details.smoking?.description}} </div>
-        <div class="detail-info">Alkohol: {{details.drinking?.description}} </div>
+        <div class="detail-info"> <i class="fa fa-free-code-camp fa-fw"> </i> Papierosy: {{details.smoking?.description}} </div>
+        <div class="detail-info"> <i class="fa fa-glass fa-fw"> </i> Alkohol: {{details.drinking?.description}} </div>
 
       </div>
 
