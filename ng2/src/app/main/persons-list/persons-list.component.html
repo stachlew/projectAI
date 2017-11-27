@@ -103,7 +103,7 @@
               </div>
             </td>
             <td class="about-person-content">
-              <div class="person-detail-description">{{person.description}}</div>
+              <div class="person-detail-description">{{person.description | truncate:[500, '...']}}</div>
               <div class="person-detail-row">
                 <span class="person-detail-element">
                   <i class="fa fa-heart fa-fw"></i>

@@ -14,6 +14,8 @@ export class PersonDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,private router: Router, private chatService: ChatManagerService, private httpSrv: HttpSecService) { }
 
+  userPhotoUrl: string = AppUrls.USER_IMAGE_URL;
+
   personId: number;
   details: User = new User;
   ngOnInit() {

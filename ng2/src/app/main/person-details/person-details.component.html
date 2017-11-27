@@ -1,6 +1,84 @@
-<p>
-  person-details works! Person id: {{personId}}
-</p>
 
-<button (click)="startConversation()">Rozpocznij czat</button>
-{{details.username}}
+
+<!--STRONA-->
+<div class="row all-page">
+
+  <!--LEWA-->
+  <div class="col-md-4 left-side">
+
+    <!--FOTO-->
+    <div class="row">
+      <div class="col-md-12 photo-box">
+
+        <img [src]="userPhotoUrl +personId"  class="rounded">
+
+      </div>
+    </div>
+
+    <!--Podpis-->
+    <div class="row">
+      <div class="col-md-12 signature-box">
+
+        <div class="name-box">
+          <h2>{{details.firstname}}, {{details.age}}</h2>
+        </div>
+
+        <div class="localizaton-box">
+          <h3>{{details.city?.cityName}}, {{details.city?.region?.regionName}}</h3>
+        </div>
+
+        <br>
+
+        <br>
+        <button class="btn btn-block btn-primary" (click)="startConversation()">Rozpocznij czat</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!--PRAWA-->
+  <div class="col-md-8 right-side">
+
+    <!--OPIS-->
+    <div class="row">
+      <div class="col-md-12 description-box">
+
+        <div class="detail-info">O mnie: <br> {{details.description}} </div>
+
+      </div>
+    </div>
+
+    <!--DETALE-->
+    <div class="row">
+
+      <!--LEWY DETAL-->
+      <div class="col-md-6 left-detail">
+
+        <div class="detail-info">Związek: {{details.martialStatus?.description}} </div>
+        <div class="detail-info">Praca: {{details.profession}} </div>
+        <div class="detail-info">Wykształcenie: {{details.education?.description}} </div>
+
+        <div class="detail-info">Dzieci: {{details.kids?.description}} </div>
+        <div class="detail-info">Znak zodiaku: {{details.zodiacSign?.description}} </div>
+
+      </div>
+
+      <!--PRAWY DETAL-->
+      <div class="col-md-6 right-detail">
+
+        <div class="detail-info">Wzrost: {{details.height}} </div>
+        <div class="detail-info">Figura: {{details.figure?.description}} </div>
+        <div class="detail-info">Kolor włosów: {{details.hairColor?.description}} </div>
+        <div class="detail-info">Kolor oczu: {{details.eyeColor?.description}} </div>
+
+        <div class="detail-info">Papierosy: {{details.smoking?.description}} </div>
+        <div class="detail-info">Alkohol: {{details.drinking?.description}} </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>

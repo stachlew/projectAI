@@ -1,0 +1,51 @@
+.all-page{
+  height: 90vh;
+}
+
+.left-side{
+}
+
+.right-side{
+}
+
+.photo-box{
+  height: 50vh;
+  text-align: center;
+  padding: 10px;
+}
+
+.photo-box img{
+  width: 100%;
+  height: 100%;
+}
+
+.signature-box{
+  height: 40vh;
+  text-align: center;
+}
+
+.description-box{
+  height: 50vh;
+  text-align: justify;
+}
+
+.left-detail{
+  height: 40vh;
+}
+
+.right-detail{
+  height: 40vh;
+}
+
+.detail-info{
+  padding: 5px;
+  font-size: larger;
+}
+
+.name-box{
+  margin-top: 25px;
+}
+
+.localizaton-box{
+  margin-top: 25px;
+}
