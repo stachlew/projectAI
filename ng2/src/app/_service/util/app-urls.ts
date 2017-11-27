@@ -50,6 +50,7 @@ export class AppUrls {
   public static REGISTER_ACCOUNT_URL = AppUrls.ACCOUNT_URL + '/createNewUser';
   public static SAVE_USER_DETAILS_URL = AppUrls.ACCOUNT_URL + '/saveUserDetails';
   public static GET_ACCOUNT_INFO_URL = AppUrls.ACCOUNT_URL + '/getAccountInfo';
+  public static GET_USER_DETAIL_URL = AppUrls.ACCOUNT_URL + '/get-user-detail/';
   public static CHANGE_PASSWORD_URL = AppUrls.ACCOUNT_URL + '/changePassword';
   public static CHANGE_LOCALIZATION_URL = AppUrls.ACCOUNT_URL + '/changeLocalization';
   public static GET_USER_DICTIONARIES = AppUrls.APP_HOST + '/api/person-fit-dictionary/getAllUserDictionary';

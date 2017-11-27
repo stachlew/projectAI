@@ -3,6 +3,9 @@ package pl.wat.db.repository.user;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.SliceImpl;
+import pl.wat.config.Constants;
+import pl.wat.db.domain.user.Authority;
+import pl.wat.db.domain.user.AuthorityName;
 import pl.wat.db.domain.user.User;
 import pl.wat.logic.dto.profile.ProfileSearchDTO;
 
@@ -44,10 +47,11 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
     private Query makeQuery(ProfileSearchDTO filter){
 
         //prawdziwy sql
-        StringBuilder queryBuilder = new StringBuilder("SELECT u FROM User u WHERE id!=:id ");
+        StringBuilder queryBuilder = new StringBuilder("SELECT u FROM User u JOIN u.authorities auth WHERE u.id!=:id and auth.name=:role ");
         Map<String, Object> params = new TreeMap<String, Object>();
 
         params.put("id",filter.id);
+        params.put("role", AuthorityName.ROLE_USER);
 
         //jesli filtr to obiekt i ma jakies parametry, sprawdza sie czy nie jest taki parametr pusty i dokleja do zapytania jak DymamSQL
 //        (isNotEmpty(filter.login) ? " and LOWER(u.login) like CONCAT('%', :login, '%') ":"")

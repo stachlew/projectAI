@@ -32,6 +32,13 @@ public class UserAccountController extends BaseController {
         return userService.getUserInfo(id);
     }
 
+    //Pobranie danych o userze
+    @PreAuthorize("hasRole('USER')")
+    @RequestMapping(value = "/get-user-detail/{id}",method = RequestMethod.GET)
+    @ResponseBody UserDTO getUserInfo(Authentication auth, @PathVariable Long id){
+        return userService.getUserInfo(id);
+    }
+
     //Zmiana hasła
     @RequestMapping(value = "/changePassword",method = RequestMethod.POST)
     @PreAuthorize("hasRole('USER') or hasRole('MANAGER')")
