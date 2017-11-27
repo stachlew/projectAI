@@ -76,3 +76,8 @@
 .filter-input{
   margin: 10px;
 }
+
+.filter-event-input{
+  width: 125px;
+}
+

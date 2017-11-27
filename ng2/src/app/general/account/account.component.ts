@@ -14,6 +14,7 @@ import {SpeedDate} from "../../_model/speed-date";
 import {Router} from "@angular/router";
 import {SimpleDictionary} from "../../_model/simple-dictionary";
 import {DictionaryLists} from "../../_model/dictionary-lists";
+import {MatchForm} from "../../_model/match-form/match-form";
 
 declare var jQuery:any;
 
@@ -50,6 +51,8 @@ export class AccountComponent implements OnInit {
       this.getEventsList();
 
       this.getUserDictionaries();
+
+      this.initMatchForm();
     });
   }
 
@@ -248,7 +251,21 @@ export class AccountComponent implements OnInit {
         alert("Nie udało się zapisać zmian. Spróbuj ponownie później.");
       }
     });
-
   }
+
+  //DOPASOWANIA
+  public matchForm: MatchForm = new MatchForm;
+  initMatchForm(){
+    this.httpService.getAndFetchData(AppUrls.FIT_GET_FORM).subscribe(resp=>{
+      this.matchForm = resp;
+    });
+  }
+
+  saveMatchForm(){
+    this.httpService.postAndFetchData(AppUrls.FIT_SAVE_FORM,this.matchForm).subscribe(resp=>{
+      this.matchForm = resp;
+    });
+  }
+
 
 }

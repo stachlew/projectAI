@@ -122,8 +122,6 @@ export class PersonsListComponent implements OnInit {
   }
 
   public setDetailFilters(){
-    this.filter.city = this.
-
     this.filter.education = this.educationActive;
     this.filter.smoking = this.smokingActive;
     this.filter.drinking = this.drinkingActive;

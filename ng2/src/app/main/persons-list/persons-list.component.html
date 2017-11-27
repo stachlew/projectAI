@@ -96,10 +96,10 @@
               </div>
             </td>
             <td class="peron-fit-column">
-              <div *ngFor="let category of person.match">
+              <div *ngFor="let category of person.matchList">
                 <mat-slider min="0" max="100" step="1" disabled="true" [value]="category.percentage"></mat-slider> <b>{{category.description}} ({{category.percentage}}%) </b>
               </div>
-              <div *ngIf="person.match == null || person.match?.length == 0">Brak wskaźników dopasowania</div>
+              <div *ngIf="person.matchList == null || person.matchList?.length == 0">Brak wskaźników dopasowania</div>
 
             </td>
           </tr>

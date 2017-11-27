@@ -55,6 +55,10 @@ export class AppUrls {
   public static CHANGE_LOCALIZATION_URL = AppUrls.ACCOUNT_URL + '/changeLocalization';
   public static GET_USER_DICTIONARIES = AppUrls.APP_HOST + '/api/person-fit-dictionary/getAllUserDictionary';
 
+  //FIT
+  public static FIT_SAVE_FORM = AppUrls.APP_HOST + '/api/person-fit/saveMatchForm';
+  public static FIT_GET_FORM = AppUrls.APP_HOST + '/api/person-fit-dictionary/getMatchForm';
+
 
   //PROFILE
   public static PERSON_FIT_URL = AppUrls.APP_HOST + '/api/person-fit';

@@ -95,11 +95,11 @@
         <br>
         <br>
         <h5>O mnie:</h5>
-        <button class="btn btn-block btn-info">Otwórz część I</button>
+        <button class="btn btn-block btn-info" data-toggle="modal" data-target="#my-answer">Otwórz część I</button>
         <br>
 
         <h5>O partnerze/partnerce:</h5>
-        <button class="btn btn-block btn-info">Otwórz część II</button>
+        <button class="btn btn-block btn-info" data-toggle="modal" data-target="#second-answer">Otwórz część II</button>
       </div>
 
     </div>
@@ -343,3 +343,109 @@
     </div>
   </div>
 </div>
+
+
+
+<!-- Modal ankiety o sobie -->
+<div #myAnswer class="modal fade" id="my-answer" tabindex="-1" role="dialog" >
+  <div class="modal-dialog events-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"> Opisz siebie</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span>&times;</span>
+        </button>
+      </div>
+      <!--BODY-->
+      <div class="modal-body">
+
+        <table>
+          <thead>
+            <th>Cecha</th>
+            <th>Ja</th>
+            <th>Druga połowa</th>
+          </thead>
+          <tbody>
+          <tr>
+            <td colspan="3">Charakter</td>
+          </tr>
+          <tr *ngFor="let pos of matchForm.characterList">
+            <td>
+              {{pos.categoryAttribute.description}}
+            </td>
+            <td>
+              <input type="checkbox" [ngModel]="(pos.answer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.answer='T' : pos.answer='F')">
+            </td>
+            <td>
+              <input type="checkbox" [ngModel]="(pos.partnerAnswer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.partnerAnswer='T' : pos.partnerAnswer='F')">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">Wolny czas</td>
+          </tr>
+
+
+          <tr *ngFor="let pos of matchForm.freeTimeList">
+            <td>
+              {{pos.categoryAttribute.description}}
+            </td>
+            <td>
+              <input type="checkbox" [ngModel]="(pos.answer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.answer='T' : pos.answer='F')">
+            </td>
+            <td>
+              <input type="checkbox" [ngModel]="(pos.partnerAnswer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.partnerAnswer='T' : pos.partnerAnswer='F')">
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="3">Osobowość</td>
+          </tr>
+
+          <tr *ngFor="let pos of matchForm.personalityList">
+            <td>
+              {{pos.categoryAttribute.description}}
+            </td>
+            <td>
+              <input type="checkbox" [ngModel]="(pos.answer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.answer='T' : pos.answer='F')">
+            </td>
+            <td>
+              <input type="checkbox" [ngModel]="(pos.partnerAnswer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.partnerAnswer='T' : pos.partnerAnswer='F')">
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="saveMatchForm()">Zapisz</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal ankiety o drugiej osobie -->
+<div #secondAnswer class="modal fade" id="second-answer" tabindex="-1" role="dialog" >
+  <div class="modal-dialog events-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"> Opisz wymarzoną drugą połówkę</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span>&times;</span>
+        </button>
+      </div>
+      <!--BODY-->
+      <div class="modal-body">
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="saveMatchForm()">Zapisz</button>
+      </div>
+    </div>
+  </div>
+</div>
+
