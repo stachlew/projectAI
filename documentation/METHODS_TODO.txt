@@ -26,6 +26,9 @@
 23. Skonkretyzowanie dto dla użytkownika/jego profilu - nie wiem jak to ma być //DONE///
 24. Listowanie użytkowników/profili na podstawie pkt 23 (PersonController)  ///DONE// PersonController.getProfilesList   ////
 25. Rozbudowanie ProfileSearchDTO o kolejne pola wyszukiwania wg pkt 23. (do uzupełnienia będą filtry zaawansowane ze strony z profilami)  //DONE //
-26. Rozszerzyć DTO użytkownika dla m.in dla celów rejestracji jeśli się coś zmieni
+
 27. Zbudowanie filtrowania dla pobierania wydarzeń (z paginacją) [IN: numer strony, wielokość strony, województwo,miasto,data od, data do. OUT: ilość wszystkich wyników, numer strony, wyszukane dane]. Ponaglenie pkt 14!
 28. Zabezbieczyć rejestrację gdy ten sam username
+
+29. Blokować możliwosc gdy sie ludzie nie mieszczo
+30 pokazywac tylko eventy, ktore są ENABLED
