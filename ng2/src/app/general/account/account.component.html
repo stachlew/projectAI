@@ -31,7 +31,7 @@
         </mat-select>
       </mat-form-field>
 
-      <button class="btn btn-secondary btn-block" (click)="validateAncChangeLocalization()">Zmień lokalizację</button>
+      <button class="btn btn-secondary btn-block btn-hover" (click)="validateAncChangeLocalization()">Zmień lokalizację</button>
     </div>
 
 
@@ -58,7 +58,7 @@
         </mat-icon>
       </mat-form-field>
 
-      <button class="btn btn-secondary btn-block" (click)="validateAndChangePassword()">Zmień hasło</button>
+      <button class="btn btn-secondary btn-block btn-hover" (click)="validateAndChangePassword()">Zmień hasło</button>
 
     </div>
     <!--END HASLO -->
@@ -79,27 +79,22 @@
 
       <div class="central-section-box" style="margin-top: 3px">
         <h4>Wydarzenia w których uczestniczę:</h4>
-        <button class="btn btn-block btn-success" data-toggle="modal" data-target="#events-list">Otwórz listę</button>
+        <button class="btn btn-block btn-success link-btn" data-toggle="modal" data-target="#events-list">Otwórz listę</button>
       </div>
 
 
       <div class="central-section-box">
         <h4>Moje dane szczegółowe:</h4>
-        <button class="btn btn-block btn-warning" data-toggle="modal" data-target="#user-details">Otwórz ankietę z detalami</button>
+        <button class="btn btn-block btn-warning link-btn" data-toggle="modal" data-target="#user-details">Otwórz ankietę z detalami</button>
       </div>
 
 
-      <div class="central-section-box" style="min-height: 329px">
+      <div class="central-section-box" style="min-height: 280px">
         <h4>Ankieta dopasowania:</h4>
         <span>Ankieta dopasowania składa się z 2 częśći. Pierwsza część określa Ciebie, w drugiej opisujesz swoje oczekiwania wobec drugiej połówki.</span>
         <br>
         <br>
-        <h5>O mnie:</h5>
-        <button class="btn btn-block btn-info" data-toggle="modal" data-target="#my-answer">Otwórz część I</button>
-        <br>
-
-        <h5>O partnerze/partnerce:</h5>
-        <button class="btn btn-block btn-info" data-toggle="modal" data-target="#second-answer">Otwórz część II</button>
+        <button class="btn btn-block btn-info link-btn" data-toggle="modal" data-target="#my-answer">Otwórz ankietę dopasowania</button>
       </div>
 
     </div>
@@ -111,7 +106,7 @@
   <div class="col-md-4">
 
     <!--PHOTO SECTION-->
-    <div class="photo-section" *ngIf="authSrv.isUser()" style="margin-top: 3px">
+    <div class="photo-section" *ngIf="authSrv.isUser()" style="margin-top: 3px; min-height: 561px;">
       <h3>Twoje zdjęcie profilowe</h3>
       <div class="photo-container" *ngIf="myProfile!=null">
         <img [src]="userPhotoUrl + myProfile.id" >
@@ -120,8 +115,8 @@
       <div class="file-container" *ngIf="myProfile!=null">
         <div class="form-group">
           <label for="single">Modyfikacja: </label>
-          <button (click)="fileInput.click()" class="btn btn-default btn-secondary">Upload</button>
-          <button (click)="deleteImage()" class="btn btn-default btn-secondary">Wyczyść zdjęcie</button>
+          <button (click)="fileInput.click()" class="btn btn-default btn-secondary btn-hover">Upload</button>
+          <button (click)="deleteImage()" class="btn btn-default btn-secondary btn-hover">Wyczyść zdjęcie</button>
           <span style="visibility: hidden; position: absolute; overflow: hidden; width: 0px; height:0px;border:none;margin:0; padding:0">
                   <input #fileInput id="single" type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader"  />
                 </span>
@@ -348,10 +343,10 @@
 
 <!-- Modal ankiety o sobie -->
 <div #myAnswer class="modal fade" id="my-answer" tabindex="-1" role="dialog" >
-  <div class="modal-dialog events-modal" role="document">
+  <div class="modal-dialog my-answer-modal" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"> Opisz siebie</h5>
+        <h5 class="modal-title">Ankieta określające Ciebie oraz Twoją wymarzoną drugą połowę</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span>&times;</span>
         </button>
@@ -359,60 +354,79 @@
       <!--BODY-->
       <div class="modal-body">
 
-        <table>
+        <table class="my-answer-table">
           <thead>
-            <th>Cecha</th>
-            <th>Ja</th>
-            <th>Druga połowa</th>
+            <th class="table-header-custom" ></th>
+            <th class="table-header-custom"></th>
+            <th class="table-header-custom"></th>
           </thead>
           <tbody>
           <tr>
-            <td colspan="3">Charakter</td>
+            <td class="subtitle" >Ja</td>
+            <td class="subtitle" >Charakter</td>
+            <td class="subtitle" >Druga połowa</td>
           </tr>
           <tr *ngFor="let pos of matchForm.characterList">
             <td>
-              {{pos.categoryAttribute.description}}
+              <div class="input-box">
+                <input type="checkbox" [ngModel]="(pos.answer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.answer='T' : pos.answer='F')">
+              </div>
             </td>
             <td>
-              <input type="checkbox" [ngModel]="(pos.answer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.answer='T' : pos.answer='F')">
+              <div class="category-box">
+                {{pos.categoryAttribute.description}}
+              </div>
             </td>
             <td>
-              <input type="checkbox" [ngModel]="(pos.partnerAnswer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.partnerAnswer='T' : pos.partnerAnswer='F')">
+              <div class="input-box">
+                <input type="checkbox" [ngModel]="(pos.partnerAnswer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.partnerAnswer='T' : pos.partnerAnswer='F')">
+              </div>
             </td>
           </tr>
           <tr>
-            <td colspan="3">Wolny czas</td>
+            <td class="subtitle" >Ja</td>
+            <td class="subtitle" >Wolny czas</td>
+            <td class="subtitle" >Druga połowa</td>
           </tr>
-
-
           <tr *ngFor="let pos of matchForm.freeTimeList">
             <td>
-              {{pos.categoryAttribute.description}}
+              <div class="input-box">
+                <input type="checkbox" [ngModel]="(pos.answer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.answer='T' : pos.answer='F')">
+              </div>
             </td>
             <td>
-              <input type="checkbox" [ngModel]="(pos.answer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.answer='T' : pos.answer='F')">
+              <div class="category-box">
+                {{pos.categoryAttribute.description}}
+              </div>
             </td>
             <td>
-              <input type="checkbox" [ngModel]="(pos.partnerAnswer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.partnerAnswer='T' : pos.partnerAnswer='F')">
+              <div class="input-box">
+                <input type="checkbox" [ngModel]="(pos.partnerAnswer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.partnerAnswer='T' : pos.partnerAnswer='F')">
+              </div>
             </td>
           </tr>
-
           <tr>
-            <td colspan="3">Osobowość</td>
+            <td class="subtitle" >Ja</td>
+            <td class="subtitle" >Osobowość</td>
+            <td class="subtitle" >Druga połowa</td>
           </tr>
-
           <tr *ngFor="let pos of matchForm.personalityList">
             <td>
-              {{pos.categoryAttribute.description}}
+              <div class="input-box">
+                <input type="checkbox" [ngModel]="(pos.answer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.answer='T' : pos.answer='F')">
+              </div>
             </td>
             <td>
-              <input type="checkbox" [ngModel]="(pos.answer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.answer='T' : pos.answer='F')">
+              <div class="category-box">
+                {{pos.categoryAttribute.description}}
+              </div>
             </td>
             <td>
-              <input type="checkbox" [ngModel]="(pos.partnerAnswer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.partnerAnswer='T' : pos.partnerAnswer='F')">
+              <div class="input-box">
+                <input type="checkbox" [ngModel]="(pos.partnerAnswer == 'T' ? true : false)" (ngModelChange)="($event == true ? pos.partnerAnswer='T' : pos.partnerAnswer='F')">
+              </div>
             </td>
           </tr>
-
           </tbody>
         </table>
 
@@ -423,29 +437,3 @@
     </div>
   </div>
 </div>
-
-<!-- Modal ankiety o drugiej osobie -->
-<div #secondAnswer class="modal fade" id="second-answer" tabindex="-1" role="dialog" >
-  <div class="modal-dialog events-modal" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"> Opisz wymarzoną drugą połówkę</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span>&times;</span>
-        </button>
-      </div>
-      <!--BODY-->
-      <div class="modal-body">
-
-
-
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="saveMatchForm()">Zapisz</button>
-      </div>
-    </div>
-  </div>
-</div>
-

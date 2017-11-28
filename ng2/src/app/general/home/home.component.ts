@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   }
 
   goToTest(){
-    this.router.navigate(['match-form-page']);
+    this.router.navigate(['account']);
   }
 
   goEventCreate(){

@@ -53,3 +53,48 @@
 .detail-column{
   padding: 10px;
 }
+
+.link-btn{
+  height: 75px;
+  cursor: pointer;
+}
+
+.btn-hover{
+  cursor: pointer;
+}
+
+.input-box{
+  font-size:40px;
+}
+
+.input-box input {
+  width: 20px;
+  height: 20px;
+}
+
+.category-box{
+  font-weight: bold;
+  font-size: larger;
+}
+
+.table-header-custom{
+  width: 130px;
+  text-align: center;
+  font-size: larger;
+}
+
+.subtitle{
+  font-size: x-large;
+  border-bottom: 1px solid #1d1e1f;
+  border-top: 1px solid #1d1e1f;
+}
+
+.my-answer-modal{
+  min-width: 50%;
+}
+
+.my-answer-table{
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+}
