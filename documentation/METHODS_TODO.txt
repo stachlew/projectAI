@@ -32,3 +32,4 @@
 
 29. Blokować możliwosc gdy sie ludzie nie mieszczo
 30 pokazywac tylko eventy, ktore są ENABLED
+31. Nie pokazywac detali profilu dla MANAGER
