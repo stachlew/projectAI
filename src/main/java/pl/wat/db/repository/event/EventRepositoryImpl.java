@@ -44,7 +44,7 @@ public class EventRepositoryImpl implements EventRepositoryCustom {
     private Query makeQuery(EventSearchDTO filter){
 
         //prawdziwy sql
-        StringBuilder queryBuilder = new StringBuilder("SELECT e FROM Event e WHERE 1=1 ");
+        StringBuilder queryBuilder = new StringBuilder("SELECT e FROM Event e WHERE 1=1 AND ENABLED =1 ");
         Map<String, Object> params = new TreeMap<String, Object>();
 
 
