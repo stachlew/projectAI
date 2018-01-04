@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 import {HttpSecService} from "../../_service/util/http-sec.service";
 import {AppUrls} from "../../_service/util/app-urls";
 import {Constants} from "../../_service/util/constants";
+import {error} from "selenium-webdriver";
 
 @Component({
   selector: 'app-register',
@@ -150,6 +151,9 @@ export class RegisterComponent implements OnInit {
         this.errorResponse = resp.error;
       }
       this.registerButtonBlock = false;
+    },
+    error=>{
+      console.log("Wystąpił błąd serwera. Spróbuj ponownie później. Przepraszamy za niedogodności.")
     });
     console.log("save user");
   }
