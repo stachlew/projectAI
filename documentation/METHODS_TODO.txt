@@ -28,8 +28,7 @@
 25. Rozbudowanie ProfileSearchDTO o kolejne pola wyszukiwania wg pkt 23. (do uzupełnienia będą filtry zaawansowane ze strony z profilami)  //DONE //
 
 27. Zbudowanie filtrowania dla pobierania wydarzeń (z paginacją) [IN: numer strony, wielokość strony, województwo,miasto,data od, data do. OUT: ilość wszystkich wyników, numer strony, wyszukane dane]. Ponaglenie pkt 14!
-28. Zabezbieczyć rejestrację gdy ten sam username
+28. Zabezbieczyć rejestrację gdy ten sam username  //DONE//
 
-29. Blokować możliwosc gdy sie ludzie nie mieszczo
-30 pokazywac tylko eventy, ktore są ENABLED
-31. Nie pokazywac detali profilu dla MANAGER
+29. Blokować możliwosc gdy sie ludzie nie mieszczo //DONB//
+30 pokazywac tylko eventy, ktore są ENABLED  //DONE //

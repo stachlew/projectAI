@@ -49,7 +49,8 @@ public class UserService {
     //TO DO hash password
     public RestResponse<UserDTO> createNewUser(UserDTO newUser){
         RestResponse<UserDTO> response = new RestResponse<>();
-        if(true){
+        User oldUser = userRepository.findByUsername(newUser.getUsername());
+        if(oldUser == null){
             newUser.setPassword(PasswordGenerator.hashPassword(newUser.getPassword()));
             newUser.setMan(Constants.SEX_MAN.equals(newUser.getSex()));
             User entity = transfer.toEntity(newUser);
@@ -76,7 +77,7 @@ public class UserService {
 
         }else {
             response.status = 400;
-            response.error = "Wystąpił jakiś błąd na jakimś polu!";
+            response.error = "Login jest już zajęty!";
         }
         return response;
     }
